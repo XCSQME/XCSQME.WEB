@@ -3,8 +3,8 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 // base: "/docs-demo/" 这个是用来配置单域名多站点的情况的,没这个需求就不用配置
 export default defineConfig({
-  title: "XCSQ",
-  description: "haha",
+  title: "星辰社区 XCSQ",
+  description: "全球领先的加密货币信号聚合平台，整合200+顶级KOL和分析师，为您的投资决策保驾护航",
   srcDir: "docs",
   lastUpdated: true,
   cleanUrls: true,
@@ -40,6 +40,7 @@ image: {
     sidebarMenuLabel: '目录',
     
     nav: [
+      { text: '关于我们', link: '/aboet.md' },
       { text: '课件学习', link: '/学习资料/币圈经典.md' },
       { text: '订阅计划', link: '/listhome/订阅计划.md' },
       { text: '最新动态', link: '/CHANGELOG.md' },
@@ -53,8 +54,8 @@ image: {
         items: [
           { text: '开始探索', link: '/listhome/start.md'},
           { text: '频道列表', link: '/listhome/加入社区.md' },
-          { text: '订阅计划', link: '/listhome/订阅计划' },
-          { text: '常见问题', link: '/listhome/常见问题解答' },
+          { text: '订阅计划', link: '/listhome/订阅计划.md' },
+          { text: '常见问题', link: '/listhome/常见问题解答.md' },
           { text: '最新动态', link: '/CHANGELOG.md' },
           { text: '软件定制', link: '/listhome/软件定制.md' } 
         ]

@@ -7,7 +7,7 @@ titleTemplate: 加密贴身专家，星辰社区
 hero:
   name: "星辰社区"
   text: "利用我们的信号获利"
-  tagline: 加入全球 +145个最佳加密货币 VIP 频道
+  tagline: 加入全球 +200个最佳加密货币 VIP 频道
   image:
     src: https://m2492468.695354.xyz/img/2025/01/20/51opfx.jpg
     alt: 星辰社区

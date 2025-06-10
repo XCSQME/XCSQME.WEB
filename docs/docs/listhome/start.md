@@ -4,6 +4,52 @@
 layout: doc
 ---
 
+<style>
+/* 侧边栏链接动画效果 */
+.VPSidebar .VPSidebarItem .link {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.VPSidebar .VPSidebarItem .link:hover {
+  transform: translateX(8px);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 6px;
+}
+
+.VPSidebar .VPSidebarItem .link::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s;
+}
+
+.VPSidebar .VPSidebarItem .link:hover::before {
+  left: 100%;
+}
+
+/* 页面加载动画 */
+.content {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; margin-bottom: 30px; text-align: center; color: white;">
   <h1 style="margin: 0; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">🌟 星辰社区</h1>
   <p style="margin: 10px 0 0 0; font-size: 1.2em; opacity: 0.9;">为决策者构建信息护城河</p>

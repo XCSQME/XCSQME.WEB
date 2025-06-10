@@ -156,9 +156,6 @@ image: {
           { text: '学家实操千倍收益', link: '/学习资料/千倍收益.md' } 
         ]
       },{
-        text: '会员清单',
-        link: '/会员清单.md'
-      },{
         text: 'KOL收录',
         collapsed:true,
         items: [

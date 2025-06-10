@@ -18,11 +18,11 @@
 - 3使用社区邀请链接注册新的bitget账号，使用上述步骤释放的KYC信息进行认证。
  ![](https://m2492468.695354.xyz/img/2025/01/02/6x5el2.png)
      **
-       [邀请直达](https://www.bitget.fit/zh-CN/referral/register?clacCode=W4K9JTC2&from=%2Fzh-CN%2Fevents%2Freferral-all-program&source=events&utmSource=PremierInviter)
+       [邀请直达](https://partner.bitgetapps.com/bg/S5R6YV)
  
 
  ::: details 或者直接填写邀请码
 ```js
-W4K9JTC2
+s3pu
 ```
 :::

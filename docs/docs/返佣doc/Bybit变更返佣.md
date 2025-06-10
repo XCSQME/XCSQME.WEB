@@ -10,12 +10,12 @@
 ![](https://m2492468.695354.xyz/img/2025/01/02/7k4gvx.png)
 
   **
-       [邀请直达](https://www.bybitglobal.com/invite?ref=REW961Y)
+       [邀请直达](https://www.bybitglobal.com/invite?ref=UO2ZZS7D)
  
 
  ::: details 或者直接填写邀请码
 ```js
-REW961Y
+UO2ZZS7D
 ```
 :::
 

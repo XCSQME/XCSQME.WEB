@@ -1,8 +1,8 @@
 
 
 ---
-layout: doc
----
+
+
 
 
 <style>
@@ -131,15 +131,19 @@ layout: doc
 
 .contact-link {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 12px 25px;
+  padding: 15px 30px;
   border-radius: 25px;
   text-decoration: none;
   color: white;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   transition: transform 0.2s ease;
+  font-size: 16px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  letter-spacing: 0.5px;
 }
 
 .contact-link:hover {
@@ -187,8 +191,10 @@ layout: doc
   }
   
   .contact-link {
-    padding: 10px 20px;
-    font-size: 0.9em;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   }
 }
 </style>
@@ -197,8 +203,6 @@ layout: doc
   <h1>🌟 星辰社区</h1>
   <p>为决策者构建信息护城河</p>
 </div>
-
-![星辰社区](https://m2492468.695354.xyz/img/2025/04/14/42hjt2.jpg)
 
 ## 🎯 星辰情报中枢
 
@@ -249,12 +253,10 @@ layout: doc
       <h4>🌊 市场周期</h4>
       <p>市场有不同的周期和季节，几个季节就能轻松赚到钱，大多数季节都能赚钱</p>
     </div>
-    
     <div class="grid-item">
       <h4>⚠️ 风险意识</h4>
       <p>钱可能在任何季节都会丢失，没有一个交易者总是正确的</p>
     </div>
-    
     <div class="grid-item">
       <h4>🎯 理性投资</h4>
       <p>今天的利润明天就会变成亏损，单方面的偏见是有代价的</p>
@@ -272,12 +274,10 @@ layout: doc
       <h4 style="margin: 0 0 10px 0; color: #333;">📈 牛市策略</h4>
       <p style="margin: 0; color: #666; font-size: 0.9em;">在阶段性牛市中积极获利，把握每一个上涨机会</p>
     </div>
-    
     <div style="background: rgba(255,255,255,0.8); padding: 15px; border-radius: 8px;">
       <h4 style="margin: 0 0 10px 0; color: #333;">🛡️ 熊市防守</h4>
       <p style="margin: 0; color: #666; font-size: 0.9em;">在熊市中严格保护资本，避免重大损失</p>
     </div>
-    
     <div style="background: rgba(255,255,255,0.8); padding: 15px; border-radius: 8px;">
       <h4 style="margin: 0 0 10px 0; color: #333;">⚠️ 风险识别</h4>
       <p style="margin: 0; color: #666; font-size: 0.9em;">识别市场陷阱，避免成为延长熊市的人质</p>
@@ -295,12 +295,10 @@ layout: doc
       <h4 style="margin: 0 0 15px 0; color: #333;">🎯 精准信号</h4>
       <p style="margin: 0; color: #666; font-size: 0.9em;">专业团队筛选，高质量交易信号</p>
     </div>
-    
     <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
       <h4 style="margin: 0 0 15px 0; color: #333;">🤝 社区支持</h4>
       <p style="margin: 0; color: #666; font-size: 0.9em;">活跃的交流环境，共同成长</p>
     </div>
-    
     <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
       <h4 style="margin: 0 0 15px 0; color: #333;">📈 持续优化</h4>
       <p style="margin: 0; color: #666; font-size: 0.9em;">不断改进策略，适应市场变化</p>
@@ -315,8 +313,8 @@ layout: doc
   <p>加入星辰社区，开启您的财富增长之旅</p>
   
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-    <a href="https://t.me/XCSQ8" class="contact-link">📱 Telegram</a>
-    <a href="mailto:admin@xcsq.me" class="contact-link">📧 邮箱联系</a>
+    <a href="https://t.me/xcsqme" class="contact-link">📱 Telegram</a>
+    <a href="#" class="contact-link" onclick="alert('请添加微信：xcsqme')">💬 微信联系</a>
   </div>
 </div>
 

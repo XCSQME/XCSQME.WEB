@@ -148,6 +148,41 @@
 
 .contact-link:hover {
   transform: translateY(-2px);
+  color: white !important;
+}
+
+.contact-link:visited {
+  color: white !important;
+}
+
+.contact-link:active {
+  color: white !important;
+}
+
+.contact-link:link {
+  color: white !important;
+}
+
+.contact-link-enhanced {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff9ff3 100%) !important;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4), 0 0 20px rgba(255, 159, 243, 0.3) !important;
+  transform: scale(1.05);
+  animation: pulse-glow 2s infinite;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-link-enhanced:hover {
+  transform: scale(1.1) translateY(-3px) !important;
+  box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6), 0 0 30px rgba(255, 159, 243, 0.5) !important;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4), 0 0 20px rgba(255, 159, 243, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6), 0 0 30px rgba(255, 159, 243, 0.5);
+  }
 }
 
 .footer-card {
@@ -195,6 +230,23 @@
     font-size: 15px;
     font-weight: 600;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    color: white !important;
+  }
+  
+  .contact-link:hover,
+  .contact-link:visited,
+  .contact-link:active,
+  .contact-link:link {
+    color: white !important;
+  }
+  
+  .contact-link-enhanced {
+    transform: scale(1.02);
+    animation: pulse-glow 2.5s infinite;
+  }
+  
+  .contact-link-enhanced:hover {
+    transform: scale(1.05) translateY(-2px) !important;
   }
 }
 </style>
@@ -313,8 +365,8 @@
   <p>加入星辰社区，开启您的财富增长之旅</p>
   
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-    <a href="https://t.me/xcsqme" class="contact-link">📱 Telegram</a>
-    <a href="#" class="contact-link" onclick="alert('请添加微信：xcsqme')">💬 微信联系</a>
+    <a href="https://t.me/xcsqme" class="contact-link contact-link-enhanced">📱 Telegram</a>
+    <a href="#" class="contact-link contact-link-enhanced" onclick="alert('请添加微信：xcsqme')">💬 微信联系</a>
   </div>
 </div>
 

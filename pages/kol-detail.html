@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOL详情 - 星辰社区</title>
+  <meta name="description" content="星辰社区 - 顶级加密货币KOL信号聚合平台">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="../shared/styles.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-primary': '#0a0a0f',
+            'bg-secondary': '#12121a',
+            'bg-tertiary': '#1a1a25',
+            'accent-cyan': '#00d4ff',
+            'accent-purple': '#a855f7',
+            'accent-gold': '#f59e0b',
+            'accent-pink': '#ec4899',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Page-specific styles */
+    .kol-avatar-glow {
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), 0 0 60px rgba(0, 212, 255, 0.2);
+    }
+    
+    .kol-avatar-glow:hover {
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 80px rgba(0, 212, 255, 0.3);
+    }
+    
+    .star-filled {
+      color: #f59e0b;
+    }
+    
+    .star-empty {
+      color: #3f3f46;
+    }
+    
+    .pricing-card-featured {
+      border: 2px solid transparent;
+      background: linear-gradient(var(--color-bg-secondary), var(--color-bg-secondary)) padding-box,
+                  linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple)) border-box;
+    }
+    
+    .signal-card {
+      border-left: 3px solid var(--color-accent-cyan);
+    }
+    
+    .signal-card.success {
+      border-left-color: var(--color-success);
+    }
+    
+    .signal-card.warning {
+      border-left-color: var(--color-warning);
+    }
+    
+    .category-badge-cyan {
+      background: rgba(0, 212, 255, 0.15);
+      color: #00d4ff;
+    }
+    
+    .category-badge-purple {
+      background: rgba(168, 85, 247, 0.15);
+      color: #a855f7;
+    }
+    
+    .category-badge-gold {
+      background: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+    }
+    
+    .category-badge-pink {
+      background: rgba(236, 72, 153, 0.15);
+      color: #ec4899;
+    }
+    
+    .stat-card {
+      background: linear-gradient(145deg, rgba(0,212,255,0.05) 0%, rgba(168,85,247,0.05) 100%);
+    }
+    
+    .related-kol-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .related-kol-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    }
+    
+    .social-btn {
+      transition: all 0.3s ease;
+    }
+    
+    .social-btn:hover {
+      transform: translateY(-3px);
+    }
+    
+    .channel-preview {
+      background: linear-gradient(180deg, rgba(26, 26, 37, 0.9) 0%, rgba(18, 18, 26, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .message-bubble {
+      background: rgba(0, 212, 255, 0.1);
+      border-radius: 12px 12px 12px 4px;
+    }
+    
+    .message-bubble.incoming {
+      background: rgba(168, 85, 247, 0.1);
+      border-radius: 12px 12px 4px 12px;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+      }
+    }
+    
+    .animate-pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .popular-badge {
+      background: linear-gradient(135deg, #f59e0b, #fbbf24);
+      color: #0a0a0f;
+    }
+    
+    .best-value-badge {
+      background: linear-gradient(135deg, #00d4ff, #a855f7);
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-bg-primary text-white min-h-screen">
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Navigation -->
+  <header id="main-nav" class="nav-header fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent-cyan to-accent-purple flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="text-xl font-bold font-display">星辰社区</span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-1">
+          <a href="../index.html" class="nav-link" data-nav="index">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span>首页</span>
+          </a>
+          <a href="./about.html" class="nav-link" data-nav="about">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            <span>关于我们</span>
+          </a>
+          <a href="./kols.html" class="nav-link active" data-nav="kols">
+            <i data-lucide="star" class="w-4 h-4"></i>
+            <span>KOL列表</span>
+          </a>
+          <a href="./pricing.html" class="nav-link" data-nav="pricing">
+            <i data-lucide="crown" class="w-4 h-4"></i>
+            <span>订阅计划</span>
+          </a>
+          <a href="./faq.html" class="nav-link" data-nav="faq">
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
+            <span>常见问题</span>
+          </a>
+          <a href="./news.html" class="nav-link" data-nav="news">
+            <i data-lucide="newspaper" class="w-4 h-4"></i>
+            <span>最新动态</span>
+          </a>
+        </nav>
+        
+        <!-- Social Links & Mobile Menu -->
+        <div class="flex items-center gap-3">
+          <div class="hidden sm:flex items-center gap-2">
+            <a href="https://x.com/XCSQbtc" target="_blank" class="social-icon">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="https://t.me/xcsqme" target="_blank" class="social-icon">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </a>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
+            <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="flex justify-between items-center mb-8">
+      <span class="text-xl font-bold">菜单</span>
+      <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-white/10 transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-2">
+      <a href="../index.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="index">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>首页</span>
+      </a>
+      <a href="./about.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="about">
+        <i data-lucide="users" class="w-5 h-5"></i>
+        <span>关于我们</span>
+      </a>
+      <a href="./kols.html" class="flex items-center gap-3 p-3 rounded-lg bg-white/10 transition-colors" data-nav="kols">
+        <i data-lucide="star" class="w-5 h-5"></i>
+        <span>KOL列表</span>
+      </a>
+      <a href="./pricing.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="pricing">
+        <i data-lucide="crown" class="w-5 h-5"></i>
+        <span>订阅计划</span>
+      </a>
+      <a href="./faq.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="faq">
+        <i data-lucide="help-circle" class="w-5 h-5"></i>
+        <span>常见问题</span>
+      </a>
+      <a href="./news.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="news">
+        <i data-lucide="newspaper" class="w-5 h-5"></i>
+        <span>最新动态</span>
+      </a>
+    </nav>
+  </div>
+  
+  <!-- Main Content -->
+  <main class="pt-20 lg:pt-24">
+    <!-- Hero Section -->
+    <section class="relative py-12 lg:py-20 overflow-hidden">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Back Button -->
+        <a href="./kols.html" class="inline-flex items-center gap-2 text-secondary hover:text-accent-cyan transition-colors mb-8 reveal">
+          <i data-lucide="arrow-left" class="w-5 h-5"></i>
+          <span>返回KOL列表</span>
+        </a>
+        
+        <!-- KOL Profile Header -->
+        <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
+          <!-- Avatar -->
+          <div class="relative reveal" data-reveal-delay="100">
+            <div class="w-36 h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden kol-avatar-glow transition-all duration-500">
+              <img id="kol-avatar" src="" alt="KOL Avatar" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-10 h-10 rounded-full bg-success flex items-center justify-center border-4 border-bg-primary">
+              <i data-lucide="check" class="w-5 h-5 text-white"></i>
+            </div>
+          </div>
+          
+          <!-- Info -->
+          <div class="flex-1 text-center lg:text-left reveal" data-reveal-delay="200">
+            <div class="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4 mb-4">
+              <h1 id="kol-name" class="text-3xl lg:text-4xl font-bold font-display">加载中...</h1>
+              <span id="kol-badge" class="badge badge-cyan self-center lg:self-auto">
+                <i data-lucide="shield-check" class="w-3 h-3"></i>
+                <span>情报局会员</span>
+              </span>
+            </div>
+            
+            <p id="kol-price" class="text-2xl lg:text-3xl font-bold text-gradient mb-4">加载中...</p>
+            
+            <!-- Social Links -->
+            <div class="flex items-center justify-center lg:justify-start gap-3 mb-6">
+              <a href="#" class="social-btn w-10 h-10 rounded-full bg-red-600/20 text-red-500 hover:bg-red-600 hover:text-white flex items-center justify-center transition-all">
+                <i data-lucide="youtube" class="w-5 h-5"></i>
+              </a>
+              <a href="#" class="social-btn w-10 h-10 rounded-full bg-blue-500/20 text-blue-500 hover:bg-blue-500 hover:text-white flex items-center justify-center transition-all">
+                <i data-lucide="twitter" class="w-5 h-5"></i>
+              </a>
+              <a href="#" class="social-btn w-10 h-10 rounded-full bg-sky-500/20 text-sky-500 hover:bg-sky-500 hover:text-white flex items-center justify-center transition-all">
+                <i data-lucide="send" class="w-5 h-5"></i>
+              </a>
+            </div>
+            
+            <!-- CTA Button -->
+            <button class="btn btn-primary animate-pulse-glow" onclick="showSubscribeModal()">
+              <i data-lucide="zap" class="w-5 h-5"></i>
+              <span>立即订阅</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="py-12 lg:py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-card reveal">
+          <h2 class="text-2xl lg:text-3xl font-bold font-display mb-6 flex items-center gap-3">
+            <i data-lucide="user" class="w-6 h-6 text-accent-cyan"></i>
+            关于此群组
+          </h2>
+          <p id="kol-description" class="text-secondary text-lg leading-relaxed">
+            加载中...
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Rating Section -->
+    <section class="py-12 lg:py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-card reveal">
+          <h2 class="text-2xl lg:text-3xl font-bold font-display mb-6 flex items-center gap-3">
+            <i data-lucide="star" class="w-6 h-6 text-accent-gold"></i>
+            推荐度
+          </h2>
+          <div class="flex items-center gap-4">
+            <div id="star-rating" class="flex items-center gap-1">
+              <!-- Stars will be inserted here -->
+            </div>
+            <span id="rating-text" class="text-lg font-semibold">5.0</span>
+            <span class="text-muted">(<span id="review-count">128</span> 条评价)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="py-12 lg:py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl lg:text-3xl font-bold font-display mb-8 text-center reveal">核心数据</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <!-- Win Rate -->
+          <div class="stat-card glass-card text-center reveal" data-reveal-delay="100">
+            <div class="w-14 h-14 rounded-full bg-success/20 flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="trending-up" class="w-7 h-7 text-success"></i>
+            </div>
+            <p id="stat-winrate" class="text-3xl lg:text-4xl font-bold text-success mb-1">--</p>
+            <p class="text-muted text-sm">胜率</p>
+          </div>
+          
+          <!-- Total Signals -->
+          <div class="stat-card glass-card text-center reveal" data-reveal-delay="200">
+            <div class="w-14 h-14 rounded-full bg-accent-cyan/20 flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="signal" class="w-7 h-7 text-accent-cyan"></i>
+            </div>
+            <p id="stat-signals" class="text-3xl lg:text-4xl font-bold text-accent-cyan mb-1">--</p>
+            <p class="text-muted text-sm">总信号数</p>
+          </div>
+          
+          <!-- Avg Profit -->
+          <div class="stat-card glass-card text-center reveal" data-reveal-delay="300">
+            <div class="w-14 h-14 rounded-full bg-accent-purple/20 flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="percent" class="w-7 h-7 text-accent-purple"></i>
+            </div>
+            <p id="stat-profit" class="text-3xl lg:text-4xl font-bold text-accent-purple mb-1">--</p>
+            <p class="text-muted text-sm">平均收益</p>
+          </div>
+          
+          <!-- Members -->
+          <div class="stat-card glass-card text-center reveal" data-reveal-delay="400">
+            <div class="w-14 h-14 rounded-full bg-accent-gold/20 flex items-center justify-center mx-auto mb-4">
+              <i data-lucide="users" class="w-7 h-7 text-accent-gold"></i>
+            </div>
+            <p id="stat-members" class="text-3xl lg:text-4xl font-bold text-accent-gold mb-1">--</p>
+            <p class="text-muted text-sm">会员数</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Channel Preview Section -->
+    <section class="py-12 lg:py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl lg:text-3xl font-bold font-display mb-8 text-center reveal">频道展示</h2>
+        <div class="channel-preview rounded-2xl p-6 lg:p-8 max-w-4xl mx-auto reveal">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent-cyan to-accent-purple flex items-center justify-center">
+              <i data-lucide="message-square" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+              <p class="font-semibold">交易信号频道</p>
+              <p class="text-muted text-sm">实时更新</p>
+            </div>
+            <div class="ml-auto flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+              <span class="text-success text-sm">在线</span>
+            </div>
+          </div>
+          
+          <!-- Sample Messages -->
+          <div class="space-y-4" id="signal-messages">
+            <!-- Messages will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="py-12 lg:py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl lg:text-3xl font-bold font-display mb-4 text-center reveal">订阅选项</h2>
+        <p class="text-secondary text-center mb-12 reveal">选择适合您的订阅计划</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <!-- Monthly -->
+          <div class="pricing-card glass-card reveal" data-reveal-delay="100">
+            <h3 class="text-xl font-bold mb-2">月度会员</h3>
+            <p class="text-muted text-sm mb-4">灵活的短期选择</p>
+            <div class="mb-6">
+              <span class="text-4xl font-bold">$32</span>
+              <span class="text-muted">/月</span>
+            </div>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>全部信号访问</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>实时推送</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>社群交流</span>
+              </li>
+            </ul>
+            <button class="btn btn-secondary w-full" onclick="selectPlan('monthly')">
+              选择计划
+            </button>
+          </div>
+          
+          <!-- Quarterly -->
+          <div class="pricing-card glass-card reveal pricing-card-featured relative" data-reveal-delay="200">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="popular-badge px-3 py-1 rounded-full text-xs font-semibold">热门</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">季度会员</h3>
+            <p class="text-muted text-sm mb-4">性价比之选</p>
+            <div class="mb-6">
+              <span class="text-4xl font-bold">$78</span>
+              <span class="text-muted">/季</span>
+            </div>
+            <div class="text-success text-sm mb-4">节省 19%</div>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>全部信号访问</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>实时推送</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>社群交流</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>优先客服</span>
+              </li>
+            </ul>
+            <button class="btn btn-primary w-full" onclick="selectPlan('quarterly')">
+              选择计划
+            </button>
+          </div>
+          
+          <!-- Yearly -->
+          <div class="pricing-card glass-card reveal relative" data-reveal-delay="300">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="best-value-badge px-3 py-1 rounded-full text-xs font-semibold">最佳价值</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">年度会员</h3>
+            <p class="text-muted text-sm mb-4">长期投资者首选</p>
+            <div class="mb-6">
+              <span class="text-4xl font-bold">$288</span>
+              <span class="text-muted">/年</span>
+            </div>
+            <div class="text-success text-sm mb-4">节省 25%</div>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>全部信号访问</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>实时推送</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>VIP社群</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>1对1咨询</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>定制提醒</span>
+              </li>
+            </ul>
+            <button class="btn btn-primary w-full" onclick="selectPlan('yearly')">
+              选择计划
+            </button>
+          </div>
+          
+          <!-- Lifetime -->
+          <div class="pricing-card glass-card reveal" data-reveal-delay="400">
+            <h3 class="text-xl font-bold mb-2">终身会员</h3>
+            <p class="text-muted text-sm mb-4">一次付费，永久使用</p>
+            <div class="mb-6">
+              <span class="text-4xl font-bold">$498</span>
+              <span class="text-muted">一次性</span>
+            </div>
+            <div class="text-success text-sm mb-4">永久访问</div>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>全部信号永久访问</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>所有新功能</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>VIP社群</span>
+              </li>
+              <li class="flex items-center gap-2 text-sm">
+                <i data-lucide="check" class="w-4 h-4 text-success"></i>
+                <span>专属客服</span>
+              </li>
+            </ul>
+            <button class="btn btn-gold w-full" onclick="selectPlan('lifetime')">
+              选择计划
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Related KOLs Section -->
+    <section class="py-12 lg:py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl lg:text-3xl font-bold font-display mb-8 text-center reveal">相关推荐</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="related-kols">
+          <!-- Related KOL cards will be inserted here -->
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent-cyan to-accent-purple flex items-center justify-center">
+              <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="text-xl font-bold font-display">星辰社区</span>
+          </div>
+          <p class="text-secondary text-sm mb-4">
+            汇聚全球顶级加密货币KOL信号，为您提供实时、专业的交易信号服务。
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="https://x.com/XCSQbtc" target="_blank" class="social-icon">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="https://t.me/xcsqme" target="_blank" class="social-icon">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-semibold mb-4">快速链接</h4>
+          <ul class="space-y-2">
+            <li><a href="../index.html" class="footer-link text-sm">首页</a></li>
+            <li><a href="./about.html" class="footer-link text-sm">关于我们</a></li>
+            <li><a href="./kols.html" class="footer-link text-sm">KOL列表</a></li>
+            <li><a href="./pricing.html" class="footer-link text-sm">订阅计划</a></li>
+          </ul>
+        </div>
+        
+        <!-- Support -->
+        <div>
+          <h4 class="font-semibold mb-4">支持</h4>
+          <ul class="space-y-2">
+            <li><a href="./faq.html" class="footer-link text-sm">常见问题</a></li>
+            <li><a href="./about.html#contact" class="footer-link text-sm">联系我们</a></li>
+            <li><a href="#" class="footer-link text-sm">服务条款</a></li>
+            <li><a href="#" class="footer-link text-sm">隐私政策</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h4 class="font-semibold mb-4">联系方式</h4>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <span>support@xcsq.com</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              <span>24/7 在线支持</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="globe" class="w-4 h-4"></i>
+              <span>全球服务</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom -->
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-muted text-sm">
+          &copy; 2024 星辰社区 (XCSQ). All rights reserved.
+        </p>
+        <p class="text-muted text-sm">
+          投资有风险，入市需谨慎
+        </p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-accent-cyan text-bg-primary flex items-center justify-center shadow-lg hover:bg-accent-purple transition-colors z-40">
+    <i data-lucide="chevron-up" class="w-6 h-6"></i>
+  </button>
+  
+  <!-- Subscribe Modal -->
+  <div id="subscribe-modal" class="fixed inset-0 z-[100] hidden">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeSubscribeModal()"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-4">
+      <div class="glass-card rounded-2xl p-6 relative">
+        <button onclick="closeSubscribeModal()" class="absolute top-4 right-4 p-2 rounded-lg hover:bg-white/10 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-br from-accent-cyan to-accent-purple flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="crown" class="w-8 h-8 text-white"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">订阅确认</h3>
+          <p class="text-secondary">请添加客服微信完成订阅</p>
+        </div>
+        <div class="bg-bg-tertiary rounded-xl p-4 mb-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-muted">微信号</span>
+            <button onclick="copyWechat()" class="text-accent-cyan hover:underline text-sm flex items-center gap-1">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+              复制
+            </button>
+          </div>
+          <p class="text-xl font-mono font-semibold" id="wechat-id">XCSQ2024</p>
+        </div>
+        <button class="btn btn-primary w-full" onclick="closeSubscribeModal()">
+          我知道了
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Shared Scripts -->
+  <script src="../shared/scripts.js"></script>
+  
+  <script>
+    // ========================================
+    // KOL Data
+    // ========================================
+    const kolData = {
+      "bi-quan-suo-zhang": {
+        name: "币圈所长",
+        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=bi-quan-suo-zhang&backgroundColor=b6e3f4",
+        badge: "情报局会员",
+        badgeType: "cyan",
+        price: "1500 USD/年",
+        rating: 5,
+        reviewCount: 328,
+        description: "知名油管博主，每天都会在油管发布每日行情分析视频，会员群每天都会有他对行情的分析及策略发布。交易风格喜欢分批止盈，一般一个交易计划有2-3个止盈位。擅长主流币和山寨币的技术分析，对波浪理论有深入研究。",
+        stats: {
+          winRate: "85%",
+          totalSignals: 1256,
+          avgProfit: "+32%",
+          members: 5200
+        },
+        category: "华语二级市场现货合约",
+        categoryType: "cyan",
+        social: {
+          youtube: "#",
+          twitter: "#",
+          telegram: "#"
+        },
+        signals: [
+          { type: "long", symbol: "BTC", entry: "$42,500", tp: "$45,000", sl: "$41,000", status: "success", profit: "+5.9%", time: "2小时前" },
+          { type: "short", symbol: "ETH", entry: "$2,580", tp: "$2,450", sl: "$2,650", status: "active", profit: "进行中", time: "5小时前" },
+          { type: "long", symbol: "SOL", entry: "$98.5", tp: "$108", sl: "$94", status: "success", profit: "+9.6%", time: "昨天" }
+        ]
+      },
+      "ye-koi": {
+        name: "Ye.koi",
+        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=ye-koi&backgroundColor=c0aede",
+        badge: "情报局会员",
+        badgeType: "cyan",
+        price: "1200 USD/年",
+        rating: 5,
+        reviewCount: 256,
+        description: "目前华语二级市场的顶流KOL，以其精准的市场判断和独特的交易策略闻名。专注于主流币和热门山寨币的合约交易，胜率稳定在80%以上。",
+        stats: {
+          winRate: "87%",
+          totalSignals: 892,
+          avgProfit: "+28%",
+          members: 3800
+        },
+        category: "华语二级市场现货合约",
+        categoryType: "cyan",
+        social: {
+          youtube: "#",
+          twitter: "#",
+          telegram: "#"
+        },
+        signals: [
+          { type: "long", symbol: "BTC", entry: "$43,200", tp: "$46,000", sl: "$42,000", status: "success", profit: "+6.5%", time: "3小时前" },
+          { type: "long", symbol: "LINK", entry: "$14.2", tp: "$15.5", sl: "$13.8", status: "success", profit: "+9.2%", time: "昨天" }
+        ]
+      },
+      "ling-xun": {
+        name: "风寻",
+        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=ling-xun&backgroundColor=ffdfbf",
+        badge: "单独购买",
+        badgeType: "purple",
+        price: "800 USD/年",
+        rating: 4,
+        reviewCount: 189,
+        description: "新币投研王者，专注于新上线项目的深度研究和早期投资机会挖掘。擅长发现具有爆发潜力的新币种，帮助会员把握早期投资红利。",
+        stats: {
+          winRate: "78%",
+          totalSignals: 456,
+          avgProfit: "+45%",
+          members: 2100
+        },
+        category: "华语二级市场现货合约",
+        categoryType: "cyan",
+        social: {
+          youtube: "#",
+          twitter: "#",
+          telegram: "#"
+        },
+        signals: [
+          { type: "long", symbol: "TIA", entry: "$8.5", tp: "$12", sl: "$7.8", status: "success", profit: "+41%", time: "2天前" },
+          { type: "long", symbol: "SEI", entry: "$0.45", tp: "$0.65", sl: "$0.40", status: "active", profit: "进行中", time: "5小时前" }
+        ]
+      },
+      "0xsun": {
+        name: "0xsun",
+        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=0xsun&backgroundColor=ffd5dc",
+        badge: "情报局会员",
+        badgeType: "gold",
+        price: "2000 USD/年",
+        rating: 5,
+        reviewCount: 412,
+        description: "江湖人称链上皇，一级链上交易的传奇人物。专注于链上Alpha挖掘，擅长发现早期项目和链上异常动向。",
+        stats: {
+          winRate: "82%",
+          totalSignals: 678,
+          avgProfit: "+120%",
+          members: 3500
+        },
+        category: "一级链上",
+        categoryType: "gold",
+        social: {
+          youtube: "#",
+          twitter: "#",
+          telegram: "#"
+        },
+        signals: [
+          { type: "buy", symbol: "PEPE", entry: "$0.0000012", tp: "$0.0000025", sl: "-", status: "success", profit: "+108%", time: "3天前" },
+          { type: "buy", symbol: "BONK", entry: "$0.000008", tp: "$0.000015", sl: "-", status: "success", profit: "+87%", time: "1周前" }
+        ]
+      },
+      "wwg": {
+        name: "WWG交易员频道",
+        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=wwg&backgroundColor=d1d4f9",
+        badge: "情报局会员",
+        badgeType: "purple",
+        price: "1800 USD/年",
+        rating: 5,
+        reviewCount: 298,
+        description: "国外知名交易员社区，汇聚多位明星交易员。提供多元化的交易策略和市场观点，适合希望了解国际市场动态的投资者。",
+        stats: {
+          winRate: "84%",
+          totalSignals: 1567,
+          avgProfit: "+25%",
+          members: 6200
+        },
+        category: "国外二级市场现货合约",
+        categoryType: "purple",
+        social: {
+          youtube: "#",
+          twitter: "#",
+          telegram: "#"
+        },
+        signals: [
+          { type: "long", symbol: "BTC", entry: "$42,800", tp: "$45,500", sl: "$41,500", status: "success", profit: "+6.3%", time: "4小时前" },
+          { type: "short", symbol: "XRP", entry: "$0.62", tp: "$0.55", sl: "$0.66", status: "active", profit: "进行中", time: "6小时前" }
+        ]
+      },
+      "yan-chi": {
+        name: "颜驰",
+        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=yan-chi&backgroundColor=c0aede",
+        badge: "情报局会员",
+        badgeType: "cyan",
+        price: "1600 USD/年",
+        rating: 5,
+        reviewCount: 267,
+        description: "天花板级顶级交易员，以其精准的技术分析和稳健的交易风格著称。专注于主流币的中长线波段操作。",
+        stats: {
+          winRate: "89%",
+          totalSignals: 723,
+          avgProfit: "+35%",
+          members: 2900
+        },
+        category: "华语二级市场现货合约",
+        categoryType: "cyan",
+        social: {
+          youtube: "#",
+          twitter: "#",
+          telegram: "#"
+        },
+        signals: [
+          { type: "long", symbol: "BTC", entry: "$41,500", tp: "$44,000", sl: "$40,000", status: "success", profit: "+6.0%", time: "1天前" },
+          { type: "long", symbol: "ETH", entry: "$2,450", tp: "$2,650", sl: "$2,380", status: "success", profit: "+8.2%", time: "2天前" }
+        ]
+      }
+    };
+    
+    // ========================================
+    // Initialize Page
+    // ========================================
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get KOL ID from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const kolId = urlParams.get('id') || 'bi-quan-suo-zhang';
+      
+      // Load KOL data
+      loadKOLData(kolId);
+      
+      // Initialize GSAP animations
+      initGSAPAnimations();
+    });
+    
+    // ========================================
+    // Load KOL Data
+    // ========================================
+    function loadKOLData(kolId) {
+      const kol = kolData[kolId] || kolData['bi-quan-suo-zhang'];
+      
+      // Update avatar
+      document.getElementById('kol-avatar').src = kol.avatar;
+      
+      // Update name
+      document.getElementById('kol-name').textContent = kol.name;
+      
+      // Update badge
+      const badgeEl = document.getElementById('kol-badge');
+      badgeEl.className = `badge badge-${kol.badgeType} self-center lg:self-auto`;
+      badgeEl.querySelector('span').textContent = kol.badge;
+      
+      // Update price
+      document.getElementById('kol-price').textContent = kol.price;
+      
+      // Update description
+      document.getElementById('kol-description').textContent = kol.description;
+      
+      // Update rating
+      renderStars(kol.rating);
+      document.getElementById('rating-text').textContent = kol.rating.toFixed(1);
+      document.getElementById('review-count').textContent = kol.reviewCount;
+      
+      // Update stats
+      document.getElementById('stat-winrate').textContent = kol.stats.winRate;
+      document.getElementById('stat-signals').textContent = kol.stats.totalSignals.toLocaleString();
+      document.getElementById('stat-profit').textContent = kol.stats.avgProfit;
+      document.getElementById('stat-members').textContent = kol.stats.members.toLocaleString();
+      
+      // Render signals
+      renderSignals(kol.signals);
+      
+      // Render related KOLs
+      renderRelatedKOLs(kolId);
+      
+      // Re-initialize Lucide icons
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    }
+    
+    // ========================================
+    // Render Star Rating
+    // ========================================
+    function renderStars(rating) {
+      const container = document.getElementById('star-rating');
+      container.innerHTML = '';
+      
+      for (let i = 1; i <= 5; i++) {
+        const star = document.createElement('i');
+        star.setAttribute('data-lucide', 'star');
+        star.className = `w-6 h-6 ${i <= rating ? 'star-filled' : 'star-empty'}`;
+        star.setAttribute('fill', i <= rating ? 'currentColor' : 'none');
+        container.appendChild(star);
+      }
+    }
+    
+    // ========================================
+    // Render Signal Messages
+    // ========================================
+    function renderSignals(signals) {
+      const container = document.getElementById('signal-messages');
+      container.innerHTML = '';
+      
+      signals.forEach(signal => {
+        const statusClass = signal.status === 'success' ? 'success' : signal.status === 'active' ? 'warning' : '';
+        const statusIcon = signal.status === 'success' ? 'check-circle' : signal.status === 'active' ? 'clock' : 'x-circle';
+        const statusColor = signal.status === 'success' ? 'text-success' : signal.status === 'active' ? 'text-warning' : 'text-error';
+        
+        const messageHtml = `
+          <div class="signal-card ${statusClass} glass-card p-4">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <span class="px-2 py-1 rounded text-xs font-semibold ${signal.type === 'long' || signal.type === 'buy' ? 'bg-success/20 text-success' : 'bg-error/20 text-error'}">
+                  ${signal.type === 'long' ? '做多' : signal.type === 'short' ? '做空' : '买入'}
+                </span>
+                <span class="font-bold text-lg">${signal.symbol}</span>
+              </div>
+              <div class="flex items-center gap-2 ${statusColor}">
+                <i data-lucide="${statusIcon}" class="w-4 h-4"></i>
+                <span class="text-sm font-semibold">${signal.profit}</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mt-3 text-sm">
+              <div>
+                <span class="text-muted">入场</span>
+                <p class="font-mono font-semibold">${signal.entry}</p>
+              </div>
+              <div>
+                <span class="text-muted">止盈</span>
+                <p class="font-mono font-semibold text-success">${signal.tp}</p>
+              </div>
+              <div>
+                <span class="text-muted">止损</span>
+                <p class="font-mono font-semibold text-error">${signal.sl}</p>
+              </div>
+            </div>
+            <p class="text-muted text-xs mt-3">${signal.time}</p>
+          </div>
+        `;
+        container.insertAdjacentHTML('beforeend', messageHtml);
+      });
+    }
+    
+    // ========================================
+    // Render Related KOLs
+    // ========================================
+    function renderRelatedKOLs(currentId) {
+      const container = document.getElementById('related-kols');
+      container.innerHTML = '';
+      
+      const relatedIds = Object.keys(kolData).filter(id => id !== currentId).slice(0, 4);
+      
+      relatedIds.forEach((id, index) => {
+        const kol = kolData[id];
+        const cardHtml = `
+          <a href="./kol-detail.html?id=${id}" class="related-kol-card glass-card block reveal" data-reveal-delay="${(index + 1) * 100}">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                <img src="${kol.avatar}" alt="${kol.name}" class="w-full h-full object-cover">
+              </div>
+              <div class="flex-1 min-w-0">
+                <h4 class="font-semibold truncate">${kol.name}</h4>
+                <span class="badge badge-${kol.badgeType} text-xs mt-1">
+                  ${kol.badge}
+                </span>
+                <div class="flex items-center gap-3 mt-2 text-sm text-muted">
+                  <span class="flex items-center gap-1">
+                    <i data-lucide="trending-up" class="w-3 h-3 text-success"></i>
+                    ${kol.stats.winRate}
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <i data-lucide="users" class="w-3 h-3 text-accent-gold"></i>
+                    ${(kol.stats.members / 1000).toFixed(1)}K
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        `;
+        container.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    }
+    
+    // ========================================
+    // Subscribe Modal
+    // ========================================
+    function showSubscribeModal() {
+      const modal = document.getElementById('subscribe-modal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+    
+    function closeSubscribeModal() {
+      const modal = document.getElementById('subscribe-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    
+    function copyWechat() {
+      const wechatId = document.getElementById('wechat-id').textContent;
+      navigator.clipboard.writeText(wechatId).then(() => {
+        if (typeof XCSQ !== 'undefined') {
+          XCSQ.showToast('微信号已复制', 'success');
+        }
+      });
+    }
+    
+    // ========================================
+    // Select Plan
+    // ========================================
+    function selectPlan(plan) {
+      showSubscribeModal();
+    }
+    
+    // ========================================
+    // GSAP Animations
+    // ========================================
+    function initGSAPAnimations() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Animate stats on scroll
+      gsap.from('.stat-card', {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: '.stat-card',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+      
+      // Animate pricing cards
+      gsap.from('.pricing-card', {
+        opacity: 0,
+        y: 40,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: '.pricing-card',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+      
+      // Animate related KOLs
+      gsap.from('.related-kol-card', {
+        opacity: 0,
+        y: 30,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: '#related-kols',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+    
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeSubscribeModal();
+      }
+    });
+  </script>
+</body>
+</html>

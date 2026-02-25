@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="星辰社区 (XCSQ) - 全球顶级加密货币信号聚合社区，汇集200+顶尖KOL和分析师的实时信号">
+  <meta name="keywords" content="加密货币, 比特币, 以太坊, 交易信号, KOL, Web3, 区块链, 跟单">
+  <meta name="author" content="星辰社区 XCSQ">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="星辰社区 XCSQ - 全球顶级加密货币信号聚合社区">
+  <meta property="og:description" content="汇集200+顶尖KOL和分析师的实时交易信号，24/7智能监控，策略跟单">
+  <meta property="og:site_name" content="星辰社区 XCSQ">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="星辰社区 XCSQ - 全球顶级加密货币信号聚合社区">
+  <meta name="twitter:description" content="汇集200+顶尖KOL和分析师的实时交易信号">
+
+  <!-- Preconnect for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS v4 -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js for 3D Effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- GSAP for Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Chart.js for Data Visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="../shared/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
+
+  <title>星辰社区 XCSQ - 全球顶级加密货币信号聚合社区</title>
+
+  <style>
+    /* Page-specific styles */
+    .hero-title {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      background: var(--gradient-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradientShift 8s linear infinite;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      color: var(--color-text-secondary);
+      font-weight: 500;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: 2px solid var(--color-accent-cyan);
+      white-space: nowrap;
+      animation: typewriter 2s steps(20) forwards, blink 0.75s step-end infinite;
+      width: 0;
+    }
+
+    @keyframes typewriter {
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .floating-icon {
+      position: absolute;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .floating-icon:nth-child(1) { animation-delay: 0s; }
+    .floating-icon:nth-child(2) { animation-delay: 0.5s; }
+    .floating-icon:nth-child(3) { animation-delay: 1s; }
+    .floating-icon:nth-child(4) { animation-delay: 1.5s; }
+
+    .service-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-hero);
+      transform: scaleX(0);
+      transition: transform var(--duration-normal) var(--ease-out-expo);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 212, 255, 0.3);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-lg);
+      background: var(--gradient-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .service-icon i {
+      width: 32px;
+      height: 32px;
+      color: var(--color-accent-cyan);
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: var(--space-6);
+    }
+
+    .stat-number {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      background: var(--gradient-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: var(--color-text-secondary);
+      font-size: var(--text-small);
+      margin-top: var(--space-2);
+    }
+
+    .testimonial-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(168, 85, 247, 0.3);
+      box-shadow: var(--shadow-glow-purple);
+    }
+
+    .testimonial-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+      border: 2px solid var(--color-accent-purple);
+    }
+
+    .star-rating {
+      display: flex;
+      gap: 4px;
+    }
+
+    .star-rating i {
+      width: 16px;
+      height: 16px;
+      color: var(--color-accent-gold);
+      fill: var(--color-accent-gold);
+    }
+
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      background: var(--gradient-glow);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.5;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-text-muted);
+      font-size: var(--text-small);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    .scroll-indicator i {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Animation classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 100ms; }
+    .stagger-2 { transition-delay: 200ms; }
+    .stagger-3 { transition-delay: 300ms; }
+    .stagger-4 { transition-delay: 400ms; }
+  </style>
+</head>
+<body class="bg-[#0a0a0f] text-white overflow-x-hidden">
+  
+  <!-- Navigation -->
+  <header class="nav-header" id="main-nav">
+    <div class="container">
+      <nav class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-cyan-500/30 transition-all duration-300">
+            <i data-lucide="star" class="w-5 h-5 text-white fill-white"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-lg text-white leading-tight">星辰社区</span>
+            <span class="text-xs text-cyan-400 font-mono tracking-wider">XCSQ</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="index.html" class="nav-link flex items-center gap-2 active" data-nav="index">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span>首页</span>
+          </a>
+          <a href="about.html" class="nav-link flex items-center gap-2" data-nav="about">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            <span>关于我们</span>
+          </a>
+          <a href="kols.html" class="nav-link flex items-center gap-2" data-nav="kols">
+            <i data-lucide="star" class="w-4 h-4"></i>
+            <span>KOL列表</span>
+          </a>
+          <a href="pricing.html" class="nav-link flex items-center gap-2" data-nav="pricing">
+            <i data-lucide="crown" class="w-4 h-4"></i>
+            <span>订阅计划</span>
+          </a>
+          <a href="faq.html" class="nav-link flex items-center gap-2" data-nav="faq">
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
+            <span>常见问题</span>
+          </a>
+          <a href="news.html" class="nav-link flex items-center gap-2" data-nav="news">
+            <i data-lucide="newspaper" class="w-4 h-4"></i>
+            <span>最新动态</span>
+          </a>
+        </div>
+
+        <!-- Right Side: Social Links + CTA -->
+        <div class="hidden lg:flex items-center gap-4">
+          <!-- Social Icons -->
+          <div class="flex items-center gap-2">
+            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" 
+               class="social-icon" aria-label="Twitter/X">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" 
+               class="social-icon" aria-label="Telegram">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <!-- CTA Button -->
+          <a href="pricing.html" class="btn btn-primary text-sm py-2 px-4">
+            <i data-lucide="rocket" class="w-4 h-4"></i>
+            <span>立即加入</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="lg:hidden p-2 text-white hover:text-cyan-400 transition-colors" 
+                id="mobile-menu-btn" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="flex flex-col h-full">
+      <!-- Mobile Menu Header -->
+      <div class="flex items-center justify-between mb-8">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+            <i data-lucide="star" class="w-5 h-5 text-white fill-white"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-lg text-white">星辰社区</span>
+            <span class="text-xs text-cyan-400 font-mono">XCSQ</span>
+          </div>
+        </a>
+        <button class="p-2 text-white hover:text-cyan-400 transition-colors" 
+                id="mobile-menu-close" aria-label="Close menu">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Links -->
+      <nav class="flex flex-col gap-2 flex-1">
+        <a href="index.html" class="flex items-center gap-4 p-4 rounded-lg text-white bg-white/10 transition-colors" data-nav="index">
+          <i data-lucide="home" class="w-5 h-5 text-cyan-400"></i>
+          <span class="text-lg">首页</span>
+        </a>
+        <a href="about.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="about">
+          <i data-lucide="users" class="w-5 h-5 text-cyan-400"></i>
+          <span class="text-lg">关于我们</span>
+        </a>
+        <a href="kols.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="kols">
+          <i data-lucide="star" class="w-5 h-5 text-cyan-400"></i>
+          <span class="text-lg">KOL列表</span>
+        </a>
+        <a href="pricing.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="pricing">
+          <i data-lucide="crown" class="w-5 h-5 text-cyan-400"></i>
+          <span class="text-lg">订阅计划</span>
+        </a>
+        <a href="faq.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="faq">
+          <i data-lucide="help-circle" class="w-5 h-5 text-cyan-400"></i>
+          <span class="text-lg">常见问题</span>
+        </a>
+        <a href="news.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="news">
+          <i data-lucide="newspaper" class="w-5 h-5 text-cyan-400"></i>
+          <span class="text-lg">最新动态</span>
+        </a>
+      </nav>
+
+      <!-- Mobile Social Links -->
+      <div class="flex items-center gap-4 pt-6 border-t border-white/10">
+        <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" 
+           class="flex items-center gap-3 text-secondary hover:text-cyan-400 transition-colors">
+          <i data-lucide="twitter" class="w-5 h-5"></i>
+          <span>@XCSQbtc</span>
+        </a>
+      </div>
+      <div class="flex items-center gap-4 mt-3">
+        <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" 
+           class="flex items-center gap-3 text-secondary hover:text-cyan-400 transition-colors">
+          <i data-lucide="send" class="w-5 h-5"></i>
+          <span>@xcsqme</span>
+        </a>
+      </div>
+
+      <!-- Mobile CTA -->
+      <a href="pricing.html" class="btn btn-primary w-full mt-6 justify-center">
+        <i data-lucide="rocket" class="w-5 h-5"></i>
+        <span>立即加入</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <!-- Particle Canvas Container -->
+    <div id="particle-canvas-container" class="absolute inset-0 z-0"></div>
+    
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0f] z-[1]"></div>
+
+    <!-- Floating Crypto Icons -->
+    <div class="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+      <div class="floating-icon absolute top-[20%] left-[10%] w-16 h-16 opacity-60">
+        <div class="w-full h-full rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
+          <i data-lucide="bitcoin" class="w-8 h-8 text-white"></i>
+        </div>
+      </div>
+      <div class="floating-icon absolute top-[30%] right-[15%] w-14 h-14 opacity-50" style="animation-delay: 0.5s;">
+        <div class="w-full h-full rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+          <i data-lucide="hexagon" class="w-7 h-7 text-white"></i>
+        </div>
+      </div>
+      <div class="floating-icon absolute bottom-[35%] left-[15%] w-12 h-12 opacity-40" style="animation-delay: 1s;">
+        <div class="w-full h-full rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+          <i data-lucide="diamond" class="w-6 h-6 text-white"></i>
+        </div>
+      </div>
+      <div class="floating-icon absolute top-[50%] right-[10%] w-10 h-10 opacity-50" style="animation-delay: 1.5s;">
+        <div class="w-full h-full rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-green-500/30">
+          <i data-lucide="triangle" class="w-5 h-5 text-white"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="container relative z-10 text-center px-4">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 animate-fadeIn">
+        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+        <span class="text-sm text-secondary">270+ KOL实时信号同步中</span>
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="hero-title mb-6 animate-fadeIn" style="animation-delay: 200ms;">
+        星辰社区
+      </h1>
+
+      <!-- Subtitle with Typewriter Effect -->
+      <div class="mb-4 overflow-hidden">
+        <p class="hero-subtitle typewriter inline-block" style="animation-delay: 800ms;">
+          利用我们的信号获利
+        </p>
+      </div>
+
+      <!-- Description -->
+      <p class="text-secondary text-lg md:text-xl max-w-2xl mx-auto mb-10 animate-fadeIn" style="animation-delay: 1200ms;">
+        加入全球 超过270个最佳加密货币 VIP 频道
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fadeIn" style="animation-delay: 1500ms;">
+        <a href="kols.html" class="btn btn-primary text-lg px-8 py-4">
+          <i data-lucide="rocket" class="w-5 h-5"></i>
+          <span>开始探索</span>
+        </a>
+        <a href="pricing.html" class="btn btn-secondary text-lg px-8 py-4">
+          <i data-lucide="percent" class="w-5 h-5"></i>
+          <span>加入返佣</span>
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-6 mt-12 animate-fadeIn" style="animation-delay: 1800ms;">
+        <div class="flex items-center gap-2 text-muted text-sm">
+          <i data-lucide="shield-check" class="w-4 h-4 text-green-500"></i>
+          <span>安全可靠</span>
+        </div>
+        <div class="flex items-center gap-2 text-muted text-sm">
+          <i data-lucide="zap" class="w-4 h-4 text-yellow-500"></i>
+          <span>实时同步</span>
+        </div>
+        <div class="flex items-center gap-2 text-muted text-sm">
+          <i data-lucide="users" class="w-4 h-4 text-cyan-500"></i>
+          <span>50K+ 会员</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator z-10">
+      <span>向下滚动</span>
+      <i data-lucide="chevron-down" class="w-6 h-6"></i>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section relative z-10">
+    <div class="container">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <!-- Stat 1 -->
+        <div class="stat-card glass-card animate-on-scroll">
+          <div class="stat-number" data-counter="270" data-suffix="+">0</div>
+          <div class="stat-label">合作KOL</div>
+        </div>
+        <!-- Stat 2 -->
+        <div class="stat-card glass-card animate-on-scroll stagger-1">
+          <div class="stat-number" data-counter="50" data-suffix="K+">0</div>
+          <div class="stat-label">社区成员</div>
+        </div>
+        <!-- Stat 3 -->
+        <div class="stat-card glass-card animate-on-scroll stagger-2">
+          <div class="stat-number" data-counter="99.9" data-suffix="%">0</div>
+          <div class="stat-label">信号准确率</div>
+        </div>
+        <!-- Stat 4 -->
+        <div class="stat-card glass-card animate-on-scroll stagger-3">
+          <div class="stat-number" data-counter="24" data-suffix="/7">0</div>
+          <div class="stat-label">实时同步</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section relative z-10">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="inline-block px-4 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-medium mb-4">
+          我们的服务
+        </span>
+        <h2 class="text-h2 mb-4">核心服务</h2>
+        <p class="text-secondary max-w-2xl mx-auto">
+          为加密货币交易者提供全方位的信号服务，助您把握每一个盈利机会
+        </p>
+      </div>
+
+      <!-- Service Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Service Card 1 -->
+        <div class="service-card animate-on-scroll stagger-1">
+          <div class="service-icon">
+            <i data-lucide="target"></i>
+          </div>
+          <h3 class="text-h4 mb-3">数据监控</h3>
+          <p class="text-secondary mb-4">
+            7×24小时市场扫描，实时监控200+ KOL信号，第一时间捕捉市场机会
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+              <span>实时信号推送</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+              <span>多平台同步</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+              <span>智能过滤</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="service-card animate-on-scroll stagger-2">
+          <div class="service-icon" style="background: linear-gradient(145deg, rgba(168,85,247,0.1) 0%, rgba(236,72,153,0.1) 100%);">
+            <i data-lucide="magnet" style="color: var(--color-accent-purple);"></i>
+          </div>
+          <h3 class="text-h4 mb-3">策略跟单</h3>
+          <p class="text-secondary mb-4">
+            跟随顶级交易员，一键复制成功策略，让专业的人做专业的事
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+              <span>顶级KOL策略</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+              <span>自动跟单</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+              <span>风险控制</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="service-card animate-on-scroll stagger-3">
+          <div class="service-icon" style="background: linear-gradient(145deg, rgba(245,158,11,0.1) 0%, rgba(251,191,36,0.1) 100%);">
+            <i data-lucide="bar-chart-3" style="color: var(--color-accent-gold);"></i>
+          </div>
+          <h3 class="text-h4 mb-3">市场分析</h3>
+          <p class="text-secondary mb-4">
+            专业行情解读，深度市场分析，助您做出明智的投资决策
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+              <span>技术分析</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+              <span>基本面研究</span>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+              <span>趋势预测</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured KOLs Section -->
+  <section class="section relative z-10">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 animate-on-scroll">
+        <div>
+          <span class="inline-block px-4 py-1 rounded-full bg-purple-500/10 text-purple-400 text-sm font-medium mb-4">
+            顶级KOL
+          </span>
+          <h2 class="text-h2 mb-2">精选KOL阵容</h2>
+          <p class="text-secondary">来自全球的顶级加密货币分析师</p>
+        </div>
+        <a href="kols.html" class="btn btn-secondary mt-4 md:mt-0">
+          <span>查看全部</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- KOL Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- KOL Card 1 -->
+        <div class="glass-card p-6 animate-on-scroll stagger-1 group cursor-pointer" onclick="window.location.href='kols.html'">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-semibold text-white truncate">Alertの会所</h4>
+              <span class="badge badge-cyan mt-1">华语二级市场</span>
+              <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
+                <span class="flex items-center gap-1">
+                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  89%
+                </span>
+                <span class="flex items-center gap-1">
+                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  12.5K
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="text-secondary text-sm mt-4 line-clamp-2">
+            擅长山寨主流币美股，11月初MMT爆赚16万刀
+          </p>
+        </div>
+
+        <!-- KOL Card 2 -->
+        <div class="glass-card p-6 animate-on-scroll stagger-2 group cursor-pointer" onclick="window.location.href='kols.html'">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-semibold text-white truncate">Ye.koi</h4>
+              <span class="badge badge-purple mt-1">国外二级市场</span>
+              <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
+                <span class="flex items-center gap-1">
+                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  92%
+                </span>
+                <span class="flex items-center gap-1">
+                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  28K
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="text-secondary text-sm mt-4 line-clamp-2">
+            目前华语二级顶流，精准把握市场节奏
+          </p>
+        </div>
+
+        <!-- KOL Card 3 -->
+        <div class="glass-card p-6 animate-on-scroll stagger-3 group cursor-pointer" onclick="window.location.href='kols.html'">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-semibold text-white truncate">风寻</h4>
+              <span class="badge badge-gold mt-1">一级链上</span>
+              <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
+                <span class="flex items-center gap-1">
+                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  87%
+                </span>
+                <span class="flex items-center gap-1">
+                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  8.2K
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="text-secondary text-sm mt-4 line-clamp-2">
+            新币投研王者，早期项目挖掘专家
+          </p>
+        </div>
+
+        <!-- KOL Card 4 -->
+        <div class="glass-card p-6 animate-on-scroll stagger-1 group cursor-pointer" onclick="window.location.href='kols.html'">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-semibold text-white truncate">颜驰</h4>
+              <span class="badge badge-cyan mt-1">华语二级市场</span>
+              <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
+                <span class="flex items-center gap-1">
+                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  94%
+                </span>
+                <span class="flex items-center gap-1">
+                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  15K
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="text-secondary text-sm mt-4 line-clamp-2">
+            天花板级顶级交易员，稳健盈利策略
+          </p>
+        </div>
+
+        <!-- KOL Card 5 -->
+        <div class="glass-card p-6 animate-on-scroll stagger-2 group cursor-pointer" onclick="window.location.href='kols.html'">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-semibold text-white truncate">提阿非罗</h4>
+              <span class="badge badge-purple mt-1">国外二级市场</span>
+              <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
+                <span class="flex items-center gap-1">
+                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  86%
+                </span>
+                <span class="flex items-center gap-1">
+                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  22K
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="text-secondary text-sm mt-4 line-clamp-2">
+            台湾博主，社群优质内容很多，深受用户喜爱
+          </p>
+        </div>
+
+        <!-- KOL Card 6 -->
+        <div class="glass-card p-6 animate-on-scroll stagger-3 group cursor-pointer" onclick="window.location.href='kols.html'">
+          <div class="flex items-start gap-4">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-400 to-violet-500 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="font-semibold text-white truncate">比特币飞扬</h4>
+              <span class="badge badge-cyan mt-1">华语二级市场</span>
+              <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
+                <span class="flex items-center gap-1">
+                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  91%
+                </span>
+                <span class="flex items-center gap-1">
+                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  35K
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="text-secondary text-sm mt-4 line-clamp-2">
+            擅长主流币，连盈记录高，稳健型选手
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section relative z-10">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="text-center mb-16 animate-on-scroll">
+        <span class="inline-block px-4 py-1 rounded-full bg-pink-500/10 text-pink-400 text-sm font-medium mb-4">
+          用户反馈
+        </span>
+        <h2 class="text-h2 mb-4">客户证言</h2>
+        <p class="text-secondary max-w-2xl mx-auto">
+          还有担忧吗？以下是社区客户的真实评价
+        </p>
+      </div>
+
+      <!-- Testimonial Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card animate-on-scroll stagger-1">
+          <div class="flex items-center gap-1 mb-4 star-rating">
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+          </div>
+          <p class="text-white mb-6 leading-relaxed">
+            "这社区我可太满意了，我会一直死忠你们。信号准确率高，客服响应及时，是我用过最好的加密货币信号社区。"
+          </p>
+          <div class="flex items-center gap-4">
+            <img src="https://thumbs.dreamstime.com/b/striking-abstract-silhouette-person-profile-featuring-blend-vibrant-neon-colors-smooth-gradients-composition-410608684.jpg" 
+                 alt="孤独恰瑞" 
+                 class="testimonial-avatar"
+                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23a855f7%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>孤</text></svg>'">
+            <div>
+              <h4 class="font-semibold text-white">孤独恰瑞</h4>
+              <span class="text-sm text-muted">VIP会员 · 3个月</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card animate-on-scroll stagger-2">
+          <div class="flex items-center gap-1 mb-4 star-rating">
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+          </div>
+          <p class="text-white mb-6 leading-relaxed">
+            "给我几个姐妹团成员都推荐了，你可要给她们优惠点哦哈哈。真的好用，信号及时准确，省了我好多时间。"
+          </p>
+          <div class="flex items-center gap-4">
+            <img src="https://thumbs.dreamstime.com/b/digital-pop-art-illustration-face-focus-big-blue-eyes-long-lashes-vivid-colors-psychedelic-retro-style-groovy-design-409092957.jpg" 
+                 alt="甜沫儿" 
+                 class="testimonial-avatar"
+                 style="border-color: var(--color-accent-pink);"
+                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23ec4899%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>甜</text></svg>'">
+            <div>
+              <h4 class="font-semibold text-white">甜沫儿</h4>
+              <span class="text-sm text-muted">VIP会员 · 6个月</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card animate-on-scroll stagger-3">
+          <div class="flex items-center gap-1 mb-4 star-rating">
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+            <i data-lucide="star" class="fill-current"></i>
+          </div>
+          <p class="text-white mb-6 leading-relaxed">
+            "天啊，来了社区后才发现之前钱全白花了。这里的KOL质量真的高，信号准确率让我惊喜，强烈推荐！"
+          </p>
+          <div class="flex items-center gap-4">
+            <img src="https://cdnb.artstation.com/p/assets/images/images/058/544/747/large/adriano-dias-render0000-0117.jpg?1674421537" 
+                 alt="歌者" 
+                 class="testimonial-avatar"
+                 style="border-color: var(--color-accent-cyan);"
+                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%2300d4ff%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>歌</text></svg>'">
+            <div>
+              <h4 class="font-semibold text-white">歌者</h4>
+              <span class="text-sm text-muted">VIP会员 · 1年</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section relative z-10">
+    <div class="container">
+      <div class="relative z-10 max-w-3xl mx-auto text-center animate-on-scroll">
+        <h2 class="text-h2 mb-6">准备好开始了吗？</h2>
+        <p class="text-secondary text-lg mb-8">
+          立即加入星辰社区，获取顶级加密货币信号，与50,000+交易者一起成长
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="pricing.html" class="btn btn-primary text-lg px-8 py-4">
+            <i data-lucide="rocket" class="w-5 h-5"></i>
+            <span>立即加入</span>
+          </a>
+          <a href="about.html" class="btn btn-ghost text-lg px-8 py-4">
+            <span>了解更多</span>
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="flex flex-wrap items-center justify-center gap-6 mt-10">
+          <div class="flex items-center gap-2 text-muted text-sm">
+            <i data-lucide="shield-check" class="w-4 h-4 text-green-500"></i>
+            <span>7天无理由退款</span>
+          </div>
+          <div class="flex items-center gap-2 text-muted text-sm">
+            <i data-lucide="lock" class="w-4 h-4 text-cyan-500"></i>
+            <span>安全支付</span>
+          </div>
+          <div class="flex items-center gap-2 text-muted text-sm">
+            <i data-lucide="headphones" class="w-4 h-4 text-purple-500"></i>
+            <span>24/7客服支持</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <!-- Main Footer Content -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+        
+        <!-- Column 1: Logo & About -->
+        <div class="lg:col-span-1">
+          <a href="index.html" class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+              <i data-lucide="star" class="w-5 h-5 text-white fill-white"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-display font-bold text-lg text-white">星辰社区</span>
+              <span class="text-xs text-cyan-400 font-mono tracking-wider">XCSQ</span>
+            </div>
+          </a>
+          <p class="text-secondary text-sm mb-6 leading-relaxed">
+            全球顶级加密货币信号聚合社区，汇集200+顶尖KOL和分析师的实时交易信号，24/7智能监控，助您把握每一个盈利机会。
+          </p>
+          <!-- Stats -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="glass-card p-3 text-center">
+              <div class="text-xl font-bold text-cyan-400">270+</div>
+              <div class="text-xs text-muted">合作KOL</div>
+            </div>
+            <div class="glass-card p-3 text-center">
+              <div class="text-xl font-bold text-purple-400">50K+</div>
+              <div class="text-xs text-muted">社区会员</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+          <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+            <i data-lucide="link" class="w-4 h-4 text-cyan-400"></i>
+            快速链接
+          </h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="index.html" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i>
+                首页
+              </a>
+            </li>
+            <li>
+              <a href="about.html" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i>
+                关于我们
+              </a>
+            </li>
+            <li>
+              <a href="kols.html" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i>
+                KOL列表
+              </a>
+            </li>
+            <li>
+              <a href="pricing.html" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i>
+                订阅计划
+              </a>
+            </li>
+            <li>
+              <a href="faq.html" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i>
+                常见问题
+              </a>
+            </li>
+            <li>
+              <a href="news.html" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-cyan-400"></i>
+                最新动态
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Support -->
+        <div>
+          <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+            <i data-lucide="life-buoy" class="w-4 h-4 text-purple-400"></i>
+            帮助支持
+          </h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="faq.html" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-purple-400"></i>
+                常见问题
+              </a>
+            </li>
+            <li>
+              <a href="about.html#contact" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-purple-400"></i>
+                联系我们
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-purple-400"></i>
+                服务条款
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link flex items-center gap-2 text-sm">
+                <i data-lucide="chevron-right" class="w-3 h-3 text-purple-400"></i>
+                隐私政策
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact & Social -->
+        <div>
+          <h4 class="text-white font-semibold mb-4 flex items-center gap-2">
+            <i data-lucide="message-circle" class="w-4 h-4 text-gold"></i>
+            联系我们
+          </h4>
+          
+          <!-- Contact Info -->
+          <div class="space-y-3 mb-6">
+            <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" 
+               class="flex items-center gap-3 text-secondary hover:text-cyan-400 transition-colors text-sm">
+              <div class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center">
+                <i data-lucide="send" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <span>@xcsqme</span>
+            </a>
+            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" 
+               class="flex items-center gap-3 text-secondary hover:text-cyan-400 transition-colors text-sm">
+              <div class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center">
+                <i data-lucide="twitter" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <span>@XCSQbtc</span>
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <h5 class="text-sm text-muted mb-3">关注我们</h5>
+          <div class="flex items-center gap-3">
+            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" 
+               class="social-icon" aria-label="Twitter/X">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" 
+               class="social-icon" aria-label="Telegram">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" 
+               class="social-icon" aria-label="Discord">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" 
+               class="social-icon" aria-label="YouTube">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="mt-6">
+            <h5 class="text-sm text-muted mb-3">订阅更新</h5>
+            <form class="flex gap-2" onsubmit="event.preventDefault(); showToast('感谢订阅！', 'success');">
+              <input type="email" placeholder="输入邮箱" class="input flex-1 text-sm py-2" required>
+              <button type="submit" class="btn btn-primary py-2 px-3">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-white/10 pt-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <!-- Copyright -->
+          <div class="text-center md:text-left">
+            <p class="text-muted text-sm">
+              &copy; 2024 星辰社区 XCSQ. All rights reserved.
+            </p>
+            <p class="text-muted text-xs mt-1">
+              加密货币交易存在风险，请谨慎投资。本社区提供的信号仅供参考，不构成投资建议。
+            </p>
+          </div>
+
+          <!-- Back to Top -->
+          <button id="back-to-top" class="flex items-center gap-2 text-secondary hover:text-cyan-400 transition-colors text-sm" aria-label="Back to top">
+            <span>返回顶部</span>
+            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-cyan-500/20 transition-colors">
+              <i data-lucide="arrow-up" class="w-4 h-4"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared Scripts -->
+  <script src="../shared/scripts.js"></script>
+
+  <!-- Page-specific Scripts -->
+  <script>
+    // Initialize Lucide icons
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+
+      // Initialize scroll animations
+      initScrollAnimations();
+      
+      // Initialize counter animations
+      initCounterAnimations();
+    });
+
+    // Scroll Animation Observer
+    function initScrollAnimations() {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // Counter Animation
+    function initCounterAnimations() {
+      const counters = document.querySelectorAll('[data-counter]');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = parseFloat(entry.target.dataset.counter);
+            const suffix = entry.target.dataset.suffix || '';
+            const isDecimal = target % 1 !== 0;
+            animateCounter(entry.target, target, 2000, suffix, isDecimal);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(counter => observer.observe(counter));
+    }
+
+    function animateCounter(element, target, duration, suffix, isDecimal = false) {
+      const start = 0;
+      const startTime = performance.now();
+
+      function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease out expo
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const current = start + (target - start) * easeProgress;
+        
+        if (isDecimal) {
+          element.textContent = current.toFixed(1) + suffix;
+        } else {
+          element.textContent = Math.floor(current).toLocaleString() + suffix;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        }
+      }
+
+      requestAnimationFrame(updateCounter);
+    }
+
+    // Toast notification function (if not loaded from shared scripts)
+    if (typeof showToast === 'undefined') {
+      function showToast(message, type = 'info', duration = 3000) {
+        const existingToast = document.querySelector('.toast-notification');
+        if (existingToast) existingToast.remove();
+
+        const toast = document.createElement('div');
+        toast.className = `toast-notification fixed bottom-4 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-y-full opacity-0 transition-all duration-300`;
+        
+        const colors = {
+          info: 'bg-blue-500',
+          success: 'bg-green-500',
+          warning: 'bg-yellow-500',
+          error: 'bg-red-500'
+        };
+        toast.classList.add(colors[type] || colors.info);
+        
+        toast.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span>${message}</span>
+          </div>
+        `;
+        
+        document.body.appendChild(toast);
+
+        requestAnimationFrame(() => {
+          toast.classList.remove('translate-y-full', 'opacity-0');
+        });
+
+        setTimeout(() => {
+          toast.classList.add('translate-y-full', 'opacity-0');
+          setTimeout(() => toast.remove(), 300);
+        }, duration);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,960 @@
+/**
+ * 星辰社区 (Star Community) - Global Styles
+ * ==========================================
+ * CSS Variables, Reset, Utilities, and Animations
+ * Based on Design.md specifications
+ */
+
+/* ========================================
+   1. CSS VARIABLES
+   ======================================== */
+:root {
+  /* Primary Colors */
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-bg-tertiary: #1a1a25;
+  --color-accent-cyan: #00d4ff;
+  --color-accent-purple: #a855f7;
+  --color-accent-gold: #f59e0b;
+  --color-accent-pink: #ec4899;
+
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-text-accent: #00d4ff;
+
+  /* Semantic Colors */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #00d4ff 0%, #a855f7 50%, #ec4899 100%);
+  --gradient-card: linear-gradient(145deg, rgba(0,212,255,0.1) 0%, rgba(168,85,247,0.1) 100%);
+  --gradient-glow: radial-gradient(circle, rgba(0,212,255,0.3) 0%, transparent 70%);
+  --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #f59e0b 100%);
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-chinese: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  /* Type Scale */
+  --text-h1: 4rem;
+  --text-h2: 3rem;
+  --text-h3: 2rem;
+  --text-h4: 1.5rem;
+  --text-h5: 1.25rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-xsmall: 0.75rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-glow-cyan: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.3);
+  --shadow-glow-purple: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
+  --shadow-glow-gold: 0 0 20px rgba(245, 158, 11, 0.5), 0 0 40px rgba(245, 158, 11, 0.3);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(18, 18, 26, 0.7);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-backdrop: blur(20px) saturate(180%);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  /* Animation Timing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Animation Duration */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+
+  /* Particle System */
+  --particle-count: 150;
+  --particle-size-min: 1;
+  --particle-size-max: 3;
+  --particle-color-1: #ffffff;
+  --particle-color-2: #00d4ff;
+  --particle-color-3: #a855f7;
+  --particle-opacity-min: 0.3;
+  --particle-opacity-max: 0.8;
+  --connection-distance: 120;
+  --connection-opacity: 0.15;
+  --connection-color: #00d4ff;
+  --mouse-interaction-radius: 150;
+  --mouse-repel-force: 0.5;
+  --movement-speed: 0.3;
+  --twinkle-speed: 0.02;
+}
+
+/* ========================================
+   2. BASE RESET (Specific selectors only)
+   ======================================== */
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-chinese), var(--font-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-display), var(--font-chinese);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out-expo);
+}
+
+a:hover {
+  color: var(--color-accent-cyan);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ========================================
+   3. TYPOGRAPHY UTILITIES
+   ======================================== */
+.text-h1 {
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-h2 {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.text-h3 {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.text-h4 {
+  font-size: var(--text-h4);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.text-h5 {
+  font-size: var(--text-h5);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.text-body {
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-small {
+  font-size: var(--text-small);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-xsmall {
+  font-size: var(--text-xsmall);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.text-gradient {
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted { color: var(--color-text-muted); }
+.text-accent { color: var(--color-accent-cyan); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-error { color: var(--color-error); }
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+/* ========================================
+   4. GLASSMORPHISM UTILITIES
+   ======================================== */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-4px);
+}
+
+/* ========================================
+   5. BUTTON STYLES
+   ======================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--text-body);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: var(--shadow-glow-cyan);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  color: var(--color-accent-cyan);
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--color-accent-cyan);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  padding: var(--space-2) var(--space-4);
+}
+
+.btn-ghost:hover {
+  color: var(--color-accent-cyan);
+}
+
+.btn-gold {
+  background: var(--gradient-gold);
+  color: #0a0a0f;
+  box-shadow: var(--shadow-glow-gold);
+}
+
+.btn-gold:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   6. CARD STYLES
+   ======================================== */
+.card {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  border: var(--glass-border);
+  border-left: 3px solid var(--color-accent-cyan);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.feature-card:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: var(--shadow-glow-cyan);
+  transform: translateY(-4px);
+}
+
+.pricing-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  border: 2px solid transparent;
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  position: relative;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.pricing-card.featured {
+  border-image: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple)) 1;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+/* ========================================
+   7. BADGE STYLES
+   ======================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xsmall);
+  font-weight: 500;
+}
+
+.badge-cyan {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--color-accent-cyan);
+}
+
+.badge-purple {
+  background: rgba(168, 85, 247, 0.15);
+  color: var(--color-accent-purple);
+}
+
+.badge-gold {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-accent-gold);
+}
+
+.badge-pink {
+  background: rgba(236, 72, 153, 0.15);
+  color: var(--color-accent-pink);
+}
+
+.badge-success {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--color-success);
+}
+
+/* ========================================
+   8. FORM ELEMENTS
+   ======================================== */
+.input {
+  width: 100%;
+  background: rgba(18, 18, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  color: var(--color-text-primary);
+  font-size: var(--text-body);
+  transition: all var(--duration-fast) var(--ease-out-expo);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent-cyan);
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ========================================
+   9. PARTICLE SYSTEM STYLES
+   ======================================== */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.particle-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.particle-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-glow);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ========================================
+   10. ANIMATION KEYFRAMES
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
+  }
+}
+
+@keyframes glowPulsePurple {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ========================================
+   11. ANIMATION UTILITIES
+   ======================================== */
+.animate-fadeInUp {
+  animation: fadeInUp 600ms var(--ease-out-expo) forwards;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 600ms var(--ease-out-expo) forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 600ms var(--ease-out-expo) forwards;
+}
+
+.animate-glowPulse {
+  animation: glowPulse 2000ms ease-in-out infinite;
+}
+
+.animate-glowPulsePurple {
+  animation: glowPulsePurple 2000ms ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3000ms ease-in-out infinite;
+}
+
+.animate-gradientShift {
+  background-size: 200% 200%;
+  animation: gradientShift 8000ms linear infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 2000ms ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2000ms ease-in-out infinite;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 600ms var(--ease-out-expo) forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 600ms var(--ease-out-expo) forwards;
+}
+
+.animate-rotate {
+  animation: rotate 10000ms linear infinite;
+}
+
+/* Animation Delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* Scroll Reveal Initial State */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   12. NAVIGATION STYLES
+   ======================================== */
+.nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.nav-header.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border-bottom: var(--glass-border);
+}
+
+.nav-link {
+  position: relative;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  transition: color var(--duration-fast) var(--ease-out-expo);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-hero);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Mobile Navigation */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 400px;
+  height: 100vh;
+  background: var(--color-bg-secondary);
+  z-index: 1001;
+  transition: right var(--duration-slow) var(--ease-out-expo);
+  padding: var(--space-8);
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========================================
+   13. FOOTER STYLES
+   ======================================== */
+.footer {
+  background: var(--color-bg-secondary);
+  border-top: var(--glass-border);
+  padding: var(--space-16) 0 var(--space-8);
+}
+
+.footer-link {
+  color: var(--color-text-secondary);
+  transition: color var(--duration-fast) var(--ease-out-expo);
+}
+
+.footer-link:hover {
+  color: var(--color-accent-cyan);
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-secondary);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.social-icon:hover {
+  background: var(--color-accent-cyan);
+  color: var(--color-bg-primary);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   14. UTILITY CLASSES
+   ======================================== */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+}
+
+.section {
+  padding: var(--space-16) 0;
+}
+
+.section-lg {
+  padding: var(--space-24) 0;
+}
+
+.gradient-border {
+  position: relative;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-hero);
+  border-radius: calc(var(--radius-lg) + 2px);
+  z-index: -1;
+}
+
+.glow-cyan {
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.glow-purple {
+  box-shadow: var(--shadow-glow-purple);
+}
+
+.glow-gold {
+  box-shadow: var(--shadow-glow-gold);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-cyan);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-purple);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: var(--color-text-primary);
+}
+
+/* Focus Visible */
+:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ========================================
+   15. RESPONSIVE UTILITIES
+   ======================================== */
+@media (max-width: 768px) {
+  .text-h1 {
+    font-size: 2.5rem;
+  }
+  
+  .text-h2 {
+    font-size: 2rem;
+  }
+  
+  .text-h3 {
+    font-size: 1.5rem;
+  }
+  
+  .section {
+    padding: var(--space-12) 0;
+  }
+  
+  .section-lg {
+    padding: var(--space-16) 0;
+  }
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}

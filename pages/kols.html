@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>社区KOL - 星辰社区 | Star Community</title>
+  <meta name="description" content="汇集近百位海内外顶级KOL和分析师，为您提供最专业的加密货币交易信号和市场分析">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="../shared/styles.css">
+  
+  <style>
+    /* Page-specific styles */
+    .kols-page {
+      min-height: 100vh;
+      background: var(--color-bg-primary);
+    }
+    
+    /* Hero Section */
+    .kols-hero {
+      position: relative;
+      padding: 8rem 0 4rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    
+    .kols-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .kols-hero-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      background: var(--gradient-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      animation: fadeInUp 800ms var(--ease-out-expo) forwards;
+    }
+    
+    .kols-hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 2rem;
+      animation: fadeInUp 800ms var(--ease-out-expo) 200ms forwards;
+      opacity: 0;
+    }
+    
+    /* Category Filter Tabs */
+    .category-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      animation: fadeInUp 800ms var(--ease-out-expo) 400ms forwards;
+      opacity: 0;
+    }
+    
+    .category-tab {
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-out-expo);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(18, 18, 26, 0.8);
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .category-tab:hover {
+      border-color: rgba(0, 212, 255, 0.5);
+      color: var(--color-text-primary);
+      transform: translateY(-2px);
+    }
+    
+    .category-tab.active {
+      color: white;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+    
+    .category-tab[data-category="all"].active {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .category-tab[data-category="chinese"].active {
+      background: rgba(0, 212, 255, 0.2);
+      border-color: var(--color-accent-cyan);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+    
+    .category-tab[data-category="international"].active {
+      background: rgba(168, 85, 247, 0.2);
+      border-color: var(--color-accent-purple);
+      box-shadow: var(--shadow-glow-purple);
+    }
+    
+    .category-tab[data-category="onchain"].active {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--color-accent-gold);
+      box-shadow: var(--shadow-glow-gold);
+    }
+    
+    .category-tab[data-category="utility"].active {
+      background: rgba(236, 72, 153, 0.2);
+      border-color: var(--color-accent-pink);
+    }
+    
+    .category-tab[data-category="ai"].active {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: var(--color-success);
+    }
+    
+    /* 3D Spiral Container */
+    .spiral-container {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    
+    #spiral-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+    
+    #spiral-canvas:active {
+      cursor: grabbing;
+    }
+    
+    /* Spiral Controls */
+    .spiral-controls {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 10;
+      background: rgba(18, 18, 26, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .spiral-control-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-out-expo);
+    }
+    
+    .spiral-control-btn:hover {
+      background: rgba(0, 212, 255, 0.2);
+      border-color: var(--color-accent-cyan);
+      color: var(--color-accent-cyan);
+    }
+    
+    .spiral-info {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+    
+    /* KOL Detail Modal */
+    .kol-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+    
+    .kol-modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .kol-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+    }
+    
+    .kol-modal-content {
+      position: relative;
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 500px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      transform: scale(0.9) translateY(20px);
+      transition: transform var(--duration-normal) var(--ease-out-expo);
+    }
+    
+    .kol-modal.open .kol-modal-content {
+      transform: scale(1) translateY(0);
+    }
+    
+    .kol-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--duration-fast) var(--ease-out-expo);
+    }
+    
+    .kol-modal-close:hover {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--color-error);
+    }
+    
+    .kol-modal-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      border: 3px solid var(--color-accent-cyan);
+      box-shadow: var(--shadow-glow-cyan);
+      object-fit: cover;
+    }
+    
+    .kol-modal-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .kol-modal-category {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .kol-modal-desc {
+      color: var(--color-text-secondary);
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .kol-modal-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .kol-modal-stat {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius-lg);
+    }
+    
+    .kol-modal-stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-accent-cyan);
+    }
+    
+    .kol-modal-stat-label {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      margin-top: 0.25rem;
+    }
+    
+    .kol-modal-btn {
+      width: 100%;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+    
+    /* Alternative Grid View */
+    .grid-view {
+      display: none;
+      padding: 4rem 0;
+    }
+    
+    .grid-view.active {
+      display: block;
+    }
+    
+    .kols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .kol-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      border: var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all var(--duration-normal) var(--ease-out-expo);
+      cursor: pointer;
+    }
+    
+    .kol-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 212, 255, 0.3);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+    
+    .kol-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .kol-card-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-accent-cyan);
+    }
+    
+    .kol-card-info {
+      flex: 1;
+    }
+    
+    .kol-card-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .kol-card-flag {
+      font-size: 1rem;
+    }
+    
+    .kol-card-category {
+      font-size: 0.75rem;
+    }
+    
+    .kol-card-desc {
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    
+    .kol-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .kol-card-stats {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+    
+    .kol-card-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .kol-card-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 500;
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--color-accent-cyan);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-out-expo);
+    }
+    
+    .kol-card-btn:hover {
+      background: rgba(0, 212, 255, 0.2);
+      border-color: var(--color-accent-cyan);
+    }
+    
+    /* View Toggle */
+    .view-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .view-toggle-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-out-expo);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .view-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-text-primary);
+    }
+    
+    .view-toggle-btn.active {
+      background: rgba(0, 212, 255, 0.2);
+      border-color: var(--color-accent-cyan);
+      color: var(--color-accent-cyan);
+    }
+    
+    /* Loading State */
+    .spiral-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 5;
+    }
+    
+    .spiral-loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(0, 212, 255, 0.2);
+      border-top-color: var(--color-accent-cyan);
+      border-radius: 50%;
+      animation: rotate 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    
+    .spiral-loading-text {
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text-muted);
+      font-size: 0.75rem;
+      animation: float 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .kols-hero {
+        padding: 6rem 0 2rem;
+      }
+      
+      .category-tabs {
+        gap: 0.5rem;
+      }
+      
+      .category-tab {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.75rem;
+      }
+      
+      .spiral-container {
+        height: 60vh;
+        min-height: 400px;
+      }
+      
+      .spiral-controls {
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+      }
+      
+      .spiral-control-btn {
+        width: 36px;
+        height: 36px;
+      }
+      
+      .kols-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .kol-modal-content {
+        padding: 1.5rem;
+        margin: 1rem;
+      }
+      
+      .kol-modal-stats {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+    }
+    
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .kols-hero-title,
+      .kols-hero-subtitle,
+      .category-tabs {
+        animation: none;
+        opacity: 1;
+      }
+      
+      .scroll-indicator {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body class="kols-page">
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Navigation -->
+  <header id="main-nav" class="nav-header">
+    <div class="container">
+      <nav class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+            <i data-lucide="star" class="w-6 h-6 text-white"></i>
+          </div>
+          <span class="text-xl font-bold text-white">星辰社区</span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="../index.html" class="nav-link" data-nav="index">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span>首页</span>
+          </a>
+          <a href="./about.html" class="nav-link" data-nav="about">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            <span>关于我们</span>
+          </a>
+          <a href="./kols.html" class="nav-link active" data-nav="kols">
+            <i data-lucide="star" class="w-4 h-4"></i>
+            <span>KOL列表</span>
+          </a>
+          <a href="./pricing.html" class="nav-link" data-nav="pricing">
+            <i data-lucide="crown" class="w-4 h-4"></i>
+            <span>订阅计划</span>
+          </a>
+          <a href="./faq.html" class="nav-link" data-nav="faq">
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
+            <span>常见问题</span>
+          </a>
+          <a href="./news.html" class="nav-link" data-nav="news">
+            <i data-lucide="newspaper" class="w-4 h-4"></i>
+            <span>最新动态</span>
+          </a>
+        </div>
+        
+        <!-- Social Links & CTA -->
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="https://x.com/XCSQbtc" target="_blank" class="social-icon">
+            <i data-lucide="twitter" class="w-5 h-5"></i>
+          </a>
+          <a href="https://t.me/xcsqme" target="_blank" class="social-icon">
+            <i data-lucide="send" class="w-5 h-5"></i>
+          </a>
+          <a href="./pricing.html" class="btn btn-primary text-sm py-2 px-4">
+            立即加入
+          </a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-white">
+          <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="flex justify-between items-center mb-8">
+      <span class="text-xl font-bold">菜单</span>
+      <button id="mobile-menu-close" class="p-2">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-4">
+      <a href="../index.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="index">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>首页</span>
+      </a>
+      <a href="./about.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="about">
+        <i data-lucide="users" class="w-5 h-5"></i>
+        <span>关于我们</span>
+      </a>
+      <a href="./kols.html" class="flex items-center gap-3 p-3 rounded-lg bg-white/10" data-nav="kols">
+        <i data-lucide="star" class="w-5 h-5"></i>
+        <span>KOL列表</span>
+      </a>
+      <a href="./pricing.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="pricing">
+        <i data-lucide="crown" class="w-5 h-5"></i>
+        <span>订阅计划</span>
+      </a>
+      <a href="./faq.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="faq">
+        <i data-lucide="help-circle" class="w-5 h-5"></i>
+        <span>常见问题</span>
+      </a>
+      <a href="./news.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="news">
+        <i data-lucide="newspaper" class="w-5 h-5"></i>
+        <span>最新动态</span>
+      </a>
+    </nav>
+    <div class="mt-8 pt-8 border-t border-white/10">
+      <div class="flex gap-4">
+        <a href="https://x.com/XCSQbtc" target="_blank" class="social-icon">
+          <i data-lucide="twitter" class="w-5 h-5"></i>
+        </a>
+        <a href="https://t.me/xcsqme" target="_blank" class="social-icon">
+          <i data-lucide="send" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Hero Section -->
+  <section class="kols-hero">
+    <div class="container">
+      <h1 class="kols-hero-title">社区KOL</h1>
+      <p class="kols-hero-subtitle">汇集近百位海内外顶级KOL和分析师</p>
+      
+      <!-- Category Filter Tabs -->
+      <div class="category-tabs">
+        <button class="category-tab active" data-category="all">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i>
+          <span>全部</span>
+        </button>
+        <button class="category-tab" data-category="chinese">
+          <i data-lucide="globe" class="w-4 h-4"></i>
+          <span>华语现货合约</span>
+        </button>
+        <button class="category-tab" data-category="international">
+          <i data-lucide="globe-2" class="w-4 h-4"></i>
+          <span>国外现货合约</span>
+        </button>
+        <button class="category-tab" data-category="onchain">
+          <i data-lucide="link" class="w-4 h-4"></i>
+          <span>一级链上</span>
+        </button>
+        <button class="category-tab" data-category="utility">
+          <i data-lucide="settings" class="w-4 h-4"></i>
+          <span>辅助功能</span>
+        </button>
+        <button class="category-tab" data-category="ai">
+          <i data-lucide="cpu" class="w-4 h-4"></i>
+          <span>AI资讯</span>
+        </button>
+      </div>
+      
+      <!-- View Toggle -->
+      <div class="view-toggle">
+        <button class="view-toggle-btn active" data-view="spiral">
+          <i data-lucide="aperture" class="w-4 h-4"></i>
+          <span>3D螺旋</span>
+        </button>
+        <button class="view-toggle-btn" data-view="grid">
+          <i data-lucide="grid-3x3" class="w-4 h-4"></i>
+          <span>网格视图</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 3D Spiral Section -->
+  <section id="spiral-view" class="spiral-container">
+    <div class="spiral-loading" id="spiral-loading">
+      <div class="spiral-loading-spinner"></div>
+      <p class="spiral-loading-text">正在加载3D KOL展示...</p>
+    </div>
+    
+    <canvas id="spiral-canvas"></canvas>
+    
+    <div class="scroll-indicator">
+      <i data-lucide="mouse" class="w-5 h-5"></i>
+      <span>滚动或拖拽浏览</span>
+    </div>
+    
+    <div class="spiral-controls">
+      <button class="spiral-control-btn" id="spiral-prev" title="上一个">
+        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+      </button>
+      <span class="spiral-info">
+        <span id="kol-current">1</span> / <span id="kol-total">60</span>
+      </span>
+      <button class="spiral-control-btn" id="spiral-next" title="下一个">
+        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+      </button>
+      <button class="spiral-control-btn" id="spiral-autoplay" title="自动播放">
+        <i data-lucide="play" class="w-5 h-5" id="autoplay-icon"></i>
+      </button>
+    </div>
+  </section>
+  
+  <!-- Grid View Section -->
+  <section id="grid-view" class="grid-view">
+    <div class="container">
+      <div class="kols-grid" id="kols-grid">
+        <!-- Grid items will be populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+  
+  <!-- KOL Detail Modal -->
+  <div class="kol-modal" id="kol-modal">
+    <div class="kol-modal-overlay" id="kol-modal-overlay"></div>
+    <div class="kol-modal-content">
+      <button class="kol-modal-close" id="kol-modal-close">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      
+      <img src="" alt="" class="kol-modal-avatar" id="modal-avatar">
+      <h3 class="kol-modal-name" id="modal-name"></h3>
+      <div class="kol-modal-category" id="modal-category"></div>
+      <p class="kol-modal-desc" id="modal-desc"></p>
+      
+      <div class="kol-modal-stats">
+        <div class="kol-modal-stat">
+          <div class="kol-modal-stat-value" id="modal-signals">--</div>
+          <div class="kol-modal-stat-label">月信号数</div>
+        </div>
+        <div class="kol-modal-stat">
+          <div class="kol-modal-stat-value" id="modal-winrate">--</div>
+          <div class="kol-modal-stat-label">胜率</div>
+        </div>
+        <div class="kol-modal-stat">
+          <div class="kol-modal-stat-value" id="modal-followers">--</div>
+          <div class="kol-modal-stat-label">关注者</div>
+        </div>
+      </div>
+      
+      <a href="" class="btn btn-primary kol-modal-btn" id="modal-detail-link">
+        查看完整资料
+      </a>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+              <i data-lucide="star" class="w-6 h-6 text-white"></i>
+            </div>
+            <span class="text-xl font-bold">星辰社区</span>
+          </div>
+          <p class="text-secondary text-sm mb-4">
+            专业的加密货币信号聚合平台，汇集全球顶级KOL和分析师，为您提供实时、精准的交易信号。
+          </p>
+          <div class="flex gap-3">
+            <a href="https://x.com/XCSQbtc" target="_blank" class="social-icon">
+              <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+            <a href="https://t.me/xcsqme" target="_blank" class="social-icon">
+              <i data-lucide="send" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+          <ul class="space-y-2">
+            <li><a href="../index.html" class="footer-link text-sm">首页</a></li>
+            <li><a href="./about.html" class="footer-link text-sm">关于我们</a></li>
+            <li><a href="./kols.html" class="footer-link text-sm">KOL列表</a></li>
+            <li><a href="./pricing.html" class="footer-link text-sm">订阅计划</a></li>
+          </ul>
+        </div>
+        
+        <!-- Support -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">支持</h4>
+          <ul class="space-y-2">
+            <li><a href="./faq.html" class="footer-link text-sm">常见问题</a></li>
+            <li><a href="./about.html#contact" class="footer-link text-sm">联系我们</a></li>
+            <li><a href="#" class="footer-link text-sm">服务条款</a></li>
+            <li><a href="#" class="footer-link text-sm">隐私政策</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">联系方式</h4>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="send" class="w-4 h-4 text-accent"></i>
+              <a href="https://t.me/xcsqme" target="_blank" class="hover:text-accent transition-colors">@xcsqme</a>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="twitter" class="w-4 h-4 text-accent"></i>
+              <a href="https://x.com/XCSQbtc" target="_blank" class="hover:text-accent transition-colors">@XCSQbtc</a>
+            </li>
+            <li class="flex items-center gap-2 text-sm text-secondary">
+              <i data-lucide="clock" class="w-4 h-4 text-accent"></i>
+              <span>24/7 在线支持</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/10 pt-8 text-center">
+        <p class="text-sm text-muted">
+          &copy; 2024 星辰社区 (Star Community). All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 text-white flex items-center justify-center shadow-lg z-50 hover:scale-110 transition-transform">
+    <i data-lucide="chevron-up" class="w-6 h-6"></i>
+  </button>
+  
+  <!-- Shared Scripts -->
+  <script src="../shared/scripts.js"></script>
+  
+  <script>
+    // ========================================
+    // KOL DATA
+    // ========================================
+    const kolsData = [
+      // 华语二级市场现货合约 (27 KOLs)
+      { id: 'alert', name: 'Alertの会所', category: 'chinese', flag: '🇨🇳', desc: '擅长山寨主流币美股，11月初MMT爆赚16万刀', signals: '45', winrate: '78%', followers: '12K' },
+      { id: 'yekoi', name: 'Ye.koi', category: 'chinese', flag: '🇨🇳', desc: '目前华语二级顶流', signals: '52', winrate: '82%', followers: '28K' },
+      { id: 'fengxun', name: '风寻', category: 'chinese', flag: '🇨🇳', desc: '新币投研王者', signals: '38', winrate: '75%', followers: '8K' },
+      { id: 'yanchi', name: '颜驰', category: 'chinese', flag: '🇨🇳', desc: '天花版顶级交易员', signals: '48', winrate: '85%', followers: '15K' },
+      { id: 'tiafeiluo', name: '提阿非罗', category: 'chinese', flag: '🇹🇼', desc: '台湾博主，社群优质内容很多', signals: '35', winrate: '73%', followers: '9K' },
+      { id: 'feiyang', name: '比特币飞扬', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，连盈记录高', signals: '42', winrate: '80%', followers: '11K' },
+      { id: 'chenge', name: '比特币陈哥', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，分析市场行情透彻，策略简单易懂', signals: '50', winrate: '79%', followers: '18K' },
+      { id: 'fengge', name: '比特币峰哥', category: 'chinese', flag: '🇨🇳', desc: '可能是油管上华语人气最高的博主了', signals: '55', winrate: '81%', followers: '35K' },
+      { id: 'dabiaoke', name: '大镖客', category: 'chinese', flag: '🇨🇳', desc: '9月份社区内投票选出的优质博主', signals: '40', winrate: '76%', followers: '7K' },
+      { id: 'dangaobaba', name: '蛋糕爸爸', category: 'chinese', flag: '🇨🇳', desc: '群友反馈打法稳健', signals: '36', winrate: '77%', followers: '6K' },
+      { id: 'bidaoge', name: '必到哥', category: 'chinese', flag: '🇸🇬', desc: '新加坡KOL，大陆知名度不高', signals: '33', winrate: '74%', followers: '5K' },
+      { id: 'suozhang', name: '币圈所长', category: 'chinese', flag: '🇨🇳', desc: '神级刀交易员', signals: '58', winrate: '88%', followers: '22K' },
+      { id: 'junzhang', name: '比特币军长', category: 'chinese', flag: '🇨🇳', desc: '少见的会露脸的油管华语区博主', signals: '44', winrate: '78%', followers: '14K' },
+      { id: 'dapiaoliang', name: '加密大漂亮', category: 'chinese', flag: '🇨🇳', desc: '擅长使用波浪理论', signals: '39', winrate: '75%', followers: '8K' },
+      { id: 'liliwang', name: 'LILI王-MIA', category: 'chinese', flag: '🇨🇳', desc: '多位优秀交易员', signals: '46', winrate: '79%', followers: '10K' },
+      { id: 'shucrypto', name: 'Shu-Crypto', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，工会优秀交易员汇聚', signals: '41', winrate: '77%', followers: '9K' },
+      { id: 'sanmage', name: '三马哥', category: 'chinese', flag: '🇨🇳', desc: '主要为中长线波段交易', signals: '28', winrate: '72%', followers: '6K' },
+      { id: 'shuqin', name: '舒琴', category: 'chinese', flag: '🇨🇳', desc: '高胜率博主', signals: '37', winrate: '83%', followers: '8K' },
+      { id: 'xiaoyao', name: '逍遥xtony', category: 'chinese', flag: '🇨🇳', desc: '会员群3000人，会员费赚麻', signals: '43', winrate: '76%', followers: '13K' },
+      { id: 'hongqigong', name: '洪七公', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币', signals: '45', winrate: '78%', followers: '11K' },
+      { id: 'huangyouliang', name: '黄有梁', category: 'chinese', flag: '🇨🇳', desc: '涵盖交易策略及期权，期权交易者', signals: '34', winrate: '71%', followers: '7K' },
+      { id: 'dabusi', name: '打不死的交易员', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币及山寨', signals: '47', winrate: '77%', followers: '12K' },
+      { id: 'paer', name: '帕尔-无极', category: 'chinese', flag: '🇨🇳', desc: '擅长斐波那契战法', signals: '38', winrate: '75%', followers: '8K' },
+      { id: 'kama', name: '币圈Kama', category: 'chinese', flag: '🇨🇳', desc: '社区内多位老师，花一份钱享受多种服务', signals: '51', winrate: '80%', followers: '16K' },
+      { id: 'mike', name: '加密密克', category: 'chinese', flag: '🇨🇳', desc: '主要擅长主流币', signals: '42', winrate: '78%', followers: '10K' },
+      { id: 'shihun', name: '诗魂', category: 'chinese', flag: '🇹🇼', desc: '台湾KOL，每天会在油管发布行情分析视频', signals: '49', winrate: '76%', followers: '14K' },
+      { id: 'sanmu', name: '三木交易员', category: 'chinese', flag: '🇨🇳', desc: '币安广场博主，平时主做主流币', signals: '44', winrate: '79%', followers: '11K' },
+      
+      // 国外二级市场现货合约 (15 KOLs)
+      { id: 'wwg', name: 'WWG交易员频道', category: 'international', flag: '🌍', desc: '国外知名交易员社区，多位明星交易员', signals: '62', winrate: '84%', followers: '45K' },
+      { id: 'vivian', name: 'Vivian交易团队', category: 'international', flag: '🇺🇸', desc: 'T1+T2频道', signals: '55', winrate: '81%', followers: '32K' },
+      { id: 'jayson', name: 'Jayson Casper', category: 'international', flag: '🇬🇧', desc: 'Professional crypto trader', signals: '48', winrate: '79%', followers: '28K' },
+      { id: 'tradingarena', name: 'Trading Arena斗兽场', category: 'international', flag: '🌍', desc: 'International trading community', signals: '58', winrate: '82%', followers: '38K' },
+      { id: 'unity', name: 'Unity Academy', category: 'international', flag: '🇺🇸', desc: 'Trading education and signals', signals: '45', winrate: '78%', followers: '25K' },
+      { id: 'chartchampions', name: 'ChartChampions', category: 'international', flag: '🌍', desc: 'Technical analysis experts', signals: '52', winrate: '80%', followers: '42K' },
+      { id: 'thelab', name: 'The Lab', category: 'international', flag: '🇪🇺', desc: '精选国外现货/合约博主', signals: '50', winrate: '79%', followers: '30K' },
+      { id: 'illusionx', name: 'Illusion X社区', category: 'international', flag: '🌍', desc: 'Crypto trading community', signals: '47', winrate: '77%', followers: '22K' },
+      { id: 'chroma', name: 'Chroma社区', category: 'international', flag: '🇦🇺', desc: 'Professional trading group', signals: '43', winrate: '76%', followers: '18K' },
+      { id: 'thehaven', name: 'The Haven社区', category: 'international', flag: '🇨🇦', desc: 'Elite trading community', signals: '49', winrate: '81%', followers: '26K' },
+      { id: 'crypto1', name: 'CryptoWizards', category: 'international', flag: '🇩🇪', desc: 'German trading experts', signals: '41', winrate: '75%', followers: '19K' },
+      { id: 'crypto2', name: 'AlphaTraders', category: 'international', flag: '🇸🇬', desc: 'Asian market specialists', signals: '53', winrate: '83%', followers: '31K' },
+      { id: 'crypto3', name: 'SignalMasters', category: 'international', flag: '🇳🇱', desc: 'European trading signals', signals: '46', winrate: '78%', followers: '24K' },
+      { id: 'crypto4', name: 'TradeLegends', category: 'international', flag: '🇫🇷', desc: 'French trading community', signals: '44', winrate: '77%', followers: '21K' },
+      { id: 'crypto5', name: 'CryptoElite', category: 'international', flag: '🇯🇵', desc: 'Japanese crypto analysts', signals: '51', winrate: '80%', followers: '27K' },
+      
+      // 一级链上 (8 KOLs)
+      { id: '0xsun', name: '0xsun', category: 'onchain', flag: '🇨🇳', desc: '江湖人称链上皇', signals: '35', winrate: '86%', followers: '20K' },
+      { id: 'james', name: 'James', category: 'onchain', flag: '🇨🇳', desc: '冲狗大佬狠哥', signals: '42', winrate: '79%', followers: '15K' },
+      { id: 'toubu', name: '头部玩家', category: 'onchain', flag: '🇨🇳', desc: '两个币圈共创社区，人人都可以在内发布内容交流', signals: '38', winrate: '75%', followers: '12K' },
+      { id: 'pzong', name: 'P总', category: 'onchain', flag: '🇨🇳', desc: '撸毛界知名人物', signals: '33', winrate: '82%', followers: '18K' },
+      { id: 'wansui', name: '万岁', category: 'onchain', flag: '🇨🇳', desc: '近期火热的土狗社区', signals: '45', winrate: '74%', followers: '14K' },
+      { id: 'gem1000x', name: '1000X GEM Crypto D', category: 'onchain', flag: '🌍', desc: '一级链上目前最强大，人数最多的社区', signals: '56', winrate: '77%', followers: '50K' },
+      { id: 'lianzhi', name: '链智监控信号', category: 'onchain', flag: '🇨🇳', desc: '包含10余个监控信号，社区AI总结', signals: '60', winrate: '80%', followers: '22K' },
+      { id: 'qingshui', name: '清水哥', category: 'onchain', flag: '🇨🇳', desc: '铭文与符文大师', signals: '29', winrate: '78%', followers: '9K' },
+      
+      // 辅助性功能频道 (8 Channels)
+      { id: 'ai-monitor', name: '星辰AI监控', category: 'utility', flag: '🤖', desc: '市场、清算、RSI、资金、PUMP、推特、新闻', signals: '200+', winrate: '--', followers: '25K' },
+      { id: 'wushuo', name: '吴说区块链', category: 'utility', flag: '🇨🇳', desc: '区块链行业资讯', signals: '30', winrate: '--', followers: '80K' },
+      { id: 'wallstreet', name: '华尔街见闻', category: 'utility', flag: '🇺🇸', desc: '全球金融市场资讯', signals: '50', winrate: '--', followers: '120K' },
+      { id: 'liangxi', name: '凉兮大元帅', category: 'utility', flag: '🇨🇳', desc: '币圈知名人物动态', signals: '25', winrate: '--', followers: '35K' },
+      { id: 'liuyudong', name: '柳玉东波浪理论', category: 'utility', flag: '🇨🇳', desc: '波浪理论分析教学', signals: '20', winrate: '--', followers: '16K' },
+      { id: 'fanzhi', name: '反指组', category: 'utility', flag: '🇨🇳', desc: '反向指标参考', signals: '15', winrate: '--', followers: '8K' },
+      { id: 'dapansudi', name: '大盘行情速递', category: 'utility', flag: '🇨🇳', desc: '了解最新币圈咨询', signals: '40', winrate: '--', followers: '28K' },
+      { id: 'shenglvtongji', name: '博主胜率统计频道', category: 'utility', flag: '🇨🇳', desc: '对博主的订单进行跟踪，统计并公开', signals: '100+', winrate: '--', followers: '18K' },
+      
+      // 最新AI资讯 (4 Features)
+      { id: 'celuejiankong', name: '策略监控', category: 'ai', flag: '🤖', desc: '各KOL策略库、实时持仓情况、盈利统计排名', signals: '∞', winrate: '--', followers: '15K' },
+      { id: 'fanzhixitong', name: '反指系统', category: 'ai', flag: '🤖', desc: 'KOL自动跟单、AI量化、deepseek、QwenAI策略', signals: '∞', winrate: '--', followers: '12K' },
+      { id: 'aipha', name: 'AI-PHA', category: 'ai', flag: '🤖', desc: 'ALPHA空投提醒、稳定币监控、平台活动任务分析', signals: '∞', winrate: '--', followers: '20K' },
+      { id: 'xuexizhuanqu', name: '会员学习专区', category: 'ai', flag: '📚', desc: '博主内部学习资料及币圈知识付费内容', signals: '∞', winrate: '--', followers: '10K' }
+    ];
+    
+    // ========================================
+    // THREE.JS 3D SPIRAL
+    // ========================================
+    let scene, camera, renderer, spiralGroup;
+    let cards = [];
+    let currentRotation = 0;
+    let targetRotation = 0;
+    let isDragging = false;
+    let startY = 0;
+    let autoplayInterval = null;
+    let isAutoplay = false;
+    let currentCategory = 'all';
+    
+    // Spiral configuration
+    const spiralConfig = {
+      radius: 280,
+      height: 1800,
+      cardsPerRotation: 10,
+      cardWidth: 160,
+      cardHeight: 200,
+      cardDepth: 8,
+      scrollSpeed: 0.001,
+      rotationSpeed: 0.002
+    };
+    
+    function initThreeJS() {
+      const canvas = document.getElementById('spiral-canvas');
+      const container = document.querySelector('.spiral-container');
+      
+      // Scene
+      scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x0a0a0f, 0.0015);
+      
+      // Camera
+      camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 2000);
+      camera.position.set(0, 0, 500);
+      
+      // Renderer
+      renderer = new THREE.WebGLRenderer({ 
+        canvas: canvas, 
+        antialias: true, 
+        alpha: true 
+      });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x0a0a0f, 0);
+      
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambientLight);
+      
+      const pointLight = new THREE.PointLight(0x00d4ff, 0.8, 1000);
+      pointLight.position.set(0, 200, 300);
+      scene.add(pointLight);
+      
+      const pointLight2 = new THREE.PointLight(0xa855f7, 0.5, 1000);
+      pointLight2.position.set(0, -200, 300);
+      scene.add(pointLight2);
+      
+      // Create spiral group
+      spiralGroup = new THREE.Group();
+      scene.add(spiralGroup);
+      
+      // Create KOL cards
+      createKOLCards();
+      
+      // Hide loading
+      document.getElementById('spiral-loading').style.display = 'none';
+      
+      // Start animation loop
+      animate();
+      
+      // Event listeners
+      setupEventListeners();
+      
+      // Handle resize
+      window.addEventListener('resize', onWindowResize);
+    }
+    
+    function createKOLCards() {
+      // Clear existing cards
+      while(spiralGroup.children.length > 0) {
+        spiralGroup.remove(spiralGroup.children[0]);
+      }
+      cards = [];
+      
+      const filteredKOLs = currentCategory === 'all' 
+        ? kolsData 
+        : kolsData.filter(kol => kol.category === currentCategory);
+      
+      const cardCount = filteredKOLs.length;
+      const totalHeight = spiralConfig.height;
+      const angleStep = (Math.PI * 2) / spiralConfig.cardsPerRotation;
+      const heightStep = totalHeight / (cardCount / spiralConfig.cardsPerRotation);
+      
+      filteredKOLs.forEach((kol, index) => {
+        const card = createCard(kol, index);
+        
+        // Calculate spiral position
+        const angle = index * angleStep;
+        const y = (index / cardCount) * totalHeight - totalHeight / 2;
+        const x = Math.cos(angle) * spiralConfig.radius;
+        const z = Math.sin(angle) * spiralConfig.radius;
+        
+        card.position.set(x, y, z);
+        card.rotation.y = -angle;
+        
+        // Store original position for animation
+        card.userData.originalPosition = { x, y, z };
+        card.userData.originalRotation = { y: -angle };
+        card.userData.kol = kol;
+        card.userData.index = index;
+        
+        spiralGroup.add(card);
+        cards.push(card);
+      });
+      
+      // Update counter
+      document.getElementById('kol-total').textContent = cardCount;
+    }
+    
+    function createCard(kol, index) {
+      const group = new THREE.Group();
+      
+      // Card colors based on category
+      const categoryColors = {
+        chinese: 0x00d4ff,
+        international: 0xa855f7,
+        onchain: 0xf59e0b,
+        utility: 0xec4899,
+        ai: 0x22c55e
+      };
+      const color = categoryColors[kol.category] || 0x00d4ff;
+      
+      // Card geometry
+      const geometry = new THREE.BoxGeometry(
+        spiralConfig.cardWidth, 
+        spiralConfig.cardHeight, 
+        spiralConfig.cardDepth
+      );
+      
+      // Create card texture
+      const texture = createCardTexture(kol, color);
+      
+      // Materials
+      const material = new THREE.MeshPhongMaterial({
+        map: texture,
+        color: 0xffffff,
+        shininess: 100,
+        specular: 0x222222
+      });
+      
+      const edgeMaterial = new THREE.MeshBasicMaterial({
+        color: color,
+        transparent: true,
+        opacity: 0.8
+      });
+      
+      // Main card mesh
+      const mesh = new THREE.Mesh(geometry, [
+        edgeMaterial, edgeMaterial, // left, right
+        edgeMaterial, edgeMaterial, // top, bottom
+        material, material // front, back
+      ]);
+      
+      group.add(mesh);
+      
+      // Glow effect
+      const glowGeometry = new THREE.BoxGeometry(
+        spiralConfig.cardWidth + 4,
+        spiralConfig.cardHeight + 4,
+        spiralConfig.cardDepth + 2
+      );
+      const glowMaterial = new THREE.MeshBasicMaterial({
+        color: color,
+        transparent: true,
+        opacity: 0.2,
+        side: THREE.BackSide
+      });
+      const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+      glow.name = 'glow';
+      glow.visible = false;
+      group.add(glow);
+      
+      return group;
+    }
+    
+    function createCardTexture(kol, color) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 512;
+      canvas.height = 640;
+      const ctx = canvas.getContext('2d');
+      
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, 512, 640);
+      gradient.addColorStop(0, '#12121a');
+      gradient.addColorStop(1, '#1a1a25');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 512, 640);
+      
+      // Border
+      ctx.strokeStyle = '#' + color.toString(16).padStart(6, '0');
+      ctx.lineWidth = 4;
+      ctx.strokeRect(2, 2, 508, 636);
+      
+      // Inner glow
+      const innerGradient = ctx.createRadialGradient(256, 200, 0, 256, 200, 150);
+      innerGradient.addColorStop(0, 'rgba(0, 212, 255, 0.1)');
+      innerGradient.addColorStop(1, 'transparent');
+      ctx.fillStyle = innerGradient;
+      ctx.fillRect(20, 20, 472, 300);
+      
+      // Avatar circle
+      ctx.beginPath();
+      ctx.arc(256, 140, 80, 0, Math.PI * 2);
+      ctx.fillStyle = '#1a1a25';
+      ctx.fill();
+      ctx.strokeStyle = '#' + color.toString(16).padStart(6, '0');
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      
+      // Avatar placeholder (initials)
+      ctx.fillStyle = '#' + color.toString(16).padStart(6, '0');
+      ctx.font = 'bold 48px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      const initials = kol.name.charAt(0);
+      ctx.fillText(initials, 256, 140);
+      
+      // Flag
+      ctx.font = '36px Arial';
+      ctx.fillText(kol.flag, 360, 80);
+      
+      // Name
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 32px "Noto Sans SC", Arial';
+      ctx.fillText(kol.name, 256, 280);
+      
+      // Description
+      ctx.fillStyle = '#a1a1aa';
+      ctx.font = '20px "Noto Sans SC", Arial';
+      const words = kol.desc.split('');
+      let line = '';
+      let y = 340;
+      for (let i = 0; i < words.length; i++) {
+        const testLine = line + words[i];
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > 440 && i > 0) {
+          ctx.fillText(line, 256, y);
+          line = words[i];
+          y += 30;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line, 256, y);
+      
+      // Stats
+      ctx.fillStyle = '#' + color.toString(16).padStart(6, '0');
+      ctx.font = 'bold 24px Arial';
+      ctx.fillText(kol.signals, 120, 520);
+      ctx.fillText(kol.winrate, 256, 520);
+      ctx.fillText(kol.followers, 392, 520);
+      
+      ctx.fillStyle = '#71717a';
+      ctx.font = '16px Arial';
+      ctx.fillText('信号', 120, 550);
+      ctx.fillText('胜率', 256, 550);
+      ctx.fillText('关注', 392, 550);
+      
+      // Click hint
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.font = '14px Arial';
+      ctx.fillText('点击查看详情', 256, 600);
+      
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.needsUpdate = true;
+      return texture;
+    }
+    
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      // Smooth rotation interpolation
+      currentRotation += (targetRotation - currentRotation) * 0.05;
+      spiralGroup.rotation.y = currentRotation;
+      
+      // Autoplay
+      if (isAutoplay && !isDragging) {
+        targetRotation += spiralConfig.rotationSpeed;
+      }
+      
+      // Update card glow based on distance from center
+      cards.forEach((card, index) => {
+        const glow = card.getObjectByName('glow');
+        if (glow) {
+          // Calculate distance from front-facing position
+          const cardAngle = (index / cards.length) * Math.PI * 4 + currentRotation;
+          const normalizedAngle = ((cardAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+          const distanceFromFront = Math.abs(normalizedAngle - Math.PI / 2);
+          const isVisible = distanceFromFront < Math.PI / 3;
+          
+          glow.visible = isVisible;
+          if (isVisible) {
+            const intensity = 1 - (distanceFromFront / (Math.PI / 3));
+            glow.material.opacity = 0.1 + intensity * 0.2;
+          }
+        }
+      });
+      
+      // Update current index display
+      const normalizedRotation = ((currentRotation % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+      const currentIndex = Math.floor((normalizedRotation / (Math.PI * 2)) * cards.length) % cards.length;
+      document.getElementById('kol-current').textContent = Math.max(1, currentIndex + 1);
+      
+      renderer.render(scene, camera);
+    }
+    
+    function onWindowResize() {
+      const container = document.querySelector('.spiral-container');
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
+    
+    function setupEventListeners() {
+      const canvas = document.getElementById('spiral-canvas');
+      
+      // Mouse/Touch events for dragging
+      canvas.addEventListener('mousedown', onPointerDown);
+      canvas.addEventListener('mousemove', onPointerMove);
+      canvas.addEventListener('mouseup', onPointerUp);
+      canvas.addEventListener('mouseleave', onPointerUp);
+      
+      canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+      canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+      canvas.addEventListener('touchend', onPointerUp);
+      
+      // Click to open detail
+      canvas.addEventListener('click', onCardClick);
+      
+      // Scroll to rotate
+      canvas.addEventListener('wheel', onWheel, { passive: false });
+      
+      // Control buttons
+      document.getElementById('spiral-prev').addEventListener('click', () => {
+        targetRotation += (Math.PI * 2) / cards.length;
+        stopAutoplay();
+      });
+      
+      document.getElementById('spiral-next').addEventListener('click', () => {
+        targetRotation -= (Math.PI * 2) / cards.length;
+        stopAutoplay();
+      });
+      
+      document.getElementById('spiral-autoplay').addEventListener('click', toggleAutoplay);
+    }
+    
+    function onPointerDown(e) {
+      isDragging = true;
+      startY = e.clientY;
+      stopAutoplay();
+    }
+    
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      const deltaY = e.clientY - startY;
+      targetRotation -= deltaY * spiralConfig.scrollSpeed;
+      startY = e.clientY;
+    }
+    
+    function onPointerUp() {
+      isDragging = false;
+    }
+    
+    function onTouchStart(e) {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startY = e.touches[0].clientY;
+        stopAutoplay();
+      }
+    }
+    
+    function onTouchMove(e) {
+      if (!isDragging || e.touches.length !== 1) return;
+      e.preventDefault();
+      const deltaY = e.touches[0].clientY - startY;
+      targetRotation -= deltaY * spiralConfig.scrollSpeed;
+      startY = e.touches[0].clientY;
+    }
+    
+    function onWheel(e) {
+      e.preventDefault();
+      targetRotation += e.deltaY * spiralConfig.scrollSpeed;
+      stopAutoplay();
+    }
+    
+    function onCardClick(e) {
+      if (isDragging) return;
+      
+      // Calculate which card was clicked
+      const rect = e.target.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
+      
+      const intersects = raycaster.intersectObjects(spiralGroup.children, true);
+      
+      if (intersects.length > 0) {
+        // Find the parent group
+        let object = intersects[0].object;
+        while (object.parent && object.parent !== spiralGroup) {
+          object = object.parent;
+        }
+        
+        if (object.userData.kol) {
+          openKOLModal(object.userData.kol);
+        }
+      }
+    }
+    
+    function toggleAutoplay() {
+      isAutoplay = !isAutoplay;
+      const icon = document.getElementById('autoplay-icon');
+      if (isAutoplay) {
+        icon.setAttribute('data-lucide', 'pause');
+      } else {
+        icon.setAttribute('data-lucide', 'play');
+      }
+      lucide.createIcons();
+    }
+    
+    function stopAutoplay() {
+      if (isAutoplay) {
+        isAutoplay = false;
+        document.getElementById('autoplay-icon').setAttribute('data-lucide', 'play');
+        lucide.createIcons();
+      }
+    }
+    
+    // ========================================
+    // KOL MODAL
+    // ========================================
+    function openKOLModal(kol) {
+      const modal = document.getElementById('kol-modal');
+      
+      // Set content
+      document.getElementById('modal-avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(kol.name)}&background=random&color=fff&size=200`;
+      document.getElementById('modal-avatar').alt = kol.name;
+      document.getElementById('modal-name').textContent = kol.name;
+      document.getElementById('modal-desc').textContent = kol.desc;
+      document.getElementById('modal-signals').textContent = kol.signals;
+      document.getElementById('modal-winrate').textContent = kol.winrate;
+      document.getElementById('modal-followers').textContent = kol.followers;
+      
+      // Category badge
+      const categoryLabels = {
+        chinese: '华语二级市场',
+        international: '国外二级市场',
+        onchain: '一级链上',
+        utility: '辅助功能',
+        ai: 'AI资讯'
+      };
+      const categoryColors = {
+        chinese: 'badge-cyan',
+        international: 'badge-purple',
+        onchain: 'badge-gold',
+        utility: 'badge-pink',
+        ai: 'badge-success'
+      };
+      document.getElementById('modal-category').innerHTML = 
+        `<span class="badge ${categoryColors[kol.category]}">${categoryLabels[kol.category]}</span>`;
+      
+      // Detail link
+      document.getElementById('modal-detail-link').href = `./kol-detail.html?id=${kol.id}`;
+      
+      // Show modal
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeKOLModal() {
+      const modal = document.getElementById('kol-modal');
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    
+    // ========================================
+    // GRID VIEW
+    // ========================================
+    function initGridView() {
+      const grid = document.getElementById('kols-grid');
+      grid.innerHTML = '';
+      
+      const filteredKOLs = currentCategory === 'all' 
+        ? kolsData 
+        : kolsData.filter(kol => kol.category === currentCategory);
+      
+      filteredKOLs.forEach((kol, index) => {
+        const card = createGridCard(kol, index);
+        grid.appendChild(card);
+      });
+    }
+    
+    function createGridCard(kol, index) {
+      const categoryColors = {
+        chinese: 'badge-cyan',
+        international: 'badge-purple',
+        onchain: 'badge-gold',
+        utility: 'badge-pink',
+        ai: 'badge-success'
+      };
+      
+      const categoryLabels = {
+        chinese: '华语二级市场',
+        international: '国外二级市场',
+        onchain: '一级链上',
+        utility: '辅助功能',
+        ai: 'AI资讯'
+      };
+      
+      const card = document.createElement('div');
+      card.className = 'kol-card reveal';
+      card.style.animationDelay = `${index * 50}ms`;
+      card.innerHTML = `
+        <div class="kol-card-header">
+          <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(kol.name)}&background=random&color=fff&size=120" 
+               alt="${kol.name}" class="kol-card-avatar">
+          <div class="kol-card-info">
+            <h3 class="kol-card-name">
+              ${kol.name}
+              <span class="kol-card-flag">${kol.flag}</span>
+            </h3>
+            <div class="kol-card-category">
+              <span class="badge ${categoryColors[kol.category]}">${categoryLabels[kol.category]}</span>
+            </div>
+          </div>
+        </div>
+        <p class="kol-card-desc">${kol.desc}</p>
+        <div class="kol-card-footer">
+          <div class="kol-card-stats">
+            <div class="kol-card-stat">
+              <i data-lucide="radio" class="w-3 h-3"></i>
+              <span>${kol.signals}</span>
+            </div>
+            <div class="kol-card-stat">
+              <i data-lucide="trending-up" class="w-3 h-3"></i>
+              <span>${kol.winrate}</span>
+            </div>
+            <div class="kol-card-stat">
+              <i data-lucide="users" class="w-3 h-3"></i>
+              <span>${kol.followers}</span>
+            </div>
+          </div>
+          <button class="kol-card-btn" onclick="openKOLModal(kolsData.find(k => k.id === '${kol.id}'))">
+            查看
+          </button>
+        </div>
+      `;
+      
+      return card;
+    }
+    
+    // ========================================
+    // CATEGORY FILTER
+    // ========================================
+    function setupCategoryFilter() {
+      const tabs = document.querySelectorAll('.category-tab');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Update active state
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          // Update current category
+          currentCategory = tab.dataset.category;
+          
+          // Update 3D spiral
+          createKOLCards();
+          
+          // Update grid view
+          initGridView();
+          
+          // Re-initialize scroll reveal
+          setTimeout(() => {
+            initScrollReveal();
+          }, 100);
+        });
+      });
+    }
+    
+    // ========================================
+    // VIEW TOGGLE
+    // ========================================
+    function setupViewToggle() {
+      const toggleBtns = document.querySelectorAll('.view-toggle-btn');
+      const spiralView = document.getElementById('spiral-view');
+      const gridView = document.getElementById('grid-view');
+      
+      toggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const view = btn.dataset.view;
+          
+          // Update active state
+          toggleBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          // Toggle views
+          if (view === 'spiral') {
+            spiralView.style.display = 'block';
+            gridView.classList.remove('active');
+          } else {
+            spiralView.style.display = 'none';
+            gridView.classList.add('active');
+            initGridView();
+            setTimeout(() => initScrollReveal(), 100);
+          }
+        });
+      });
+    }
+    
+    // ========================================
+    // INITIALIZATION
+    // ========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Lucide icons
+      lucide.createIcons();
+      
+      // Initialize Three.js spiral
+      initThreeJS();
+      
+      // Setup category filter
+      setupCategoryFilter();
+      
+      // Setup view toggle
+      setupViewToggle();
+      
+      // Modal close handlers
+      document.getElementById('kol-modal-close').addEventListener('click', closeKOLModal);
+      document.getElementById('kol-modal-overlay').addEventListener('click', closeKOLModal);
+      
+      // Close modal on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeKOLModal();
+        }
+      });
+      
+      // Initialize grid view (hidden)
+      initGridView();
+    });
+  </script>
+</body>
+</html>

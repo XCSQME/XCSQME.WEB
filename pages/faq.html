@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常见问题 - 星辰社区</title>
+  <meta name="description" content="星辰社区常见问题解答，了解订阅、信号服务、技术支持和账户管理等相关问题">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="../shared/styles.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-primary': '#0a0a0f',
+            'bg-secondary': '#12121a',
+            'bg-tertiary': '#1a1a25',
+            'accent-cyan': '#00d4ff',
+            'accent-purple': '#a855f7',
+            'accent-gold': '#f59e0b',
+            'accent-pink': '#ec4899',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* FAQ Specific Styles */
+    .faq-hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 8rem 1rem 4rem;
+    }
+    
+    .search-container {
+      position: relative;
+      max-width: 600px;
+      width: 100%;
+    }
+    
+    .search-input {
+      width: 100%;
+      background: rgba(18, 18, 26, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 1rem 1.5rem 1rem 3.5rem;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: #00d4ff;
+      box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2), 0 0 30px rgba(0, 212, 255, 0.2);
+    }
+    
+    .search-input::placeholder {
+      color: #71717a;
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #71717a;
+      pointer-events: none;
+    }
+    
+    .category-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    
+    .category-tab {
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: 0.875rem;
+      background: rgba(18, 18, 26, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #a1a1aa;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .category-tab:hover {
+      border-color: rgba(0, 212, 255, 0.5);
+      color: white;
+    }
+    
+    .category-tab.active {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(168, 85, 247, 0.2));
+      border-color: #00d4ff;
+      color: white;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+    
+    .faq-accordion {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: rgba(18, 18, 26, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .faq-item:hover {
+      border-color: rgba(0, 212, 255, 0.3);
+    }
+    
+    .faq-item.active {
+      border-color: rgba(0, 212, 255, 0.5);
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
+    }
+    
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    
+    .faq-question-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: white;
+      padding-right: 1rem;
+    }
+    
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      color: #00d4ff;
+      transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .faq-item.active .faq-chevron {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+    }
+    
+    .faq-answer-content {
+      padding: 0 1.5rem 1.5rem;
+      color: #a1a1aa;
+      line-height: 1.7;
+    }
+    
+    .faq-category-label {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    
+    .faq-category-subscription {
+      background: rgba(0, 212, 255, 0.15);
+      color: #00d4ff;
+    }
+    
+    .faq-category-signal {
+      background: rgba(168, 85, 247, 0.15);
+      color: #a855f7;
+    }
+    
+    .faq-category-tech {
+      background: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+    }
+    
+    .faq-category-account {
+      background: rgba(236, 72, 153, 0.15);
+      color: #ec4899;
+    }
+    
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #71717a;
+    }
+    
+    .no-results-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      color: #3f3f46;
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, #00d4ff 0%, #a855f7 100%);
+      color: white;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+    
+    .cta-button:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .faq-hero {
+        padding: 6rem 1rem 3rem;
+        min-height: auto;
+      }
+      
+      .category-tabs {
+        gap: 0.5rem;
+      }
+      
+      .category-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+      
+      .faq-question-text {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-bg-primary text-white">
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Navigation -->
+  <header id="main-nav" class="nav-header">
+    <div class="container">
+      <nav class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-cyan to-accent-purple flex items-center justify-center">
+            <i data-lucide="star" class="w-6 h-6 text-white"></i>
+          </div>
+          <span class="text-xl font-bold font-display">星辰社区</span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="../index.html" class="nav-link" data-nav="index">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span>首页</span>
+          </a>
+          <a href="./about.html" class="nav-link" data-nav="about">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            <span>关于我们</span>
+          </a>
+          <a href="./kols.html" class="nav-link" data-nav="kols">
+            <i data-lucide="star" class="w-4 h-4"></i>
+            <span>KOL列表</span>
+          </a>
+          <a href="./pricing.html" class="nav-link" data-nav="pricing">
+            <i data-lucide="crown" class="w-4 h-4"></i>
+            <span>订阅计划</span>
+          </a>
+          <a href="./faq.html" class="nav-link active" data-nav="faq">
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
+            <span>常见问题</span>
+          </a>
+          <a href="./news.html" class="nav-link" data-nav="news">
+            <i data-lucide="newspaper" class="w-4 h-4"></i>
+            <span>最新动态</span>
+          </a>
+        </div>
+        
+        <!-- Social Links & Mobile Menu -->
+        <div class="flex items-center gap-4">
+          <div class="hidden sm:flex items-center gap-2">
+            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+            <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i data-lucide="send" class="w-5 h-5"></i>
+            </a>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
+            <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="flex justify-between items-center mb-8">
+      <span class="text-xl font-bold font-display">菜单</span>
+      <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-white/10 transition-colors">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-2">
+      <a href="../index.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="index">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>首页</span>
+      </a>
+      <a href="./about.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="about">
+        <i data-lucide="users" class="w-5 h-5"></i>
+        <span>关于我们</span>
+      </a>
+      <a href="./kols.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="kols">
+        <i data-lucide="star" class="w-5 h-5"></i>
+        <span>KOL列表</span>
+      </a>
+      <a href="./pricing.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="pricing">
+        <i data-lucide="crown" class="w-5 h-5"></i>
+        <span>订阅计划</span>
+      </a>
+      <a href="./faq.html" class="flex items-center gap-3 p-3 rounded-lg bg-white/10 transition-colors" data-nav="faq">
+        <i data-lucide="help-circle" class="w-5 h-5"></i>
+        <span>常见问题</span>
+      </a>
+      <a href="./news.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="news">
+        <i data-lucide="newspaper" class="w-5 h-5"></i>
+        <span>最新动态</span>
+      </a>
+    </nav>
+    <div class="mt-8 pt-8 border-t border-white/10">
+      <p class="text-sm text-gray-400 mb-4">关注我们</p>
+      <div class="flex gap-3">
+        <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <i data-lucide="twitter" class="w-5 h-5"></i>
+        </a>
+        <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <i data-lucide="send" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Hero Section -->
+  <section class="faq-hero">
+    <div class="text-center mb-8 reveal">
+      <h1 class="text-h1 font-bold mb-4 text-gradient">常见问题</h1>
+      <p class="text-xl text-gray-400">找不到答案？请联系我们的客服团队</p>
+    </div>
+    
+    <div class="search-container reveal" data-reveal-delay="200">
+      <i data-lucide="search" class="search-icon w-5 h-5"></i>
+      <input type="text" class="search-input" id="faq-search" placeholder="搜索问题..." autocomplete="off">
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <!-- Category Tabs -->
+      <div class="category-tabs reveal" data-reveal-delay="300">
+        <button class="category-tab active" data-category="all">全部</button>
+        <button class="category-tab" data-category="subscription">订阅问题</button>
+        <button class="category-tab" data-category="signal">信号服务</button>
+        <button class="category-tab" data-category="tech">技术支持</button>
+        <button class="category-tab" data-category="account">账户管理</button>
+      </div>
+      
+      <!-- FAQ Accordion -->
+      <div class="faq-accordion" id="faq-container">
+        
+        <!-- 订阅问题 Category -->
+        <div class="faq-item reveal" data-category="subscription" data-keywords="订阅 购买 服务 套餐">
+          <div class="faq-question">
+            <span class="faq-question-text">如何订阅星辰社区的服务？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-subscription">订阅问题</span>
+              <p>您可以通过我们的网站选择适合的套餐，点击"立即购买"按钮后，联系我们的客服团队完成订阅流程。我们支持多种支付方式，包括加密货币支付。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="subscription" data-keywords="订阅 信号 接收 开始 时间">
+          <div class="faq-question">
+            <span class="faq-question-text">订阅后多久可以开始接收信号？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-subscription">订阅问题</span>
+              <p>通常在完成支付后的5-10分钟内，您就会被添加到相应的频道开始接收信号。如果遇到延迟，请联系客服团队协助处理。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="subscription" data-keywords="退款 试用 不满意 政策">
+          <div class="faq-question">
+            <span class="faq-question-text">可以退款吗？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-subscription">订阅问题</span>
+              <p>我们提供首月试用服务，如果不满意可以在7天内申请退款。详情请查看我们的退款政策。终身会员和特殊套餐可能有不同的退款条款。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="subscription" data-keywords="升级 降级 订阅 套餐 变更">
+          <div class="faq-question">
+            <span class="faq-question-text">如何升级或降级我的订阅？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-subscription">订阅问题</span>
+              <p>您可以随时联系客服升级您的订阅，升级后即刻生效。降级将在当前订阅周期结束后生效。升级时只需补足差价即可。</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 信号服务 Category -->
+        <div class="faq-item reveal" data-category="signal" data-keywords="信号 来源 KOL 分析师 筛选">
+          <div class="faq-question">
+            <span class="faq-question-text">信号的来源是什么？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-signal">信号服务</span>
+              <p>我们的信号来自全球200+顶级KOL和分析师，经过严格筛选和验证。包括华语二级市场、国外二级市场、一级链上等多个领域的专业交易员。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="signal" data-keywords="信号 准确率 胜率 风险 投资">
+          <div class="faq-question">
+            <span class="faq-question-text">信号的准确率如何？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-signal">信号服务</span>
+              <p>我们的信号准确率保持在85%以上，但加密货币市场存在风险，请谨慎投资。建议您根据自己的风险承受能力合理配置资金，不要盲目跟单。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="signal" data-keywords="接收 信号 平台 Discord Telegram 飞书">
+          <div class="faq-question">
+            <span class="faq-question-text">如何接收信号？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-signal">信号服务</span>
+              <p>我们支持Discord、Telegram、飞书三大平台，您可以选择最方便的平台接收信号。订阅后我们会将您添加到相应的频道群组中。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="signal" data-keywords="信号 内容 交易对 入场 止损 止盈 仓位">
+          <div class="faq-question">
+            <span class="faq-question-text">信号包含哪些内容？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-signal">信号服务</span>
+              <p>信号包含交易对、入场价格、止损价格、止盈价格、仓位建议等完整信息。部分高级信号还会包含市场分析和操作建议。</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 技术支持 Category -->
+        <div class="faq-item reveal" data-category="tech" data-keywords="技术 问题 支持 客服 24小时">
+          <div class="faq-question">
+            <span class="faq-question-text">遇到技术问题怎么办？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-tech">技术支持</span>
+              <p>您可以联系我们的技术支持团队，我们提供7×24小时技术支持服务。通过Telegram或Discord联系客服，我们会尽快为您解决问题。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="tech" data-keywords="交易 平台 币安 欧易 Bybit 支持">
+          <div class="faq-question">
+            <span class="faq-question-text">支持哪些交易平台？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-tech">技术支持</span>
+              <p>我们的信号适用于所有主流加密货币交易平台，包括币安、欧易、Bybit等。信号提供的是价格和策略建议，您可以在任何支持相应交易对的平台执行。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="tech" data-keywords="自定义 信号 定制 终身会员 代理">
+          <div class="faq-question">
+            <span class="faq-question-text">可以自定义信号吗？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-tech">技术支持</span>
+              <p>终身会员和代理客户可以享受信号定制服务，包括自定义监控的交易对、设置特定的提醒条件等。请联系客服了解更多详情。</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 账户管理 Category -->
+        <div class="faq-item reveal" data-category="account" data-keywords="账户 信息 修改 客服">
+          <div class="faq-question">
+            <span class="faq-question-text">如何修改我的账户信息？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-account">账户管理</span>
+              <p>请联系客服团队协助您修改账户信息。为了保障账户安全，修改敏感信息可能需要进行身份验证。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="account" data-keywords="密码 忘记 重置 身份验证">
+          <div class="faq-question">
+            <span class="faq-question-text">忘记密码怎么办？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-account">账户管理</span>
+              <p>请联系客服团队进行身份验证后重置密码。为了保障您的账户安全，请提供注册时使用的邮箱或手机号进行验证。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-item reveal" data-category="account" data-keywords="账户 共享 多人 个人 使用">
+          <div class="faq-question">
+            <span class="faq-question-text">可以多人共享一个账户吗？</span>
+            <i data-lucide="chevron-down" class="faq-chevron"></i>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-content">
+              <span class="faq-category-label faq-category-account">账户管理</span>
+              <p>为了保障服务质量，每个账户仅限个人使用，不支持多人共享。如果发现账户共享行为，我们有权暂停或终止服务。</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- No Results Message -->
+      <div class="no-results hidden" id="no-results">
+        <i data-lucide="search-x" class="no-results-icon"></i>
+        <h3 class="text-xl font-semibold mb-2">未找到相关问题</h3>
+        <p>请尝试使用其他关键词搜索，或联系客服获取帮助</p>
+      </div>
+      
+      <!-- Contact CTA Section -->
+      <div class="cta-section reveal">
+        <h2 class="text-3xl font-bold mb-4">还有其他问题？</h2>
+        <p class="text-gray-400 mb-8 text-lg">我们的客服团队随时为您解答</p>
+        <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="cta-button">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          <span>联系客服</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <!-- Brand -->
+        <div>
+          <a href="../index.html" class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-cyan to-accent-purple flex items-center justify-center">
+              <i data-lucide="star" class="w-6 h-6 text-white"></i>
+            </div>
+            <span class="text-xl font-bold font-display">星辰社区</span>
+          </a>
+          <p class="text-gray-400 text-sm mb-4">汇聚全球200+顶级KOL信号，为您提供实时、精准的加密货币交易信号服务。</p>
+          <div class="flex gap-3">
+            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+            <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i data-lucide="send" class="w-5 h-5"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-semibold mb-4">快速链接</h4>
+          <ul class="space-y-2">
+            <li><a href="../index.html" class="footer-link text-sm">首页</a></li>
+            <li><a href="./about.html" class="footer-link text-sm">关于我们</a></li>
+            <li><a href="./kols.html" class="footer-link text-sm">KOL列表</a></li>
+            <li><a href="./pricing.html" class="footer-link text-sm">订阅计划</a></li>
+          </ul>
+        </div>
+        
+        <!-- Support -->
+        <div>
+          <h4 class="font-semibold mb-4">支持</h4>
+          <ul class="space-y-2">
+            <li><a href="./faq.html" class="footer-link text-sm">常见问题</a></li>
+            <li><a href="https://t.me/xcsqme" target="_blank" class="footer-link text-sm">联系我们</a></li>
+            <li><a href="#" class="footer-link text-sm">服务条款</a></li>
+            <li><a href="#" class="footer-link text-sm">隐私政策</a></li>
+          </ul>
+        </div>
+        
+        <!-- Community -->
+        <div>
+          <h4 class="font-semibold mb-4">社区</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="footer-link text-sm flex items-center gap-2">
+                <i data-lucide="twitter" class="w-4 h-4"></i>
+                <span>Twitter/X</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="footer-link text-sm flex items-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Telegram</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link text-sm flex items-center gap-2">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Discord</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-sm">&copy; 2024 星辰社区 (XCSQ). All rights reserved.</p>
+        <p class="text-gray-600 text-xs">加密货币投资有风险，请谨慎决策</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-gradient-to-br from-accent-cyan to-accent-purple flex items-center justify-center shadow-lg hover:shadow-glow-cyan transition-all duration-300 transform hover:-translate-y-1">
+    <i data-lucide="chevron-up" class="w-6 h-6 text-white"></i>
+  </button>
+  
+  <!-- Shared Scripts -->
+  <script src="../shared/scripts.js"></script>
+  
+  <script>
+    // FAQ Accordion Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqItems = document.querySelectorAll('.faq-item');
+      const categoryTabs = document.querySelectorAll('.category-tab');
+      const searchInput = document.getElementById('faq-search');
+      const noResults = document.getElementById('no-results');
+      const faqContainer = document.getElementById('faq-container');
+      
+      let currentCategory = 'all';
+      let currentSearch = '';
+      
+      // Accordion toggle
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          
+          // Close all other items
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+            }
+          });
+          
+          // Toggle current item
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Category filter
+      categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Update active tab
+          categoryTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          // Update current category
+          currentCategory = tab.dataset.category;
+          
+          // Apply filters
+          filterFAQs();
+        });
+      });
+      
+      // Search filter
+      searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value.toLowerCase().trim();
+        filterFAQs();
+      });
+      
+      // Filter function
+      function filterFAQs() {
+        let visibleCount = 0;
+        
+        faqItems.forEach(item => {
+          const category = item.dataset.category;
+          const keywords = item.dataset.keywords || '';
+          const questionText = item.querySelector('.faq-question-text').textContent.toLowerCase();
+          const answerText = item.querySelector('.faq-answer-content p')?.textContent.toLowerCase() || '';
+          
+          // Check category match
+          const categoryMatch = currentCategory === 'all' || category === currentCategory;
+          
+          // Check search match
+          const searchMatch = currentSearch === '' || 
+            questionText.includes(currentSearch) || 
+            answerText.includes(currentSearch) ||
+            keywords.includes(currentSearch);
+          
+          // Show/hide item
+          if (categoryMatch && searchMatch) {
+            item.style.display = 'block';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+            item.classList.remove('active');
+          }
+        });
+        
+        // Show/hide no results message
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+          faqContainer.style.display = 'none';
+        } else {
+          noResults.classList.add('hidden');
+          faqContainer.style.display = 'block';
+        }
+      }
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          // Close all accordions
+          faqItems.forEach(item => item.classList.remove('active'));
+          
+          // Clear search
+          searchInput.value = '';
+          currentSearch = '';
+          filterFAQs();
+          
+          // Reset category
+          categoryTabs.forEach(t => t.classList.remove('active'));
+          categoryTabs[0].classList.add('active');
+          currentCategory = 'all';
+          filterFAQs();
+        }
+      });
+      
+      // Focus search on '/' key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

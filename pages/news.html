@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>最新动态 - 星辰社区</title>
+  <meta name="description" content="了解星辰社区的最新更新和行业资讯">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="../shared/styles.css">
+  
+  <style>
+    /* News Page Specific Styles */
+    
+    /* Hero Section */
+    .news-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 8rem 0 4rem;
+      overflow: hidden;
+    }
+    
+    .news-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    /* Category Tabs */
+    .category-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      padding: 1.5rem 0;
+    }
+    
+    .category-tab {
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: var(--text-small);
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+    
+    .category-tab:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-text-primary);
+    }
+    
+    .category-tab.active {
+      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+    
+    /* News Grid */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+    
+    @media (min-width: 640px) {
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .news-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    /* News Card */
+    .news-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      -webkit-backdrop-filter: var(--glass-backdrop);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all var(--duration-normal) var(--ease-out-expo);
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .news-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 212, 255, 0.3);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+    
+    .news-card.hidden {
+      display: none;
+    }
+    
+    .news-card-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+    
+    .news-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-slow) var(--ease-out-expo);
+    }
+    
+    .news-card:hover .news-card-image img {
+      transform: scale(1.05);
+    }
+    
+    .news-card-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, rgba(10, 10, 15, 0.8), transparent);
+      pointer-events: none;
+    }
+    
+    .news-card-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 10;
+    }
+    
+    .news-card-content {
+      padding: 1.5rem;
+    }
+    
+    .news-card-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .news-card-excerpt {
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .news-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .news-card-date {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: var(--text-xsmall);
+      color: var(--color-text-muted);
+    }
+    
+    .news-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: var(--text-small);
+      font-weight: 500;
+      color: var(--color-accent-cyan);
+      transition: all var(--duration-fast) var(--ease-out-expo);
+    }
+    
+    .news-card-link:hover {
+      gap: 0.625rem;
+      color: var(--color-accent-purple);
+    }
+    
+    /* Pagination */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 3rem 0;
+    }
+    
+    .pagination-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.5rem;
+      height: 2.5rem;
+      padding: 0 0.75rem;
+      border-radius: var(--radius-md);
+      font-size: var(--text-small);
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-out-expo);
+    }
+    
+    .pagination-btn:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-text-primary);
+      border-color: rgba(0, 212, 255, 0.3);
+    }
+    
+    .pagination-btn.active {
+      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      border-color: transparent;
+      color: white;
+    }
+    
+    .pagination-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    
+    .pagination-info {
+      font-size: var(--text-small);
+      color: var(--color-text-muted);
+      margin-left: 1rem;
+    }
+    
+    /* Newsletter Section */
+    .newsletter-section {
+      position: relative;
+      padding: 5rem 0;
+      overflow: hidden;
+    }
+    
+    .newsletter-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+      pointer-events: none;
+    }
+    
+    .newsletter-container {
+      position: relative;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      -webkit-backdrop-filter: var(--glass-backdrop);
+      border: var(--glass-border);
+      border-radius: var(--radius-2xl);
+      padding: 3rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-title {
+      font-size: var(--text-h3);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: var(--gradient-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .newsletter-description {
+      font-size: var(--text-body);
+      color: var(--color-text-secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .newsletter-input {
+      flex: 1;
+      min-width: 250px;
+      max-width: 350px;
+    }
+    
+    /* Badge Colors by Category */
+    .badge-update {
+      background: rgba(0, 212, 255, 0.2);
+      color: var(--color-accent-cyan);
+    }
+    
+    .badge-kol {
+      background: rgba(168, 85, 247, 0.2);
+      color: var(--color-accent-purple);
+    }
+    
+    .badge-news {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--color-accent-gold);
+    }
+    
+    .badge-event {
+      background: rgba(236, 72, 153, 0.2);
+      color: var(--color-accent-pink);
+    }
+    
+    /* Animation for cards */
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .card-animate-in {
+      animation: cardFadeIn 400ms var(--ease-out-expo) forwards;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header id="main-nav" class="nav-header">
+    <div class="container">
+      <nav class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+            <i data-lucide="star" class="w-6 h-6 text-white"></i>
+          </div>
+          <span class="text-xl font-bold text-white hidden sm:block">星辰社区</span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="../index.html" class="nav-link" data-nav="index">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span>首页</span>
+          </a>
+          <a href="./about.html" class="nav-link" data-nav="about">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            <span>关于我们</span>
+          </a>
+          <a href="./kols.html" class="nav-link" data-nav="kols">
+            <i data-lucide="star" class="w-4 h-4"></i>
+            <span>KOL列表</span>
+          </a>
+          <a href="./pricing.html" class="nav-link" data-nav="pricing">
+            <i data-lucide="crown" class="w-4 h-4"></i>
+            <span>订阅计划</span>
+          </a>
+          <a href="./faq.html" class="nav-link" data-nav="faq">
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
+            <span>常见问题</span>
+          </a>
+          <a href="./news.html" class="nav-link active" data-nav="news">
+            <i data-lucide="newspaper" class="w-4 h-4"></i>
+            <span>最新动态</span>
+          </a>
+        </div>
+        
+        <!-- Social Links & CTA -->
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener" class="social-icon">
+            <i data-lucide="twitter" class="w-5 h-5"></i>
+          </a>
+          <a href="https://t.me/xcsqme" target="_blank" rel="noopener" class="social-icon">
+            <i data-lucide="send" class="w-5 h-5"></i>
+          </a>
+          <a href="./pricing.html" class="btn btn-primary text-sm py-2 px-4">
+            立即加入
+          </a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-white">
+          <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="flex justify-between items-center mb-8">
+      <span class="text-xl font-bold">菜单</span>
+      <button id="mobile-menu-close" class="p-2 text-white">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-4">
+      <a href="../index.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="index">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>首页</span>
+      </a>
+      <a href="./about.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="about">
+        <i data-lucide="users" class="w-5 h-5"></i>
+        <span>关于我们</span>
+      </a>
+      <a href="./kols.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="kols">
+        <i data-lucide="star" class="w-5 h-5"></i>
+        <span>KOL列表</span>
+      </a>
+      <a href="./pricing.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="pricing">
+        <i data-lucide="crown" class="w-5 h-5"></i>
+        <span>订阅计划</span>
+      </a>
+      <a href="./faq.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="faq">
+        <i data-lucide="help-circle" class="w-5 h-5"></i>
+        <span>常见问题</span>
+      </a>
+      <a href="./news.html" class="flex items-center gap-3 p-3 rounded-lg bg-white/10 transition-colors" data-nav="news">
+        <i data-lucide="newspaper" class="w-5 h-5"></i>
+        <span>最新动态</span>
+      </a>
+    </nav>
+    <div class="mt-8 pt-8 border-t border-white/10">
+      <div class="flex gap-4 justify-center">
+        <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener" class="social-icon">
+          <i data-lucide="twitter" class="w-5 h-5"></i>
+        </a>
+        <a href="https://t.me/xcsqme" target="_blank" rel="noopener" class="social-icon">
+          <i data-lucide="send" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="news-hero">
+      <div class="container text-center relative z-10">
+        <h1 class="text-h1 text-gradient mb-4 reveal">最新动态</h1>
+        <p class="text-xl text-secondary max-w-2xl mx-auto reveal" style="animation-delay: 100ms;">
+          了解星辰社区的最新更新和行业资讯
+        </p>
+      </div>
+    </section>
+
+    <!-- Category Tabs Section -->
+    <section class="py-8">
+      <div class="container">
+        <div class="category-tabs reveal" style="animation-delay: 200ms;">
+          <button class="category-tab active" data-category="all">全部</button>
+          <button class="category-tab" data-category="update">平台更新</button>
+          <button class="category-tab" data-category="kol">新KOL入驻</button>
+          <button class="category-tab" data-category="news">行业资讯</button>
+          <button class="category-tab" data-category="event">活动公告</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Grid Section -->
+    <section class="py-8">
+      <div class="container">
+        <div class="news-grid" id="news-grid">
+          <!-- News Card 1: 平台更新 -->
+          <article class="news-card" data-category="update" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=340&fit=crop" alt="星辰社区3.0版本发布">
+              <span class="news-card-badge badge badge-cyan badge-update">平台更新</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">星辰社区3.0版本正式发布</h3>
+              <p class="news-card-excerpt">我们很高兴宣布星辰社区3.0版本正式上线！新版本带来了更快的信号转发速度、更稳定的系统性能，以及全新的用户界面设计...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-15
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Card 2: 新KOL入驻 -->
+          <article class="news-card" data-category="kol" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=340&fit=crop" alt="币圈所长加入">
+              <span class="news-card-badge badge badge-purple badge-kol">新KOL入驻</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">欢迎知名分析师币圈所长加入星辰社区</h3>
+              <p class="news-card-excerpt">我们非常荣幸地宣布，知名油管博主币圈所长正式加入我们的KOL阵容。作为神级刀交易员，他将为我们带来专业的市场分析...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-12
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Card 3: 平台更新 -->
+          <article class="news-card" data-category="update" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=340&fit=crop" alt="AI智能分析功能">
+              <span class="news-card-badge badge badge-cyan badge-update">平台更新</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">新增AI智能分析功能</h3>
+              <p class="news-card-excerpt">我们引入了先进的AI技术，为用户提供更精准的市场分析和信号筛选。AI系统能够实时监控市场动态，识别潜在交易机会...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-10
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Card 4: 新KOL入驻 -->
+          <article class="news-card" data-category="kol" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=340&fit=crop" alt="颜驰入驻">
+              <span class="news-card-badge badge badge-purple badge-kol">新KOL入驻</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">顶级交易员颜驰入驻平台</h3>
+              <p class="news-card-excerpt">天花版顶级交易员颜驰正式入驻星辰社区，为用户提供专业的交易策略。颜驰以其精准的市场判断和稳健的交易风格闻名...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-08
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Card 5: 行业资讯 -->
+          <article class="news-card" data-category="news" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=600&h=340&fit=crop" alt="2024加密货币市场展望">
+              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">2024年加密货币市场展望</h3>
+              <p class="news-card-excerpt">随着比特币ETF的批准，2024年加密货币市场将迎来新的发展机遇。机构投资者的大量涌入将推动市场走向更加成熟的阶段...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-05
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Card 6: 行业资讯 -->
+          <article class="news-card" data-category="news" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=600&h=340&fit=crop" alt="DeFi发展趋势">
+              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">DeFi领域最新发展趋势</h3>
+              <p class="news-card-excerpt">去中心化金融继续蓬勃发展，新的协议和创新不断涌现。从流动性质押到跨链桥接，DeFi生态系统正在变得更加完善...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-03
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Card 7: 活动公告 -->
+          <article class="news-card" data-category="event" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&h=340&fit=crop" alt="春节特惠活动">
+              <span class="news-card-badge badge badge-pink badge-event">活动公告</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">春节特惠活动开始啦</h3>
+              <p class="news-card-excerpt">为庆祝春节，我们推出限时特惠活动，所有套餐享受8折优惠。这是加入星辰社区的最佳时机，不要错过这个难得的机会...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-20
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Card 8: 活动公告 -->
+          <article class="news-card" data-category="event" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=340&fit=crop" alt="推荐好友活动">
+              <span class="news-card-badge badge badge-pink badge-event">活动公告</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">推荐好友赢取奖励</h3>
+              <p class="news-card-excerpt">推荐好友加入星辰社区，即可获得丰厚奖励，多推多得。每成功推荐一位好友订阅，您将获得一个月的免费会员资格...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-18
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Additional cards for pagination demo -->
+          <article class="news-card" data-category="update" data-page="2">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=340&fit=crop" alt="系统性能优化">
+              <span class="news-card-badge badge badge-cyan badge-update">平台更新</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">系统性能优化升级完成</h3>
+              <p class="news-card-excerpt">我们的技术团队完成了系统性能的全面优化，信号转发延迟降低50%，系统稳定性提升至99.99%...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-01
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card" data-category="kol" data-page="2">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=340&fit=crop" alt="新KOL加入">
+              <span class="news-card-badge badge badge-purple badge-kol">新KOL入驻</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">多位优秀分析师加入社区</h3>
+              <p class="news-card-excerpt">本周我们迎来了多位优秀分析师的加入，涵盖主流币、山寨币和DeFi等多个领域，为用户提供更全面的市场覆盖...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2023-12-28
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card" data-category="news" data-page="2">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?w=600&h=340&fit=crop" alt="NFT市场分析">
+              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">NFT市场复苏迹象明显</h3>
+              <p class="news-card-excerpt">近期NFT市场显示出明显的复苏迹象，交易量连续三周增长。蓝筹NFT项目表现尤为突出，市场信心正在逐步恢复...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2023-12-25
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card" data-category="event" data-page="2">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=340&fit=crop" alt="线上研讨会">
+              <span class="news-card-badge badge badge-pink badge-event">活动公告</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">新年交易策略线上研讨会</h3>
+              <p class="news-card-excerpt">我们将在元旦举办线上研讨会，邀请多位顶级交易员分享2024年的交易策略和市场展望，欢迎所有会员参加...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2023-12-22
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card" data-category="update" data-page="2">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="移动端APP">
+              <span class="news-card-badge badge badge-cyan badge-update">平台更新</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">移动端APP即将上线</h3>
+              <p class="news-card-excerpt">我们的移动端APP正在最后测试阶段，预计将在下个月正式发布。届时用户可以随时随地接收信号推送...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2023-12-20
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card" data-category="kol" data-page="2">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&h=340&fit=crop" alt="Ye.koi入驻">
+              <span class="news-card-badge badge badge-purple badge-kol">新KOL入驻</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">华语顶流Ye.koi正式入驻</h3>
+              <p class="news-card-excerpt">目前华语二级市场的顶流分析师Ye.koi正式加入星辰社区。他以其独特的分析视角和高胜率策略深受用户喜爱...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2023-12-18
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination reveal" id="pagination">
+          <button class="pagination-btn" id="prev-page" disabled>
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          </button>
+          <button class="pagination-btn active" data-page="1">1</button>
+          <button class="pagination-btn" data-page="2">2</button>
+          <button class="pagination-btn" data-page="3">3</button>
+          <span class="px-2 text-muted">...</span>
+          <button class="pagination-btn" data-page="5">5</button>
+          <button class="pagination-btn" id="next-page">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+          <span class="pagination-info">第 <span id="current-page-num">1</span> / 5 页</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-container reveal">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+            <i data-lucide="mail" class="w-8 h-8 text-white"></i>
+          </div>
+          <h2 class="newsletter-title">订阅我们的资讯</h2>
+          <p class="newsletter-description">获取最新的市场分析和平台更新，第一时间了解行业动态</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input 
+              type="email" 
+              class="input newsletter-input" 
+              placeholder="请输入您的邮箱地址"
+              required
+            >
+            <button type="submit" class="btn btn-primary">
+              <i data-lucide="bell" class="w-4 h-4"></i>
+              立即订阅
+            </button>
+          </form>
+          <p class="text-xsmall text-muted mt-4">
+            <i data-lucide="shield-check" class="w-4 h-4 inline-block mr-1"></i>
+            我们尊重您的隐私，不会发送垃圾邮件
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <!-- Brand -->
+        <div>
+          <a href="../index.html" class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+              <i data-lucide="star" class="w-6 h-6 text-white"></i>
+            </div>
+            <span class="text-xl font-bold text-white">星辰社区</span>
+          </a>
+          <p class="text-secondary text-sm mb-4">
+            全球领先的加密货币信号聚合平台，汇聚270+顶级KOL，为您提供实时、精准的交易信号。
+          </p>
+          <div class="flex gap-3">
+            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener" class="social-icon">
+              <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+            <a href="https://t.me/xcsqme" target="_blank" rel="noopener" class="social-icon">
+              <i data-lucide="send" class="w-5 h-5"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-semibold mb-4">快速链接</h4>
+          <ul class="space-y-3">
+            <li><a href="../index.html" class="footer-link text-sm">首页</a></li>
+            <li><a href="./about.html" class="footer-link text-sm">关于我们</a></li>
+            <li><a href="./kols.html" class="footer-link text-sm">KOL列表</a></li>
+            <li><a href="./pricing.html" class="footer-link text-sm">订阅计划</a></li>
+          </ul>
+        </div>
+        
+        <!-- Support -->
+        <div>
+          <h4 class="text-white font-semibold mb-4">支持</h4>
+          <ul class="space-y-3">
+            <li><a href="./faq.html" class="footer-link text-sm">常见问题</a></li>
+            <li><a href="./about.html#contact" class="footer-link text-sm">联系我们</a></li>
+            <li><a href="#" class="footer-link text-sm">服务条款</a></li>
+            <li><a href="#" class="footer-link text-sm">隐私政策</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div>
+          <h4 class="text-white font-semibold mb-4">联系方式</h4>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-2 text-secondary text-sm">
+              <i data-lucide="mail" class="w-4 h-4 text-cyan-400"></i>
+              support@xcsq.com
+            </li>
+            <li class="flex items-center gap-2 text-secondary text-sm">
+              <i data-lucide="clock" class="w-4 h-4 text-cyan-400"></i>
+              24/7 在线支持
+            </li>
+            <li class="flex items-center gap-2 text-secondary text-sm">
+              <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400"></i>
+              全球服务
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-muted text-sm">
+          &copy; 2024 星辰社区 (XCSQ). 保留所有权利。
+        </p>
+        <p class="text-muted text-sm">
+          投资有风险，入市需谨慎。本站内容仅供参考，不构成投资建议。
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 text-white shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
+    <i data-lucide="chevron-up" class="w-6 h-6"></i>
+  </button>
+
+  <!-- Shared Scripts -->
+  <script src="../shared/scripts.js"></script>
+  
+  <script>
+    // News Page Specific JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Lucide icons
+      lucide.createIcons();
+      
+      // Category filtering
+      const categoryTabs = document.querySelectorAll('.category-tab');
+      const newsCards = document.querySelectorAll('.news-card');
+      let currentCategory = 'all';
+      let currentPage = 1;
+      const itemsPerPage = 6;
+      
+      // Filter function
+      function filterNews(category) {
+        currentCategory = category;
+        currentPage = 1;
+        
+        // Update tab states
+        categoryTabs.forEach(tab => {
+          if (tab.dataset.category === category) {
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+        
+        // Filter cards
+        updateVisibleCards();
+        updatePagination();
+      }
+      
+      // Get filtered cards
+      function getFilteredCards() {
+        return Array.from(newsCards).filter(card => {
+          if (currentCategory === 'all') return true;
+          return card.dataset.category === currentCategory;
+        });
+      }
+      
+      // Update visible cards based on current page
+      function updateVisibleCards() {
+        const filteredCards = getFilteredCards();
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        
+        newsCards.forEach(card => {
+          card.classList.add('hidden');
+        });
+        
+        filteredCards.forEach((card, index) => {
+          if (index >= startIndex && index < endIndex) {
+            card.classList.remove('hidden');
+            // Add animation
+            card.style.animation = 'none';
+            setTimeout(() => {
+              card.style.animation = 'cardFadeIn 400ms var(--ease-out-expo) forwards';
+            }, index * 50);
+          }
+        });
+      }
+      
+      // Update pagination
+      function updatePagination() {
+        const filteredCards = getFilteredCards();
+        const totalPages = Math.ceil(filteredCards.length / itemsPerPage) || 1;
+        
+        // Update page info
+        document.getElementById('current-page-num').textContent = currentPage;
+        
+        // Update prev/next buttons
+        const prevBtn = document.getElementById('prev-page');
+        const nextBtn = document.getElementById('next-page');
+        
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage >= totalPages;
+        
+        // Update page number buttons
+        const pageButtons = document.querySelectorAll('.pagination-btn[data-page]');
+        pageButtons.forEach(btn => {
+          const pageNum = parseInt(btn.dataset.page);
+          btn.classList.toggle('active', pageNum === currentPage);
+          btn.style.display = pageNum <= totalPages ? 'flex' : 'none';
+        });
+      }
+      
+      // Category tab click handlers
+      categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterNews(tab.dataset.category);
+        });
+      });
+      
+      // Pagination button handlers
+      document.querySelectorAll('.pagination-btn[data-page]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentPage = parseInt(btn.dataset.page);
+          updateVisibleCards();
+          updatePagination();
+          // Scroll to news grid
+          document.getElementById('news-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+      
+      // Previous page button
+      document.getElementById('prev-page').addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updateVisibleCards();
+          updatePagination();
+          document.getElementById('news-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+      
+      // Next page button
+      document.getElementById('next-page').addEventListener('click', () => {
+        const filteredCards = getFilteredCards();
+        const totalPages = Math.ceil(filteredCards.length / itemsPerPage) || 1;
+        if (currentPage < totalPages) {
+          currentPage++;
+          updateVisibleCards();
+          updatePagination();
+          document.getElementById('news-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+      
+      // Newsletter form submission
+      document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        // Show success toast
+        if (typeof showToast !== 'undefined') {
+          showToast('订阅成功！感谢您的关注。', 'success');
+        } else {
+          alert('订阅成功！感谢您的关注。');
+        }
+        
+        // Reset form
+        this.reset();
+      });
+      
+      // Read more link handlers
+      document.querySelectorAll('.news-card-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const cardTitle = this.closest('.news-card').querySelector('.news-card-title').textContent;
+          if (typeof showToast !== 'undefined') {
+            showToast(`正在打开文章：${cardTitle}`, 'info');
+          }
+        });
+      });
+      
+      // Initialize pagination
+      updateVisibleCards();
+      updatePagination();
+      
+      // GSAP Animations
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animate news cards on scroll
+        gsap.from('.news-card:not(.hidden)', {
+          opacity: 0,
+          y: 30,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '#news-grid',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        });
+        
+        // Animate newsletter section
+        gsap.from('.newsletter-container', {
+          opacity: 0,
+          y: 40,
+          duration: 0.6,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '.newsletter-section',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

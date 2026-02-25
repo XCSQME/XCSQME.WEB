@@ -1,0 +1,153 @@
+<!-- 
+  星辰社区 (Star Community) - Navigation Component
+  Include this after the opening <body> tag in all pages
+-->
+
+<!-- START: Navigation Component -->
+<header class="nav-header" id="main-nav">
+  <div class="container">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-cyan-500/30 transition-all duration-300">
+          <i data-lucide="star" class="w-5 h-5 text-white fill-white"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-lg text-white leading-tight">星辰社区</span>
+          <span class="text-xs text-cyan-400 font-mono tracking-wider">XCSQ</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden lg:flex items-center gap-1">
+        <a href="index.html" class="nav-link flex items-center gap-2" data-nav="index">
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <span>首页</span>
+        </a>
+        <a href="about.html" class="nav-link flex items-center gap-2" data-nav="about">
+          <i data-lucide="users" class="w-4 h-4"></i>
+          <span>关于我们</span>
+        </a>
+        <a href="kols.html" class="nav-link flex items-center gap-2" data-nav="kols">
+          <i data-lucide="star" class="w-4 h-4"></i>
+          <span>KOL列表</span>
+        </a>
+        <a href="pricing.html" class="nav-link flex items-center gap-2" data-nav="pricing">
+          <i data-lucide="crown" class="w-4 h-4"></i>
+          <span>订阅计划</span>
+        </a>
+        <a href="faq.html" class="nav-link flex items-center gap-2" data-nav="faq">
+          <i data-lucide="help-circle" class="w-4 h-4"></i>
+          <span>常见问题</span>
+        </a>
+        <a href="news.html" class="nav-link flex items-center gap-2" data-nav="news">
+          <i data-lucide="newspaper" class="w-4 h-4"></i>
+          <span>最新动态</span>
+        </a>
+      </div>
+
+      <!-- Right Side: Social Links + CTA -->
+      <div class="hidden lg:flex items-center gap-4">
+        <!-- Social Icons -->
+        <div class="flex items-center gap-2">
+          <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" 
+             class="social-icon" aria-label="Twitter/X">
+            <i data-lucide="twitter" class="w-4 h-4"></i>
+          </a>
+          <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" 
+             class="social-icon" aria-label="Telegram">
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- CTA Button -->
+        <a href="pricing.html" class="btn btn-primary text-sm py-2 px-4">
+          <i data-lucide="rocket" class="w-4 h-4"></i>
+          <span>立即加入</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="lg:hidden p-2 text-white hover:text-cyan-400 transition-colors" 
+              id="mobile-menu-btn" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="flex flex-col h-full">
+    <!-- Mobile Menu Header -->
+    <div class="flex items-center justify-between mb-8">
+      <a href="index.html" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+          <i data-lucide="star" class="w-5 h-5 text-white fill-white"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-lg text-white">星辰社区</span>
+          <span class="text-xs text-cyan-400 font-mono">XCSQ</span>
+        </div>
+      </a>
+      <button class="p-2 text-white hover:text-cyan-400 transition-colors" 
+              id="mobile-menu-close" aria-label="Close menu">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Links -->
+    <nav class="flex flex-col gap-2 flex-1">
+      <a href="index.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="index">
+        <i data-lucide="home" class="w-5 h-5 text-cyan-400"></i>
+        <span class="text-lg">首页</span>
+      </a>
+      <a href="about.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="about">
+        <i data-lucide="users" class="w-5 h-5 text-cyan-400"></i>
+        <span class="text-lg">关于我们</span>
+      </a>
+      <a href="kols.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="kols">
+        <i data-lucide="star" class="w-5 h-5 text-cyan-400"></i>
+        <span class="text-lg">KOL列表</span>
+      </a>
+      <a href="pricing.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="pricing">
+        <i data-lucide="crown" class="w-5 h-5 text-cyan-400"></i>
+        <span class="text-lg">订阅计划</span>
+      </a>
+      <a href="faq.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="faq">
+        <i data-lucide="help-circle" class="w-5 h-5 text-cyan-400"></i>
+        <span class="text-lg">常见问题</span>
+      </a>
+      <a href="news.html" class="flex items-center gap-4 p-4 rounded-lg text-white hover:bg-white/5 transition-colors" data-nav="news">
+        <i data-lucide="newspaper" class="w-5 h-5 text-cyan-400"></i>
+        <span class="text-lg">最新动态</span>
+      </a>
+    </nav>
+
+    <!-- Mobile Social Links -->
+    <div class="flex items-center gap-4 pt-6 border-t border-white/10">
+      <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" 
+         class="flex items-center gap-3 text-secondary hover:text-cyan-400 transition-colors">
+        <i data-lucide="twitter" class="w-5 h-5"></i>
+        <span>@XCSQbtc</span>
+      </a>
+    </div>
+    <div class="flex items-center gap-4 mt-3">
+      <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" 
+         class="flex items-center gap-3 text-secondary hover:text-cyan-400 transition-colors">
+        <i data-lucide="send" class="w-5 h-5"></i>
+        <span>@xcsqme</span>
+      </a>
+    </div>
+
+    <!-- Mobile CTA -->
+    <a href="pricing.html" class="btn btn-primary w-full mt-6 justify-center">
+      <i data-lucide="rocket" class="w-5 h-5"></i>
+      <span>立即加入</span>
+    </a>
+  </div>
+</div>
+<!-- END: Navigation Component -->

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我们 - 星辰社区 | Star Community</title>
+  <meta name="description" content="了解星辰社区的使命、愿景和团队。星辰社区致力于为全球加密货币投资者提供最优质的信号聚合服务。">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="../shared/styles.css">
+  
+  <style>
+    /* Page-specific styles */
+    .about-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding-top: 80px;
+    }
+    
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    
+    .breadcrumb a:hover {
+      color: var(--color-accent-cyan);
+    }
+    
+    .breadcrumb-separator {
+      color: var(--color-text-muted);
+    }
+    
+    .breadcrumb-current {
+      color: var(--color-text-secondary);
+    }
+    
+    /* Mission/Vision Section */
+    .mission-vision-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .mission-card, .vision-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+    
+    .mission-card:hover, .vision-card:hover {
+      border-color: rgba(0, 212, 255, 0.3);
+      transform: translateY(-4px);
+    }
+    
+    .mission-card {
+      border-left: 4px solid var(--color-accent-cyan);
+    }
+    
+    .vision-card {
+      border-left: 4px solid var(--color-accent-purple);
+    }
+    
+    .icon-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+    }
+    
+    .icon-circle-cyan {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 212, 255, 0.1));
+      color: var(--color-accent-cyan);
+    }
+    
+    .icon-circle-purple {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(168, 85, 247, 0.1));
+      color: var(--color-accent-purple);
+    }
+    
+    /* Advantage Cards */
+    .advantage-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      text-align: center;
+      transition: all var(--duration-normal) var(--ease-out-expo);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .advantage-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-hero);
+      opacity: 0;
+      transition: opacity var(--duration-normal) var(--ease-out-expo);
+    }
+    
+    .advantage-card:hover {
+      border-color: rgba(0, 212, 255, 0.3);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+    
+    .advantage-card:hover::before {
+      opacity: 1;
+    }
+    
+    .advantage-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-4);
+      font-size: 1.5rem;
+    }
+    
+    .advantage-icon-1 {
+      background: rgba(0, 212, 255, 0.15);
+      color: var(--color-accent-cyan);
+    }
+    
+    .advantage-icon-2 {
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--color-accent-purple);
+    }
+    
+    .advantage-icon-3 {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--color-accent-gold);
+    }
+    
+    .advantage-icon-4 {
+      background: rgba(236, 72, 153, 0.15);
+      color: var(--color-accent-pink);
+    }
+    
+    /* Team Cards */
+    .team-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      text-align: center;
+      transition: all var(--duration-normal) var(--ease-out-expo);
+      position: relative;
+    }
+    
+    .team-card:hover {
+      border-color: rgba(0, 212, 255, 0.3);
+      transform: translateY(-8px);
+    }
+    
+    .team-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: var(--radius-full);
+      margin: 0 auto var(--space-4);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .team-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: var(--radius-full);
+      background: var(--gradient-hero);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity var(--duration-normal) var(--ease-out-expo);
+    }
+    
+    .team-card:hover .team-avatar::after {
+      opacity: 1;
+    }
+    
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+    
+    .team-card:hover .team-social {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .team-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-secondary);
+      transition: all var(--duration-fast) var(--ease-out-expo);
+    }
+    
+    .team-social a:hover {
+      background: var(--color-accent-cyan);
+      color: var(--color-bg-primary);
+    }
+    
+    /* Contact Section */
+    .contact-card {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      border: var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.02);
+      transition: all var(--duration-fast) var(--ease-out-expo);
+    }
+    
+    .contact-item:hover {
+      background: rgba(0, 212, 255, 0.05);
+    }
+    
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .contact-icon-telegram {
+      background: rgba(0, 212, 255, 0.15);
+      color: var(--color-accent-cyan);
+    }
+    
+    .contact-icon-twitter {
+      background: rgba(59, 130, 246, 0.15);
+      color: #3b82f6;
+    }
+    
+    .contact-icon-wechat {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--color-success);
+    }
+    
+    .contact-info h4 {
+      font-size: var(--text-small);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-1);
+    }
+    
+    .contact-info p {
+      font-size: var(--text-body);
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+    
+    /* Contact Form */
+    .form-group {
+      margin-bottom: var(--space-4);
+    }
+    
+    .form-label {
+      display: block;
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-2);
+    }
+    
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: rgba(18, 18, 26, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 0.875rem 1rem;
+      color: var(--color-text-primary);
+      font-size: var(--text-body);
+      transition: all var(--duration-fast) var(--ease-out-expo);
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--color-accent-cyan);
+      box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+    }
+    
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    /* Decorative Elements */
+    .decoration-circle {
+      position: absolute;
+      border-radius: var(--radius-full);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .decoration-circle-1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(0, 212, 255, 0.1);
+      top: 10%;
+      right: -10%;
+    }
+    
+    .decoration-circle-2 {
+      width: 300px;
+      height: 300px;
+      background: rgba(168, 85, 247, 0.1);
+      bottom: 20%;
+      left: -5%;
+    }
+    
+    /* Section Title */
+    .section-title-wrapper {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+    
+    .section-subtitle {
+      font-size: var(--text-small);
+      color: var(--color-accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-2);
+    }
+    
+    .section-title {
+      font-size: var(--text-h2);
+      margin-bottom: var(--space-4);
+    }
+    
+    .section-description {
+      font-size: var(--text-body);
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header id="main-nav" class="nav-header">
+    <div class="container">
+      <nav class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+            <i data-lucide="star" class="w-5 h-5 text-white"></i>
+          </div>
+          <span class="text-xl font-bold font-display">星辰社区</span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="../index.html" class="nav-link" data-nav="index">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span>首页</span>
+          </a>
+          <a href="./about.html" class="nav-link active" data-nav="about">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            <span>关于我们</span>
+          </a>
+          <a href="./kols.html" class="nav-link" data-nav="kols">
+            <i data-lucide="star" class="w-4 h-4"></i>
+            <span>KOL列表</span>
+          </a>
+          <a href="./pricing.html" class="nav-link" data-nav="pricing">
+            <i data-lucide="crown" class="w-4 h-4"></i>
+            <span>订阅计划</span>
+          </a>
+          <a href="./faq.html" class="nav-link" data-nav="faq">
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
+            <span>常见问题</span>
+          </a>
+          <a href="./news.html" class="nav-link" data-nav="news">
+            <i data-lucide="newspaper" class="w-4 h-4"></i>
+            <span>最新动态</span>
+          </a>
+        </div>
+        
+        <!-- Social Links & CTA -->
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="social-icon">
+            <i data-lucide="twitter" class="w-4 h-4"></i>
+          </a>
+          <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="social-icon">
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </a>
+          <a href="./pricing.html" class="btn btn-primary text-sm">
+            <span>立即加入</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-white">
+          <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="flex justify-between items-center mb-8">
+      <span class="text-xl font-bold">菜单</span>
+      <button id="mobile-menu-close" class="p-2 text-white">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-2">
+      <a href="../index.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="index">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>首页</span>
+      </a>
+      <a href="./about.html" class="flex items-center gap-3 p-3 rounded-lg bg-white/10" data-nav="about">
+        <i data-lucide="users" class="w-5 h-5"></i>
+        <span>关于我们</span>
+      </a>
+      <a href="./kols.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="kols">
+        <i data-lucide="star" class="w-5 h-5"></i>
+        <span>KOL列表</span>
+      </a>
+      <a href="./pricing.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="pricing">
+        <i data-lucide="crown" class="w-5 h-5"></i>
+        <span>订阅计划</span>
+      </a>
+      <a href="./faq.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="faq">
+        <i data-lucide="help-circle" class="w-5 h-5"></i>
+        <span>常见问题</span>
+      </a>
+      <a href="./news.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="news">
+        <i data-lucide="newspaper" class="w-5 h-5"></i>
+        <span>最新动态</span>
+      </a>
+    </nav>
+    <div class="mt-8 pt-8 border-t border-white/10">
+      <p class="text-sm text-gray-400 mb-4">关注我们</p>
+      <div class="flex gap-3">
+        <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <i data-lucide="twitter" class="w-5 h-5"></i>
+        </a>
+        <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="social-icon">
+          <i data-lucide="send" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="about-hero particle-container">
+      <div class="container text-center relative z-10">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb justify-center mb-6 reveal" data-reveal-delay="0">
+          <a href="../index.html">首页</a>
+          <i data-lucide="chevron-right" class="w-4 h-4 breadcrumb-separator"></i>
+          <span class="breadcrumb-current">关于我们</span>
+        </nav>
+        
+        <!-- Title -->
+        <h1 class="text-h1 mb-4 reveal" data-reveal-delay="100">
+          <span class="text-gradient">关于星辰社区</span>
+        </h1>
+        
+        <!-- Subtitle -->
+        <p class="text-xl text-secondary max-w-2xl mx-auto reveal" data-reveal-delay="200">
+          了解星辰社区的使命、愿景和团队
+        </p>
+      </div>
+      
+      <!-- Decorative Elements -->
+      <div class="decoration-circle decoration-circle-1"></div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="section mission-vision-section relative">
+      <div class="decoration-circle decoration-circle-2"></div>
+      
+      <div class="container">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Mission Card -->
+          <div class="mission-card reveal" data-reveal-delay="0">
+            <div class="icon-circle icon-circle-cyan">
+              <i data-lucide="target" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-h3 mb-4">我们的使命</h3>
+            <p class="text-secondary leading-relaxed">
+              星辰社区致力于为全球加密货币投资者提供最优质的信号聚合服务，通过整合全球200+顶级KOL和分析师的专业见解，帮助用户在复杂多变的加密市场中做出明智的投资决策。
+            </p>
+            <div class="mt-6 flex items-center gap-2 text-accent-cyan">
+              <i data-lucide="check-circle" class="w-5 h-5"></i>
+              <span class="text-sm">专业筛选 · 实时同步 · 数据驱动</span>
+            </div>
+          </div>
+          
+          <!-- Vision Card -->
+          <div class="vision-card reveal" data-reveal-delay="100">
+            <div class="icon-circle icon-circle-purple">
+              <i data-lucide="eye" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-h3 mb-4">我们的愿景</h3>
+            <p class="text-secondary leading-relaxed">
+              成为全球最值得信赖的加密货币信号聚合平台，为每一位用户构建通往财富自由的桥梁。我们相信，通过汇聚全球顶尖交易员的智慧，每个人都能在加密市场中找到属于自己的机会。
+            </p>
+            <div class="mt-6 flex items-center gap-2 text-accent-purple">
+              <i data-lucide="globe" class="w-5 h-5"></i>
+              <span class="text-sm">全球视野 · 本地服务 · 持续创新</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Advantages Section -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-title-wrapper reveal">
+          <p class="section-subtitle">为什么选择我们</p>
+          <h2 class="section-title text-gradient">核心优势</h2>
+          <p class="section-description">
+            星辰社区凭借专业的筛选机制、先进的技术架构和优质的用户服务，为您提供无与伦比的信号聚合体验
+          </p>
+        </div>
+        
+        <!-- Advantage Cards Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Advantage 1 -->
+          <div class="advantage-card reveal" data-reveal-delay="0">
+            <div class="advantage-icon advantage-icon-1">
+              <i data-lucide="filter" class="w-7 h-7"></i>
+            </div>
+            <h4 class="text-h5 mb-3">专业筛选</h4>
+            <p class="text-secondary text-sm leading-relaxed">
+              严格的KOL筛选机制，多维度评估体系，确保每位入驻博主都具备真实可靠的交易实力
+            </p>
+          </div>
+          
+          <!-- Advantage 2 -->
+          <div class="advantage-card reveal" data-reveal-delay="100">
+            <div class="advantage-icon advantage-icon-2">
+              <i data-lucide="refresh-cw" class="w-7 h-7"></i>
+            </div>
+            <h4 class="text-h5 mb-3">实时同步</h4>
+            <p class="text-secondary text-sm leading-relaxed">
+              毫秒级信号转发，7×24小时不间断服务，让您第一时间获取市场机会
+            </p>
+          </div>
+          
+          <!-- Advantage 3 -->
+          <div class="advantage-card reveal" data-reveal-delay="200">
+            <div class="advantage-icon advantage-icon-3">
+              <i data-lucide="layers" class="w-7 h-7"></i>
+            </div>
+            <h4 class="text-h5 mb-3">多平台支持</h4>
+            <p class="text-secondary text-sm leading-relaxed">
+              Discord、Telegram、飞书三大平台全覆盖，智能翻译打破语言障碍
+            </p>
+          </div>
+          
+          <!-- Advantage 4 -->
+          <div class="advantage-card reveal" data-reveal-delay="300">
+            <div class="advantage-icon advantage-icon-4">
+              <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
+            </div>
+            <h4 class="text-h5 mb-3">数据驱动</h4>
+            <p class="text-secondary text-sm leading-relaxed">
+              基于历史表现数据的动态调整机制，持续优化信号质量和推荐策略
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section relative">
+      <div class="decoration-circle decoration-circle-1" style="top: 30%; left: -10%;"></div>
+      
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-title-wrapper reveal">
+          <p class="section-subtitle">认识我们</p>
+          <h2 class="section-title text-gradient">团队介绍</h2>
+          <p class="section-description">
+            星辰社区由一群在加密货币领域深耕多年的专业人士组成，我们拥有丰富的市场经验和技术实力，致力于为用户提供最专业的服务
+          </p>
+        </div>
+        
+        <!-- Team Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Team Member 1 -->
+          <div class="team-card reveal" data-reveal-delay="0">
+            <div class="team-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=founder1&backgroundColor=b6e3f4" alt="创始人">
+            </div>
+            <h4 class="text-h5 mb-1">星辰</h4>
+            <p class="text-accent-cyan text-sm mb-2">创始人 & CEO</p>
+            <p class="text-secondary text-sm">8年加密货币投资经验，前知名交易所高级分析师</p>
+            <div class="team-social">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="twitter" class="w-4 h-4"></i>
+              </a>
+              <a href="https://t.me" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="linkedin" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Team Member 2 -->
+          <div class="team-card reveal" data-reveal-delay="100">
+            <div class="team-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=cto1&backgroundColor=c0aede" alt="技术总监">
+            </div>
+            <h4 class="text-h5 mb-1">凌云</h4>
+            <p class="text-accent-purple text-sm mb-2">技术总监</p>
+            <p class="text-secondary text-sm">全栈开发专家，专注于高频交易系统架构设计</p>
+            <div class="team-social">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="twitter" class="w-4 h-4"></i>
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="github" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Team Member 3 -->
+          <div class="team-card reveal" data-reveal-delay="200">
+            <div class="team-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=analyst1&backgroundColor=ffd5dc" alt="首席分析师">
+            </div>
+            <h4 class="text-h5 mb-1">明月</h4>
+            <p class="text-accent-gold text-sm mb-2">首席分析师</p>
+            <p class="text-secondary text-sm">量化交易专家，精通多种技术分析方法和策略</p>
+            <div class="team-social">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="twitter" class="w-4 h-4"></i>
+              </a>
+              <a href="https://t.me" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Team Member 4 -->
+          <div class="team-card reveal" data-reveal-delay="300">
+            <div class="team-avatar">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ops1&backgroundColor=d1f4e0" alt="运营总监">
+            </div>
+            <h4 class="text-h5 mb-1">晓风</h4>
+            <p class="text-accent-pink text-sm mb-2">运营总监</p>
+            <p class="text-secondary text-sm">社区运营专家，负责用户服务和社区生态建设</p>
+            <div class="team-social">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="twitter" class="w-4 h-4"></i>
+              </a>
+              <a href="https://t.me" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-title-wrapper reveal">
+          <p class="section-subtitle">随时联系</p>
+          <h2 class="section-title text-gradient">联系我们</h2>
+          <p class="section-description">
+            有任何问题或建议？我们随时为您服务，期待与您的交流
+          </p>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Contact Info -->
+          <div class="contact-card reveal" data-reveal-delay="0">
+            <h3 class="text-h4 mb-6">联系方式</h3>
+            
+            <div class="space-y-4">
+              <!-- Telegram -->
+              <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <div class="contact-icon contact-icon-telegram">
+                  <i data-lucide="send" class="w-6 h-6"></i>
+                </div>
+                <div class="contact-info">
+                  <h4>Telegram</h4>
+                  <p>@xcsqme</p>
+                </div>
+                <i data-lucide="external-link" class="w-5 h-5 text-muted ml-auto"></i>
+              </a>
+              
+              <!-- Twitter/X -->
+              <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <div class="contact-icon contact-icon-twitter">
+                  <i data-lucide="twitter" class="w-6 h-6"></i>
+                </div>
+                <div class="contact-info">
+                  <h4>Twitter/X</h4>
+                  <p>@XCSQbtc</p>
+                </div>
+                <i data-lucide="external-link" class="w-5 h-5 text-muted ml-auto"></i>
+              </a>
+              
+              <!-- WeChat -->
+              <div class="contact-item cursor-pointer" onclick="copyToClipboard('xcsqme') && showToast('微信号已复制', 'success')">
+                <div class="contact-icon contact-icon-wechat">
+                  <i data-lucide="message-circle" class="w-6 h-6"></i>
+                </div>
+                <div class="contact-info">
+                  <h4>微信客服</h4>
+                  <p>xcsqme</p>
+                </div>
+                <i data-lucide="copy" class="w-5 h-5 text-muted ml-auto"></i>
+              </div>
+            </div>
+            
+            <div class="mt-8 p-4 rounded-lg bg-white/5">
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-sm text-secondary">平均响应时间：&lt; 2小时</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contact Form -->
+          <div class="contact-card reveal" data-reveal-delay="100">
+            <h3 class="text-h4 mb-6">发送消息</h3>
+            
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+              <div class="form-group">
+                <label class="form-label">您的姓名</label>
+                <input type="text" class="form-input" placeholder="请输入您的姓名" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">联系邮箱</label>
+                <input type="email" class="form-input" placeholder="请输入您的邮箱" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">消息内容</label>
+                <textarea class="form-textarea" placeholder="请输入您想咨询的问题或建议..." required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary w-full">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>发送消息</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <!-- Brand -->
+        <div>
+          <a href="../index.html" class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+              <i data-lucide="star" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="text-xl font-bold font-display">星辰社区</span>
+          </a>
+          <p class="text-secondary text-sm mb-4">
+            全球领先的加密货币信号聚合平台，汇聚200+顶级KOL智慧
+          </p>
+          <div class="flex gap-3">
+            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-h5 mb-4">快速链接</h4>
+          <ul class="space-y-2">
+            <li><a href="../index.html" class="footer-link text-sm">首页</a></li>
+            <li><a href="./about.html" class="footer-link text-sm">关于我们</a></li>
+            <li><a href="./kols.html" class="footer-link text-sm">KOL列表</a></li>
+            <li><a href="./pricing.html" class="footer-link text-sm">订阅计划</a></li>
+          </ul>
+        </div>
+        
+        <!-- Support -->
+        <div>
+          <h4 class="text-h5 mb-4">支持</h4>
+          <ul class="space-y-2">
+            <li><a href="./faq.html" class="footer-link text-sm">常见问题</a></li>
+            <li><a href="./about.html#contact" class="footer-link text-sm">联系我们</a></li>
+            <li><a href="#" class="footer-link text-sm">服务条款</a></li>
+            <li><a href="#" class="footer-link text-sm">隐私政策</a></li>
+          </ul>
+        </div>
+        
+        <!-- Community -->
+        <div>
+          <h4 class="text-h5 mb-4">社区</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="footer-link text-sm flex items-center gap-2">
+                <i data-lucide="twitter" class="w-4 h-4"></i>
+                <span>Twitter/X</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="footer-link text-sm flex items-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Telegram</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link text-sm flex items-center gap-2">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Discord</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-muted text-sm">
+          &copy; 2024 星辰社区 (Star Community). All rights reserved.
+        </p>
+        <p class="text-muted text-sm">
+          XCSQ - 让交易更简单
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center shadow-lg hover:shadow-glow-cyan transition-all duration-300 z-50">
+    <i data-lucide="chevron-up" class="w-5 h-5 text-white"></i>
+  </button>
+
+  <!-- Shared Scripts -->
+  <script src="../shared/scripts.js"></script>
+  
+  <script>
+    // Initialize GSAP ScrollTrigger
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+    
+    // Contact form handler
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      showToast('消息已发送，我们会尽快回复您！', 'success');
+      event.target.reset();
+    }
+    
+    // Copy to clipboard function
+    async function copyToClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (err) {
+        console.error('Failed to copy:', err);
+        return false;
+      }
+    }
+    
+    // Show toast notification
+    function showToast(message, type = 'info', duration = 3000) {
+      // Remove existing toasts
+      const existingToast = document.querySelector('.toast-notification');
+      if (existingToast) existingToast.remove();
+
+      // Create toast element
+      const toast = document.createElement('div');
+      toast.className = `toast-notification fixed bottom-4 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-y-full opacity-0 transition-all duration-300`;
+      
+      // Set color based on type
+      const colors = {
+        info: 'bg-blue-500',
+        success: 'bg-green-500',
+        warning: 'bg-yellow-500',
+        error: 'bg-red-500'
+      };
+      toast.classList.add(colors[type] || colors.info);
+      
+      toast.innerHTML = `
+        <div class="flex items-center gap-2">
+          <i data-lucide="${type === 'success' ? 'check-circle' : type === 'error' ? 'x-circle' : 'info'}"></i>
+          <span>${message}</span>
+        </div>
+      `;
+      
+      document.body.appendChild(toast);
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      // Animate in
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-full', 'opacity-0');
+      });
+
+      // Remove after duration
+      setTimeout(() => {
+        toast.classList.add('translate-y-full', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, duration);
+    }
+    
+    // Re-initialize icons after page load
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+      
+      // Add stagger animation to advantage cards
+      const advantageCards = document.querySelectorAll('.advantage-card');
+      advantageCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 100}ms`;
+      });
+      
+      // Add stagger animation to team cards
+      const teamCards = document.querySelectorAll('.team-card');
+      teamCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 100}ms`;
+      });
+    });
+  </script>
+</body>
+</html>

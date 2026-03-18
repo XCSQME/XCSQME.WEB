@@ -5,9 +5,39 @@
  */
 
 // ========================================
+// 0. PAGE LOADER
+// ========================================
+function initPageLoader() {
+  const loader = document.getElementById('pageLoader');
+  if (!loader) return;
+  
+  // Hide loader after page load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      loader.classList.add('hidden');
+      // Remove from DOM after animation
+      setTimeout(() => {
+        loader.remove();
+      }, 500);
+    }, 1500); // Show for at least 1.5 seconds
+  });
+  
+  // Fallback: hide after 3 seconds max
+  setTimeout(() => {
+    if (loader && !loader.classList.contains('hidden')) {
+      loader.classList.add('hidden');
+      setTimeout(() => loader.remove(), 500);
+    }
+  }, 3000);
+}
+
+// ========================================
 // 1. LUCIDE ICONS INITIALIZATION
 // ========================================
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize page loader first
+  initPageLoader();
+  
   // Initialize Lucide icons
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();

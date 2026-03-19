@@ -998,16 +998,16 @@
     let isAutoplay = false;
     let currentCategory = 'all';
     
-    // Spiral configuration
+    // Spiral configuration - 优化后更精致的螺旋
     const spiralConfig = {
-      radius: 280,
-      height: 1800,
-      cardsPerRotation: 10,
-      cardWidth: 160,
-      cardHeight: 200,
-      cardDepth: 8,
+      radius: 180,
+      height: 1200,
+      cardsPerRotation: 16,
+      cardWidth: 80,
+      cardHeight: 100,
+      cardDepth: 4,
       scrollSpeed: 0.001,
-      rotationSpeed: 0.002
+      rotationSpeed: 0.001
     };
     
     function initThreeJS() {
@@ -1020,7 +1020,7 @@
       
       // Camera
       camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 2000);
-      camera.position.set(0, 0, 500);
+      camera.position.set(0, 0, 350);
       
       // Renderer
       renderer = new THREE.WebGLRenderer({ 
@@ -1174,91 +1174,78 @@
     
     function createCardTexture(kol, color) {
       const canvas = document.createElement('canvas');
-      canvas.width = 512;
-      canvas.height = 640;
+      canvas.width = 256;
+      canvas.height = 320;
       const ctx = canvas.getContext('2d');
       
       // Background gradient
-      const gradient = ctx.createLinearGradient(0, 0, 512, 640);
+      const gradient = ctx.createLinearGradient(0, 0, 256, 320);
       gradient.addColorStop(0, '#12121a');
       gradient.addColorStop(1, '#1a1a25');
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 512, 640);
+      ctx.fillRect(0, 0, 256, 320);
       
       // Border
       ctx.strokeStyle = '#' + color.toString(16).padStart(6, '0');
-      ctx.lineWidth = 4;
-      ctx.strokeRect(2, 2, 508, 636);
+      ctx.lineWidth = 2;
+      ctx.strokeRect(1, 1, 254, 318);
       
       // Inner glow
-      const innerGradient = ctx.createRadialGradient(256, 200, 0, 256, 200, 150);
+      const innerGradient = ctx.createRadialGradient(128, 100, 0, 128, 100, 75);
       innerGradient.addColorStop(0, 'rgba(0, 212, 255, 0.1)');
       innerGradient.addColorStop(1, 'transparent');
       ctx.fillStyle = innerGradient;
-      ctx.fillRect(20, 20, 472, 300);
+      ctx.fillRect(10, 10, 236, 150);
       
       // Avatar circle
       ctx.beginPath();
-      ctx.arc(256, 140, 80, 0, Math.PI * 2);
+      ctx.arc(128, 70, 40, 0, Math.PI * 2);
       ctx.fillStyle = '#1a1a25';
       ctx.fill();
       ctx.strokeStyle = '#' + color.toString(16).padStart(6, '0');
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 2;
       ctx.stroke();
       
       // Avatar placeholder (initials)
       ctx.fillStyle = '#' + color.toString(16).padStart(6, '0');
-      ctx.font = 'bold 48px Arial';
+      ctx.font = 'bold 24px Arial';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       const initials = kol.name.charAt(0);
-      ctx.fillText(initials, 256, 140);
+      ctx.fillText(initials, 128, 70);
       
       // Flag
-      ctx.font = '36px Arial';
-      ctx.fillText(kol.flag, 360, 80);
+      ctx.font = '18px Arial';
+      ctx.fillText(kol.flag, 180, 40);
       
       // Name
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 32px "Noto Sans SC", Arial';
-      ctx.fillText(kol.name, 256, 280);
+      ctx.font = 'bold 16px "Noto Sans SC", Arial';
+      ctx.fillText(kol.name, 128, 140);
       
-      // Description
+      // Description - 简化为短文本
       ctx.fillStyle = '#a1a1aa';
-      ctx.font = '20px "Noto Sans SC", Arial';
-      const words = kol.desc.split('');
-      let line = '';
-      let y = 340;
-      for (let i = 0; i < words.length; i++) {
-        const testLine = line + words[i];
-        const metrics = ctx.measureText(testLine);
-        if (metrics.width > 440 && i > 0) {
-          ctx.fillText(line, 256, y);
-          line = words[i];
-          y += 30;
-        } else {
-          line = testLine;
-        }
-      }
-      ctx.fillText(line, 256, y);
+      ctx.font = '11px "Noto Sans SC", Arial';
+      const shortDesc = kol.desc.length > 20 ? kol.desc.substring(0, 20) + '...' : kol.desc;
+      ctx.fillText(shortDesc, 128, 165);
       
       // Stats
       ctx.fillStyle = '#' + color.toString(16).padStart(6, '0');
-      ctx.font = 'bold 24px Arial';
-      ctx.fillText(kol.signals, 120, 520);
-      ctx.fillText(kol.winrate, 256, 520);
-      ctx.fillText(kol.followers, 392, 520);
+      ctx.font = 'bold 12px Arial';
+      ctx.fillText(kol.signals, 60, 250);
+      ctx.fillText(kol.winrate, 128, 250);
+      ctx.fillText(kol.followers, 196, 250);
       
       ctx.fillStyle = '#71717a';
-      ctx.font = '16px Arial';
-      ctx.fillText('信号', 120, 550);
-      ctx.fillText('胜率', 256, 550);
-      ctx.fillText('关注', 392, 550);
+      ctx.font = '10px Arial';
+      ctx.fillText('信号', 60, 270);
+      ctx.fillText('胜率', 128, 270);
+      ctx.fillText('关注', 196, 270);
       
       // Click hint
       ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-      ctx.font = '14px Arial';
-      ctx.fillText('点击查看详情', 256, 600);
+      ctx.font = '9px Arial';
+      ctx.fillText('点击查看', 128, 300);
       
       const texture = new THREE.CanvasTexture(canvas);
       texture.needsUpdate = true;

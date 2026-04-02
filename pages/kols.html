@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../shared/styles.css">
   
   <style>
-    /* Page-specific styles */
+    /* Page-specific styles - Black+Gold 高端金融风 */
     .kols-page {
       min-height: 100vh;
       background: var(--color-bg-primary);
@@ -49,23 +49,24 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
       pointer-events: none;
     }
     
     .kols-hero-title {
       font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      background: var(--gradient-hero);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-weight: 600;
+      color: var(--color-text-primary);
       margin-bottom: 1rem;
       animation: fadeInUp 800ms var(--ease-out-expo) forwards;
     }
     
+    .kols-hero-title .highlight {
+      color: var(--color-gold-primary);
+    }
+    
     .kols-hero-subtitle {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       color: var(--color-text-secondary);
       margin-bottom: 2rem;
       animation: fadeInUp 800ms var(--ease-out-expo) 200ms forwards;
@@ -77,21 +78,21 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       margin-bottom: 3rem;
       animation: fadeInUp 800ms var(--ease-out-expo) 400ms forwards;
       opacity: 0;
     }
     
     .category-tab {
-      padding: 0.625rem 1.25rem;
-      border-radius: var(--radius-full);
-      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8125rem;
       font-weight: 500;
       cursor: pointer;
       transition: all var(--duration-normal) var(--ease-out-expo);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(18, 18, 26, 0.8);
+      border: 1px solid var(--color-border-subtle);
+      background: var(--color-bg-tertiary);
       color: var(--color-text-secondary);
       display: flex;
       align-items: center;
@@ -99,47 +100,14 @@
     }
     
     .category-tab:hover {
-      border-color: rgba(0, 212, 255, 0.5);
+      border-color: var(--color-border-hover);
       color: var(--color-text-primary);
-      transform: translateY(-2px);
     }
     
     .category-tab.active {
-      color: white;
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-    }
-    
-    .category-tab[data-category="all"].active {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-    
-    .category-tab[data-category="chinese"].active {
-      background: rgba(0, 212, 255, 0.2);
-      border-color: var(--color-accent-cyan);
-      box-shadow: var(--shadow-glow-cyan);
-    }
-    
-    .category-tab[data-category="international"].active {
-      background: rgba(168, 85, 247, 0.2);
-      border-color: var(--color-accent-purple);
-      box-shadow: var(--shadow-glow-purple);
-    }
-    
-    .category-tab[data-category="onchain"].active {
-      background: rgba(245, 158, 11, 0.2);
-      border-color: var(--color-accent-gold);
-      box-shadow: var(--shadow-glow-gold);
-    }
-    
-    .category-tab[data-category="utility"].active {
-      background: rgba(236, 72, 153, 0.2);
-      border-color: var(--color-accent-pink);
-    }
-    
-    .category-tab[data-category="ai"].active {
-      background: rgba(34, 197, 94, 0.2);
-      border-color: var(--color-success);
+      color: var(--color-gold-primary);
+      border-color: var(--color-gold-primary);
+      background: var(--color-gold-subtle);
     }
     
     /* 3D Spiral Container */
@@ -998,16 +966,16 @@
     let isAutoplay = false;
     let currentCategory = 'all';
     
-    // Spiral configuration
+    // Spiral configuration - 优化后的参数
     const spiralConfig = {
-      radius: 280,
-      height: 1800,
-      cardsPerRotation: 10,
-      cardWidth: 160,
-      cardHeight: 200,
-      cardDepth: 8,
-      scrollSpeed: 0.001,
-      rotationSpeed: 0.002
+      radius: 350,           // 增大半径，卡片间距更宽松
+      height: 2000,          // 增加高度
+      cardsPerRotation: 12,  // 每圈更多卡片，更明显的螺旋
+      cardWidth: 140,        // 卡片稍小
+      cardHeight: 180,
+      cardDepth: 4,          // 减薄卡片
+      scrollSpeed: 0.0008,   // 更平滑的滚动
+      rotationSpeed: 0.0015  // 更慢的自转
     };
     
     function initThreeJS() {
@@ -1109,15 +1077,15 @@
     function createCard(kol, index) {
       const group = new THREE.Group();
       
-      // Card colors based on category
+      // Card colors - 统一使用金色系
       const categoryColors = {
-        chinese: 0x00d4ff,
-        international: 0xa855f7,
-        onchain: 0xf59e0b,
-        utility: 0xec4899,
-        ai: 0x22c55e
+        chinese: 0xD4AF37,
+        international: 0xD4AF37,
+        onchain: 0xD4AF37,
+        utility: 0xD4AF37,
+        ai: 0xD4AF37
       };
-      const color = categoryColors[kol.category] || 0x00d4ff;
+      const color = categoryColors[kol.category] || 0xD4AF37;
       
       // Card geometry
       const geometry = new THREE.BoxGeometry(
@@ -1178,87 +1146,130 @@
       canvas.height = 640;
       const ctx = canvas.getContext('2d');
       
-      // Background gradient
-      const gradient = ctx.createLinearGradient(0, 0, 512, 640);
-      gradient.addColorStop(0, '#12121a');
-      gradient.addColorStop(1, '#1a1a25');
-      ctx.fillStyle = gradient;
+      // Background - 深黑
+      ctx.fillStyle = '#111111';
       ctx.fillRect(0, 0, 512, 640);
       
-      // Border
-      ctx.strokeStyle = '#' + color.toString(16).padStart(6, '0');
-      ctx.lineWidth = 4;
-      ctx.strokeRect(2, 2, 508, 636);
+      // 顶部金色细线
+      ctx.fillStyle = '#D4AF37';
+      ctx.fillRect(0, 0, 512, 3);
       
-      // Inner glow
-      const innerGradient = ctx.createRadialGradient(256, 200, 0, 256, 200, 150);
-      innerGradient.addColorStop(0, 'rgba(0, 212, 255, 0.1)');
-      innerGradient.addColorStop(1, 'transparent');
-      ctx.fillStyle = innerGradient;
-      ctx.fillRect(20, 20, 472, 300);
+      // Border - 细边框
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(1, 1, 510, 638);
       
-      // Avatar circle
+      // Avatar circle - 金色边框
       ctx.beginPath();
-      ctx.arc(256, 140, 80, 0, Math.PI * 2);
-      ctx.fillStyle = '#1a1a25';
+      ctx.arc(256, 120, 70, 0, Math.PI * 2);
+      ctx.fillStyle = '#1a1a1a';
       ctx.fill();
-      ctx.strokeStyle = '#' + color.toString(16).padStart(6, '0');
-      ctx.lineWidth = 3;
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 2;
       ctx.stroke();
       
-      // Avatar placeholder (initials)
-      ctx.fillStyle = '#' + color.toString(16).padStart(6, '0');
-      ctx.font = 'bold 48px Arial';
+      // Avatar placeholder (initials) - 金色
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = 'bold 42px Arial';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       const initials = kol.name.charAt(0);
-      ctx.fillText(initials, 256, 140);
+      ctx.fillText(initials, 256, 120);
       
-      // Flag
-      ctx.font = '36px Arial';
-      ctx.fillText(kol.flag, 360, 80);
+      // Flag - 右上角
+      ctx.font = '32px Arial';
+      ctx.fillText(kol.flag, 420, 50);
       
-      // Name
+      // Name - 白色粗体
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 32px "Noto Sans SC", Arial';
-      ctx.fillText(kol.name, 256, 280);
+      ctx.font = 'bold 28px "Noto Sans SC", Arial';
+      ctx.fillText(kol.name, 256, 240);
       
-      // Description
-      ctx.fillStyle = '#a1a1aa';
-      ctx.font = '20px "Noto Sans SC", Arial';
-      const words = kol.desc.split('');
+      // Category badge
+      ctx.font = '12px Arial';
+      const categoryNames = {
+        chinese: '华语二级',
+        international: '国际二级',
+        onchain: '一级链上',
+        utility: '辅助功能',
+        ai: 'AI资讯'
+      };
+      const badgeText = categoryNames[kol.category] || kol.category;
+      const badgeWidth = ctx.measureText(badgeText).width + 16;
+      
+      ctx.fillStyle = 'rgba(212, 175, 55, 0.15)';
+      ctx.beginPath();
+      ctx.roundRect(256 - badgeWidth/2, 260, badgeWidth, 24, 12);
+      ctx.fill();
+      
+      ctx.fillStyle = '#D4AF37';
+      ctx.fillText(badgeText, 256, 274);
+      
+      // Description - 灰色，限制行数
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+      ctx.font = '16px "Noto Sans SC", Arial';
+      const maxWidth = 400;
+      const lineHeight = 24;
+      let y = 320;
       let line = '';
-      let y = 340;
-      for (let i = 0; i < words.length; i++) {
-        const testLine = line + words[i];
+      let lineCount = 0;
+      const maxLines = 2;
+      
+      for (let i = 0; i < kol.desc.length && lineCount < maxLines; i++) {
+        const testLine = line + kol.desc[i];
         const metrics = ctx.measureText(testLine);
-        if (metrics.width > 440 && i > 0) {
+        if (metrics.width > maxWidth && i > 0) {
           ctx.fillText(line, 256, y);
-          line = words[i];
-          y += 30;
+          line = kol.desc[i];
+          y += lineHeight;
+          lineCount++;
         } else {
           line = testLine;
         }
       }
-      ctx.fillText(line, 256, y);
+      if (lineCount < maxLines) {
+        ctx.fillText(line, 256, y);
+      }
       
-      // Stats
-      ctx.fillStyle = '#' + color.toString(16).padStart(6, '0');
-      ctx.font = 'bold 24px Arial';
-      ctx.fillText(kol.signals, 120, 520);
-      ctx.fillText(kol.winrate, 256, 520);
-      ctx.fillText(kol.followers, 392, 520);
+      // 分隔线
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(60, 400);
+      ctx.lineTo(452, 400);
+      ctx.stroke();
       
-      ctx.fillStyle = '#71717a';
-      ctx.font = '16px Arial';
-      ctx.fillText('信号', 120, 550);
-      ctx.fillText('胜率', 256, 550);
-      ctx.fillText('关注', 392, 550);
+      // Stats - 三列布局
+      const statsY = 480;
       
-      // Click hint
+      // 信号数
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = 'bold 28px Arial';
+      ctx.fillText(kol.signals, 100, statsY);
       ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-      ctx.font = '14px Arial';
-      ctx.fillText('点击查看详情', 256, 600);
+      ctx.font = '12px Arial';
+      ctx.fillText('月信号', 100, statsY + 20);
+      
+      // 胜率
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = 'bold 28px Arial';
+      ctx.fillText(kol.winrate, 256, statsY);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.font = '12px Arial';
+      ctx.fillText('胜率', 256, statsY + 20);
+      
+      // 关注者
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = 'bold 28px Arial';
+      ctx.fillText(kol.followers, 412, statsY);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.font = '12px Arial';
+      ctx.fillText('关注', 412, statsY + 20);
+      
+      // 底部提示
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.font = '12px Arial';
+      ctx.fillText('点击查看详情', 256, 580);
       
       const texture = new THREE.CanvasTexture(canvas);
       texture.needsUpdate = true;

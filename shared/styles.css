@@ -1,58 +1,70 @@
 /**
- * 星辰社区 (Star Community) - Global Styles
+ * 星辰社区 (Star Community) - 高端金融风格 Design System v2
  * ==========================================
- * CSS Variables, Reset, Utilities, and Animations
- * Based on Design.md specifications
+ * 风格定位: 黑金奢华 + 克制极简 + 专业金融
+ * 参考: Bloomberg Terminal / Stripe / Linear / Figma
  */
 
 /* ========================================
-   1. CSS VARIABLES
+   1. CSS VARIABLES - 高端配色系统
    ======================================== */
 :root {
-  /* Primary Colors */
-  --color-bg-primary: #0a0a0f;
-  --color-bg-secondary: #12121a;
-  --color-bg-tertiary: #1a1a25;
-  --color-accent-cyan: #00d4ff;
-  --color-accent-purple: #a855f7;
-  --color-accent-gold: #f59e0b;
-  --color-accent-pink: #ec4899;
-
-  /* Text Colors */
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted: #71717a;
-  --color-text-accent: #00d4ff;
-
-  /* Semantic Colors */
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
-
-  /* Gradients */
-  --gradient-hero: linear-gradient(135deg, #00d4ff 0%, #a855f7 50%, #ec4899 100%);
-  --gradient-card: linear-gradient(145deg, rgba(0,212,255,0.1) 0%, rgba(168,85,247,0.1) 100%);
-  --gradient-glow: radial-gradient(circle, rgba(0,212,255,0.3) 0%, transparent 70%);
-  --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #f59e0b 100%);
-
-  /* Typography */
+  /* === 核心色系 - 黑金风格 === */
+  --color-bg-primary: #0a0a0a;       /* 深邃纯黑 */
+  --color-bg-secondary: #111111;     /* 次级黑 */
+  --color-bg-tertiary: #1a1a1a;      /* 三级黑 - 卡片背景 */
+  --color-bg-elevated: #1f1f1f;      /* 悬浮态 */
+  
+  /* === 金色强调系 === */
+  --color-gold-primary: #D4AF37;     /* 典雅金 */
+  --color-gold-light: #E5C158;       /* 亮金 */
+  --color-gold-dark: #B8960C;        /* 暗金 */
+  --color-gold-subtle: rgba(212, 175, 55, 0.1); /* 淡金背景 */
+  
+  /* === 青色辅助系（仅用点缀）=== */
+  --color-accent-cyan: #00A8E8;      /* 降饱和青 */
+  --color-accent-cyan-subtle: rgba(0, 168, 232, 0.08);
+  
+  /* === 语义色 - 克制使用 === */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  
+  /* === 文字色系 - 高对比层级 === */
+  --color-text-primary: #FFFFFF;           /* 纯白标题 */
+  --color-text-secondary: rgba(255, 255, 255, 0.7);   /* 次级文字 */
+  --color-text-muted: rgba(255, 255, 255, 0.5);       /* 辅助文字 */
+  --color-text-subtle: rgba(255, 255, 255, 0.3);      /* 极淡文字 */
+  
+  /* === 边框色系 === */
+  --color-border-primary: rgba(212, 175, 55, 0.3);    /* 金色边框 */
+  --color-border-subtle: rgba(255, 255, 255, 0.08);   /* 极淡边框 */
+  --color-border-hover: rgba(212, 175, 55, 0.5);      /* 悬浮边框 */
+  
+  /* === 渐变系统 === */
+  --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+  --gradient-gold-subtle: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(244, 208, 63, 0.1) 100%);
+  --gradient-dark: linear-gradient(180deg, #111111 0%, #0a0a0a 100%);
+  --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  --gradient-hero: linear-gradient(180deg, transparent 0%, #0a0a0a 100%);
+  
+  /* === 字体系统 === */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   --font-chinese: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-
-  /* Type Scale */
-  --text-h1: 4rem;
-  --text-h2: 3rem;
-  --text-h3: 2rem;
-  --text-h4: 1.5rem;
-  --text-h5: 1.25rem;
-  --text-body: 1rem;
-  --text-small: 0.875rem;
-  --text-xsmall: 0.75rem;
-
-  /* Spacing */
+  
+  /* === 字号系统 - 更克制的比例 === */
+  --text-h1: clamp(2.5rem, 5vw, 4rem);      /* Hero 标题 */
+  --text-h2: clamp(1.75rem, 3vw, 2.5rem);   /* 章节标题 */
+  --text-h3: clamp(1.25rem, 2vw, 1.5rem);   /* 卡片标题 */
+  --text-h4: 1.125rem;                       /* 小标题 */
+  --text-body: 1rem;                         /* 正文 */
+  --text-small: 0.875rem;                    /* 小字 */
+  --text-xsmall: 0.75rem;                    /* 极小字 */
+  --text-label: 0.6875rem;                   /* 标签 */
+  
+  /* === 间距系统 - 更大气 === */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -63,65 +75,53 @@
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
-
-  /* Border Radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  --space-32: 8rem;
+  
+  /* === 圆角系统 - 更克制 === */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
   --radius-full: 9999px;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
-  --shadow-glow-cyan: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.3);
-  --shadow-glow-purple: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
-  --shadow-glow-gold: 0 0 20px rgba(245, 158, 11, 0.5), 0 0 40px rgba(245, 158, 11, 0.3);
-
-  /* Glassmorphism */
-  --glass-bg: rgba(18, 18, 26, 0.7);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-  --glass-backdrop: blur(20px) saturate(180%);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-
-  /* Animation Timing */
+  
+  /* === 阴影系统 - 克制使用 === */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-gold: 0 0 30px rgba(212, 175, 55, 0.15);
+  --shadow-gold-strong: 0 0 40px rgba(212, 175, 55, 0.25);
+  
+  /* === 玻璃态 - 极克制使用 === */
+  --glass-bg: rgba(17, 17, 17, 0.8);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.06);
+  --glass-backdrop: blur(20px) saturate(150%);
+  
+  /* === 动画曲线 === */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-  /* Animation Duration */
+  
+  /* === 动画时长 === */
   --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 500ms;
-  --duration-slower: 800ms;
-
-  /* Particle System */
-  --particle-count: 150;
-  --particle-size-min: 1;
-  --particle-size-max: 3;
-  --particle-color-1: #ffffff;
-  --particle-color-2: #00d4ff;
-  --particle-color-3: #a855f7;
-  --particle-opacity-min: 0.3;
-  --particle-opacity-max: 0.8;
-  --connection-distance: 120;
-  --connection-opacity: 0.15;
-  --connection-color: #00d4ff;
-  --mouse-interaction-radius: 150;
-  --mouse-repel-force: 0.5;
-  --movement-speed: 0.3;
-  --twinkle-speed: 0.02;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
 }
 
 /* ========================================
-   2. BASE RESET (Specific selectors only)
+   2. BASE RESET
    ======================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
-  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -132,16 +132,16 @@ body {
   color: var(--color-text-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: var(--text-body);
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: var(--font-display), var(--font-chinese);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   color: var(--color-text-primary);
+  letter-spacing: -0.01em;
 }
 
 p {
@@ -155,7 +155,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-accent-cyan);
+  color: var(--color-gold-primary);
 }
 
 img {
@@ -170,6 +170,7 @@ button {
   border: none;
   background: none;
   padding: 0;
+  color: inherit;
 }
 
 ul, ol {
@@ -188,16 +189,15 @@ input, textarea, select {
    ======================================== */
 .text-h1 {
   font-size: var(--text-h1);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .text-h2 {
   font-size: var(--text-h2);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
-  letter-spacing: -0.01em;
 }
 
 .text-h3 {
@@ -212,33 +212,25 @@ input, textarea, select {
   line-height: 1.4;
 }
 
-.text-h5 {
-  font-size: var(--text-h5);
-  font-weight: 500;
-  line-height: 1.5;
-}
-
 .text-body {
   font-size: var(--text-body);
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .text-small {
   font-size: var(--text-small);
-  font-weight: 400;
   line-height: 1.5;
 }
 
 .text-xsmall {
   font-size: var(--text-xsmall);
-  font-weight: 400;
   line-height: 1.4;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 
-.text-gradient {
-  background: var(--gradient-hero);
+.text-gradient-gold {
+  background: var(--gradient-gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -247,148 +239,126 @@ input, textarea, select {
 .text-primary { color: var(--color-text-primary); }
 .text-secondary { color: var(--color-text-secondary); }
 .text-muted { color: var(--color-text-muted); }
-.text-accent { color: var(--color-accent-cyan); }
-.text-success { color: var(--color-success); }
-.text-warning { color: var(--color-warning); }
-.text-error { color: var(--color-error); }
+.text-subtle { color: var(--color-text-subtle); }
+.text-gold { color: var(--color-gold-primary); }
+.text-cyan { color: var(--color-accent-cyan); }
 
 .font-display { font-family: var(--font-display); }
 .font-mono { font-family: var(--font-mono); }
 
 /* ========================================
-   4. GLASSMORPHISM UTILITIES
+   4. GLASSMORPHISM - 极克制使用
    ======================================== */
 .glass {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
   border: var(--glass-border);
-  box-shadow: var(--glass-shadow);
 }
 
 .glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop);
-  -webkit-backdrop-filter: var(--glass-backdrop);
-  border: var(--glass-border);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   transition: all var(--duration-normal) var(--ease-out-expo);
 }
 
 .glass-card:hover {
-  border-color: rgba(0, 212, 255, 0.3);
-  transform: translateY(-4px);
+  border-color: var(--color-border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
 }
 
 /* ========================================
-   5. BUTTON STYLES
+   5. BUTTON STYLES - 高端金融风
    ======================================== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: 0.875rem 2rem;
+  padding: 0.75rem 1.5rem;
   border-radius: var(--radius-md);
-  font-weight: 600;
-  font-size: var(--text-body);
+  font-weight: 500;
+  font-size: var(--text-small);
   transition: all var(--duration-normal) var(--ease-out-expo);
   cursor: pointer;
+  letter-spacing: 0.01em;
 }
 
+/* 主按钮 - 金色 */
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
-  color: white;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  background: var(--gradient-gold);
+  color: #0a0a0a;
+  font-weight: 600;
 }
 
 .btn-primary:hover {
   filter: brightness(1.1);
-  box-shadow: var(--shadow-glow-cyan);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold-strong);
+  transform: translateY(-1px);
 }
 
+/* 次按钮 - 描边 */
 .btn-secondary {
   background: transparent;
-  border: 1px solid rgba(0, 212, 255, 0.5);
-  color: var(--color-accent-cyan);
+  border: 1px solid var(--color-gold-primary);
+  color: var(--color-gold-primary);
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 212, 255, 0.1);
-  border-color: var(--color-accent-cyan);
+  background: var(--color-gold-subtle);
+  box-shadow: var(--shadow-gold);
 }
 
+/* 幽灵按钮 */
 .btn-ghost {
   background: transparent;
-  color: var(--color-text-primary);
-  padding: var(--space-2) var(--space-4);
+  color: var(--color-text-secondary);
 }
 
 .btn-ghost:hover {
-  color: var(--color-accent-cyan);
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.btn-gold {
-  background: var(--gradient-gold);
-  color: #0a0a0f;
-  box-shadow: var(--shadow-glow-gold);
-}
-
-.btn-gold:hover {
-  filter: brightness(1.1);
-  transform: translateY(-2px);
+/* 大按钮 */
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: var(--text-body);
 }
 
 /* ========================================
    6. CARD STYLES
    ======================================== */
 .card {
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   transition: all var(--duration-normal) var(--ease-out-expo);
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-hover);
+  transform: translateY(-2px);
 }
 
+/* 特色卡片 */
 .feature-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop);
-  border: var(--glass-border);
-  border-left: 3px solid var(--color-accent-cyan);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border-subtle);
+  border-left: 2px solid var(--color-gold-primary);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   transition: all var(--duration-normal) var(--ease-out-expo);
 }
 
 .feature-card:hover {
-  border-color: rgba(0, 212, 255, 0.5);
-  box-shadow: var(--shadow-glow-cyan);
-  transform: translateY(-4px);
-}
-
-.pricing-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop);
-  border: 2px solid transparent;
-  border-radius: var(--radius-xl);
-  padding: var(--space-8);
-  position: relative;
-  transition: all var(--duration-normal) var(--ease-out-expo);
-}
-
-.pricing-card.featured {
-  border-image: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple)) 1;
-}
-
-.pricing-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-glow-cyan);
+  border-color: var(--color-border-hover);
+  border-left-color: var(--color-gold-light);
+  box-shadow: var(--shadow-gold);
 }
 
 /* ========================================
@@ -398,35 +368,29 @@ input, textarea, select {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  padding: var(--space-1) var(--space-3);
+  padding: 0.25rem 0.625rem;
   border-radius: var(--radius-full);
   font-size: var(--text-xsmall);
   font-weight: 500;
-}
-
-.badge-cyan {
-  background: rgba(0, 212, 255, 0.15);
-  color: var(--color-accent-cyan);
-}
-
-.badge-purple {
-  background: rgba(168, 85, 247, 0.15);
-  color: var(--color-accent-purple);
+  letter-spacing: 0.02em;
 }
 
 .badge-gold {
-  background: rgba(245, 158, 11, 0.15);
-  color: var(--color-accent-gold);
+  background: var(--color-gold-subtle);
+  color: var(--color-gold-primary);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-.badge-pink {
-  background: rgba(236, 72, 153, 0.15);
-  color: var(--color-accent-pink);
+.badge-cyan {
+  background: var(--color-accent-cyan-subtle);
+  color: var(--color-accent-cyan);
+  border: 1px solid rgba(0, 168, 232, 0.15);
 }
 
-.badge-success {
-  background: rgba(34, 197, 94, 0.15);
-  color: var(--color-success);
+.badge-subtle {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border-subtle);
 }
 
 /* ========================================
@@ -434,8 +398,8 @@ input, textarea, select {
    ======================================== */
 .input {
   width: 100%;
-  background: rgba(18, 18, 26, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-md);
   padding: 0.75rem 1rem;
   color: var(--color-text-primary);
@@ -445,258 +409,16 @@ input, textarea, select {
 
 .input:focus {
   outline: none;
-  border-color: var(--color-accent-cyan);
-  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2);
+  border-color: var(--color-gold-primary);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 .input::placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-text-subtle);
 }
 
 /* ========================================
-   9. PARTICLE SYSTEM STYLES
-   ======================================== */
-#particle-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
-
-.particle-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.particle-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--gradient-glow);
-  opacity: 0.3;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ========================================
-   10. ANIMATION KEYFRAMES
-   ======================================== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
-  }
-}
-
-@keyframes glowPulsePurple {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* ========================================
-   11. ANIMATION UTILITIES
-   ======================================== */
-.animate-fadeInUp {
-  animation: fadeInUp 600ms var(--ease-out-expo) forwards;
-}
-
-.animate-fadeInDown {
-  animation: fadeInDown 600ms var(--ease-out-expo) forwards;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 600ms var(--ease-out-expo) forwards;
-}
-
-.animate-glowPulse {
-  animation: glowPulse 2000ms ease-in-out infinite;
-}
-
-.animate-glowPulsePurple {
-  animation: glowPulsePurple 2000ms ease-in-out infinite;
-}
-
-.animate-float {
-  animation: float 3000ms ease-in-out infinite;
-}
-
-.animate-gradientShift {
-  background-size: 200% 200%;
-  animation: gradientShift 8000ms linear infinite;
-}
-
-.animate-twinkle {
-  animation: twinkle 2000ms ease-in-out infinite;
-}
-
-.animate-pulse {
-  animation: pulse 2000ms ease-in-out infinite;
-}
-
-.animate-slideInRight {
-  animation: slideInRight 600ms var(--ease-out-expo) forwards;
-}
-
-.animate-slideInLeft {
-  animation: slideInLeft 600ms var(--ease-out-expo) forwards;
-}
-
-.animate-rotate {
-  animation: rotate 10000ms linear infinite;
-}
-
-/* Animation Delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-.delay-600 { animation-delay: 600ms; }
-.delay-700 { animation-delay: 700ms; }
-.delay-800 { animation-delay: 800ms; }
-
-/* Scroll Reveal Initial State */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ========================================
-   12. NAVIGATION STYLES
+   9. NAVIGATION
    ======================================== */
 .nav-header {
   position: fixed;
@@ -709,10 +431,9 @@ input, textarea, select {
 }
 
 .nav-header.scrolled {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop);
-  -webkit-backdrop-filter: var(--glass-backdrop);
-  border-bottom: var(--glass-border);
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(20px) saturate(150%);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .nav-link {
@@ -720,6 +441,7 @@ input, textarea, select {
   padding: var(--space-2) var(--space-3);
   color: var(--color-text-secondary);
   font-weight: 500;
+  font-size: var(--text-small);
   transition: color var(--duration-fast) var(--ease-out-expo);
 }
 
@@ -729,8 +451,8 @@ input, textarea, select {
   bottom: -2px;
   left: 50%;
   width: 0;
-  height: 2px;
-  background: var(--gradient-hero);
+  height: 1.5px;
+  background: var(--color-gold-primary);
   transition: all var(--duration-normal) var(--ease-out-expo);
   transform: translateX(-50%);
 }
@@ -751,12 +473,13 @@ input, textarea, select {
   top: 0;
   right: -100%;
   width: 80%;
-  max-width: 400px;
+  max-width: 360px;
   height: 100vh;
   background: var(--color-bg-secondary);
   z-index: 1001;
   transition: right var(--duration-slow) var(--ease-out-expo);
-  padding: var(--space-8);
+  padding: var(--space-6);
+  border-left: 1px solid var(--color-border-subtle);
 }
 
 .mobile-menu.open {
@@ -769,7 +492,8 @@ input, textarea, select {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
@@ -782,21 +506,21 @@ input, textarea, select {
 }
 
 /* ========================================
-   13. FOOTER STYLES
+   10. FOOTER
    ======================================== */
 .footer {
   background: var(--color-bg-secondary);
-  border-top: var(--glass-border);
-  padding: var(--space-16) 0 var(--space-8);
+  border-top: 1px solid var(--color-border-subtle);
+  padding: var(--space-20) 0 var(--space-8);
 }
 
 .footer-link {
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
   transition: color var(--duration-fast) var(--ease-out-expo);
 }
 
 .footer-link:hover {
-  color: var(--color-accent-cyan);
+  color: var(--color-gold-primary);
 }
 
 .social-icon {
@@ -806,78 +530,135 @@ input, textarea, select {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-text-secondary);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-muted);
   transition: all var(--duration-normal) var(--ease-out-expo);
 }
 
 .social-icon:hover {
-  background: var(--color-accent-cyan);
-  color: var(--color-bg-primary);
+  background: var(--color-gold-subtle);
+  border-color: var(--color-gold-primary);
+  color: var(--color-gold-primary);
   transform: translateY(-2px);
 }
 
 /* ========================================
-   14. UTILITY CLASSES
+   11. UTILITY CLASSES
    ======================================== */
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-4);
+  padding: 0 var(--space-6);
 }
 
 @media (min-width: 640px) {
-  .container {
-    padding: 0 var(--space-6);
-  }
-}
-
-@media (min-width: 1024px) {
   .container {
     padding: 0 var(--space-8);
   }
 }
 
 .section {
-  padding: var(--space-16) 0;
-}
-
-.section-lg {
   padding: var(--space-24) 0;
 }
 
-.gradient-border {
-  position: relative;
-  background: var(--color-bg-secondary);
-  border-radius: var(--radius-lg);
+.section-lg {
+  padding: var(--space-32) 0;
 }
 
-.gradient-border::before {
+/* Gold border accent */
+.gold-border {
+  position: relative;
+}
+
+.gold-border::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  background: var(--gradient-hero);
-  border-radius: calc(var(--radius-lg) + 2px);
-  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient-gold);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
-.glow-cyan {
-  box-shadow: var(--shadow-glow-cyan);
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border-subtle), transparent);
 }
 
-.glow-purple {
-  box-shadow: var(--shadow-glow-purple);
+/* ========================================
+   12. ANIMATION KEYFRAMES
+   ======================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.glow-gold {
-  box-shadow: var(--shadow-glow-gold);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Scrollbar Styling */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Animation utilities */
+.animate-fadeIn { animation: fadeIn 600ms var(--ease-out-expo) forwards; }
+.animate-fadeInUp { animation: fadeInUp 600ms var(--ease-out-expo) forwards; }
+.animate-glowPulse { animation: glowPulse 3000ms ease-in-out infinite; }
+.animate-float { animation: float 4000ms ease-in-out infinite; }
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms var(--ease-out-expo), transform 500ms var(--ease-out-expo);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   13. SCROLLBAR
+   ======================================== */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -885,82 +666,28 @@ input, textarea, select {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-accent-cyan);
+  background: var(--color-gold-dark);
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-purple);
+  background: var(--color-gold-primary);
 }
 
 /* Selection */
 ::selection {
-  background: rgba(0, 212, 255, 0.3);
+  background: rgba(212, 175, 55, 0.3);
   color: var(--color-text-primary);
 }
 
-/* Focus Visible */
+/* Focus visible */
 :focus-visible {
-  outline: 2px solid var(--color-accent-cyan);
+  outline: 2px solid var(--color-gold-primary);
   outline-offset: 2px;
 }
 
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
-}
-
 /* ========================================
-   15. RESPONSIVE UTILITIES
-   ======================================== */
-@media (max-width: 768px) {
-  .text-h1 {
-    font-size: 2.5rem;
-  }
-  
-  .text-h2 {
-    font-size: 2rem;
-  }
-  
-  .text-h3 {
-    font-size: 1.5rem;
-  }
-  
-  .section {
-    padding: var(--space-12) 0;
-  }
-  
-  .section-lg {
-    padding: var(--space-16) 0;
-  }
-}
-
-/* Hide on mobile */
-@media (max-width: 768px) {
-  .hide-mobile {
-    display: none !important;
-  }
-}
-
-/* Hide on desktop */
-@media (min-width: 769px) {
-  .hide-desktop {
-    display: none !important;
-  }
-}
-
-/* ========================================
-   PAGE LOADER
+   14. PAGE LOADER
    ======================================== */
 .page-loader {
   position: fixed;
@@ -984,8 +711,8 @@ input, textarea, select {
 }
 
 .loader-star {
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   position: relative;
   animation: loaderPulse 2s ease-in-out infinite;
 }
@@ -996,26 +723,26 @@ input, textarea, select {
 }
 
 .loader-text {
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  color: var(--color-text-secondary);
+  margin-top: var(--space-4);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
   font-family: var(--font-display);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .loader-progress {
-  width: 200px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-full);
-  margin-top: 1rem;
+  width: 120px;
+  height: 1px;
+  background: var(--color-border-subtle);
+  margin-top: var(--space-4);
   overflow: hidden;
 }
 
 .loader-progress-bar {
   height: 100%;
-  background: var(--gradient-hero);
-  border-radius: var(--radius-full);
+  width: 0%;
+  background: var(--gradient-gold);
   animation: loaderProgress 2s ease-out forwards;
 }
 
@@ -1027,4 +754,32 @@ input, textarea, select {
 @keyframes loaderProgress {
   0% { width: 0%; }
   100% { width: 100%; }
+}
+
+/* ========================================
+   15. RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-16) 0;
+  }
+  
+  .section-lg {
+    padding: var(--space-20) 0;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
 }

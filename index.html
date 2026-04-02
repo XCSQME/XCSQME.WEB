@@ -54,51 +54,279 @@
   <title>星辰社区 XCSQ - 全球顶级加密货币信号聚合社区</title>
 
   <style>
-    /* Page-specific styles */
+    /* Page-specific styles - 高端金融风 */
+    
+    /* Hero 区域 - 极简大气 */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    
+    /* 背景网格纹理 */
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+    }
+    
+    /* 金色光晕 */
+    .hero-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
     .hero-title {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 700;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 600;
       line-height: 1.1;
-      letter-spacing: -0.02em;
-      background: var(--gradient-hero);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 200% 200%;
-      animation: gradientShift 8s linear infinite;
+      letter-spacing: -0.03em;
+      color: var(--color-text-primary);
+    }
+    
+    .hero-title .highlight {
+      color: var(--color-gold-primary);
     }
 
     .hero-subtitle {
-      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-size: clamp(1.125rem, 2vw, 1.375rem);
       color: var(--color-text-secondary);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--color-gold-subtle);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 100px;
+      font-size: 0.75rem;
       font-weight: 500;
+      color: var(--color-gold-primary);
+      letter-spacing: 0.05em;
+    }
+    
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-gold-primary);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
     }
 
-    .typewriter {
+    /* 服务卡片 */
+    .service-card {
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+      position: relative;
       overflow: hidden;
-      border-right: 2px solid var(--color-accent-cyan);
-      white-space: nowrap;
-      animation: typewriter 2s steps(20) forwards, blink 0.75s step-end infinite;
-      width: 0;
     }
 
-    @keyframes typewriter {
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    .floating-icon {
+    .service-card::before {
+      content: '';
       position: absolute;
-      animation: float 3s ease-in-out infinite;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transition: transform var(--duration-normal) var(--ease-out-expo);
     }
 
-    .floating-icon:nth-child(1) { animation-delay: 0s; }
-    .floating-icon:nth-child(2) { animation-delay: 0.5s; }
-    .floating-icon:nth-child(3) { animation-delay: 1s; }
-    .floating-icon:nth-child(4) { animation-delay: 1.5s; }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      background: var(--color-gold-subtle);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .service-icon i {
+      width: 24px;
+      height: 24px;
+      color: var(--color-gold-primary);
+    }
+
+    /* 统计数据 */
+    .stat-card {
+      text-align: center;
+      padding: var(--space-6);
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+    
+    .stat-card:hover {
+      border-color: var(--color-border-hover);
+    }
+
+    .stat-number {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: var(--color-gold-primary);
+      line-height: 1;
+      font-family: var(--font-display);
+    }
+
+    .stat-label {
+      color: var(--color-text-muted);
+      font-size: var(--text-small);
+      margin-top: var(--space-2);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* KOL 卡片 */
+    .kol-card {
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+      cursor: pointer;
+    }
+
+    .kol-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-gold);
+    }
+    
+    .kol-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-gold-primary);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+
+    /* 用户评价卡片 */
+    .testimonial-card {
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      transition: all var(--duration-normal) var(--ease-out-expo);
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .testimonial-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-gold-primary);
+    }
+
+    .star-rating {
+      display: flex;
+      gap: 4px;
+    }
+
+    .star-rating i {
+      width: 16px;
+      height: 16px;
+      color: var(--color-gold-primary);
+      fill: var(--color-gold-primary);
+    }
+
+    /* CTA 区域 */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--color-text-muted);
+      font-size: var(--text-xsmall);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-8px); }
+      60% { transform: translateX(-50%) translateY(-4px); }
+    }
+
+    /* Animation classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 500ms var(--ease-out-expo), transform 500ms var(--ease-out-expo);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 100ms; }
+    .stagger-2 { transition-delay: 200ms; }
+    .stagger-3 { transition-delay: 300ms; }
+    .stagger-4 { transition-delay: 400ms; }
 
     .service-card {
       background: var(--glass-bg);
@@ -439,119 +667,92 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-    <!-- Particle Canvas Container -->
-    <div id="particle-canvas-container" class="absolute inset-0 z-0"></div>
+  <section class="hero-section">
+    <!-- 背景网格 -->
+    <div class="hero-bg-grid"></div>
     
-    <!-- Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0f] z-[1]"></div>
-
-    <!-- Floating Crypto Icons -->
-    <div class="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
-      <div class="floating-icon absolute top-[20%] left-[10%] w-16 h-16 opacity-60">
-        <div class="w-full h-full rounded-full bg-gradient-to-br from-orange-500 to-yellow-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
-          <i data-lucide="bitcoin" class="w-8 h-8 text-white"></i>
-        </div>
-      </div>
-      <div class="floating-icon absolute top-[30%] right-[15%] w-14 h-14 opacity-50" style="animation-delay: 0.5s;">
-        <div class="w-full h-full rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
-          <i data-lucide="hexagon" class="w-7 h-7 text-white"></i>
-        </div>
-      </div>
-      <div class="floating-icon absolute bottom-[35%] left-[15%] w-12 h-12 opacity-40" style="animation-delay: 1s;">
-        <div class="w-full h-full rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/30">
-          <i data-lucide="diamond" class="w-6 h-6 text-white"></i>
-        </div>
-      </div>
-      <div class="floating-icon absolute top-[50%] right-[10%] w-10 h-10 opacity-50" style="animation-delay: 1.5s;">
-        <div class="w-full h-full rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-green-500/30">
-          <i data-lucide="triangle" class="w-5 h-5 text-white"></i>
-        </div>
-      </div>
-    </div>
+    <!-- 金色光晕 -->
+    <div class="hero-glow"></div>
 
     <!-- Hero Content -->
-    <div class="container relative z-10 text-center px-4">
+    <div class="container relative z-10 text-center px-6">
       <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 animate-fadeIn">
-        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-        <span class="text-sm text-secondary">270+ KOL实时信号同步中</span>
+      <div class="hero-badge mb-10 animate-fadeIn">
+        <span class="dot"></span>
+        <span>270+ KOL 实时信号同步中</span>
       </div>
 
       <!-- Main Title -->
-      <h1 class="hero-title mb-6 animate-fadeIn" style="animation-delay: 200ms;">
-        星辰社区
+      <h1 class="hero-title mb-6 animate-fadeIn" style="animation-delay: 150ms;">
+        <span class="highlight">星辰</span>社区
       </h1>
 
-      <!-- Subtitle with Typewriter Effect -->
-      <div class="mb-4 overflow-hidden">
-        <p class="hero-subtitle typewriter inline-block" style="animation-delay: 800ms;">
-          利用我们的信号获利
-        </p>
-      </div>
+      <!-- Subtitle -->
+      <p class="hero-subtitle mb-6 animate-fadeIn" style="animation-delay: 300ms;">
+        全球顶级加密货币信号聚合平台
+      </p>
 
       <!-- Description -->
-      <p class="text-secondary text-lg md:text-xl max-w-2xl mx-auto mb-10 animate-fadeIn" style="animation-delay: 1200ms;">
-        加入全球 超过270个最佳加密货币 VIP 频道
+      <p class="text-secondary text-lg max-w-xl mx-auto mb-12 animate-fadeIn" style="animation-delay: 450ms;">
+        汇集 270+ 顶尖 KOL 和分析师的实时交易信号，24/7 智能监控，助您把握每一个盈利机会
       </p>
 
       <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fadeIn" style="animation-delay: 1500ms;">
-        <a href="./pages/kols.html" class="btn btn-primary text-lg px-8 py-4">
-          <i data-lucide="rocket" class="w-5 h-5"></i>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fadeIn" style="animation-delay: 600ms;">
+        <a href="./pages/kols.html" class="btn btn-primary btn-large">
           <span>开始探索</span>
+          <i data-lucide="arrow-right" class="w-5 h-5"></i>
         </a>
-        <a href="./pages/pricing.html" class="btn btn-secondary text-lg px-8 py-4">
-          <i data-lucide="percent" class="w-5 h-5"></i>
-          <span>加入返佣</span>
+        <a href="./pages/pricing.html" class="btn btn-secondary btn-large">
+          <span>查看价格</span>
         </a>
       </div>
 
       <!-- Trust Badges -->
-      <div class="flex flex-wrap items-center justify-center gap-6 mt-12 animate-fadeIn" style="animation-delay: 1800ms;">
+      <div class="flex flex-wrap items-center justify-center gap-8 mt-16 animate-fadeIn" style="animation-delay: 750ms;">
         <div class="flex items-center gap-2 text-muted text-sm">
-          <i data-lucide="shield-check" class="w-4 h-4 text-green-500"></i>
+          <i data-lucide="shield-check" class="w-4 h-4 text-gold"></i>
           <span>安全可靠</span>
         </div>
         <div class="flex items-center gap-2 text-muted text-sm">
-          <i data-lucide="zap" class="w-4 h-4 text-yellow-500"></i>
+          <i data-lucide="zap" class="w-4 h-4 text-gold"></i>
           <span>实时同步</span>
         </div>
         <div class="flex items-center gap-2 text-muted text-sm">
-          <i data-lucide="users" class="w-4 h-4 text-cyan-500"></i>
-          <span>50K+ 会员</span>
+          <i data-lucide="users" class="w-4 h-4 text-gold"></i>
+          <span>50,000+ 会员</span>
         </div>
       </div>
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="scroll-indicator z-10">
-      <span>向下滚动</span>
-      <i data-lucide="chevron-down" class="w-6 h-6"></i>
+    <div class="scroll-indicator animate-bounce">
+      <span>Scroll</span>
+      <i data-lucide="chevron-down" class="w-4 h-4"></i>
     </div>
   </section>
 
   <!-- Stats Section -->
   <section class="section relative z-10">
     <div class="container">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         <!-- Stat 1 -->
-        <div class="stat-card glass-card animate-on-scroll">
+        <div class="stat-card animate-on-scroll">
           <div class="stat-number" data-counter="270" data-suffix="+">0</div>
-          <div class="stat-label">合作KOL</div>
+          <div class="stat-label">合作 KOL</div>
         </div>
         <!-- Stat 2 -->
-        <div class="stat-card glass-card animate-on-scroll stagger-1">
+        <div class="stat-card animate-on-scroll stagger-1">
           <div class="stat-number" data-counter="50" data-suffix="K+">0</div>
           <div class="stat-label">社区成员</div>
         </div>
         <!-- Stat 3 -->
-        <div class="stat-card glass-card animate-on-scroll stagger-2">
+        <div class="stat-card animate-on-scroll stagger-2">
           <div class="stat-number" data-counter="99.9" data-suffix="%">0</div>
           <div class="stat-label">信号准确率</div>
         </div>
         <!-- Stat 4 -->
-        <div class="stat-card glass-card animate-on-scroll stagger-3">
+        <div class="stat-card animate-on-scroll stagger-3">
           <div class="stat-number" data-counter="24" data-suffix="/7">0</div>
           <div class="stat-label">实时同步</div>
         </div>
@@ -564,37 +765,35 @@
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-on-scroll">
-        <span class="inline-block px-4 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-medium mb-4">
-          我们的服务
-        </span>
-        <h2 class="text-h2 mb-4">核心服务</h2>
-        <p class="text-secondary max-w-2xl mx-auto">
-          为加密货币交易者提供全方位的信号服务，助您把握每一个盈利机会
+        <span class="badge badge-gold mb-4">核心服务</span>
+        <h2 class="text-h2 mb-4">专业级服务体系</h2>
+        <p class="text-secondary max-w-xl mx-auto">
+          为加密货币交易者提供全方位信号服务，助您把握每一个盈利机会
         </p>
       </div>
 
       <!-- Service Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Service Card 1 -->
         <div class="service-card animate-on-scroll stagger-1">
           <div class="service-icon">
             <i data-lucide="target"></i>
           </div>
           <h3 class="text-h4 mb-3">数据监控</h3>
-          <p class="text-secondary mb-4">
+          <p class="text-secondary mb-6">
             7×24小时市场扫描，实时监控200+ KOL信号，第一时间捕捉市场机会
           </p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-secondary">
+              <i data-lucide="check" class="w-4 h-4 text-gold"></i>
               <span>实时信号推送</span>
             </li>
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+            <li class="flex items-center gap-3 text-sm text-secondary">
+              <i data-lucide="check" class="w-4 h-4 text-gold"></i>
               <span>多平台同步</span>
             </li>
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+            <li class="flex items-center gap-3 text-sm text-secondary">
+              <i data-lucide="check" class="w-4 h-4 text-gold"></i>
               <span>智能过滤</span>
             </li>
           </ul>
@@ -602,24 +801,24 @@
 
         <!-- Service Card 2 -->
         <div class="service-card animate-on-scroll stagger-2">
-          <div class="service-icon" style="background: linear-gradient(145deg, rgba(168,85,247,0.1) 0%, rgba(236,72,153,0.1) 100%);">
-            <i data-lucide="magnet" style="color: var(--color-accent-purple);"></i>
+          <div class="service-icon">
+            <i data-lucide="magnet"></i>
           </div>
           <h3 class="text-h4 mb-3">策略跟单</h3>
-          <p class="text-secondary mb-4">
+          <p class="text-secondary mb-6">
             跟随顶级交易员，一键复制成功策略，让专业的人做专业的事
           </p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-secondary">
+              <i data-lucide="check" class="w-4 h-4 text-gold"></i>
               <span>顶级KOL策略</span>
             </li>
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+            <li class="flex items-center gap-3 text-sm text-secondary">
+              <i data-lucide="check" class="w-4 h-4 text-gold"></i>
               <span>自动跟单</span>
             </li>
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+            <li class="flex items-center gap-3 text-sm text-secondary">
+              <i data-lucide="check" class="w-4 h-4 text-gold"></i>
               <span>风险控制</span>
             </li>
           </ul>
@@ -627,24 +826,24 @@
 
         <!-- Service Card 3 -->
         <div class="service-card animate-on-scroll stagger-3">
-          <div class="service-icon" style="background: linear-gradient(145deg, rgba(245,158,11,0.1) 0%, rgba(251,191,36,0.1) 100%);">
-            <i data-lucide="bar-chart-3" style="color: var(--color-accent-gold);"></i>
+          <div class="service-icon">
+            <i data-lucide="bar-chart-3"></i>
           </div>
           <h3 class="text-h4 mb-3">市场分析</h3>
-          <p class="text-secondary mb-4">
+          <p class="text-secondary mb-6">
             专业行情解读，深度市场分析，助您做出明智的投资决策
           </p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-secondary">
+              <i data-lucide="check" class="w-4 h-4 text-gold"></i>
               <span>技术分析</span>
             </li>
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+            <li class="flex items-center gap-3 text-sm text-secondary">
+              <i data-lucide="check" class="w-4 h-4 text-gold"></i>
               <span>基本面研究</span>
             </li>
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+            <li class="flex items-center gap-3 text-sm text-secondary">
+              <i data-lucide="check" class="w-4 h-4 text-gold"></i>
               <span>趋势预测</span>
             </li>
           </ul>
@@ -659,10 +858,8 @@
       <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 animate-on-scroll">
         <div>
-          <span class="inline-block px-4 py-1 rounded-full bg-purple-500/10 text-purple-400 text-sm font-medium mb-4">
-            顶级KOL
-          </span>
-          <h2 class="text-h2 mb-2">精选KOL阵容</h2>
+          <span class="badge badge-gold mb-4">顶级 KOL</span>
+          <h2 class="text-h2 mb-2">精选 KOL 阵容</h2>
           <p class="text-secondary">来自全球的顶级加密货币分析师</p>
         </div>
         <a href="./pages/kols.html" class="btn btn-secondary mt-4 md:mt-0">
@@ -674,21 +871,21 @@
       <!-- KOL Cards Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- KOL Card 1 -->
-        <div class="glass-card p-6 animate-on-scroll stagger-1 group cursor-pointer" onclick="window.location.href='kols.html'">
+        <div class="kol-card animate-on-scroll stagger-1" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
+              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
             </div>
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">Alertの会所</h4>
               <span class="badge badge-cyan mt-1">华语二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
                   89%
                 </span>
                 <span class="flex items-center gap-1">
-                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  <i data-lucide="users" class="w-4 h-4 text-gold"></i>
                   12.5K
                 </span>
               </div>
@@ -700,21 +897,21 @@
         </div>
 
         <!-- KOL Card 2 -->
-        <div class="glass-card p-6 animate-on-scroll stagger-2 group cursor-pointer" onclick="window.location.href='kols.html'">
+        <div class="kol-card animate-on-scroll stagger-2" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
+              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
             </div>
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">Ye.koi</h4>
-              <span class="badge badge-purple mt-1">国外二级市场</span>
+              <span class="badge badge-cyan mt-1">国外二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
                   92%
                 </span>
                 <span class="flex items-center gap-1">
-                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  <i data-lucide="users" class="w-4 h-4 text-gold"></i>
                   28K
                 </span>
               </div>
@@ -726,21 +923,21 @@
         </div>
 
         <!-- KOL Card 3 -->
-        <div class="glass-card p-6 animate-on-scroll stagger-3 group cursor-pointer" onclick="window.location.href='kols.html'">
+        <div class="kol-card animate-on-scroll stagger-3" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
+              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
             </div>
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">风寻</h4>
               <span class="badge badge-gold mt-1">一级链上</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
                   87%
                 </span>
                 <span class="flex items-center gap-1">
-                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  <i data-lucide="users" class="w-4 h-4 text-gold"></i>
                   8.2K
                 </span>
               </div>
@@ -752,21 +949,21 @@
         </div>
 
         <!-- KOL Card 4 -->
-        <div class="glass-card p-6 animate-on-scroll stagger-1 group cursor-pointer" onclick="window.location.href='kols.html'">
+        <div class="kol-card animate-on-scroll stagger-1" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
+              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
             </div>
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">颜驰</h4>
               <span class="badge badge-cyan mt-1">华语二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
                   94%
                 </span>
                 <span class="flex items-center gap-1">
-                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  <i data-lucide="users" class="w-4 h-4 text-gold"></i>
                   15K
                 </span>
               </div>
@@ -778,21 +975,21 @@
         </div>
 
         <!-- KOL Card 5 -->
-        <div class="glass-card p-6 animate-on-scroll stagger-2 group cursor-pointer" onclick="window.location.href='kols.html'">
+        <div class="kol-card animate-on-scroll stagger-2" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
+              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
             </div>
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">提阿非罗</h4>
-              <span class="badge badge-purple mt-1">国外二级市场</span>
+              <span class="badge badge-cyan mt-1">国外二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
                   86%
                 </span>
                 <span class="flex items-center gap-1">
-                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  <i data-lucide="users" class="w-4 h-4 text-gold"></i>
                   22K
                 </span>
               </div>
@@ -804,21 +1001,21 @@
         </div>
 
         <!-- KOL Card 6 -->
-        <div class="glass-card p-6 animate-on-scroll stagger-3 group cursor-pointer" onclick="window.location.href='kols.html'">
+        <div class="kol-card animate-on-scroll stagger-3" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-400 to-violet-500 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="user" class="w-8 h-8 text-white"></i>
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
+              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
             </div>
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">比特币飞扬</h4>
               <span class="badge badge-cyan mt-1">华语二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
                   91%
                 </span>
                 <span class="flex items-center gap-1">
-                  <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+                  <i data-lucide="users" class="w-4 h-4 text-gold"></i>
                   35K
                 </span>
               </div>

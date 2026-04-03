@@ -17,6 +17,9 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -107,164 +110,46 @@
       background: var(--color-gold-subtle);
     }
     
-    /* Horizontal Scroll Card Wall */
-    .card-wall-container {
+    /* 3D Spiral Container */
+    .spiral-container {
       position: relative;
       width: 100%;
-      padding: 2rem 0 4rem;
+      height: 80vh;
+      min-height: 600px;
       overflow: hidden;
     }
     
-    .card-wall-track {
-      display: flex;
-      gap: 1.5rem;
-      padding: 1rem 2rem;
-      animation: scrollCards 60s linear infinite;
-      width: max-content;
-    }
-    
-    .card-wall-track:hover {
-      animation-play-state: paused;
-    }
-    
-    @keyframes scrollCards {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    
-    .card-wall-item {
-      flex-shrink: 0;
-      width: 280px;
-      background: rgba(18, 18, 26, 0.8);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    
-    .card-wall-item:hover {
-      transform: translateY(-12px) scale(1.02);
-      border-color: rgba(212, 175, 55, 0.5);
-      box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15), 0 0 30px rgba(212, 175, 55, 0.1);
-    }
-    
-    .card-wall-avatar-wrap {
-      position: relative;
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 212, 255, 0.05));
-    }
-    
-    .card-wall-avatar-wrap img {
+    #spiral-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: grab;
     }
     
-    .card-wall-item:hover .card-wall-avatar-wrap img {
-      transform: scale(1.1);
+    #spiral-canvas:active {
+      cursor: grabbing;
     }
     
-    .card-wall-avatar-overlay {
+    /* Spiral Controls */
+    .spiral-controls {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 80px;
-      background: linear-gradient(transparent, rgba(18, 18, 26, 0.95));
-    }
-    
-    .card-wall-flag {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 1.5rem;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-    }
-    
-    .card-wall-body {
-      padding: 1rem 1.25rem 1.25rem;
-    }
-    
-    .card-wall-name {
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.25rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    
-    .card-wall-category {
-      font-size: 0.75rem;
-      color: rgba(212, 175, 55, 0.8);
-      margin-bottom: 0.75rem;
-    }
-    
-    .card-wall-desc {
-      font-size: 0.8125rem;
-      color: rgba(255, 255, 255, 0.5);
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 1rem;
-    }
-    
-    .card-wall-footer {
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-    }
-    
-    .card-wall-price {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: #D4AF37;
-    }
-    
-    .card-wall-btn {
-      padding: 0.375rem 0.875rem;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      background: rgba(212, 175, 55, 0.15);
-      color: #D4AF37;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    
-    .card-wall-btn:hover {
-      background: rgba(212, 175, 55, 0.3);
-      border-color: #D4AF37;
-    }
-    
-    /* Second row scrolls opposite direction */
-    .card-wall-track.reverse {
-      animation: scrollCardsReverse 55s linear infinite;
-    }
-    
-    @keyframes scrollCardsReverse {
-      0% { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
-    }
-    
-    .card-wall-controls {
-      display: flex;
-      justify-content: center;
       gap: 1rem;
-      margin-top: 1.5rem;
+      z-index: 10;
+      background: rgba(18, 18, 26, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    .card-wall-control-btn {
+    .spiral-control-btn {
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -275,21 +160,19 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all var(--duration-fast) var(--ease-out-expo);
     }
     
-    .card-wall-control-btn:hover {
-      background: rgba(212, 175, 55, 0.2);
-      border-color: #D4AF37;
-      color: #D4AF37;
+    .spiral-control-btn:hover {
+      background: rgba(0, 212, 255, 0.2);
+      border-color: var(--color-accent-cyan);
+      color: var(--color-accent-cyan);
     }
     
-    .card-wall-counter {
+    .spiral-info {
       font-size: 0.875rem;
       color: var(--color-text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      white-space: nowrap;
     }
     
     /* KOL Detail Modal */
@@ -574,10 +457,44 @@
     }
     
     /* Loading State */
-    .card-wall-loading {
+    .spiral-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
-      padding: 4rem;
+      z-index: 5;
+    }
+    
+    .spiral-loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(0, 212, 255, 0.2);
+      border-top-color: var(--color-accent-cyan);
+      border-radius: 50%;
+      animation: rotate 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    
+    .spiral-loading-text {
       color: var(--color-text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text-muted);
+      font-size: 0.75rem;
+      animation: float 2s ease-in-out infinite;
+      pointer-events: none;
     }
     
     /* Responsive */
@@ -595,16 +512,19 @@
         font-size: 0.75rem;
       }
       
-      .card-wall-container {
-        padding: 1rem 0 3rem;
+      .spiral-container {
+        height: 60vh;
+        min-height: 400px;
       }
       
-      .card-wall-item {
-        width: 240px;
+      .spiral-controls {
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
       }
       
-      .card-wall-avatar-wrap {
-        height: 150px;
+      .spiral-control-btn {
+        width: 36px;
+        height: 36px;
       }
       
       .kols-grid {
@@ -785,9 +705,9 @@
       
       <!-- View Toggle -->
       <div class="view-toggle">
-        <button class="view-toggle-btn active" data-view="wall">
-          <i data-lucide="layers" class="w-4 h-4"></i>
-          <span>卡片墙</span>
+        <button class="view-toggle-btn active" data-view="spiral">
+          <i data-lucide="aperture" class="w-4 h-4"></i>
+          <span>3D螺旋</span>
         </button>
         <button class="view-toggle-btn" data-view="grid">
           <i data-lucide="grid-3x3" class="w-4 h-4"></i>
@@ -797,21 +717,33 @@
     </div>
   </section>
   
-  <!-- Card Wall Section -->
-  <section id="card-wall-view" class="card-wall-container">
-    <div class="card-wall-track" id="card-wall-row1">
-      <!-- Row 1 - populated by JS -->
+  <!-- 3D Spiral Section -->
+  <section id="spiral-view" class="spiral-container">
+    <div class="spiral-loading" id="spiral-loading">
+      <div class="spiral-loading-spinner"></div>
+      <p class="spiral-loading-text">正在加载3D KOL展示...</p>
     </div>
-    <div class="card-wall-track reverse" id="card-wall-row2" style="margin-top: 1.5rem;">
-      <!-- Row 2 - populated by JS -->
+    
+    <canvas id="spiral-canvas"></canvas>
+    
+    <div class="scroll-indicator">
+      <i data-lucide="mouse" class="w-5 h-5"></i>
+      <span>滚动或拖拽浏览</span>
     </div>
-    <div class="card-wall-controls">
-      <button class="card-wall-control-btn" id="wall-pause" title="暂停/播放">
-        <i data-lucide="pause" class="w-5 h-5" id="wall-pause-icon"></i>
+    
+    <div class="spiral-controls">
+      <button class="spiral-control-btn" id="spiral-prev" title="上一个">
+        <i data-lucide="chevron-left" class="w-5 h-5"></i>
       </button>
-      <span class="card-wall-counter">
-        共 <span id="kol-total">0</span> 位 KOL
+      <span class="spiral-info">
+        <span id="kol-current">1</span> / <span id="kol-total">60</span>
       </span>
+      <button class="spiral-control-btn" id="spiral-next" title="下一个">
+        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+      </button>
+      <button class="spiral-control-btn" id="spiral-autoplay" title="自动播放">
+        <i data-lucide="play" class="w-5 h-5" id="autoplay-icon"></i>
+      </button>
     </div>
   </section>
   
@@ -1083,106 +1015,139 @@
     };
     
     // ========================================
-    // CARD WALL - 水平无限滚动卡片墙
+    // THREE.JS 3D SPIRAL
     // ========================================
-    let isWallPaused = false;
+    let scene, camera, renderer, spiralGroup;
+    let cards = [];
+    let currentRotation = 0;
+    let targetRotation = 0;
+    let isDragging = false;
+    let startY = 0;
+    let autoplayInterval = null;
+    let isAutoplay = false;
     let currentCategory = 'all';
     
-    function initCardWall() {
-      createCardWall();
-      setupWallControls();
-      document.getElementById('kol-total').textContent = kolsData.length;
+    // Spiral configuration - 优化后的参数
+        const spiralConfig = {
+      radius: 220,           // 缩小半径，更紧凑
+      height: 1200,          // 减小高度
+      cardsPerRotation: 8,   // 每圈卡片数
+      cardWidth: 90,         // 缩小卡片
+      cardHeight: 120,
+      cardDepth: 2,
+      scrollSpeed: 0.001,
+      rotationSpeed: 0.002   // 更快的自转
+    };
+    
+    function initThreeJS() {
+      const canvas = document.getElementById('spiral-canvas');
+      const container = document.querySelector('.spiral-container');
+      
+      // Scene
+      scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x0a0a0f, 0.0015);
+      
+      // Camera
+      camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 2000);
+      camera.position.set(0, 0, 600);
+      
+      // Renderer
+      renderer = new THREE.WebGLRenderer({ 
+        canvas: canvas, 
+        antialias: true, 
+        alpha: true 
+      });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x0a0a0f, 0);
+      
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambientLight);
+      
+      const pointLight = new THREE.PointLight(0x00d4ff, 0.8, 1000);
+      pointLight.position.set(0, 200, 300);
+      scene.add(pointLight);
+      
+      const pointLight2 = new THREE.PointLight(0xa855f7, 0.5, 1000);
+      pointLight2.position.set(0, -200, 300);
+      scene.add(pointLight2);
+      
+      // Create spiral group
+      spiralGroup = new THREE.Group();
+      scene.add(spiralGroup);
+      
+      // Create KOL cards
+      createKOLCards();
+      
+      // Hide loading
+      document.getElementById('spiral-loading').style.display = 'none';
+      
+      // Start animation loop
+      animate();
+      
+      // Event listeners
+      setupEventListeners();
+      
+      // Handle resize
+      window.addEventListener('resize', onWindowResize);
     }
     
-    function createCardWall() {
-      const row1 = document.getElementById('card-wall-row1');
-      const row2 = document.getElementById('card-wall-row2');
-      
-      row1.innerHTML = '';
-      row2.innerHTML = '';
+    function createKOLCards() {
+      // Clear existing cards
+      while(spiralGroup.children.length > 0) {
+        spiralGroup.remove(spiralGroup.children[0]);
+      }
+      cards = [];
       
       const filteredKOLs = currentCategory === 'all' 
         ? kolsData 
         : kolsData.filter(kol => kol.category === currentCategory);
       
-      // Split into two rows
-      const half = Math.ceil(filteredKOLs.length / 2);
-      const row1Data = filteredKOLs.slice(0, half);
-      const row2Data = filteredKOLs.slice(half);
+      const cardCount = filteredKOLs.length;
+      const totalHeight = spiralConfig.height;
+      const angleStep = (Math.PI * 2) / spiralConfig.cardsPerRotation;
+      const heightStep = totalHeight / (cardCount / spiralConfig.cardsPerRotation);
       
-      // Create cards for row 1 (duplicate for infinite scroll)
-      const row1Cards = [...row1Data, ...row1Data];
-      row1Cards.forEach((kol, index) => {
-        row1.appendChild(createWallCard(kol, index));
-      });
-      
-      // Create cards for row 2 (duplicate for infinite scroll, reverse order)
-      const row2Cards = [...row2Data, ...row2Data];
-      row2Cards.forEach((kol, index) => {
-        row2.appendChild(createWallCard(kol, index + half));
-      });
-    }
-    
-    function createWallCard(kol, index) {
-      const card = document.createElement('div');
-      card.className = 'card-wall-item';
-      card.style.animationDelay = `${index * 100}ms`;
-      
-      const avatarFilename = avatarMapping[kol.name] || 'default.png';
-      
-      card.innerHTML = `
-        <div class="card-wall-avatar-wrap">
-          <img src="../assets/avatars/${avatarFilename}" alt="${kol.name}" onerror="this.src='../assets/avatars/default.png'">
-          <div class="card-wall-avatar-overlay"></div>
-          <span class="card-wall-flag">${kol.flag}</span>
-        </div>
-        <div class="card-wall-body">
-          <h3 class="card-wall-name">${kol.name}</h3>
-          <div class="card-wall-category">${getCategoryName(kol.category)}</div>
-          <p class="card-wall-desc">${kol.desc}</p>
-          <div class="card-wall-footer">
-            <span class="card-wall-price">${kol.price || '单独购买'}</span>
-            <a href="./kol-detail.html?id=${kol.id}" class="card-wall-btn">查看详情</a>
-          </div>
-        </div>
-      `;
-      
-      card.addEventListener('click', (e) => {
-        if (!e.target.closest('.card-wall-btn')) {
-          window.location.href = `./kol-detail.html?id=${kol.id}`;
-        }
-      });
-      
-      return card;
-    }
-    
-    function getCategoryName(category) {
-      const names = {
-        'chinese': '华语二级市场',
-        'international': '国外二级市场',
-        'onchain': '一级链上',
-        'utility': '辅助功能',
-        'ai': 'AI资讯'
-      };
-      return names[category] || category;
-    }
-    
-    function setupWallControls() {
-      const pauseBtn = document.getElementById('wall-pause');
-      const pauseIcon = document.getElementById('wall-pause-icon');
-      
-      pauseBtn.addEventListener('click', () => {
-        isWallPaused = !isWallPaused;
-        const tracks = document.querySelectorAll('.card-wall-track');
+      filteredKOLs.forEach((kol, index) => {
+        const card = createCard(kol, index);
         
-        tracks.forEach(track => {
-          track.style.animationPlayState = isWallPaused ? 'paused' : 'running';
-        });
+        // Calculate spiral position - 更自然的螺旋曲线
+        const angle = index * angleStep;
+        const progress = index / cardCount;
+        const y = (progress - 0.5) * totalHeight;
         
-        pauseIcon.setAttribute('data-lucide', isWallPaused ? 'play' : 'pause');
-        lucide.createIcons();
+        // 螺旋半径随高度轻微变化，形成更自然的曲线
+        const radiusVariation = Math.sin(progress * Math.PI) * 50;
+        const currentRadius = spiralConfig.radius + radiusVariation;
+        
+        const x = Math.cos(angle) * currentRadius;
+        const z = Math.sin(angle) * currentRadius;
+        
+        card.position.set(x, y, z);
+        card.rotation.y = -angle;
+        
+        // 计算与相机的距离，用于景深效果
+        const distance = Math.sqrt(x*x + y*y + z*z);
+        const maxDistance = Math.sqrt(currentRadius*currentRadius + (totalHeight/2)*(totalHeight/2));
+        card.userData.distanceRatio = distance / maxDistance;
+        
+        // Store original data
+        card.userData.originalPosition = { x, y, z };
+        card.userData.originalRotation = { y: -angle };
+        card.userData.kol = kol;
+        card.userData.index = index;
+        
+        spiralGroup.add(card);
+        cards.push(card);
       });
+      
+      // Update counter
+      document.getElementById('kol-total').textContent = cardCount;
     }
+    
+    function createCard(kol, index) {
+      const group = new THREE.Group();
       
       // Card colors - 统一使用金色系
       const categoryColors = {
@@ -1247,6 +1212,335 @@
       
       return group;
     }
+    
+    function createCardTexture(kol, color) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 512;
+      canvas.height = 640;
+      const ctx = canvas.getContext('2d');
+      
+      // Background - 深黑
+      ctx.fillStyle = '#111111';
+      ctx.fillRect(0, 0, 512, 640);
+      
+      // 顶部金色细线
+      ctx.fillStyle = '#D4AF37';
+      ctx.fillRect(0, 0, 512, 3);
+      
+      // Border - 细边框
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(1, 1, 510, 638);
+      
+      // Avatar circle - 真实头像
+      const avatarFilename = avatarMapping[kol.name] || 'default.png';
+      const img = new Image();
+      img.src = `../assets/avatars/${avatarFilename}`;
+      img.onload = () => {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(256, 120, 70, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(img, 186, 50, 140, 140);
+        ctx.restore();
+        ctx.strokeStyle = '#D4AF37';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        
+        // 重新更新纹理
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.needsUpdate = true;
+      };
+      
+      // Flag - 右上角
+      ctx.font = '32px Arial';
+      ctx.fillText(kol.flag, 420, 50);
+      
+      // Name - 白色粗体
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 28px "Noto Sans SC", Arial';
+      ctx.fillText(kol.name, 256, 240);
+      
+      // Category badge
+      ctx.font = '12px Arial';
+      const categoryNames = {
+        chinese: '华语二级',
+        international: '国际二级',
+        onchain: '一级链上',
+        utility: '辅助功能',
+        ai: 'AI资讯'
+      };
+      const badgeText = categoryNames[kol.category] || kol.category;
+      const badgeWidth = ctx.measureText(badgeText).width + 16;
+      
+      ctx.fillStyle = 'rgba(212, 175, 55, 0.15)';
+      ctx.beginPath();
+      ctx.roundRect(256 - badgeWidth/2, 260, badgeWidth, 24, 12);
+      ctx.fill();
+      
+      ctx.fillStyle = '#D4AF37';
+      ctx.fillText(badgeText, 256, 274);
+      
+      // Description - 灰色，限制行数
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+      ctx.font = '16px "Noto Sans SC", Arial';
+      const maxWidth = 400;
+      const lineHeight = 24;
+      let y = 320;
+      let line = '';
+      let lineCount = 0;
+      const maxLines = 2;
+      
+      for (let i = 0; i < kol.desc.length && lineCount < maxLines; i++) {
+        const testLine = line + kol.desc[i];
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > maxWidth && i > 0) {
+          ctx.fillText(line, 256, y);
+          line = kol.desc[i];
+          y += lineHeight;
+          lineCount++;
+        } else {
+          line = testLine;
+        }
+      }
+      if (lineCount < maxLines) {
+        ctx.fillText(line, 256, y);
+      }
+      
+      // 分隔线
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(60, 400);
+      ctx.lineTo(452, 400);
+      ctx.stroke();
+      
+      // Stats - 三列布局
+      const statsY = 480;
+      
+      // 信号数
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = 'bold 28px Arial';
+      ctx.fillText(kol.signals, 100, statsY);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.font = '12px Arial';
+      ctx.fillText('月信号', 100, statsY + 20);
+      
+      // 胜率
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = 'bold 28px Arial';
+      ctx.fillText(kol.winrate, 256, statsY);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.font = '12px Arial';
+      ctx.fillText('胜率', 256, statsY + 20);
+      
+      // 关注者
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = 'bold 28px Arial';
+      ctx.fillText(kol.followers, 412, statsY);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.font = '12px Arial';
+      ctx.fillText('关注', 412, statsY + 20);
+      
+      // 底部提示
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.font = '12px Arial';
+      ctx.fillText('点击查看详情', 256, 580);
+      
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.needsUpdate = true;
+      return texture;
+    }
+    
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      // Smooth rotation interpolation
+      currentRotation += (targetRotation - currentRotation) * 0.05;
+      spiralGroup.rotation.y = currentRotation;
+      
+      // Autoplay
+      if (isAutoplay && !isDragging) {
+        targetRotation += spiralConfig.rotationSpeed;
+      }
+      
+      // Update card effects based on distance from camera (depth of field)
+      cards.forEach((card, index) => {
+        const glow = card.getObjectByName('glow');
+        const mesh = card.children[0]; // Main card mesh
+        
+        // Calculate world position
+        const worldPos = card.position.clone();
+        worldPos.applyAxisAngle(new THREE.Vector3(0, 1, 0), currentRotation);
+        
+        // Distance from camera (at z=600, looking at origin)
+        const distanceFromCamera = 600 - worldPos.z;
+        const normalizedDistance = Math.max(0, Math.min(1, distanceFromCamera / 1000));
+        
+        // Depth of field: far cards are smaller and more transparent
+        const targetScale = 0.6 + (normalizedDistance * 0.4); // 0.6 to 1.0
+        const targetOpacity = 0.4 + (normalizedDistance * 0.6); // 0.4 to 1.0
+        
+        // Smooth interpolation
+        card.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
+        
+        // Update material opacity
+        if (mesh && mesh.material) {
+          mesh.material.forEach(mat => {
+            if (mat.transparent !== undefined) {
+              mat.transparent = true;
+              mat.opacity = THREE.MathUtils.lerp(mat.opacity || 1, targetOpacity, 0.1);
+            }
+          });
+        }
+        
+        // Glow effect based on how front-facing the card is
+        if (glow) {
+          const cardAngle = (index / cards.length) * Math.PI * 4 + currentRotation;
+          const normalizedAngle = ((cardAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+          const distanceFromFront = Math.abs(normalizedAngle - Math.PI / 2);
+          const isVisible = distanceFromFront < Math.PI / 2;
+          
+          glow.visible = isVisible && normalizedDistance > 0.5;
+          if (isVisible) {
+            const intensity = 1 - (distanceFromFront / (Math.PI / 2));
+            glow.material.opacity = 0.05 + intensity * 0.15;
+          }
+        }
+      });
+      
+      // Update current index display
+      const normalizedRotation = ((currentRotation % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+      const currentIndex = Math.floor((normalizedRotation / (Math.PI * 2)) * cards.length) % cards.length;
+      document.getElementById('kol-current').textContent = Math.max(1, currentIndex + 1);
+      
+      renderer.render(scene, camera);
+    }
+    
+    function onWindowResize() {
+      const container = document.querySelector('.spiral-container');
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    }
+    
+    function setupEventListeners() {
+      const canvas = document.getElementById('spiral-canvas');
+      
+      // Mouse/Touch events for dragging
+      canvas.addEventListener('mousedown', onPointerDown);
+      canvas.addEventListener('mousemove', onPointerMove);
+      canvas.addEventListener('mouseup', onPointerUp);
+      canvas.addEventListener('mouseleave', onPointerUp);
+      
+      canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+      canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+      canvas.addEventListener('touchend', onPointerUp);
+      
+      // Click to open detail
+      canvas.addEventListener('click', onCardClick);
+      
+      // Scroll to rotate
+      canvas.addEventListener('wheel', onWheel, { passive: false });
+      
+      // Control buttons
+      document.getElementById('spiral-prev').addEventListener('click', () => {
+        targetRotation += (Math.PI * 2) / cards.length;
+        stopAutoplay();
+      });
+      
+      document.getElementById('spiral-next').addEventListener('click', () => {
+        targetRotation -= (Math.PI * 2) / cards.length;
+        stopAutoplay();
+      });
+      
+      document.getElementById('spiral-autoplay').addEventListener('click', toggleAutoplay);
+    }
+    
+    function onPointerDown(e) {
+      isDragging = true;
+      startY = e.clientY;
+      stopAutoplay();
+    }
+    
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      const deltaY = e.clientY - startY;
+      targetRotation -= deltaY * spiralConfig.scrollSpeed;
+      startY = e.clientY;
+    }
+    
+    function onPointerUp() {
+      isDragging = false;
+    }
+    
+    function onTouchStart(e) {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startY = e.touches[0].clientY;
+        stopAutoplay();
+      }
+    }
+    
+    function onTouchMove(e) {
+      if (!isDragging || e.touches.length !== 1) return;
+      e.preventDefault();
+      const deltaY = e.touches[0].clientY - startY;
+      targetRotation -= deltaY * spiralConfig.scrollSpeed;
+      startY = e.touches[0].clientY;
+    }
+    
+    function onWheel(e) {
+      e.preventDefault();
+      targetRotation += e.deltaY * spiralConfig.scrollSpeed;
+      stopAutoplay();
+    }
+    
+    function onCardClick(e) {
+      if (isDragging) return;
+      
+      // Calculate which card was clicked
+      const rect = e.target.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
+      
+      const intersects = raycaster.intersectObjects(spiralGroup.children, true);
+      
+      if (intersects.length > 0) {
+        // Find the parent group
+        let object = intersects[0].object;
+        while (object.parent && object.parent !== spiralGroup) {
+          object = object.parent;
+        }
+        
+        if (object.userData.kol) {
+          window.location.href = `./kol-detail.html?id=${object.userData.kol.id}`;
+        }
+      }
+    }
+    
+    function toggleAutoplay() {
+      isAutoplay = !isAutoplay;
+      const icon = document.getElementById('autoplay-icon');
+      if (isAutoplay) {
+        icon.setAttribute('data-lucide', 'pause');
+      } else {
+        icon.setAttribute('data-lucide', 'play');
+      }
+      lucide.createIcons();
+    }
+    
+    function stopAutoplay() {
+      if (isAutoplay) {
+        isAutoplay = false;
+        document.getElementById('autoplay-icon').setAttribute('data-lucide', 'play');
+        lucide.createIcons();
+      }
+    }
+    
     // ========================================
     // KOL MODAL
     // ========================================
@@ -1387,8 +1681,8 @@
           // Update current category
           currentCategory = tab.dataset.category;
           
-          // Update card wall
-          createCardWall();
+          // Update 3D spiral
+          createKOLCards();
           
           // Update grid view
           initGridView();
@@ -1406,7 +1700,7 @@
     // ========================================
     function setupViewToggle() {
       const toggleBtns = document.querySelectorAll('.view-toggle-btn');
-      const wallView = document.getElementById('card-wall-view');
+      const spiralView = document.getElementById('spiral-view');
       const gridView = document.getElementById('grid-view');
       
       toggleBtns.forEach(btn => {
@@ -1418,11 +1712,11 @@
           btn.classList.add('active');
           
           // Toggle views
-          if (view === 'wall') {
-            wallView.style.display = 'block';
+          if (view === 'spiral') {
+            spiralView.style.display = 'block';
             gridView.classList.remove('active');
           } else {
-            wallView.style.display = 'none';
+            spiralView.style.display = 'none';
             gridView.classList.add('active');
             initGridView();
             setTimeout(() => initScrollReveal(), 100);
@@ -1438,8 +1732,8 @@
       // Initialize Lucide icons
       lucide.createIcons();
       
-      // Initialize Card Wall
-      initCardWall();
+      // Initialize Three.js spiral
+      initThreeJS();
       
       // Setup category filter
       setupCategoryFilter();

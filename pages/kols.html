@@ -1000,15 +1000,15 @@
     let currentCategory = 'all';
     
     // Spiral configuration - 优化后的参数
-    const spiralConfig = {
-      radius: 350,           // 增大半径，卡片间距更宽松
-      height: 2000,          // 增加高度
-      cardsPerRotation: 12,  // 每圈更多卡片，更明显的螺旋
-      cardWidth: 140,        // 卡片稍小
-      cardHeight: 180,
-      cardDepth: 4,          // 减薄卡片
-      scrollSpeed: 0.0008,   // 更平滑的滚动
-      rotationSpeed: 0.0015  // 更慢的自转
+        const spiralConfig = {
+      radius: 220,           // 缩小半径，更紧凑
+      height: 1200,          // 减小高度
+      cardsPerRotation: 8,   // 每圈卡片数
+      cardWidth: 90,         // 缩小卡片
+      cardHeight: 120,
+      cardDepth: 2,
+      scrollSpeed: 0.001,
+      rotationSpeed: 0.002   // 更快的自转
     };
     
     function initThreeJS() {
@@ -1021,7 +1021,7 @@
       
       // Camera
       camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 2000);
-      camera.position.set(0, 0, 500);
+      camera.position.set(0, 0, 600);
       
       // Renderer
       renderer = new THREE.WebGLRenderer({ 

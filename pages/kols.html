@@ -225,9 +225,30 @@
     }
     
     .card-wall-price {
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       font-weight: 600;
+      padding: 0.25rem 0.625rem;
+      border-radius: 100px;
+    }
+    
+    .card-wall-price.plan-quarterly {
+      color: #00d4ff;
+      background: rgba(0, 212, 255, 0.12);
+    }
+    
+    .card-wall-price.plan-yearly {
       color: #D4AF37;
+      background: rgba(212, 175, 55, 0.12);
+    }
+    
+    .card-wall-price.plan-solo {
+      color: #a855f7;
+      background: rgba(168, 85, 247, 0.12);
+    }
+    
+    .card-wall-price.plan-free {
+      color: #22c55e;
+      background: rgba(34, 197, 94, 0.12);
     }
     
     .card-wall-btn {
@@ -945,80 +966,79 @@
     // ========================================
     const kolsData = [
       // 华语二级市场现货合约 (27 KOLs)
-      { id: 'alert', name: 'Alert会所', category: 'chinese', flag: '🇨🇳', desc: '擅长山寨主流币美股，11月初MMT爆赚16万刀', signals: '45', winrate: '78%', followers: '12K' },
-      { id: 'yekoi', name: 'Ye.koi', category: 'chinese', flag: '🇨🇳', desc: '目前华语二级顶流', signals: '52', winrate: '82%', followers: '28K' },
-      { id: 'fengxun', name: '风寻', category: 'chinese', flag: '🇨🇳', desc: '新币投研王者', signals: '38', winrate: '75%', followers: '8K' },
-      { id: 'yanchi', name: '颜驰', category: 'chinese', flag: '🇨🇳', desc: '天花版顶级交易员', signals: '48', winrate: '85%', followers: '15K' },
-      { id: 'tiafeiluo', name: '提阿非罗', category: 'chinese', flag: '🇹🇼', desc: '台湾博主，社群优质内容很多', signals: '35', winrate: '73%', followers: '9K' },
-      { id: 'feiyang', name: '比特币飞扬', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，连盈记录高', signals: '42', winrate: '80%', followers: '11K' },
-      { id: 'chenge', name: '比特币陈哥', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，分析市场行情透彻，策略简单易懂', signals: '50', winrate: '79%', followers: '18K' },
-      { id: 'fengge', name: '比特币峰哥', category: 'chinese', flag: '🇨🇳', desc: '可能是油管上华语人气最高的博主了', signals: '55', winrate: '81%', followers: '35K' },
-      { id: 'dabiaoke', name: '大镖客', category: 'chinese', flag: '🇨🇳', desc: '9月份社区内投票选出的优质博主', signals: '40', winrate: '76%', followers: '7K' },
-      { id: 'dangaobaba', name: '蛋糕爸爸', category: 'chinese', flag: '🇨🇳', desc: '群友反馈打法稳健', signals: '36', winrate: '77%', followers: '6K' },
-      { id: 'bidaoge', name: '必到哥', category: 'chinese', flag: '🇸🇬', desc: '新加坡KOL，大陆知名度不高', signals: '33', winrate: '74%', followers: '5K' },
-      { id: 'suozhang', name: '币圈所长', category: 'chinese', flag: '🇨🇳', desc: '神级刀交易员', signals: '58', winrate: '88%', followers: '22K' },
-      { id: 'junzhang', name: '比特币军长', category: 'chinese', flag: '🇨🇳', desc: '少见的会露脸的油管华语区博主', signals: '44', winrate: '78%', followers: '14K' },
-      { id: 'dapiaoliang', name: '加密大漂亮', category: 'chinese', flag: '🇨🇳', desc: '擅长使用波浪理论', signals: '39', winrate: '75%', followers: '8K' },
-      { id: 'liliwang', name: 'MIA', category: 'chinese', flag: '🇨🇳', desc: '多位优秀交易员', signals: '46', winrate: '79%', followers: '10K' },
-      { id: 'shucrypto', name: 'Shu-Crypto', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，工会优秀交易员汇聚', signals: '41', winrate: '77%', followers: '9K' },
-      { id: 'sanmage', name: '三马哥', category: 'chinese', flag: '🇨🇳', desc: '主要为中长线波段交易', signals: '28', winrate: '72%', followers: '6K' },
-      { id: 'shuqin', name: '舒琴', category: 'chinese', flag: '🇨🇳', desc: '高胜率博主', signals: '37', winrate: '83%', followers: '8K' },
-      { id: 'xiaoyao', name: '逍遥xtony', category: 'chinese', flag: '🇨🇳', desc: '会员群3000人，会员费赚麻', signals: '43', winrate: '76%', followers: '13K' },
-      { id: 'hongqigong', name: '洪七公', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币', signals: '45', winrate: '78%', followers: '11K' },
-      { id: 'dabusi', name: '打不死的交易员', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币及山寨', signals: '47', winrate: '77%', followers: '12K' },
-      { id: 'paer', name: '帕尔-无极', category: 'chinese', flag: '🇨🇳', desc: '擅长斐波那契战法', signals: '38', winrate: '75%', followers: '8K' },
-      { id: 'kama', name: '币圈Kama', category: 'chinese', flag: '🇨🇳', desc: '社区内多位老师，花一份钱享受多种服务', signals: '51', winrate: '80%', followers: '16K' },
-      { id: 'shihun', name: '诗魂', category: 'chinese', flag: '🇹🇼', desc: '台湾KOL，每天会在油管发布行情分析视频', signals: '49', winrate: '76%', followers: '14K' },
-      { id: 'sanmu', name: '三木交易员', category: 'chinese', flag: '🇨🇳', desc: '币安广场博主，平时主做主流币', signals: '44', winrate: '79%', followers: '11K' },
-      
-      // 国外二级市场现货合约 (15 KOLs)
-      { id: 'wwg', name: 'WWG交易员频道', category: 'international', flag: '🌍', desc: '国外知名交易员社区，多位明星交易员', signals: '62', winrate: '84%', followers: '45K' },
-      { id: 'vivian', name: 'Vivian交易团队', category: 'international', flag: '🇺🇸', desc: 'T1+T2频道', signals: '55', winrate: '81%', followers: '32K' },
-      { id: 'jayson', name: 'Jayson Casper', category: 'international', flag: '🇬🇧', desc: 'Professional crypto trader', signals: '48', winrate: '79%', followers: '28K' },
-      { id: 'tradingarena', name: 'Trading Arena斗兽场', category: 'international', flag: '🌍', desc: 'International trading community', signals: '58', winrate: '82%', followers: '38K' },
-      { id: 'unity', name: 'Unity Academy', category: 'international', flag: '🇺🇸', desc: 'Trading education and signals', signals: '45', winrate: '78%', followers: '25K' },
-      { id: 'chartchampions', name: 'ChartChampions', category: 'international', flag: '🌍', desc: 'Technical analysis experts', signals: '52', winrate: '80%', followers: '42K' },
-      { id: 'thelab', name: 'The Lab', category: 'international', flag: '🇪🇺', desc: '精选国外现货/合约博主', signals: '50', winrate: '79%', followers: '30K' },
-      { id: 'illusionx', name: 'Illusion X社区', category: 'international', flag: '🌍', desc: 'Crypto trading community', signals: '47', winrate: '77%', followers: '22K' },
-      { id: 'chroma', name: 'Chroma社区', category: 'international', flag: '🇦🇺', desc: 'Professional trading group', signals: '43', winrate: '76%', followers: '18K' },
-      { id: 'thehaven', name: 'The Haven社区', category: 'international', flag: '🇨🇦', desc: 'Elite trading community', signals: '49', winrate: '81%', followers: '26K' },
-      
-      // 一级链上 (8 KOLs)
-      { id: '0xsun', name: '0xsun', category: 'onchain', flag: '🇨🇳', desc: '江湖人称链上皇', signals: '35', winrate: '86%', followers: '20K' },
-      { id: 'james', name: 'James', category: 'onchain', flag: '🇨🇳', desc: '冲狗大佬狠哥', signals: '42', winrate: '79%', followers: '15K' },
-      { id: 'toubu', name: '头部玩家', category: 'onchain', flag: '🇨🇳', desc: '两个币圈共创社区，人人都可以在内发布内容交流', signals: '38', winrate: '75%', followers: '12K' },
-      { id: 'pzong', name: 'P总', category: 'onchain', flag: '🇨🇳', desc: '撸毛界知名人物', signals: '33', winrate: '82%', followers: '18K' },
-      { id: 'wansui', name: '万岁', category: 'onchain', flag: '🇨🇳', desc: '近期火热的土狗社区', signals: '45', winrate: '74%', followers: '14K' },
-      { id: 'gem1000x', name: 'CryptoD|1000XGEM', category: 'onchain', flag: '🌍', desc: '一级链上目前最强大，人数最多的社区', signals: '56', winrate: '77%', followers: '50K' },
-      { id: 'lianzhi', name: '链智监控信号', category: 'onchain', flag: '🇨🇳', desc: '包含10余个监控信号，社区AI总结', signals: '60', winrate: '80%', followers: '22K' },
-      { id: 'qingshui', name: '清水哥', category: 'onchain', flag: '🇨🇳', desc: '铭文与符文大师', signals: '29', winrate: '78%', followers: '9K' },
-      
-      // 星辰社区工具频道
-      { id: 'wushuo', name: '吴说区块链', category: 'utility', flag: '🇨🇳', desc: '区块链行业资讯', signals: '30', winrate: '--', followers: '80K' },
-      { id: 'wallstreet', name: '华尔街见闻', category: 'utility', flag: '🇺🇸', desc: '全球金融市场资讯', signals: '50', winrate: '--', followers: '120K' },
-      { id: 'liangxi', name: '凉兮大元帅', category: 'utility', flag: '🇨🇳', desc: '币圈知名人物动态', signals: '25', winrate: '--', followers: '35K' },
-      { id: 'liuyudong', name: '柳玉东波浪理论', category: 'utility', flag: '🇨🇳', desc: '波浪理论分析教学', signals: '20', winrate: '--', followers: '16K' },
-      { id: 'xc-monitor', name: '星辰行情监控', category: 'ai', flag: '🤖', desc: 'AI行情监控 · 策略跟踪 · 胜率统计 · 反指系统 · 空投提醒 · 学习资料', signals: '∞', winrate: '--', followers: '30K' },
-      // === 新增 22 个 KOL（2026-04-03 何总确认）===
-      { id: 'raizelxbt', name: 'raizelXbt', category: 'international', flag: '🌍', desc: '技术分析专家，精准判断市场走势', signals: '30', winrate: '78%', followers: '15K' },
-      { id: 'rektproof', name: 'rektproof', category: 'international', flag: '🌍', desc: '高胜率交易员，擅长风控管理', signals: '25', winrate: '80%', followers: '12K' },
-      { id: 'scalpx', name: 'ScalpX', category: 'international', flag: '🌍', desc: '短线scalp专家，日内交易高手', signals: '45', winrate: '75%', followers: '10K' },
-      { id: 'innercircle', name: 'Inner circle', category: 'international', flag: '🌍', desc: '顶级交易社区，汇集精英交易员', signals: '35', winrate: '82%', followers: '20K' },
-      { id: 'rosemeigui', name: 'Rose玫瑰军团', category: 'international', flag: '🌹', desc: '实力派交易团队，稳健盈利', signals: '28', winrate: '79%', followers: '16K' },
-      { id: 'drprofit', name: 'Dr Profit利润医生', category: 'international', flag: '🏥', desc: '市场诊断专家，长线布局高手', signals: '20', winrate: '85%', followers: '25K' },
-      { id: 'bnkillers', name: '币安杀手BN killers', category: 'international', flag: '🔫', desc: '币安交易专家，合约实力派', signals: '38', winrate: '77%', followers: '18K' },
-      { id: 'btcbullets', name: 'BTC子弹btc bullets', category: 'international', flag: '💫', desc: 'BTC专精交易员，精准把握行情', signals: '32', winrate: '81%', followers: '14K' },
-      { id: 'jiamipangke', name: '加密庞克', category: 'chinese', flag: '🇨🇳', desc: '加密朋克精神，深度研究项目', signals: '22', winrate: '76%', followers: '11K' },
-      { id: 'liaoshaobing', name: '廖少冰', category: 'chinese', flag: '🇨🇳', desc: '资深交易员，擅长趋势判断', signals: '30', winrate: '80%', followers: '13K' },
-      { id: 'kebituo', name: '科幣託 crypto', category: 'chinese', flag: '🇹🇼', desc: '台湾KOL，币圈科普达人', signals: '18', winrate: '74%', followers: '9K' },
-      { id: 'dayu', name: '大宇', category: 'chinese', flag: '🇨🇳', desc: '实力派分析师，市场洞察力强', signals: '25', winrate: '78%', followers: '12K' },
-      { id: 'kaiwenairdrop', name: '凯文空投', category: 'onchain', flag: '🪂', desc: '空投猎手，一级市场挖掘专家', signals: '40', winrate: '72%', followers: '15K' },
-      { id: 'baiding', name: '白丁', category: 'chinese', flag: '🇨🇳', desc: '低调实力派，稳健交易风格', signals: '20', winrate: '82%', followers: '8K' },
-      { id: 'pipixia', name: '皮皮虾INFP', category: 'chinese', flag: '🦐', desc: '个性派交易员，独特视角分析', signals: '28', winrate: '75%', followers: '10K' },
-      { id: 'suhe', name: '苏禾', category: 'chinese', flag: '🇨🇳', desc: '技术流分析师，图表解读专家', signals: '22', winrate: '79%', followers: '9K' },
-      { id: 'aoyingziben', name: '熬鹰资本', category: 'chinese', flag: '🦅', desc: '资本运作高手，长线价值投资', signals: '15', winrate: '83%', followers: '14K' },
-      { id: 'wallstreetqueen', name: '华尔街女王Wallstreet Queen', category: 'international', flag: '👑', desc: '华尔街风格交易，专业级分析', signals: '30', winrate: '80%', followers: '30K' },
-      { id: 'russianluopan', name: '俄罗斯罗盘FRI', category: 'international', flag: '🇷🇺', desc: '俄罗斯顶级交易员，独特技术体系', signals: '20', winrate: '84%', followers: '22K' }
+      { id: 'alert', name: 'Alert会所', category: 'chinese', flag: '🇨🇳', desc: '擅长山寨主流币美股，11月初MMT爆赚16万刀', plan: 'solo' },
+      { id: 'yekoi', name: 'Ye.koi', category: 'chinese', flag: '🇨🇳', desc: '目前华语二级顶流', plan: 'solo' },
+      { id: 'fengxun', name: '风寻', category: 'chinese', flag: '🇨🇳', desc: '新币投研王者', plan: 'yearly' },
+      { id: 'yanchi', name: '颜驰', category: 'chinese', flag: '🇨🇳', desc: '天花板顶级交易员', plan: 'quarterly' },
+      { id: 'tiafeiluo', name: '提阿非罗', category: 'chinese', flag: '🇹🇼', desc: '台湾博主，社群优质内容很多', plan: 'quarterly' },
+      { id: 'feiyang', name: '比特币飞扬', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，连盈记录高', plan: 'quarterly' },
+      { id: 'chenge', name: '比特币陈哥', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，分析市场行情透彻，策略简单易懂', plan: 'yearly' },
+      { id: 'fengge', name: '比特币峰哥', category: 'chinese', flag: '🇨🇳', desc: '可能是油管上华语人气最高的博主了', plan: 'yearly' },
+      { id: 'dabiaoke', name: '大镖客', category: 'chinese', flag: '🇨🇳', desc: '9月份社区内投票选出的优质博主', plan: 'quarterly' },
+      { id: 'dangaobaba', name: '蛋糕爸爸', category: 'chinese', flag: '🇨🇳', desc: '群友反馈打法稳健', plan: 'quarterly' },
+      { id: 'bidaoge', name: '必到哥', category: 'chinese', flag: '🇸🇬', desc: '新加坡KOL，大陆知名度不高', plan: 'quarterly' },
+      { id: 'suozhang', name: '币圈所长', category: 'chinese', flag: '🇨🇳', desc: '神级短刀交易员', plan: 'yearly' },
+      { id: 'junzhang', name: '比特币军长', category: 'chinese', flag: '🇨🇳', desc: '少见的会露脸的油管华语区博主', plan: 'yearly' },
+      { id: 'dapiaoliang', name: '加密大漂亮', category: 'chinese', flag: '🇨🇳', desc: '擅长使用波浪理论', plan: 'yearly' },
+      { id: 'liliwang', name: 'MIA', category: 'chinese', flag: '🇨🇳', desc: '多位优秀交易员', plan: 'yearly' },
+      { id: 'shucrypto', name: 'Shu-Crypto', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，工会优秀交易员汇聚', plan: 'yearly' },
+      { id: 'sanmage', name: '三马哥', category: 'chinese', flag: '🇨🇳', desc: '主要为中长线波段交易', plan: 'quarterly' },
+      { id: 'shuqin', name: '舒琴', category: 'chinese', flag: '🇨🇳', desc: '高胜率博主', plan: 'quarterly' },
+      { id: 'xiaoyao', name: '逍遥xtony', category: 'chinese', flag: '🇨🇳', desc: '会员群3000人，会员费赚麻', plan: 'solo' },
+      { id: 'hongqigong', name: '洪七公', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币', plan: 'yearly' },
+      { id: 'dabusi', name: '打不死的交易员', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币及山寨', plan: 'quarterly' },
+      { id: 'paer', name: '帕尔-无极', category: 'chinese', flag: '🇨🇳', desc: '擅长斐波那契战法', plan: 'yearly' },
+      { id: 'kama', name: '币圈Kama', category: 'chinese', flag: '🇨🇳', desc: '社区内多位老师，花一份钱享受多种服务', plan: 'yearly' },
+      { id: 'shihun', name: '诗魂', category: 'chinese', flag: '🇹🇼', desc: '台湾KOL，每天会在油管发布行情分析视频', plan: 'yearly' },
+      { id: 'sanmu', name: '三木交易员', category: 'chinese', flag: '🇨🇳', desc: '币安广场博主，平时主做主流币', plan: 'quarterly' },
+      { id: 'jiamipangke', name: '加密庞克', category: 'chinese', flag: '🇨🇳', desc: '加密朋克精神，深度研究项目', plan: 'yearly' },
+      { id: 'liaoshaobing', name: '廖少冰', category: 'chinese', flag: '🇨🇳', desc: '资深交易员，擅长趋势判断', plan: 'yearly' },
+      { id: 'kebituo', name: '科幣託 crypto', category: 'chinese', flag: '🇹🇼', desc: '台湾KOL，币圈科普达人', plan: 'yearly' },
+      { id: 'dayu', name: '大宇', category: 'chinese', flag: '🇨🇳', desc: '实力派分析师，市场洞察力强', plan: 'yearly' },
+      { id: 'baiding', name: '白丁', category: 'chinese', flag: '🇨🇳', desc: '低调实力派，稳健交易风格', plan: 'yearly' },
+      { id: 'pipixia', name: '皮皮虾INFP', category: 'chinese', flag: '🇨🇳', desc: '个性派交易员，独特视角分析', plan: 'yearly' },
+      { id: 'suhe', name: '苏禾', category: 'chinese', flag: '🇨🇳', desc: '技术流分析师，图表解读专家', plan: 'yearly' },
+      { id: 'aoyingziben', name: '熬鹰资本', category: 'chinese', flag: '🇨🇳', desc: '资本运作高手，长线价值投资', plan: 'yearly' },
+
+      // 国外二级市场现货合约 (20 KOLs)
+      { id: 'wwg', name: 'WWG交易员频道', category: 'international', flag: '🌍', desc: '国外知名交易员社区，多位明星交易员', plan: 'yearly' },
+      { id: 'vivian', name: 'Vivian交易团队', category: 'international', flag: '🇺🇸', desc: 'T1+T2频道', plan: 'yearly' },
+      { id: 'jayson', name: 'Jayson Casper', category: 'international', flag: '🇬🇧', desc: 'Professional crypto trader', plan: 'yearly' },
+      { id: 'tradingarena', name: 'Trading Arena斗兽场', category: 'international', flag: '🌍', desc: 'International trading community', plan: 'yearly' },
+      { id: 'unity', name: 'Unity Academy', category: 'international', flag: '🇺🇸', desc: 'Trading education and signals', plan: 'yearly' },
+      { id: 'chartchampions', name: 'ChartChampions', category: 'international', flag: '🌍', desc: 'Technical analysis experts', plan: 'yearly' },
+      { id: 'thelab', name: 'The Lab', category: 'international', flag: '🇪🇺', desc: '精选国外现货/合约博主', plan: 'yearly' },
+      { id: 'illusionx', name: 'Illusion X社区', category: 'international', flag: '🌍', desc: 'Crypto trading community', plan: 'yearly' },
+      { id: 'chroma', name: 'Chroma社区', category: 'international', flag: '🇦🇺', desc: 'Professional trading group', plan: 'yearly' },
+      { id: 'thehaven', name: 'The Haven社区', category: 'international', flag: '🇨🇦', desc: 'Elite trading community', plan: 'yearly' },
+      { id: 'raizelxbt', name: 'raizelXbt', category: 'international', flag: '🌍', desc: '技术分析专家，精准判断市场走势', plan: 'yearly' },
+      { id: 'rektproof', name: 'rektproof', category: 'international', flag: '🌍', desc: '高胜率交易员，擅长风控管理', plan: 'yearly' },
+      { id: 'scalpx', name: 'ScalpX', category: 'international', flag: '🌍', desc: '短线scalp专家，日内交易高手', plan: 'yearly' },
+      { id: 'innercircle', name: 'Inner circle', category: 'international', flag: '🌍', desc: '顶级交易社区，汇集精英交易员', plan: 'yearly' },
+      { id: 'rosemeigui', name: 'Rose玫瑰军团', category: 'international', flag: '🌍', desc: '实力派交易团队，稳健盈利', plan: 'yearly' },
+      { id: 'drprofit', name: 'Dr Profit利润医生', category: 'international', flag: '🌍', desc: '市场诊断专家，长线布局高手', plan: 'yearly' },
+      { id: 'bnkillers', name: '币安杀手BN killers', category: 'international', flag: '🌍', desc: '币安交易专家，合约实力派', plan: 'yearly' },
+      { id: 'btcbullets', name: 'BTC子弹btc bullets', category: 'international', flag: '🌍', desc: 'BTC专精交易员，精准把握行情', plan: 'yearly' },
+      { id: 'wallstreetqueen', name: '华尔街女王Wallstreet Queen', category: 'international', flag: '🌍', desc: '华尔街风格交易，专业级分析', plan: 'yearly' },
+      { id: 'russianluopan', name: '俄罗斯罗盘FRI', category: 'international', flag: '🇷🇺', desc: '俄罗斯顶级交易员，独特技术体系', plan: 'yearly' },
+
+      // 一级链上 (9 KOLs)
+      { id: '0xsun', name: '0xsun', category: 'onchain', flag: '🇨🇳', desc: '江湖人称链上皇', plan: 'yearly' },
+      { id: 'james', name: 'James', category: 'onchain', flag: '🇨🇳', desc: '冲狗大佬狠哥', plan: 'yearly' },
+      { id: 'toubu', name: '头部玩家', category: 'onchain', flag: '🇨🇳', desc: '两个币圈共创社区，人人都可以在内发布内容交流', plan: 'yearly' },
+      { id: 'pzong', name: 'P总', category: 'onchain', flag: '🇨🇳', desc: '撸毛界知名人物', plan: 'yearly' },
+      { id: 'wansui', name: '万岁', category: 'onchain', flag: '🇨🇳', desc: '近期火热的土狗社区', plan: 'yearly' },
+      { id: 'gem1000x', name: 'CryptoD|1000XGEM', category: 'onchain', flag: '🌍', desc: '一级链上目前最强大，人数最多的社区', plan: 'yearly' },
+      { id: 'lianzhi', name: '链智监控信号', category: 'onchain', flag: '🇨🇳', desc: '包含10余个监控信号，社区AI总结', plan: 'yearly' },
+      { id: 'qingshui', name: '清水哥', category: 'onchain', flag: '🇨🇳', desc: '铭文与符文大师', plan: 'yearly' },
+      { id: 'kaiwenairdrop', name: '凯文空投', category: 'onchain', flag: '🇨🇳', desc: '空投猎手，一级市场挖掘专家', plan: 'yearly' },
+
+      // 工具/资讯频道
+      { id: 'wushuo', name: '吴说区块链', category: 'utility', flag: '🇨🇳', desc: '区块链行业资讯', plan: 'free' },
+      { id: 'wallstreet', name: '华尔街见闻', category: 'utility', flag: '🇺🇸', desc: '全球金融市场资讯', plan: 'free' },
+      { id: 'liangxi', name: '凉兮大元帅', category: 'utility', flag: '🇨🇳', desc: '币圈知名人物动态', plan: 'free' },
+      { id: 'liuyudong', name: '柳玉东波浪理论', category: 'utility', flag: '🇨🇳', desc: '波浪理论分析教学', plan: 'free' },
+      { id: 'xc-monitor', name: '星辰行情监控', category: 'ai', flag: '🤖', desc: 'AI行情监控 · 策略跟踪 · 反指系统 · 空投提醒 · 学习资料', plan: 'free' }
     ];
 
     const avatarMapping = {
@@ -1141,7 +1161,7 @@
           <div class="card-wall-category">${getCategoryName(kol.category)}</div>
           <p class="card-wall-desc">${kol.desc}</p>
           <div class="card-wall-footer">
-            <span class="card-wall-price">${kol.price || '单独购买'}</span>
+            <span class="card-wall-price plan-${kol.plan}">${getPlanLabel(kol.plan)}</span>
             <a href="./kol-detail.html?id=${kol.id}" class="card-wall-btn">查看详情</a>
           </div>
         </div>
@@ -1167,6 +1187,16 @@
       return names[category] || category;
     }
     
+    function getPlanLabel(plan) {
+      const labels = {
+        'quarterly': '季度会员',
+        'yearly': '年费/永久会员',
+        'solo': '单独购买',
+        'free': '免费'
+      };
+      return labels[plan] || '年费/永久会员';
+    }
+    
     function setupWallControls() {
       const pauseBtn = document.getElementById('wall-pause');
       const pauseIcon = document.getElementById('wall-pause-icon');
@@ -1183,70 +1213,6 @@
         lucide.createIcons();
       });
     }
-      
-      // Card colors - 统一使用金色系
-      const categoryColors = {
-        chinese: 0xD4AF37,
-        international: 0xD4AF37,
-        onchain: 0xD4AF37,
-        utility: 0xD4AF37,
-        ai: 0xD4AF37
-      };
-      const color = categoryColors[kol.category] || 0xD4AF37;
-      
-      // Card geometry - 使用更薄的卡片
-      const geometry = new THREE.BoxGeometry(
-        spiralConfig.cardWidth, 
-        spiralConfig.cardHeight, 
-        2
-      );
-      
-      // Create card texture
-      const texture = createCardTexture(kol, color);
-      
-      // Materials - 提升质感，更有光泽
-      const material = new THREE.MeshStandardMaterial({
-        map: texture,
-        roughness: 0.3,
-        metalness: 0.6,
-        emissive: color,
-        emissiveIntensity: 0.1
-      });
-      
-      const edgeMaterial = new THREE.MeshBasicMaterial({
-        color: color,
-        transparent: true,
-        opacity: 0.8
-      });
-      
-      // Main card mesh
-      const mesh = new THREE.Mesh(geometry, [
-        edgeMaterial, edgeMaterial, // left, right
-        edgeMaterial, edgeMaterial, // top, bottom
-        material, material // front, back
-      ]);
-      
-      group.add(mesh);
-      
-      // Glow effect
-      const glowGeometry = new THREE.BoxGeometry(
-        spiralConfig.cardWidth + 4,
-        spiralConfig.cardHeight + 4,
-        spiralConfig.cardDepth + 2
-      );
-      const glowMaterial = new THREE.MeshBasicMaterial({
-        color: color,
-        transparent: true,
-        opacity: 0.2,
-        side: THREE.BackSide
-      });
-      const glow = new THREE.Mesh(glowGeometry, glowMaterial);
-      glow.name = 'glow';
-      glow.visible = false;
-      group.add(glow);
-      
-      return group;
-    }
     // ========================================
     // KOL MODAL
     // ========================================
@@ -1259,9 +1225,9 @@
       document.getElementById('modal-avatar').alt = kol.name;
       document.getElementById('modal-name').textContent = kol.name;
       document.getElementById('modal-desc').textContent = kol.desc;
-      document.getElementById('modal-signals').textContent = kol.signals;
-      document.getElementById('modal-winrate').textContent = kol.winrate;
-      document.getElementById('modal-followers').textContent = kol.followers;
+      document.getElementById('modal-signals').textContent = getPlanLabel(kol.plan);
+      document.getElementById('modal-winrate').textContent = getCategoryName(kol.category);
+      document.getElementById('modal-followers').textContent = '--';
       
       // Category badge
       const categoryLabels = {
@@ -1351,16 +1317,8 @@
         <div class="kol-card-footer">
           <div class="kol-card-stats">
             <div class="kol-card-stat">
-              <i data-lucide="radio" class="w-3 h-3"></i>
-              <span>${kol.signals}</span>
-            </div>
-            <div class="kol-card-stat">
-              <i data-lucide="trending-up" class="w-3 h-3"></i>
-              <span>${kol.winrate}</span>
-            </div>
-            <div class="kol-card-stat">
-              <i data-lucide="users" class="w-3 h-3"></i>
-              <span>${kol.followers}</span>
+              <i data-lucide="tag" class="w-3 h-3"></i>
+              <span>${getPlanLabel(kol.plan)}</span>
             </div>
           </div>
           <a href="./kol-detail.html?id=${kol.id}" class="kol-card-btn">

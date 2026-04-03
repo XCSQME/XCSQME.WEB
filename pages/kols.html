@@ -881,7 +881,7 @@
     // ========================================
     const kolsData = [
       // 华语二级市场现货合约 (27 KOLs)
-      { id: 'alert', name: 'Alertの会所', category: 'chinese', flag: '🇨🇳', desc: '擅长山寨主流币美股，11月初MMT爆赚16万刀', signals: '45', winrate: '78%', followers: '12K' },
+      { id: 'alert', name: 'Alert会所', category: 'chinese', flag: '🇨🇳', desc: '擅长山寨主流币美股，11月初MMT爆赚16万刀', signals: '45', winrate: '78%', followers: '12K' },
       { id: 'yekoi', name: 'Ye.koi', category: 'chinese', flag: '🇨🇳', desc: '目前华语二级顶流', signals: '52', winrate: '82%', followers: '28K' },
       { id: 'fengxun', name: '风寻', category: 'chinese', flag: '🇨🇳', desc: '新币投研王者', signals: '38', winrate: '75%', followers: '8K' },
       { id: 'yanchi', name: '颜驰', category: 'chinese', flag: '🇨🇳', desc: '天花版顶级交易员', signals: '48', winrate: '85%', followers: '15K' },
@@ -895,17 +895,15 @@
       { id: 'suozhang', name: '币圈所长', category: 'chinese', flag: '🇨🇳', desc: '神级刀交易员', signals: '58', winrate: '88%', followers: '22K' },
       { id: 'junzhang', name: '比特币军长', category: 'chinese', flag: '🇨🇳', desc: '少见的会露脸的油管华语区博主', signals: '44', winrate: '78%', followers: '14K' },
       { id: 'dapiaoliang', name: '加密大漂亮', category: 'chinese', flag: '🇨🇳', desc: '擅长使用波浪理论', signals: '39', winrate: '75%', followers: '8K' },
-      { id: 'liliwang', name: 'LILI王-MIA', category: 'chinese', flag: '🇨🇳', desc: '多位优秀交易员', signals: '46', winrate: '79%', followers: '10K' },
+      { id: 'liliwang', name: 'MIA', category: 'chinese', flag: '🇨🇳', desc: '多位优秀交易员', signals: '46', winrate: '79%', followers: '10K' },
       { id: 'shucrypto', name: 'Shu-Crypto', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币，工会优秀交易员汇聚', signals: '41', winrate: '77%', followers: '9K' },
       { id: 'sanmage', name: '三马哥', category: 'chinese', flag: '🇨🇳', desc: '主要为中长线波段交易', signals: '28', winrate: '72%', followers: '6K' },
       { id: 'shuqin', name: '舒琴', category: 'chinese', flag: '🇨🇳', desc: '高胜率博主', signals: '37', winrate: '83%', followers: '8K' },
       { id: 'xiaoyao', name: '逍遥xtony', category: 'chinese', flag: '🇨🇳', desc: '会员群3000人，会员费赚麻', signals: '43', winrate: '76%', followers: '13K' },
       { id: 'hongqigong', name: '洪七公', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币', signals: '45', winrate: '78%', followers: '11K' },
-      { id: 'huangyouliang', name: '黄有梁', category: 'chinese', flag: '🇨🇳', desc: '涵盖交易策略及期权，期权交易者', signals: '34', winrate: '71%', followers: '7K' },
       { id: 'dabusi', name: '打不死的交易员', category: 'chinese', flag: '🇨🇳', desc: '擅长主流币及山寨', signals: '47', winrate: '77%', followers: '12K' },
       { id: 'paer', name: '帕尔-无极', category: 'chinese', flag: '🇨🇳', desc: '擅长斐波那契战法', signals: '38', winrate: '75%', followers: '8K' },
       { id: 'kama', name: '币圈Kama', category: 'chinese', flag: '🇨🇳', desc: '社区内多位老师，花一份钱享受多种服务', signals: '51', winrate: '80%', followers: '16K' },
-      { id: 'mike', name: '加密密克', category: 'chinese', flag: '🇨🇳', desc: '主要擅长主流币', signals: '42', winrate: '78%', followers: '10K' },
       { id: 'shihun', name: '诗魂', category: 'chinese', flag: '🇹🇼', desc: '台湾KOL，每天会在油管发布行情分析视频', signals: '49', winrate: '76%', followers: '14K' },
       { id: 'sanmu', name: '三木交易员', category: 'chinese', flag: '🇨🇳', desc: '币安广场博主，平时主做主流币', signals: '44', winrate: '79%', followers: '11K' },
       
@@ -920,11 +918,6 @@
       { id: 'illusionx', name: 'Illusion X社区', category: 'international', flag: '🌍', desc: 'Crypto trading community', signals: '47', winrate: '77%', followers: '22K' },
       { id: 'chroma', name: 'Chroma社区', category: 'international', flag: '🇦🇺', desc: 'Professional trading group', signals: '43', winrate: '76%', followers: '18K' },
       { id: 'thehaven', name: 'The Haven社区', category: 'international', flag: '🇨🇦', desc: 'Elite trading community', signals: '49', winrate: '81%', followers: '26K' },
-      { id: 'crypto1', name: 'CryptoWizards', category: 'international', flag: '🇩🇪', desc: 'German trading experts', signals: '41', winrate: '75%', followers: '19K' },
-      { id: 'crypto2', name: 'AlphaTraders', category: 'international', flag: '🇸🇬', desc: 'Asian market specialists', signals: '53', winrate: '83%', followers: '31K' },
-      { id: 'crypto3', name: 'SignalMasters', category: 'international', flag: '🇳🇱', desc: 'European trading signals', signals: '46', winrate: '78%', followers: '24K' },
-      { id: 'crypto4', name: 'TradeLegends', category: 'international', flag: '🇫🇷', desc: 'French trading community', signals: '44', winrate: '77%', followers: '21K' },
-      { id: 'crypto5', name: 'CryptoElite', category: 'international', flag: '🇯🇵', desc: 'Japanese crypto analysts', signals: '51', winrate: '80%', followers: '27K' },
       
       // 一级链上 (8 KOLs)
       { id: '0xsun', name: '0xsun', category: 'onchain', flag: '🇨🇳', desc: '江湖人称链上皇', signals: '35', winrate: '86%', followers: '20K' },
@@ -932,7 +925,7 @@
       { id: 'toubu', name: '头部玩家', category: 'onchain', flag: '🇨🇳', desc: '两个币圈共创社区，人人都可以在内发布内容交流', signals: '38', winrate: '75%', followers: '12K' },
       { id: 'pzong', name: 'P总', category: 'onchain', flag: '🇨🇳', desc: '撸毛界知名人物', signals: '33', winrate: '82%', followers: '18K' },
       { id: 'wansui', name: '万岁', category: 'onchain', flag: '🇨🇳', desc: '近期火热的土狗社区', signals: '45', winrate: '74%', followers: '14K' },
-      { id: 'gem1000x', name: '1000X GEM Crypto D', category: 'onchain', flag: '🌍', desc: '一级链上目前最强大，人数最多的社区', signals: '56', winrate: '77%', followers: '50K' },
+      { id: 'gem1000x', name: 'CryptoD|1000XGEM', category: 'onchain', flag: '🌍', desc: '一级链上目前最强大，人数最多的社区', signals: '56', winrate: '77%', followers: '50K' },
       { id: 'lianzhi', name: '链智监控信号', category: 'onchain', flag: '🇨🇳', desc: '包含10余个监控信号，社区AI总结', signals: '60', winrate: '80%', followers: '22K' },
       { id: 'qingshui', name: '清水哥', category: 'onchain', flag: '🇨🇳', desc: '铭文与符文大师', signals: '29', winrate: '78%', followers: '9K' },
       
@@ -1002,7 +995,7 @@
       "Jayson Casper": "eqHJAqjz_400x400.webp",
       "Chroma社区": "JqsL-jfP_400x400.webp",
       "The Lab": "cDVrX4Gs_400x400.webp",
-      "1000X GEM Crypto D": "Pln6jtx-_400x400.webp",
+      "CryptoD|1000XGEM": "Pln6jtx-_400x400.webp",
       "P总": "9tB-UuzO_400x400.webp",
       "raizelXbt": "Ggj0Qing_400x400.webp",
       "rektproof": "TIADIvFp_400x400.webp",

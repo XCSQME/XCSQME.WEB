@@ -631,8 +631,14 @@ input, textarea, select {
 }
 
 /* Animation utilities */
-.animate-fadeIn { animation: fadeIn 600ms var(--ease-out-expo) forwards; }
-.animate-fadeInUp { animation: fadeInUp 600ms var(--ease-out-expo) forwards; }
+.animate-fadeIn { 
+  opacity: 1;
+  animation: fadeIn 800ms var(--ease-out-expo) forwards; 
+}
+.animate-fadeInUp { 
+  opacity: 1;
+  animation: fadeInUp 800ms var(--ease-out-expo) forwards; 
+}
 .animate-glowPulse { animation: glowPulse 3000ms ease-in-out infinite; }
 .animate-float { animation: float 4000ms ease-in-out infinite; }
 

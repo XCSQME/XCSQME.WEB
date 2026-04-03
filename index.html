@@ -82,13 +82,25 @@
     /* 金色光晕 */
     .hero-glow {
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 50%;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      width: 1000px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
       transform: translate(-50%, -50%);
       pointer-events: none;
+    }
+    
+    /* 装饰线条 */
+    .hero-lines {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--color-gold-primary), transparent);
+      opacity: 0.5;
     }
 
     .hero-title {
@@ -290,19 +302,36 @@
       pointer-events: none;
     }
 
+    /* 滚动指示器 - 更醒目 */
     .scroll-indicator {
       position: absolute;
-      bottom: 2rem;
+      bottom: 2.5rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--space-2);
-      color: var(--color-text-muted);
-      font-size: var(--text-xsmall);
-      letter-spacing: 0.1em;
+      gap: var(--space-3);
+      color: var(--color-gold-primary);
+      font-size: var(--text-small);
+      font-weight: 500;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-out-expo);
+      padding: var(--space-4) var(--space-6);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 100px;
+      background: rgba(212, 175, 55, 0.05);
+    }
+    
+    .scroll-indicator:hover {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: var(--color-gold-primary);
+    }
+    
+    .scroll-indicator i {
+      animation: bounce 2s infinite;
     }
 
     @keyframes bounce {
@@ -726,9 +755,9 @@
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="scroll-indicator animate-bounce">
-      <span>Scroll</span>
-      <i data-lucide="chevron-down" class="w-4 h-4"></i>
+    <div class="scroll-indicator" onclick="document.querySelector('.section').scrollIntoView({behavior: 'smooth'})">
+      <span>向下滚动探索</span>
+      <i data-lucide="chevron-down" class="w-5 h-5"></i>
     </div>
   </section>
 
@@ -873,9 +902,7 @@
         <!-- KOL Card 1 -->
         <div class="kol-card animate-on-scroll stagger-1" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
-              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
-            </div>
+            <img src="assets/avatars/Alertの会所.png" alt="Alertの会所" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">Alertの会所</h4>
               <span class="badge badge-cyan mt-1">华语二级市场</span>
@@ -899,9 +926,7 @@
         <!-- KOL Card 2 -->
         <div class="kol-card animate-on-scroll stagger-2" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
-              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
-            </div>
+            <img src="assets/avatars/Yekoi.png" alt="Ye.koi" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">Ye.koi</h4>
               <span class="badge badge-cyan mt-1">国外二级市场</span>
@@ -925,9 +950,7 @@
         <!-- KOL Card 3 -->
         <div class="kol-card animate-on-scroll stagger-3" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
-              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
-            </div>
+            <img src="assets/avatars/风寻.png" alt="风寻" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">风寻</h4>
               <span class="badge badge-gold mt-1">一级链上</span>
@@ -951,9 +974,7 @@
         <!-- KOL Card 4 -->
         <div class="kol-card animate-on-scroll stagger-1" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
-              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
-            </div>
+            <img src="assets/avatars/颜驰.png" alt="颜驰" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">颜驰</h4>
               <span class="badge badge-cyan mt-1">华语二级市场</span>
@@ -977,9 +998,7 @@
         <!-- KOL Card 5 -->
         <div class="kol-card animate-on-scroll stagger-2" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
-              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
-            </div>
+            <img src="assets/avatars/提阿非罗.png" alt="提阿非罗" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">提阿非罗</h4>
               <span class="badge badge-cyan mt-1">国外二级市场</span>
@@ -1003,9 +1022,7 @@
         <!-- KOL Card 6 -->
         <div class="kol-card animate-on-scroll stagger-3" onclick="window.location.href='kols.html'">
           <div class="flex items-start gap-4">
-            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-800 flex items-center justify-center flex-shrink-0 border-2 border-gold/30">
-              <i data-lucide="user" class="w-8 h-8 text-gold"></i>
-            </div>
+            <img src="assets/avatars/比特币飞扬.png" alt="比特币飞扬" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">比特币飞扬</h4>
               <span class="badge badge-cyan mt-1">华语二级市场</span>

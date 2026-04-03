@@ -1517,7 +1517,7 @@
         }
         
         if (object.userData.kol) {
-          openKOLModal(object.userData.kol);
+          window.location.href = `./kol-detail.html?id=${object.userData.kol.id}`;
         }
       }
     }
@@ -1657,9 +1657,9 @@
               <span>${kol.followers}</span>
             </div>
           </div>
-          <button class="kol-card-btn" onclick="openKOLModal(kolsData.find(k => k.id === '${kol.id}'))">
+          <a href="./kol-detail.html?id=${kol.id}" class="kol-card-btn">
             查看
-          </button>
+          </a>
         </div>
       `;
       

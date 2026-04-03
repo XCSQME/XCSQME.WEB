@@ -1084,16 +1084,27 @@
       filteredKOLs.forEach((kol, index) => {
         const card = createCard(kol, index);
         
-        // Calculate spiral position
+        // Calculate spiral position - 更自然的螺旋曲线
         const angle = index * angleStep;
-        const y = (index / cardCount) * totalHeight - totalHeight / 2;
-        const x = Math.cos(angle) * spiralConfig.radius;
-        const z = Math.sin(angle) * spiralConfig.radius;
+        const progress = index / cardCount;
+        const y = (progress - 0.5) * totalHeight;
+        
+        // 螺旋半径随高度轻微变化，形成更自然的曲线
+        const radiusVariation = Math.sin(progress * Math.PI) * 50;
+        const currentRadius = spiralConfig.radius + radiusVariation;
+        
+        const x = Math.cos(angle) * currentRadius;
+        const z = Math.sin(angle) * currentRadius;
         
         card.position.set(x, y, z);
         card.rotation.y = -angle;
         
-        // Store original position for animation
+        // 计算与相机的距离，用于景深效果
+        const distance = Math.sqrt(x*x + y*y + z*z);
+        const maxDistance = Math.sqrt(currentRadius*currentRadius + (totalHeight/2)*(totalHeight/2));
+        card.userData.distanceRatio = distance / maxDistance;
+        
+        // Store original data
         card.userData.originalPosition = { x, y, z };
         card.userData.originalRotation = { y: -angle };
         card.userData.kol = kol;
@@ -1120,22 +1131,23 @@
       };
       const color = categoryColors[kol.category] || 0xD4AF37;
       
-      // Card geometry
+      // Card geometry - 使用更薄的卡片
       const geometry = new THREE.BoxGeometry(
         spiralConfig.cardWidth, 
         spiralConfig.cardHeight, 
-        spiralConfig.cardDepth
+        2
       );
       
       // Create card texture
       const texture = createCardTexture(kol, color);
       
-      // Materials
-      const material = new THREE.MeshPhongMaterial({
+      // Materials - 提升质感，更有光泽
+      const material = new THREE.MeshStandardMaterial({
         map: texture,
-        color: 0xffffff,
-        shininess: 100,
-        specular: 0x222222
+        roughness: 0.3,
+        metalness: 0.6,
+        emissive: color,
+        emissiveIntensity: 0.1
       });
       
       const edgeMaterial = new THREE.MeshBasicMaterial({
@@ -1324,20 +1336,47 @@
         targetRotation += spiralConfig.rotationSpeed;
       }
       
-      // Update card glow based on distance from center
+      // Update card effects based on distance from camera (depth of field)
       cards.forEach((card, index) => {
         const glow = card.getObjectByName('glow');
+        const mesh = card.children[0]; // Main card mesh
+        
+        // Calculate world position
+        const worldPos = card.position.clone();
+        worldPos.applyAxisAngle(new THREE.Vector3(0, 1, 0), currentRotation);
+        
+        // Distance from camera (at z=600, looking at origin)
+        const distanceFromCamera = 600 - worldPos.z;
+        const normalizedDistance = Math.max(0, Math.min(1, distanceFromCamera / 1000));
+        
+        // Depth of field: far cards are smaller and more transparent
+        const targetScale = 0.6 + (normalizedDistance * 0.4); // 0.6 to 1.0
+        const targetOpacity = 0.4 + (normalizedDistance * 0.6); // 0.4 to 1.0
+        
+        // Smooth interpolation
+        card.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.1);
+        
+        // Update material opacity
+        if (mesh && mesh.material) {
+          mesh.material.forEach(mat => {
+            if (mat.transparent !== undefined) {
+              mat.transparent = true;
+              mat.opacity = THREE.MathUtils.lerp(mat.opacity || 1, targetOpacity, 0.1);
+            }
+          });
+        }
+        
+        // Glow effect based on how front-facing the card is
         if (glow) {
-          // Calculate distance from front-facing position
           const cardAngle = (index / cards.length) * Math.PI * 4 + currentRotation;
           const normalizedAngle = ((cardAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
           const distanceFromFront = Math.abs(normalizedAngle - Math.PI / 2);
-          const isVisible = distanceFromFront < Math.PI / 3;
+          const isVisible = distanceFromFront < Math.PI / 2;
           
-          glow.visible = isVisible;
+          glow.visible = isVisible && normalizedDistance > 0.5;
           if (isVisible) {
-            const intensity = 1 - (distanceFromFront / (Math.PI / 3));
-            glow.material.opacity = 0.1 + intensity * 0.2;
+            const intensity = 1 - (distanceFromFront / (Math.PI / 2));
+            glow.material.opacity = 0.05 + intensity * 0.15;
           }
         }
       });

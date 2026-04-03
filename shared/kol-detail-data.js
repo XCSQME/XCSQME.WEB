@@ -487,7 +487,7 @@ const KOL_DETAIL_DATA = {
   "0xsun": {
     name: "0xsun",
     category: "一级链上",
-    desc: "人称："链上皇"曾经单币"TRUMP"盈利1亿多美元震惊币圈，其他优秀战绩数不胜数。江湖人称链上皇，一级链上交易的传奇人物。",
+    desc: "人称：\"链上皇\"曾经单币\"TRUMP\"盈利1亿多美元震惊币圈，其他优秀战绩数不胜数。江湖人称链上皇，一级链上交易的传奇人物。",
     twitter: "https://x.com/strikingly",
     youtube: "",
     telegram: "",

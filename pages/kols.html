@@ -1189,12 +1189,12 @@
     
     function getPlanLabel(plan) {
       const labels = {
-        'quarterly': '季度会员',
-        'yearly': '年费/永久会员',
+        'quarterly': '普通',
+        'yearly': '年度',
         'solo': '单独购买',
         'free': '免费'
       };
-      return labels[plan] || '年费/永久会员';
+      return labels[plan] || '年度';
     }
     
     function setupWallControls() {

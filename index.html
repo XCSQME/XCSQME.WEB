@@ -178,13 +178,14 @@
 
     /* 服务卡片 */
     .service-card {
-      background: var(--color-bg-tertiary);
-      border: 1px solid var(--color-border-subtle);
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.12);
       border-radius: var(--radius-lg);
       padding: var(--space-8);
       transition: all var(--duration-normal) var(--ease-out-expo);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .service-card::before {
@@ -262,12 +263,13 @@
 
     /* KOL 卡片 */
     .kol-card {
-      background: var(--color-bg-tertiary);
-      border: 1px solid var(--color-border-subtle);
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.15);
       border-radius: var(--radius-lg);
       padding: var(--space-6);
       transition: all var(--duration-normal) var(--ease-out-expo);
       cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .kol-card:hover {
@@ -470,8 +472,8 @@
 
     .testimonial-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(168, 85, 247, 0.3);
-      box-shadow: var(--shadow-glow-purple);
+      border-color: rgba(212, 175, 55, 0.3);
+      box-shadow: var(--shadow-gold);
     }
 
     .testimonial-avatar {
@@ -761,7 +763,7 @@
   </div>
 
   <!-- Stats Section -->
-  <section class="section relative z-10">
+  <section class="section relative z-10" style="background: #0d0d0d;">
     <div class="container">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         <!-- Stat 1 -->
@@ -789,7 +791,7 @@
   </section>
 
   <!-- Services Section -->
-  <section class="section relative z-10">
+  <section class="section relative z-10" style="background: #111111; border-top: 1px solid rgba(212,175,55,0.08); border-bottom: 1px solid rgba(212,175,55,0.08);">
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-on-scroll">
@@ -881,7 +883,7 @@
   </section>
 
   <!-- Featured KOLs Section -->
-  <section class="section relative z-10">
+  <section class="section relative z-10" style="background: #0a0a0a;">
     <div class="container">
       <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 animate-on-scroll">
@@ -1046,7 +1048,7 @@
   </section>
 
   <!-- Testimonials Section -->
-  <section class="section relative z-10">
+  <section class="section relative z-10" style="background: #111111; border-top: 1px solid rgba(212,175,55,0.08); border-bottom: 1px solid rgba(212,175,55,0.08);">
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-on-scroll">

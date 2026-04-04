@@ -275,52 +275,27 @@
 
 
 
-<style id="unified-colors">
-  /* 统一配色逻辑 - 高端金融风 */
-  
-  /* 1. 主标题/名字 - 纯白 */
-  h1, h2, h3, h4, .card-title, .kol-name, .service-title {
+
+
+<style id="final-fix">
+  /* 终极高对比度模式 */
+  * {
     color: #FFFFFF !important;
-    font-weight: 600;
   }
-  
-  /* 2. 标签 - 金色背景徽章 + 深色文字 */
-  .badge, .tag, .category-tag, [class*="badge-"], [class*="tag-"] {
-    background: linear-gradient(135deg, #D4AF37 0%, #B8960C 100%) !important;
-    color: #0a0a0a !important;
-    border: none !important;
-    font-weight: 600 !important;
-    padding: 4px 12px !important;
-    border-radius: 6px !important;
-    font-size: 0.75rem !important;
-  }
-  
-  /* 3. 数据/数字 - 金色 */
-  .stat-number, .data-value, .metric, .count, [class*="stat-"] {
-    color: #D4AF37 !important;
-    font-weight: 700;
-  }
-  
-  /* 4. 描述/正文 - 浅灰 */
-  p, .description, .card-text, .text-body, [class*="description-"], [class*="text-secondary"] {
-    color: #9CA3AF !important;
-    line-height: 1.6;
-  }
-  
-  /* 5. 图标 - 金色 */
-  i, svg, .icon, [data-lucide] {
+  /* 强调金色 */
+  .text-gold, .text-accent-gold, .stat-number, .badge, .badge-gold, .category-tag, .team-role {
     color: #D4AF37 !important;
   }
-  
-  /* 6. 链接 - 金色，hover 白色 */
-  a:not(.btn):not(.nav-link) {
-    color: #D4AF37 !important;
-    transition: color 0.3s;
+  /* 次要文字（适当调浅但不消失） */
+  .text-secondary, .text-muted, p, .footer-link, .stat-label {
+    color: #E5E7EB !important;
   }
-  a:not(.btn):not(.nav-link):hover {
-    color: #FFFFFF !important;
+  /* Footer 背景修正 */
+  footer, .footer {
+    background: #1a1a25 !important;
   }
 </style>
+
 </head>
 <body class="bg-bg-primary text-white min-h-screen">
   <!-- Particle Canvas -->

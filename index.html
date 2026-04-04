@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="星辰社区 (XCSQ) - 全球顶级加密货币信号聚合社区，汇集200+顶尖KOL和分析师的实时信号">
+  <meta name="description" content="星辰社区 (XCSQ) - 全球顶级加密货币信号聚合社区，汇集70+顶尖KOL和分析师的实时信号">
   <meta name="keywords" content="加密货币, 比特币, 以太坊, 交易信号, KOL, Web3, 区块链, 跟单">
   <meta name="author" content="星辰社区 XCSQ">
   <meta name="theme-color" content="#0a0a0f">
@@ -11,13 +11,13 @@
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="星辰社区 XCSQ - 全球顶级加密货币信号聚合社区">
-  <meta property="og:description" content="汇集200+顶尖KOL和分析师的实时交易信号，24/7智能监控，策略跟单">
+  <meta property="og:description" content="汇集70+顶尖KOL和分析师的实时交易信号，24/7智能监控，策略跟单">
   <meta property="og:site_name" content="星辰社区 XCSQ">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="星辰社区 XCSQ - 全球顶级加密货币信号聚合社区">
-  <meta name="twitter:description" content="汇集200+顶尖KOL和分析师的实时交易信号">
+  <meta name="twitter:description" content="汇集70+顶尖KOL和分析师的实时交易信号">
 
   <!-- Preconnect for Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,6 +54,17 @@
   <title>星辰社区 XCSQ - 全球顶级加密货币信号聚合社区</title>
 
   <style>
+    /* Particle canvas - 必须固定定位作为背景 */
+    #particle-canvas {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
     /* Page-specific styles - 高端金融风 */
     
     /* Hero 区域 - 极简大气 */
@@ -675,7 +686,7 @@
       <!-- Badge -->
       <div class="hero-badge mb-10 animate-fadeIn">
         <span class="dot"></span>
-        <span>270+ KOL 实时信号同步中</span>
+        <span>70+ KOL 实时信号同步中</span>
       </div>
 
       <!-- Main Title -->
@@ -690,7 +701,8 @@
 
       <!-- Description -->
       <p class="text-secondary text-lg max-w-2xl mx-auto mb-12 animate-fadeIn text-center" style="animation-delay: 450ms;">
-        汇集 270+ 顶尖 KOL 和分析师的实时交易信号，24/7 智能监控，助您把握每一个盈利机会
+        汇集70+顶尖KOL和分析师的实时交易信号
+24/7智能监控，助您把握每一个盈利机会
       </p>
 
       <!-- CTA Buttons -->
@@ -734,7 +746,7 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         <!-- Stat 1 -->
         <div class="stat-card animate-on-scroll">
-          <div class="stat-number" data-counter="270" data-suffix="+">0</div>
+          <div class="stat-number" data-counter="70" data-suffix="+">0</div>
           <div class="stat-label">合作 KOL</div>
         </div>
         <!-- Stat 2 -->
@@ -777,7 +789,7 @@
           </div>
           <h3 class="text-h4 mb-3">数据监控</h3>
           <p class="text-secondary mb-6">
-            7×24小时市场扫描，实时监控200+ KOL信号，第一时间捕捉市场机会
+            7×24小时市场扫描，实时监控70+ KOL信号，第一时间捕捉市场机会
           </p>
           <ul class="space-y-3">
             <li class="flex items-center gap-3 text-sm text-secondary">
@@ -875,8 +887,8 @@
               <span class="badge badge-cyan mt-1">华语二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
-                  89%
+                  <i data-lucide="tag" class="w-4 h-4 text-gold"></i>
+                  单独购买
                 </span>
                 <span class="flex items-center gap-1">
                   <i data-lucide="users" class="w-4 h-4 text-gold"></i>
@@ -896,11 +908,11 @@
             <img src="assets/avatars/Ye.koi.webp" alt="Ye.koi" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" onerror="this.style.display='none'">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">Ye.koi</h4>
-              <span class="badge badge-cyan mt-1">国外二级市场</span>
+              <span class="badge badge-gold mt-1">华语二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
-                  92%
+                  <i data-lucide="tag" class="w-4 h-4 text-gold"></i>
+                  单独购买
                 </span>
                 <span class="flex items-center gap-1">
                   <i data-lucide="users" class="w-4 h-4 text-gold"></i>
@@ -920,11 +932,11 @@
             <img src="assets/avatars/风寻.webp" alt="风寻" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" onerror="this.style.display='none'">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">风寻</h4>
-              <span class="badge badge-gold mt-1">一级链上</span>
+              <span class="badge badge-gold mt-1">华语二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
-                  87%
+                  <i data-lucide="tag" class="w-4 h-4 text-gold"></i>
+                  年度
                 </span>
                 <span class="flex items-center gap-1">
                   <i data-lucide="users" class="w-4 h-4 text-gold"></i>
@@ -947,8 +959,8 @@
               <span class="badge badge-cyan mt-1">华语二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
-                  94%
+                  <i data-lucide="tag" class="w-4 h-4 text-gold"></i>
+                  普通
                 </span>
                 <span class="flex items-center gap-1">
                   <i data-lucide="users" class="w-4 h-4 text-gold"></i>
@@ -968,11 +980,11 @@
             <img src="assets/avatars/1YnfMkEr_400x400.webp" alt="提阿非罗" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" onerror="this.style.display='none'">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">提阿非罗</h4>
-              <span class="badge badge-cyan mt-1">国外二级市场</span>
+              <span class="badge badge-gold mt-1">华语二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
-                  86%
+                  <i data-lucide="tag" class="w-4 h-4 text-gold"></i>
+                  普通
                 </span>
                 <span class="flex items-center gap-1">
                   <i data-lucide="users" class="w-4 h-4 text-gold"></i>
@@ -995,8 +1007,8 @@
               <span class="badge badge-cyan mt-1">华语二级市场</span>
               <div class="flex items-center gap-4 mt-3 text-sm text-secondary">
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
-                  91%
+                  <i data-lucide="tag" class="w-4 h-4 text-gold"></i>
+                  普通
                 </span>
                 <span class="flex items-center gap-1">
                   <i data-lucide="users" class="w-4 h-4 text-gold"></i>
@@ -1010,8 +1022,8 @@
           </p>
         </div>
                 <span class="flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-4 h-4 text-gold"></i>
-                  91%
+                  <i data-lucide="tag" class="w-4 h-4 text-gold"></i>
+                  普通
                 </span>
                 <span class="flex items-center gap-1">
                   <i data-lucide="users" class="w-4 h-4 text-gold"></i>
@@ -1175,7 +1187,7 @@
             </div>
           </a>
           <p class="text-secondary text-sm mb-6 leading-relaxed">
-            全球顶级加密货币信号聚合社区，汇集200+顶尖KOL和分析师的实时交易信号，24/7智能监控，助您把握每一个盈利机会。
+            全球顶级加密货币信号聚合社区，汇集70+顶尖KOL和分析师的实时交易信号，24/7智能监控，助您把握每一个盈利机会。
           </p>
           <!-- Stats -->
           <div class="grid grid-cols-2 gap-4">

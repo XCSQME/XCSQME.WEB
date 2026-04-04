@@ -735,22 +735,35 @@
 
 
 
+
+
+
 <style id="final-fix">
-  /* 终极高对比度模式 */
-  * {
-    color: #FFFFFF !important;
-  }
-  /* 强调金色 */
-  .text-gold, .text-accent-gold, .stat-number, .badge, .badge-gold, .category-tag, .team-role {
+  /* 基础配色 - 金黑商务 */
+  body { color: #F3F4F6 !important; }
+  
+  /* 重点区域 - 金色 */
+  .text-gold, .text-accent-gold, .stat-number, .badge, .badge-gold, .category-tag, .stat-label, h1, h2, h3, .card-title {
     color: #D4AF37 !important;
   }
-  /* 次要文字（适当调浅但不消失） */
-  .text-secondary, .text-muted, p, .footer-link, .stat-label {
+  
+  /* H1/H2 特殊金渐变 */
+  h1, h2 {
+    background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+  
+  /* 正文 - 浅白 */
+  p, .text-secondary, .text-muted, .footer-link, .team-desc, .card-text {
     color: #E5E7EB !important;
   }
-  /* Footer 背景修正 */
+  
+  /* Footer 背景 */
   footer, .footer {
-    background: #1a1a25 !important;
+    background: #0a0a0f !important;
+    border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
   }
 </style>
 

@@ -271,6 +271,21 @@
 }
 
 </style>
+
+<style id="global-fix">
+  /* 强制覆盖所有深色文字为高对比度颜色 */
+  body, p, span, h1, h2, h3, h4, h5, h6, li, a {
+    color: #FFFFFF !important;
+  }
+  .text-secondary, .text-muted, .text-gray-400, .text-gray-500, .text-gray-600 {
+    color: #E5E7EB !important;
+  }
+  /* 强制金色区域 */
+  .text-gold, .text-accent-gold, .badge-gold, .stat-number {
+    color: #D4AF37 !important;
+  }
+</style>
+
 </head>
 <body class="bg-bg-primary text-white min-h-screen">
   <!-- Particle Canvas -->

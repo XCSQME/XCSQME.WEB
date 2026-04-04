@@ -152,11 +152,11 @@ function initParticleSystem() {
   const config = {
     particleCount: 150,
     particleSize: { min: 1, max: 3 },
-    particleColor: ['#ffffff', '#00d4ff', '#a855f7'],
+    particleColor: ['#ffffff', '#D4AF37', '#E5C158'],
     particleOpacity: { min: 0.3, max: 0.8 },
     connectionDistance: 120,
     connectionOpacity: 0.15,
-    connectionColor: '#00d4ff',
+    connectionColor: '#D4AF37',
     mouseInteractionRadius: 150,
     mouseRepelForce: 0.5,
     movementSpeed: 0.3,

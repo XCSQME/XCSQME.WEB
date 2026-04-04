@@ -3,9 +3,11 @@
   "builds": [
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "pages/**", "use": "@vercel/static" },
-    { "src": "shared/**", "use": "@vercel/static" }
+    { "src": "shared/**", "use": "@vercel/static" },
+    { "src": "assets/**", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/pages/(.*)", "dest": "/pages/$1" },
     { "src": "/(.*)", "dest": "/$1" }
   ]

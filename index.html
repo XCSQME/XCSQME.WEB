@@ -91,8 +91,8 @@
       position: absolute;
       inset: 0;
       background-image: 
-        linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(212, 175, 55, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.06) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
       -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
@@ -101,13 +101,26 @@
     /* 金色光晕 */
     .hero-glow {
       position: absolute;
-      top: 40%;
+      top: 35%;
       left: 50%;
-      width: 1000px;
-      height: 600px;
-      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+      width: 1200px;
+      height: 800px;
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.08) 40%, transparent 70%);
       transform: translate(-50%, -50%);
       pointer-events: none;
+    }
+
+    /* 顶部金色渐变氛围 */
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: radial-gradient(ellipse at top center, rgba(212, 175, 55, 0.15) 0%, rgba(180, 150, 30, 0.05) 50%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
     }
     
     /* 装饰线条 */

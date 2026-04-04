@@ -381,20 +381,55 @@
 
 </style>
 
-<style id="global-fix">
-  /* 强制覆盖所有深色文字为高对比度颜色 */
-  body, p, span, h1, h2, h3, h4, h5, h6, li, a {
+
+
+
+<style id="unified-colors">
+  /* 统一配色逻辑 - 高端金融风 */
+  
+  /* 1. 主标题/名字 - 纯白 */
+  h1, h2, h3, h4, .card-title, .kol-name, .service-title {
     color: #FFFFFF !important;
+    font-weight: 600;
   }
-  .text-secondary, .text-muted, .text-gray-400, .text-gray-500, .text-gray-600 {
-    color: #E5E7EB !important;
+  
+  /* 2. 标签 - 金色背景徽章 + 深色文字 */
+  .badge, .tag, .category-tag, [class*="badge-"], [class*="tag-"] {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8960C 100%) !important;
+    color: #0a0a0a !important;
+    border: none !important;
+    font-weight: 600 !important;
+    padding: 4px 12px !important;
+    border-radius: 6px !important;
+    font-size: 0.75rem !important;
   }
-  /* 强制金色区域 */
-  .text-gold, .text-accent-gold, .badge-gold, .stat-number {
+  
+  /* 3. 数据/数字 - 金色 */
+  .stat-number, .data-value, .metric, .count, [class*="stat-"] {
+    color: #D4AF37 !important;
+    font-weight: 700;
+  }
+  
+  /* 4. 描述/正文 - 浅灰 */
+  p, .description, .card-text, .text-body, [class*="description-"], [class*="text-secondary"] {
+    color: #9CA3AF !important;
+    line-height: 1.6;
+  }
+  
+  /* 5. 图标 - 金色 */
+  i, svg, .icon, [data-lucide] {
     color: #D4AF37 !important;
   }
+  
+  /* 6. 链接 - 金色，hover 白色 */
+  a:not(.btn):not(.nav-link) {
+    color: #D4AF37 !important;
+    transition: color 0.3s;
+  }
+  a:not(.btn):not(.nav-link):hover {
+    color: #FFFFFF !important;
+  }
 </style>
-
 </head>
 <body class="bg-bg-primary text-white">
   <!-- Particle Canvas -->

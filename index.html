@@ -49,7 +49,7 @@
   <link rel="stylesheet" href="./shared/styles.css">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300d4ff'/%3E%3Cstop offset='100%25' style='stop-color:%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 5 L63 35 L95 38 L71 59 L78 91 L50 75 L22 91 L29 59 L5 38 L37 35 Z' fill='url(%23g)'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23D4AF37'/%3E%3Cstop offset='100%25' style='stop-color:%23F4D03F'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 5 L63 35 L95 38 L71 59 L78 91 L50 75 L22 91 L29 59 L5 38 L37 35 Z' fill='url(%23g)'/%3E%3C/svg%3E">
 
   <title>星辰社区 XCSQ - 全球顶级加密货币信号聚合社区</title>
 
@@ -65,7 +65,7 @@
       pointer-events: none;
     }
     
-    /* Page-specific styles - 高端金融风 */
+    /* Page-specific styles - 黑金高端金融风 */
     
     /* Hero 区域 - 极简大气 */
     .hero-section {
@@ -143,7 +143,10 @@
     }
     
     .hero-title .highlight {
-      color: var(--color-gold-primary);
+      background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero-subtitle {
@@ -175,14 +178,14 @@
       animation: pulse 2s ease-in-out infinite;
     }
 
-    /* 服务卡片 */
+    /* 服务卡片 - 毛玻璃效果 */
     .service-card {
-      background: rgba(17, 17, 17, 0.6);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(212, 175, 55, 0.12);
-      border-radius: var(--radius-lg);
+      background: rgba(17, 17, 22, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
       padding: var(--space-8);
-      transition: all var(--duration-normal) var(--ease-out-expo);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
     }
@@ -201,8 +204,8 @@
 
     .service-card:hover {
       transform: translateY(-4px);
-      border-color: var(--color-border-hover);
-      box-shadow: var(--shadow-gold);
+      border-color: rgba(212, 175, 55, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.1);
     }
 
     .service-card:hover::before {
@@ -212,8 +215,8 @@
     .service-icon {
       width: 56px;
       height: 56px;
-      border-radius: var(--radius-md);
-      background: var(--color-gold-subtle);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
       border: 1px solid rgba(212, 175, 55, 0.2);
       display: flex;
       align-items: center;
@@ -224,7 +227,7 @@
     .service-icon i {
       width: 24px;
       height: 24px;
-      color: var(--color-gold-primary);
+      color: #D4AF37;
     }
 
     /* 统计数据 */
@@ -253,30 +256,29 @@
     }
 
     .stat-label {
-      color: var(--color-text-muted);
+      color: rgba(255, 255, 255, 0.5);
       font-size: var(--text-small);
       margin-top: var(--space-2);
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
-    /* KOL 卡片 */
-    /* KOL 卡片 */
+    /* KOL 卡片 - 毛玻璃效果 */
     .kol-card {
-      background: rgba(17, 17, 17, 0.6);
-      backdrop-filter: blur(10px);
+      background: rgba(17, 17, 22, 0.7);
+      backdrop-filter: blur(20px);
       border: 1px solid rgba(212, 175, 55, 0.15);
-      border-radius: var(--radius-lg);
+      border-radius: 16px;
       padding: var(--space-6);
-      transition: all var(--duration-normal) var(--ease-out-expo);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
     }
 
     .kol-card:hover {
       transform: translateY(-4px);
-      background: rgba(17, 17, 17, 0.8);
-      border-color: rgba(212, 175, 55, 0.4);
-      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+      background: rgba(17, 17, 22, 0.8);
+      border-color: rgba(212, 175, 55, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.1);
     }
     
     .kol-avatar {
@@ -284,24 +286,24 @@
       height: 64px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--color-gold-primary);
+      border: 2px solid #D4AF37;
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
     }
 
-    /* 用户评价卡片 */
+    /* 用户评价卡片 - 毛玻璃效果 */
     .testimonial-card {
-      background: rgba(17, 17, 17, 0.6);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(212, 175, 55, 0.1);
-      border-radius: var(--radius-xl);
+      background: rgba(17, 17, 22, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
       padding: var(--space-8);
-      transition: all var(--duration-normal) var(--ease-out-expo);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .testimonial-card:hover {
-      background: rgba(17, 17, 17, 0.8);
+      background: rgba(17, 17, 22, 0.8);
       border-color: rgba(212, 175, 55, 0.3);
-      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.1);
     }
 
     .testimonial-avatar {
@@ -309,7 +311,7 @@
       height: 56px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--color-gold-primary);
+      border: 2px solid #D4AF37;
     }
 
     .star-rating {
@@ -320,8 +322,8 @@
     .star-rating i {
       width: 16px;
       height: 16px;
-      color: var(--color-gold-primary);
-      fill: var(--color-gold-primary);
+      color: #D4AF37;
+      fill: #D4AF37;
     }
 
     /* CTA 区域 */
@@ -395,110 +397,6 @@
     .stagger-3 { transition-delay: 300ms; }
     .stagger-4 { transition-delay: 400ms; }
 
-    .service-card {
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-backdrop);
-      border: var(--glass-border);
-      border-radius: var(--radius-xl);
-      padding: var(--space-8);
-      transition: all var(--duration-normal) var(--ease-out-expo);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient-hero);
-      transform: scaleX(0);
-      transition: transform var(--duration-normal) var(--ease-out-expo);
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0, 212, 255, 0.3);
-      box-shadow: var(--shadow-glow-cyan);
-    }
-
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .service-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: var(--radius-lg);
-      background: var(--gradient-card);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: var(--space-6);
-    }
-
-    .service-icon i {
-      width: 32px;
-      height: 32px;
-      color: var(--color-accent-cyan);
-    }
-
-    .stat-card {
-      text-align: center;
-      padding: var(--space-6);
-    }
-
-    .stat-number {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: 700;
-      color: #D4AF37;
-      text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-      line-height: 1;
-    }
-
-    .stat-label {
-      color: var(--color-text-secondary);
-      font-size: var(--text-small);
-      margin-top: var(--space-2);
-    }
-
-    .testimonial-card {
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-backdrop);
-      border: var(--glass-border);
-      border-radius: var(--radius-xl);
-      padding: var(--space-8);
-      transition: all var(--duration-normal) var(--ease-out-expo);
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(212, 175, 55, 0.3);
-      box-shadow: var(--shadow-gold);
-    }
-
-    .testimonial-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: var(--radius-full);
-      object-fit: cover;
-      border: 2px solid var(--color-accent-purple);
-    }
-
-    .star-rating {
-      display: flex;
-      gap: 4px;
-    }
-
-    .star-rating i {
-      width: 16px;
-      height: 16px;
-      color: var(--color-accent-gold);
-      fill: var(--color-accent-gold);
-    }
-
     .cta-section {
       position: relative;
       overflow: hidden;
@@ -511,11 +409,9 @@
       left: 50%;
       width: 600px;
       height: 600px;
-      background: var(--gradient-glow);
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 60%);
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      opacity: 0.5;
-      filter: blur(100px);
       pointer-events: none;
     }
 
@@ -766,7 +662,7 @@
   </div>
 
   <!-- Stats Section -->
-  <section class="section relative z-10">
+  <section class="section-alt relative z-10">
     <div class="container">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         <!-- Stat 1 -->
@@ -794,12 +690,13 @@
   </section>
 
   <!-- Services Section -->
-  <section class="section relative z-10" style="border-top: 1px solid rgba(212,175,55,0.06);">
+  <section class="section-alt relative z-10">
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-on-scroll">
-        <span class="badge badge-gold mb-4">核心服务</span>
-        <h2 class="text-h2 mb-4">专业级服务体系</h2>
+        <span class="text-sm font-semibold tracking-widest uppercase mb-4 block" style="color: #D4AF37;">核心服务</span>
+        <h2 class="text-h2 mb-4" style="color: #ffffff;">专业级服务体系</h2>
+        <p class="text-lg max-w-xl mx-auto" style="color: rgba(255, 255, 255, 0.5);">
         <p class="text-secondary max-w-xl mx-auto">
           为加密货币交易者提供全方位信号服务，助您把握每一个盈利机会
         </p>
@@ -886,12 +783,12 @@
   </section>
 
   <!-- Featured KOLs Section -->
-  <section class="section relative z-10" style="border-top: 1px solid rgba(212,175,55,0.06);">
+  <section class="section-alt relative z-10">
     <div class="container">
       <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 animate-on-scroll">
         <div>
-          <span class="badge badge-gold mb-4">顶级 KOL</span>
+          <span class="text-sm font-semibold tracking-widest uppercase mb-4 block" style="color: #D4AF37;">顶级 KOL</span>
           <h2 class="text-h2 mb-2">精选 KOL 阵容</h2>
           <p class="text-secondary">来自全球的顶级加密货币分析师</p>
         </div>
@@ -1051,15 +948,13 @@
   </section>
 
   <!-- Testimonials Section -->
-  <section class="section relative z-10" style="border-top: 1px solid rgba(212,175,55,0.06);">
+  <section class="section-alt relative z-10">
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-on-scroll">
-        <span class="inline-block px-4 py-1 rounded-full bg-pink-500/10 text-pink-400 text-sm font-medium mb-4">
-          用户反馈
-        </span>
-        <h2 class="text-h2 mb-4">客户证言</h2>
-        <p class="text-secondary max-w-2xl mx-auto">
+        <span class="text-sm font-semibold tracking-widest uppercase mb-4 block" style="color: #D4AF37;">用户反馈</span>
+        <h2 class="text-h2 mb-4" style="color: #ffffff;">客户证言</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(255, 255, 255, 0.5);">
           还有担忧吗？以下是社区客户的真实评价
         </p>
       </div>
@@ -1082,7 +977,7 @@
             <img src="https://thumbs.dreamstime.com/b/striking-abstract-silhouette-person-profile-featuring-blend-vibrant-neon-colors-smooth-gradients-composition-410608684.jpg" 
                  alt="孤独恰瑞" 
                  class="testimonial-avatar"
-                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23a855f7%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>孤</text></svg>'">
+                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23D4AF37%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>孤</text></svg>'">
             <div>
               <h4 class="font-semibold text-white">孤独恰瑞</h4>
               <span class="text-sm text-muted">VIP会员 · 3个月</span>
@@ -1106,7 +1001,7 @@
             <img src="https://thumbs.dreamstime.com/b/digital-pop-art-illustration-face-focus-big-blue-eyes-long-lashes-vivid-colors-psychedelic-retro-style-groovy-design-409092957.jpg" 
                  alt="甜沫儿" 
                  class="testimonial-avatar"
-                 style="border-color: var(--color-accent-pink);"
+                 style="border-color: rgba(212, 175, 55, 0.3);"
                  onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23ec4899%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>甜</text></svg>'">
             <div>
               <h4 class="font-semibold text-white">甜沫儿</h4>
@@ -1131,8 +1026,8 @@
             <img src="https://cdnb.artstation.com/p/assets/images/images/058/544/747/large/adriano-dias-render0000-0117.jpg?1674421537" 
                  alt="歌者" 
                  class="testimonial-avatar"
-                 style="border-color: var(--color-accent-cyan);"
-                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%2300d4ff%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>歌</text></svg>'">
+                 style="border-color: rgba(212, 175, 55, 0.3);"
+                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23D4AF37%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>歌</text></svg>'">
             <div>
               <h4 class="font-semibold text-white">歌者</h4>
               <span class="text-sm text-muted">VIP会员 · 1年</span>
@@ -1144,7 +1039,7 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="section cta-section relative z-10">
+  <section class="section-alt cta-section relative z-10">
     <div class="container">
       <div class="relative z-10 max-w-3xl mx-auto text-center animate-on-scroll">
         <h2 class="text-h2 mb-6">准备好开始了吗？</h2>
@@ -1165,15 +1060,15 @@
         <!-- Trust Indicators -->
         <div class="flex flex-wrap items-center justify-center gap-6 mt-10">
           <div class="flex items-center gap-2 text-muted text-sm">
-            <i data-lucide="shield-check" class="w-4 h-4 text-green-500"></i>
+            <i data-lucide="shield-check" class="w-4 h-4" style="color: #D4AF37;"></i>
             <span>至今0差评</span>
           </div>
           <div class="flex items-center gap-2 text-muted text-sm">
-            <i data-lucide="lock" class="w-4 h-4 text-cyan-500"></i>
+            <i data-lucide="lock" class="w-4 h-4" style="color: #D4AF37;"></i>
             <span>安全支付</span>
           </div>
           <div class="flex items-center gap-2 text-muted text-sm">
-            <i data-lucide="headphones" class="w-4 h-4 text-purple-500"></i>
+            <i data-lucide="headphones" class="w-4 h-4" style="color: #D4AF37;"></i>
             <span>24/7客服支持</span>
           </div>
         </div>

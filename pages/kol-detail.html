@@ -38,7 +38,7 @@
             'accent-gold': '#D4AF37',
             'accent-gold': '#D4AF37',
             'accent-gold': '#f59e0b',
-            'accent-pink': '#ec4899',
+            'accent-gold': '#ec4899',
           }
         }
       }
@@ -160,7 +160,9 @@
     }
     
     .stat-item {
-      background: rgba(255,255,255,0.05);
+      background: rgba(17, 17, 22, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
       padding: 1rem;
       border-radius: 12px;
       text-align: center;
@@ -174,17 +176,18 @@
     
     .stat-label {
       font-size: 0.875rem;
-      color: #71717a;
+      color: rgba(255, 255, 255, 0.5);
       margin-top: 0.25rem;
     }
     
     .placeholder-section {
-      background: rgba(255,255,255,0.03);
-      border: 2px dashed rgba(255,255,255,0.1);
+      background: rgba(17, 17, 22, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px dashed rgba(212, 175, 55, 0.2);
       border-radius: 12px;
       padding: 3rem;
       text-align: center;
-      color: #71717a;
+      color: rgba(255, 255, 255, 0.5);
     }
     
     @media (max-width: 640px) {
@@ -281,7 +284,7 @@
     <!-- Banner Section -->
     <div class="banner-section" id="kol-banner">
       <!-- Banner image will be loaded here -->
-      <div class="w-full h-full bg-gradient-to-r from-blue-900/30 to-purple-900/30"></div>
+      <div class="w-full h-full bg-gradient-to-r from-amber-900/20 to-yellow-900/10"></div>
     </div>
     
     <!-- Blogger Profile Section -->
@@ -349,7 +352,7 @@
           <!-- History Section -->
           <section class="glass-card p-6 reveal">
             <h2 class="section-title">
-              <i data-lucide="trophy" class="w-6 h-6 text-accent-pink"></i>
+              <i data-lucide="trophy" class="w-6 h-6 text-accent-gold"></i>
               历史战绩
             </h2>
             <div class="placeholder-section" id="history-display">
@@ -484,7 +487,7 @@
       // Update banner
       const bannerEl = document.getElementById('kol-banner');
       if (kol.banner) {
-        bannerEl.innerHTML = `<img src="${kol.banner}" alt="${kol.name} Banner" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'w-full h-full bg-gradient-to-r from-blue-900/30 to-purple-900/30\\'></div>'">`;
+        bannerEl.innerHTML = `<img src="${kol.banner}" alt="${kol.name} Banner" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'w-full h-full bg-gradient-to-r from-amber-900/20 to-yellow-900/10\\'></div>'">`;
       }
       
       // Update avatar

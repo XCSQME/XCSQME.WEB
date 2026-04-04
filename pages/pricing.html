@@ -43,18 +43,18 @@
     .pricing-card {
       background: rgba(18, 18, 26, 0.7);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1rem;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
       padding: 2rem;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
     }
     
     .pricing-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-4px);
       border-color: rgba(212, 175, 55, 0.3);
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.1);
     }
     
     .pricing-card.featured {
@@ -146,17 +146,19 @@
     }
     
     .step-card {
-      background: rgba(18, 18, 26, 0.7);
+      background: rgba(17, 17, 22, 0.7);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1rem;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
       padding: 2rem;
       text-align: center;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .step-card:hover {
       transform: translateY(-4px);
+      border-color: rgba(212, 175, 55, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.1);
       border-color: rgba(212, 175, 55, 0.3);
     }
     
@@ -175,16 +177,16 @@
     }
     
     .faq-item {
-      background: rgba(18, 18, 26, 0.7);
+      background: rgba(17, 17, 22, 0.7);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 0.75rem;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
     }
     
     .faq-item:hover {
-      border-color: rgba(212, 175, 55, 0.2);
+      border-color: rgba(212, 175, 55, 0.3);
     }
     
     .faq-question {
@@ -218,9 +220,10 @@
     }
     
     .contact-card {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.1));
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 1rem;
+      background: rgba(17, 17, 22, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 16px;
       padding: 2rem;
       text-align: center;
     }
@@ -240,10 +243,34 @@
     }
     
     .price-gold {
-      background: linear-gradient(135deg, #f59e0b, #fbbf24);
+      background: linear-gradient(135deg, #D4AF37, #F4D03F);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+    
+    /* Section alternating backgrounds */
+    .section-alt {
+      padding: 80px 0;
+      position: relative;
+    }
+    
+    .section-alt:nth-child(odd) {
+      background: #0d0d12;
+    }
+    
+    .section-alt:nth-child(even) {
+      background: #111116;
+    }
+    
+    .section-alt::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
     }
   </style>
 </head>
@@ -383,7 +410,7 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="section">
+    <section class="section-alt" style="background: #0d0d12;">
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">
@@ -426,7 +453,7 @@
     </section>
 
     <!-- Pricing Cards Section -->
-    <section class="section bg-black/20">
+    <section class="section-alt" style="background: #111116;"
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">
@@ -606,7 +633,7 @@
     </section>
 
     <!-- Comparison Table Section -->
-    <section class="section">
+    <section class="section-alt" style="background: #0d0d12;">
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">
@@ -684,7 +711,7 @@
     </section>
 
     <!-- Purchase Process Section -->
-    <section class="section bg-black/20">
+    <section class="section-alt" style="background: #111116;">
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">
@@ -728,7 +755,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section">
+    <section class="section-alt" style="background: #0d0d12;">
       <div class="container">
         <div class="max-w-2xl mx-auto">
           <div class="text-center mb-8 reveal">
@@ -757,7 +784,7 @@
     </section>
 
     <!-- FAQ Teaser Section -->
-    <section class="section bg-black/20">
+    <section class="section-alt" style="background: #111116;">
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">

@@ -102,23 +102,23 @@
       }
     }
     
-    /* News Card */
+    /* News Card - 毛玻璃效果 */
     .news-card {
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
-      border: var(--glass-border);
-      border-radius: var(--radius-xl);
+      background: rgba(17, 17, 22, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
       overflow: hidden;
-      transition: all var(--duration-normal) var(--ease-out-expo);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       opacity: 1;
       transform: translateY(0);
     }
     
     .news-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-4px);
       border-color: rgba(212, 175, 55, 0.3);
-      box-shadow: var(--shadow-glow-gold);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.1);
     }
     
     .news-card.hidden {
@@ -288,11 +288,11 @@
     
     .newsletter-container {
       position: relative;
-      background: var(--glass-bg);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
-      border: var(--glass-border);
-      border-radius: var(--radius-2xl);
+      background: rgba(17, 17, 22, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
       padding: 3rem;
       text-align: center;
       max-width: 600px;
@@ -303,7 +303,7 @@
       font-size: var(--text-h3);
       font-weight: 700;
       margin-bottom: 1rem;
-      background: var(--gradient-hero);
+      background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -311,8 +311,32 @@
     
     .newsletter-description {
       font-size: var(--text-body);
-      color: var(--color-text-secondary);
+      color: rgba(255, 255, 255, 0.5);
       margin-bottom: 2rem;
+    }
+    
+    /* Section alternating backgrounds */
+    .section-alt {
+      padding: 80px 0;
+      position: relative;
+    }
+    
+    .section-alt:nth-child(odd) {
+      background: #0d0d12;
+    }
+    
+    .section-alt:nth-child(even) {
+      background: #111116;
+    }
+    
+    .section-alt::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
     }
     
     .newsletter-form {
@@ -328,25 +352,25 @@
       max-width: 350px;
     }
     
-    /* Badge Colors by Category */
+    /* Badge Colors by Category - 统一金色系 */
     .badge-update {
       background: rgba(212, 175, 55, 0.2);
-      color: var(--color-accent-gold);
+      color: #D4AF37;
     }
     
     .badge-kol {
       background: rgba(212, 175, 55, 0.2);
-      color: var(--color-accent-gold);
+      color: #D4AF37;
     }
     
     .badge-news {
-      background: rgba(245, 158, 11, 0.2);
-      color: var(--color-accent-gold);
+      background: rgba(212, 175, 55, 0.15);
+      color: #D4AF37;
     }
     
     .badge-event {
-      background: rgba(236, 72, 153, 0.2);
-      color: var(--color-accent-pink);
+      background: rgba(212, 175, 55, 0.25);
+      color: #D4AF37;
     }
     
     /* Animation for cards */
@@ -477,17 +501,17 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="news-hero">
+    <section class="news-hero" style="background: transparent;">
       <div class="container text-center relative z-10">
-        <h1 class="text-h1 text-gradient mb-4 reveal">最新动态</h1>
-        <p class="text-xl text-secondary max-w-2xl mx-auto reveal" style="animation-delay: 100ms;">
+        <h1 class="text-h1 mb-4 reveal" style="background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">最新动态</h1>
+        <p class="text-xl max-w-2xl mx-auto reveal" style="animation-delay: 100ms; color: rgba(255, 255, 255, 0.5);">
           了解星辰社区的最新更新和行业资讯
         </p>
       </div>
     </section>
 
     <!-- Category Tabs Section -->
-    <section class="py-8">
+    <section class="section-alt" style="background: #0d0d12;">
       <div class="container">
         <div class="category-tabs reveal" style="animation-delay: 200ms;">
           <button class="category-tab active" data-category="all">全部</button>
@@ -500,7 +524,7 @@
     </section>
 
     <!-- News Grid Section -->
-    <section class="py-8">
+    <section class="section-alt" style="background: #111116;">
       <div class="container">
         <div class="news-grid" id="news-grid">
           <!-- News Card 1: 平台更新 -->
@@ -826,7 +850,7 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section class="newsletter-section">
+    <section class="section-alt" style="background: #0d0d12; padding: 5rem 0;">
       <div class="container">
         <div class="newsletter-container reveal">
           <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center">

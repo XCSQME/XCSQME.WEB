@@ -31,7 +31,7 @@
             'accent-gold': '#D4AF37',
             'accent-gold': '#D4AF37',
             'accent-gold': '#f59e0b',
-            'accent-pink': '#ec4899',
+            'accent-gold': '#ec4899',
           }
         }
       }
@@ -40,6 +40,31 @@
   
   <style>
     body { background-color: #0a0a0f !important; color: #ffffff; }
+    
+    /* Section 样式 - 交替背景 */
+    .section-alt {
+      padding: 80px 0;
+      position: relative;
+    }
+    
+    .section-alt:nth-child(odd) {
+      background: #0d0d12;
+    }
+    
+    .section-alt:nth-child(even) {
+      background: #111116;
+    }
+    
+    .section-alt::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
+    }
+    
     /* FAQ Specific Styles */
     .faq-hero {
       min-height: 50vh;
@@ -125,13 +150,13 @@
     }
     
     .faq-item {
-      background: rgba(18, 18, 26, 0.7);
+      background: rgba(17, 17, 22, 0.7);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1rem;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
       margin-bottom: 1rem;
       overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .faq-item:hover {
@@ -211,13 +236,13 @@
     }
     
     .faq-category-tech {
-      background: rgba(245, 158, 11, 0.15);
-      color: #f59e0b;
+      background: rgba(212, 175, 55, 0.15);
+      color: #D4AF37;
     }
     
     .faq-category-account {
-      background: rgba(236, 72, 153, 0.15);
-      color: #ec4899;
+      background: rgba(212, 175, 55, 0.15);
+      color: #D4AF37;
     }
     
     .no-results {
@@ -397,10 +422,10 @@
   </div>
   
   <!-- Hero Section -->
-  <section class="faq-hero">
+  <section class="faq-hero" style="background: transparent;">
     <div class="text-center mb-8 reveal">
-      <h1 class="text-h1 font-bold mb-4 text-gradient">常见问题</h1>
-      <p class="text-xl text-gray-400">找不到答案？请联系我们的客服团队</p>
+      <h1 class="text-h1 font-bold mb-4" style="background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">常见问题</h1>
+      <p class="text-xl" style="color: rgba(255, 255, 255, 0.5);">找不到答案？请联系我们的客服团队</p>
     </div>
     
     <div class="search-container reveal" data-reveal-delay="200">
@@ -410,7 +435,7 @@
   </section>
   
   <!-- FAQ Section -->
-  <section class="section">
+  <section class="section-alt" style="background: #0d0d12;">
     <div class="container">
       <!-- Category Tabs -->
       <div class="category-tabs reveal" data-reveal-delay="300">
@@ -620,10 +645,10 @@
       </div>
       
       <!-- Contact CTA Section -->
-      <div class="cta-section reveal">
-        <h2 class="text-3xl font-bold mb-4">还有其他问题？</h2>
-        <p class="text-gray-400 mb-8 text-lg">我们的客服团队随时为您解答</p>
-        <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="cta-button">
+      <div class="cta-section reveal" style="background: rgba(17, 17, 22, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; padding: 3rem; text-align: center; margin-top: 4rem;">
+        <h2 class="text-3xl font-bold mb-4" style="color: #ffffff;">还有其他问题？</h2>
+        <p class="mb-8 text-lg" style="color: rgba(255, 255, 255, 0.5);">我们的客服团队随时为您解答</p>
+        <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="cta-button" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #D4AF37 0%, #B8960C 100%); color: #000; font-weight: 600; border-radius: 10px; transition: all 0.3s ease;">
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           <span>联系客服</span>
         </a>

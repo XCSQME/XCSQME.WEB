@@ -25,6 +25,14 @@
   <link rel="stylesheet" href="../shared/styles.css">
   
   <style>
+/* 粒子背景 canvas */
+#particle-canvas {
+  position: fixed !important;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
     /* Page-specific styles */
     body {
       background-color: #0a0a0f !important;
@@ -256,11 +264,11 @@
     }
     
     .section-alt:nth-child(odd) {
-      background: #0d0d12;
+      background: rgba(13, 13, 18, 0.85);
     }
     
     .section-alt:nth-child(even) {
-      background: #111116;
+      background: rgba(17, 17, 22, 0.9);
     }
     
     .section-alt::before {
@@ -410,7 +418,7 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="section-alt" style="background: #0d0d12;">
+    <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">
@@ -453,7 +461,7 @@
     </section>
 
     <!-- Pricing Cards Section -->
-    <section class="section-alt" style="background: #111116;"
+    <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);"
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">
@@ -633,7 +641,7 @@
     </section>
 
     <!-- Comparison Table Section -->
-    <section class="section-alt" style="background: #0d0d12;">
+    <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">
@@ -711,7 +719,7 @@
     </section>
 
     <!-- Purchase Process Section -->
-    <section class="section-alt" style="background: #111116;">
+    <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">
@@ -755,7 +763,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section-alt" style="background: #0d0d12;">
+    <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
         <div class="max-w-2xl mx-auto">
           <div class="text-center mb-8 reveal">
@@ -784,7 +792,7 @@
     </section>
 
     <!-- FAQ Teaser Section -->
-    <section class="section-alt" style="background: #111116;">
+    <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
         <div class="text-center mb-12 reveal">
           <h2 class="text-h2 mb-4">

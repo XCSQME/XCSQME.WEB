@@ -25,6 +25,14 @@
   <link rel="stylesheet" href="../shared/styles.css">
   
   <style>
+/* 粒子背景 canvas */
+#particle-canvas {
+  position: fixed !important;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
     body { background-color: #0a0a0f !important; color: #ffffff; }
     /* News Page Specific Styles */
     
@@ -322,11 +330,11 @@
     }
     
     .section-alt:nth-child(odd) {
-      background: #0d0d12;
+      background: rgba(13, 13, 18, 0.85);
     }
     
     .section-alt:nth-child(even) {
-      background: #111116;
+      background: rgba(17, 17, 22, 0.9);
     }
     
     .section-alt::before {
@@ -511,7 +519,7 @@
     </section>
 
     <!-- Category Tabs Section -->
-    <section class="section-alt" style="background: #0d0d12;">
+    <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
         <div class="category-tabs reveal" style="animation-delay: 200ms;">
           <button class="category-tab active" data-category="all">全部</button>
@@ -524,7 +532,7 @@
     </section>
 
     <!-- News Grid Section -->
-    <section class="section-alt" style="background: #111116;">
+    <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
         <div class="news-grid" id="news-grid">
           <!-- News Card 1: 平台更新 -->
@@ -850,7 +858,7 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section class="section-alt" style="background: #0d0d12; padding: 5rem 0;">
+    <section class="section-alt" style="background: rgba(13, 13, 18, 0.85); padding: 5rem 0;">
       <div class="container">
         <div class="newsletter-container reveal">
           <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center">

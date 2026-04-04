@@ -39,6 +39,14 @@
   </script>
   
   <style>
+/* 粒子背景 canvas */
+#particle-canvas {
+  position: fixed !important;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
     body { background-color: #0a0a0f !important; color: #ffffff; }
     
     /* Section 样式 - 交替背景 */
@@ -48,11 +56,11 @@
     }
     
     .section-alt:nth-child(odd) {
-      background: #0d0d12;
+      background: rgba(13, 13, 18, 0.85);
     }
     
     .section-alt:nth-child(even) {
-      background: #111116;
+      background: rgba(17, 17, 22, 0.9);
     }
     
     .section-alt::before {
@@ -435,7 +443,7 @@
   </section>
   
   <!-- FAQ Section -->
-  <section class="section-alt" style="background: #0d0d12;">
+  <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
     <div class="container">
       <!-- Category Tabs -->
       <div class="category-tabs reveal" data-reveal-delay="300">

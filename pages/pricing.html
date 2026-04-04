@@ -257,6 +257,12 @@
       background-clip: text;
     }
     
+    /* Animation classes - 默认可见，防止内容不显示 */
+    .reveal {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    
     /* Section alternating backgrounds */
     .section-alt {
       padding: 80px 0;
@@ -400,7 +406,7 @@
       <div class="container text-center relative z-10">
         <div class="reveal">
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-            <i data-lucide="gem" class="w-4 h-4 text-amber-400"></i>
+            <i data-lucide="gem" class="w-4 h-4" style="color:#D4AF37;"></i>
             <span class="text-sm text-gray-300">会员订阅</span>
           </div>
         </div>
@@ -408,20 +414,20 @@
           <span class="text-gradient">订阅计划</span>
         </h1>
         <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8 reveal" style="animation-delay: 200ms;">
-          <i data-lucide="rocket" class="w-5 h-5 inline-block mr-2 text-amber-400"></i>
+          <i data-lucide="rocket" class="w-5 h-5 inline-block mr-2" style="color:#D4AF37;"></i>
           加入全球 300+ 个最佳加密货币付费信号社区
         </p>
         <div class="flex flex-wrap justify-center gap-4 reveal" style="animation-delay: 300ms;">
           <div class="flex items-center gap-2 text-gray-400">
-            <i data-lucide="shield-check" class="w-5 h-5 text-green-400"></i>
+            <i data-lucide="shield-check" class="w-5 h-5" style="color:#D4AF37;"></i>
             <span>安全支付</span>
           </div>
           <div class="flex items-center gap-2 text-gray-400">
-            <i data-lucide="refresh-cw" class="w-5 h-5 text-amber-400"></i>
+            <i data-lucide="refresh-cw" class="w-5 h-5" style="color:#D4AF37;"></i>
             <span>随时升级</span>
           </div>
           <div class="flex items-center gap-2 text-gray-400">
-            <i data-lucide="headphones" class="w-5 h-5 text-amber-400"></i>
+            <i data-lucide="headphones" class="w-5 h-5" style="color:#D4AF37;"></i>
             <span>专属客服</span>
           </div>
         </div>
@@ -431,38 +437,36 @@
     <!-- Why Choose Us Section -->
     <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
-        <div class="text-center mb-12 reveal">
-          <h2 class="text-h2 mb-4">
-            <i data-lucide="gem" class="w-8 h-8 inline-block mr-2 text-amber-400"></i>
-            为什么选择星辰社区？
-          </h2>
-          <p class="text-gray-400">专业、可靠、高性价比的加密货币信号服务</p>
+        <div style="text-align:center; margin-bottom:60px;">
+          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">核心优势</p>
+          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">为什么选择星辰社区？</h2>
+          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">专业、可靠、高性价比的加密货币信号服务</p>
         </div>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="glass-card reveal" style="animation-delay: 100ms;">
-            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-400 to-amber-500 flex items-center justify-center mb-4">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05)); border:1px solid rgba(212,175,55,0.2);">
               <i data-lucide="trending-up" class="w-6 h-6 text-white"></i>
             </div>
             <p class="text-gray-300">汇集全球270+顶级交易频道，实时同步市场机会</p>
           </div>
           
           <div class="glass-card reveal" style="animation-delay: 200ms;">
-            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center mb-4">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05)); border:1px solid rgba(212,175,55,0.2);">
               <i data-lucide="star" class="w-6 h-6 text-white"></i>
             </div>
             <p class="text-gray-300">覆盖现货、合约、链上全链路策略矩阵</p>
           </div>
           
           <div class="glass-card reveal" style="animation-delay: 300ms;">
-            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center mb-4">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05)); border:1px solid rgba(212,175,55,0.2);">
               <i data-lucide="coins" class="w-6 h-6 text-white"></i>
             </div>
             <p class="text-gray-300">7×24小时智能监控，第一时间捕捉异动</p>
           </div>
           
           <div class="glass-card reveal" style="animation-delay: 400ms;">
-            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mb-4">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05)); border:1px solid rgba(212,175,55,0.2);">
               <i data-lucide="target" class="w-6 h-6 text-white"></i>
             </div>
             <p class="text-gray-300">严格风控筛选，只保留经过验证的优质信号</p>
@@ -474,12 +478,10 @@
     <!-- Pricing Cards Section -->
     <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);"
       <div class="container">
-        <div class="text-center mb-12 reveal">
-          <h2 class="text-h2 mb-4">
-            <i data-lucide="gem" class="w-8 h-8 inline-block mr-2 text-amber-400"></i>
-            订阅计划
-          </h2>
-          <p class="text-gray-400">选择最适合您的会员套餐</p>
+        <div style="text-align:center; margin-bottom:60px;">
+          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">订阅计划</p>
+          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">选择最适合您的套餐</h2>
+          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">灵活的订阅方案，满足不同需求</p>
         </div>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
@@ -654,12 +656,10 @@
     <!-- Comparison Table Section -->
     <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
-        <div class="text-center mb-12 reveal">
-          <h2 class="text-h2 mb-4">
-            <i data-lucide="table" class="w-8 h-8 inline-block mr-2 text-amber-400"></i>
-            功能对比
-          </h2>
-          <p class="text-gray-400">详细对比各套餐功能</p>
+        <div style="text-align:center; margin-bottom:60px;">
+          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">功能对比</p>
+          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">详细对比各套餐功能</h2>
+          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">选择最适合您的方案</p>
         </div>
         
         <div class="overflow-x-auto reveal">
@@ -732,12 +732,10 @@
     <!-- Purchase Process Section -->
     <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
-        <div class="text-center mb-12 reveal">
-          <h2 class="text-h2 mb-4">
-            <i data-lucide="shopping-cart" class="w-8 h-8 inline-block mr-2 text-amber-400"></i>
-            购买流程
-          </h2>
-          <p class="text-gray-400">简单三步，立即开始</p>
+        <div style="text-align:center; margin-bottom:60px;">
+          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">购买流程</p>
+          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">简单三步，立即开始</h2>
+          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">快速开通，即刻享受服务</p>
         </div>
         
         <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -777,12 +775,10 @@
     <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
         <div class="max-w-2xl mx-auto">
-          <div class="text-center mb-8 reveal">
-            <h2 class="text-h2 mb-4">
-              <i data-lucide="message-circle" class="w-8 h-8 inline-block mr-2 text-amber-400"></i>
-              联系方式
-            </h2>
-            <p class="text-gray-400">有任何问题？随时联系我们</p>
+          <div style="text-align:center; margin-bottom:60px;">
+            <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">联系方式</p>
+            <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">有任何问题？随时联系我们</h2>
+            <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">专业客服团队为您服务</p>
           </div>
           
           <div class="contact-card reveal">
@@ -805,12 +801,10 @@
     <!-- FAQ Teaser Section -->
     <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
-        <div class="text-center mb-12 reveal">
-          <h2 class="text-h2 mb-4">
-            <i data-lucide="help-circle" class="w-8 h-8 inline-block mr-2 text-amber-400"></i>
-            常见问题
-          </h2>
-          <p class="text-gray-400">快速解答您的疑问</p>
+        <div style="text-align:center; margin-bottom:60px;">
+          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">常见问题</p>
+          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">快速解答您的疑问</h2>
+          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">找不到答案？请联系客服</p>
         </div>
         
         <div class="max-w-3xl mx-auto space-y-4">

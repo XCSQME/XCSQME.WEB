@@ -234,16 +234,17 @@
     .stat-card {
       text-align: center;
       padding: var(--space-6);
-      background: rgba(212, 175, 55, 0.06);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      border-radius: var(--radius-lg);
-      transition: all var(--duration-normal) var(--ease-out-expo);
+      background: rgba(17, 17, 22, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .stat-card:hover {
-      border-color: rgba(212, 175, 55, 0.5);
-      background: rgba(212, 175, 55, 0.1);
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+      border-color: rgba(212, 175, 55, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(212,175,55,0.1);
     }
 
     .stat-number {
@@ -380,23 +381,6 @@
       60% { transform: translateX(-50%) translateY(-4px); }
     }
 
-    /* Animation classes */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 500ms var(--ease-out-expo), transform 500ms var(--ease-out-expo);
-    }
-
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .stagger-1 { transition-delay: 100ms; }
-    .stagger-2 { transition-delay: 200ms; }
-    .stagger-3 { transition-delay: 300ms; }
-    .stagger-4 { transition-delay: 400ms; }
-
     .cta-section {
       position: relative;
       overflow: hidden;
@@ -419,14 +403,34 @@
       display: none;
     }
 
-    /* Animation classes */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 600ms var(--ease-out-expo), transform 600ms var(--ease-out-expo);
+    /* Section 样式 - 交替背景（与 about 一致） */
+    .section-alt {
+      padding: 80px 0;
+      position: relative;
+    }
+    .section-alt:nth-child(odd) {
+      background: rgba(13, 13, 18, 0.85);
+    }
+    .section-alt:nth-child(even) {
+      background: rgba(17, 17, 22, 0.9);
+    }
+    .section-alt::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%);
     }
 
-    .animate-on-scroll.visible {
+    /* Animation classes - 默认可见，防止内容不显示 */
+    .animate-on-scroll {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal {
       opacity: 1;
       transform: translateY(0);
     }
@@ -705,10 +709,9 @@
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-on-scroll">
-        <span class="text-sm font-semibold tracking-widest uppercase mb-4 block" style="color: #D4AF37;">核心服务</span>
-        <h2 class="text-h2 mb-4" style="color: #ffffff;">专业级服务体系</h2>
-        <p class="text-lg max-w-xl mx-auto" style="color: rgba(255, 255, 255, 0.5);">
-        <p class="text-secondary max-w-xl mx-auto">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;">核心服务</p>
+        <h2 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:1rem;">专业级服务体系</h2>
+        <p style="color:rgba(255,255,255,0.5);max-width:600px;margin:0 auto;">
           为加密货币交易者提供全方位信号服务，助您把握每一个盈利机会
         </p>
       </div>
@@ -799,9 +802,9 @@
       <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 animate-on-scroll">
         <div>
-          <span class="text-sm font-semibold tracking-widest uppercase mb-4 block" style="color: #D4AF37;">顶级 KOL</span>
-          <h2 class="text-h2 mb-2">精选 KOL 阵容</h2>
-          <p class="text-secondary">来自全球的顶级加密货币分析师</p>
+          <p style="color:#D4AF37;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;">顶级 KOL</p>
+          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:1rem;">精选 KOL 阵容</h2>
+          <p style="color:rgba(255,255,255,0.5);">来自全球的顶级加密货币分析师</p>
         </div>
         <a href="./pages/kols.html" class="btn btn-secondary mt-4 md:mt-0">
           <span>查看全部</span>
@@ -963,9 +966,9 @@
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-on-scroll">
-        <span class="text-sm font-semibold tracking-widest uppercase mb-4 block" style="color: #D4AF37;">用户反馈</span>
-        <h2 class="text-h2 mb-4" style="color: #ffffff;">客户证言</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: rgba(255, 255, 255, 0.5);">
+        <p style="color:#D4AF37;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;">用户反馈</p>
+        <h2 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:1rem;">客户证言</h2>
+        <p style="color:rgba(255,255,255,0.5);max-width:600px;margin:0 auto;">
           还有担忧吗？以下是社区客户的真实评价
         </p>
       </div>

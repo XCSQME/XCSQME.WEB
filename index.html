@@ -59,13 +59,13 @@
     /* Hero 区域 - 极简大气 */
     .hero-section {
       position: relative;
-      min-height: 85vh;
+      min-height: auto;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding-top: 60px;
-      padding-bottom: 40px;
+      padding-top: 80px;
+      padding-bottom: 60px;
     }
     
     /* 背景网格纹理 */
@@ -200,22 +200,25 @@
     .stat-card {
       text-align: center;
       padding: var(--space-6);
-      background: var(--color-bg-tertiary);
-      border: 1px solid var(--color-border-subtle);
+      background: rgba(212, 175, 55, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.25);
       border-radius: var(--radius-lg);
       transition: all var(--duration-normal) var(--ease-out-expo);
     }
     
     .stat-card:hover {
-      border-color: var(--color-border-hover);
+      border-color: rgba(212, 175, 55, 0.5);
+      background: rgba(212, 175, 55, 0.1);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
     }
 
     .stat-number {
       font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 600;
-      color: var(--color-gold-primary);
+      font-weight: 700;
+      color: #D4AF37;
       line-height: 1;
       font-family: var(--font-display);
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
     }
 
     .stat-label {
@@ -305,8 +308,9 @@
 
     /* 滚动指示器 - 更醒目 */
     .scroll-indicator {
-      position: absolute;
-      bottom: 2.5rem;
+      position: relative;
+      margin-top: 2rem;
+      bottom: auto;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -416,10 +420,8 @@
     .stat-number {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 700;
-      background: var(--gradient-hero);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: #D4AF37;
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
       line-height: 1;
     }
 

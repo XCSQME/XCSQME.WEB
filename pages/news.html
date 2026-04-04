@@ -45,7 +45,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
       pointer-events: none;
     }
     
@@ -76,10 +76,10 @@
     }
     
     .category-tab.active {
-      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      background: linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-gold) 100%);
       border-color: transparent;
       color: white;
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     }
     
     /* News Grid */
@@ -116,8 +116,8 @@
     
     .news-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(0, 212, 255, 0.3);
-      box-shadow: var(--shadow-glow-cyan);
+      border-color: rgba(212, 175, 55, 0.3);
+      box-shadow: var(--shadow-glow-gold);
     }
     
     .news-card.hidden {
@@ -209,13 +209,13 @@
       gap: 0.375rem;
       font-size: var(--text-small);
       font-weight: 500;
-      color: var(--color-accent-cyan);
+      color: var(--color-accent-gold);
       transition: all var(--duration-fast) var(--ease-out-expo);
     }
     
     .news-card-link:hover {
       gap: 0.625rem;
-      color: var(--color-accent-purple);
+      color: var(--color-accent-gold);
     }
     
     /* Pagination */
@@ -247,11 +247,11 @@
     .pagination-btn:hover:not(:disabled) {
       background: rgba(255, 255, 255, 0.1);
       color: var(--color-text-primary);
-      border-color: rgba(0, 212, 255, 0.3);
+      border-color: rgba(212, 175, 55, 0.3);
     }
     
     .pagination-btn.active {
-      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      background: linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-gold) 100%);
       border-color: transparent;
       color: white;
     }
@@ -281,7 +281,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
       pointer-events: none;
     }
     
@@ -329,13 +329,13 @@
     
     /* Badge Colors by Category */
     .badge-update {
-      background: rgba(0, 212, 255, 0.2);
-      color: var(--color-accent-cyan);
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--color-accent-gold);
     }
     
     .badge-kol {
-      background: rgba(168, 85, 247, 0.2);
-      color: var(--color-accent-purple);
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--color-accent-gold);
     }
     
     .badge-news {
@@ -506,7 +506,7 @@
           <article class="news-card" data-category="update" data-page="1">
             <div class="news-card-image">
               <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=340&fit=crop" alt="星辰社区3.0版本发布">
-              <span class="news-card-badge badge badge-cyan badge-update">平台更新</span>
+              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
               <h3 class="news-card-title">星辰社区3.0版本正式发布</h3>
@@ -528,7 +528,7 @@
           <article class="news-card" data-category="kol" data-page="1">
             <div class="news-card-image">
               <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=340&fit=crop" alt="币圈所长加入">
-              <span class="news-card-badge badge badge-purple badge-kol">新KOL入驻</span>
+              <span class="news-card-badge badge badge-gold badge-kol">新KOL入驻</span>
             </div>
             <div class="news-card-content">
               <h3 class="news-card-title">欢迎知名分析师币圈所长加入星辰社区</h3>
@@ -550,7 +550,7 @@
           <article class="news-card" data-category="update" data-page="1">
             <div class="news-card-image">
               <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=340&fit=crop" alt="AI智能分析功能">
-              <span class="news-card-badge badge badge-cyan badge-update">平台更新</span>
+              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
               <h3 class="news-card-title">新增AI智能分析功能</h3>
@@ -572,7 +572,7 @@
           <article class="news-card" data-category="kol" data-page="1">
             <div class="news-card-image">
               <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=340&fit=crop" alt="颜驰入驻">
-              <span class="news-card-badge badge badge-purple badge-kol">新KOL入驻</span>
+              <span class="news-card-badge badge badge-gold badge-kol">新KOL入驻</span>
             </div>
             <div class="news-card-content">
               <h3 class="news-card-title">顶级交易员颜驰入驻平台</h3>
@@ -682,7 +682,7 @@
           <article class="news-card" data-category="update" data-page="2">
             <div class="news-card-image">
               <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=340&fit=crop" alt="系统性能优化">
-              <span class="news-card-badge badge badge-cyan badge-update">平台更新</span>
+              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
               <h3 class="news-card-title">系统性能优化升级完成</h3>
@@ -703,7 +703,7 @@
           <article class="news-card" data-category="kol" data-page="2">
             <div class="news-card-image">
               <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=340&fit=crop" alt="新KOL加入">
-              <span class="news-card-badge badge badge-purple badge-kol">新KOL入驻</span>
+              <span class="news-card-badge badge badge-gold badge-kol">新KOL入驻</span>
             </div>
             <div class="news-card-content">
               <h3 class="news-card-title">多位优秀分析师加入社区</h3>
@@ -766,7 +766,7 @@
           <article class="news-card" data-category="update" data-page="2">
             <div class="news-card-image">
               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="移动端APP">
-              <span class="news-card-badge badge badge-cyan badge-update">平台更新</span>
+              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
               <h3 class="news-card-title">移动端APP即将上线</h3>
@@ -787,7 +787,7 @@
           <article class="news-card" data-category="kol" data-page="2">
             <div class="news-card-image">
               <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&h=340&fit=crop" alt="Ye.koi入驻">
-              <span class="news-card-badge badge badge-purple badge-kol">新KOL入驻</span>
+              <span class="news-card-badge badge badge-gold badge-kol">新KOL入驻</span>
             </div>
             <div class="news-card-content">
               <h3 class="news-card-title">华语顶流Ye.koi正式入驻</h3>
@@ -828,7 +828,7 @@
     <section class="newsletter-section">
       <div class="container">
         <div class="newsletter-container reveal">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center">
             <i data-lucide="mail" class="w-8 h-8 text-white"></i>
           </div>
           <h2 class="newsletter-title">订阅我们的资讯</h2>
@@ -907,15 +907,15 @@
           <h4 class="text-white font-semibold mb-4">联系方式</h4>
           <ul class="space-y-3">
             <li class="flex items-center gap-2 text-secondary text-sm">
-              <i data-lucide="mail" class="w-4 h-4 text-cyan-400"></i>
+              <i data-lucide="mail" class="w-4 h-4 text-amber-400"></i>
               support@xcsq.com
             </li>
             <li class="flex items-center gap-2 text-secondary text-sm">
-              <i data-lucide="clock" class="w-4 h-4 text-cyan-400"></i>
+              <i data-lucide="clock" class="w-4 h-4 text-amber-400"></i>
               24/7 在线支持
             </li>
             <li class="flex items-center gap-2 text-secondary text-sm">
-              <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400"></i>
+              <i data-lucide="map-pin" class="w-4 h-4 text-amber-400"></i>
               全球服务
             </li>
           </ul>
@@ -935,7 +935,7 @@
   </footer>
 
   <!-- Back to Top Button -->
-  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 text-white shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-white shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
     <i data-lucide="chevron-up" class="w-6 h-6"></i>
   </button>
 

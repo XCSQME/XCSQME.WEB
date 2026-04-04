@@ -668,7 +668,18 @@
         animation: none;
       }
     }
-  </style>
+  
+/* 修复 btn-primary 背景（防止 Tailwind 覆盖） */
+.btn.btn-primary {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8960C 100%) !important;
+  color: #0a0a0a !important;
+}
+.btn.btn-primary:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+  transform: translateY(-1px);
+}
+</style>
 </head>
 <body class="kols-page">
   <!-- Particle Canvas -->
@@ -715,7 +726,7 @@
         <!-- Social Links & CTA -->
         <div class="hidden lg:flex items-center gap-4">
           <a href="https://x.com/XCSQbtc" target="_blank" class="social-icon">
-            <i data-lucide="twitter" class="w-5 h-5"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
           <a href="https://t.me/xcsqme" target="_blank" class="social-icon">
             <i data-lucide="send" class="w-5 h-5"></i>
@@ -773,7 +784,7 @@
     <div class="mt-8 pt-8 border-t border-white/10">
       <div class="flex gap-4">
         <a href="https://x.com/XCSQbtc" target="_blank" class="social-icon">
-          <i data-lucide="twitter" class="w-5 h-5"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
         <a href="https://t.me/xcsqme" target="_blank" class="social-icon">
           <i data-lucide="send" class="w-5 h-5"></i>
@@ -891,32 +902,35 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <!-- Footer -->
+  <footer class="footer" style="background: rgba(10, 10, 15, 0.95); border-top: 1px solid rgba(212, 175, 55, 0.08);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 60px 24px 40px;">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         <!-- Brand -->
         <div>
-          <div class="flex items-center gap-2 mb-4">
+          <a href="../index.html" class="flex items-center gap-2 mb-4">
             <img src="../assets/logo-xcsq.jpg" alt="星辰社区" class="w-10 h-10 rounded-full object-cover">
-            <span class="text-xl font-bold">星辰社区</span>
-          </div>
-          <p class="text-secondary text-sm mb-4">
-            专业的加密货币信号聚合平台,汇集全球顶级KOL和分析师,为您提供实时、精准的交易信号。
+            <span class="text-xl font-bold" style="color: #fff;">星辰社区</span>
+          </a>
+          <p style="color: rgba(255,255,255,0.5); font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.6;">
+            全球领先的加密货币信号聚合平台，汇聚270+顶级KOL智慧
           </p>
           <div class="flex gap-3">
-            <a href="https://x.com/XCSQbtc" target="_blank" class="social-icon">
-              <i data-lucide="twitter" class="w-5 h-5"></i>
+            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
-            <a href="https://t.me/xcsqme" target="_blank" class="social-icon">
-              <i data-lucide="send" class="w-5 h-5"></i>
+            <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </a>
+            <a href="https://discord.gg/xcsqme" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
             </a>
           </div>
         </div>
-
+        
         <!-- Quick Links -->
         <div>
-          <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+          <h4 style="color: #D4AF37; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.05em;">快速链接</h4>
           <ul class="space-y-2">
             <li><a href="../index.html" class="footer-link text-sm">首页</a></li>
             <li><a href="./about.html" class="footer-link text-sm">关于我们</a></li>
@@ -924,41 +938,50 @@
             <li><a href="./pricing.html" class="footer-link text-sm">订阅计划</a></li>
           </ul>
         </div>
-
+        
         <!-- Support -->
         <div>
-          <h4 class="text-lg font-semibold mb-4">支持</h4>
+          <h4 style="color: #D4AF37; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.05em;">支持</h4>
           <ul class="space-y-2">
             <li><a href="./faq.html" class="footer-link text-sm">常见问题</a></li>
             <li><a href="./about.html#contact" class="footer-link text-sm">联系我们</a></li>
-            <li><a href="#" class="footer-link text-sm">服务条款</a></li>
-            <li><a href="#" class="footer-link text-sm">隐私政策</a></li>
+            <li><a href="./news.html" class="footer-link text-sm">最新动态</a></li>
           </ul>
         </div>
-
-        <!-- Contact -->
+        
+        <!-- Community -->
         <div>
-          <h4 class="text-lg font-semibold mb-4">联系方式</h4>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="send" class="w-4 h-4 text-accent"></i>
-              <a href="https://t.me/xcsqme" target="_blank" class="hover:text-accent transition-colors">@xcsqme</a>
+          <h4 style="color: #D4AF37; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.05em;">社区</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="footer-link text-sm flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>Twitter/X</span>
+              </a>
             </li>
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="twitter" class="w-4 h-4 text-accent"></i>
-              <a href="https://x.com/XCSQbtc" target="_blank" class="hover:text-accent transition-colors">@XCSQbtc</a>
+            <li>
+              <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="footer-link text-sm flex items-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Telegram</span>
+              </a>
             </li>
-            <li class="flex items-center gap-2 text-sm text-secondary">
-              <i data-lucide="clock" class="w-4 h-4 text-accent"></i>
-              <span>24/7 在线支持</span>
+            <li>
+              <a href="https://discord.gg/xcsqme" target="_blank" rel="noopener noreferrer" class="footer-link text-sm flex items-center gap-2">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Discord</span>
+              </a>
             </li>
           </ul>
         </div>
       </div>
-
-      <div class="border-t border-white/10 pt-8 text-center">
-        <p class="text-sm text-muted">
+      
+      <!-- Bottom Bar -->
+      <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <p style="color: rgba(255,255,255,0.4); font-size: 0.875rem;">
           &copy; 2024 星辰社区 (Star Community). All rights reserved.
+        </p>
+        <p style="color: rgba(255,255,255,0.4); font-size: 0.875rem;">
+          XCSQ - 让交易更简单
         </p>
       </div>
     </div>

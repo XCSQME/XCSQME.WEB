@@ -683,22 +683,20 @@
     <!-- News Grid Section -->
     <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
-        <div class="news-grid" id="news-grid">
-          <!-- ========== 平台更新 (10篇) ========== -->
-          
+        <!-- Pagination -->        <!-- Pagination -->
           <!-- News Card 1: 平台更新 -->
           <article class="news-card" data-category="update" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=340&fit=crop" alt="星辰社区4.0">
+              <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=340&fit=crop" alt="星辰社区3.0版本发布">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
-              <h3 class="news-card-title">星辰社区4.0版本重大升级</h3>
-              <p class="news-card-excerpt">全面升级信号转发引擎，延迟降至毫秒级。新增AI信号评级系统，自动标注高风险/高胜率机会，支持DC/TG/飞书三端实时同步推送。</p>
+              <h3 class="news-card-title">星辰社区3.0版本正式发布</h3>
+              <p class="news-card-excerpt">我们很高兴宣布星辰社区3.0版本正式上线！新版本带来了更快的信号转发速度、更稳定的系统性能，以及全新的用户界面设计...</p>
               <div class="news-card-footer">
                 <span class="news-card-date">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-04-02
+                  2024-01-15
                 </span>
                 <a href="#" class="news-card-link">
                   阅读更多
@@ -708,19 +706,19 @@
             </div>
           </article>
 
-          <!-- News Card 2: 平台更新 -->
-          <article class="news-card" data-category="update" data-page="1">
+          <!-- News Card 2: 新KOL入驻 -->
+          <article class="news-card" data-category="kol" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=340&fit=crop" alt="AI风控系统">
-              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
+              <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=340&fit=crop" alt="币圈所长加入">
+              <span class="news-card-badge badge badge-gold badge-kol">新KOL入驻</span>
             </div>
             <div class="news-card-content">
-              <h3 class="news-card-title">智能风控提醒系统上线</h3>
-              <p class="news-card-excerpt">新功能自动检测市场极端行情，当检测到高波动率或黑天鹅事件时，系统会推送风险提醒，帮助会员及时调整仓位。</p>
+              <h3 class="news-card-title">欢迎知名分析师币圈所长加入星辰社区</h3>
+              <p class="news-card-excerpt">我们非常荣幸地宣布，知名油管博主币圈所长正式加入我们的KOL阵容。作为神级刀交易员，他将为我们带来专业的市场分析...</p>
               <div class="news-card-footer">
                 <span class="news-card-date">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-28
+                  2024-01-12
                 </span>
                 <a href="#" class="news-card-link">
                   阅读更多
@@ -733,16 +731,16 @@
           <!-- News Card 3: 平台更新 -->
           <article class="news-card" data-category="update" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="KOL突破">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=340&fit=crop" alt="AI智能分析功能">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
-              <h3 class="news-card-title">KOL阵容突破300位里程碑</h3>
-              <p class="news-card-excerpt">社区合作KOL数量达到300+，覆盖华语、欧美、日韩等多语种市场。包括Alert会所、Vivian团队、华尔街女王等顶级资源。</p>
+              <h3 class="news-card-title">新增AI智能分析功能</h3>
+              <p class="news-card-excerpt">我们引入了先进的AI技术，为用户提供更精准的市场分析和信号筛选。AI系统能够实时监控市场动态，识别潜在交易机会...</p>
               <div class="news-card-footer">
                 <span class="news-card-date">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-20
+                  2024-01-10
                 </span>
                 <a href="#" class="news-card-link">
                   阅读更多
@@ -752,19 +750,19 @@
             </div>
           </article>
 
-          <!-- News Card 4: 平台更新 -->
-          <article class="news-card" data-category="update" data-page="1">
+          <!-- News Card 4: 新KOL入驻 -->
+          <article class="news-card" data-category="kol" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=340&fit=crop" alt="飞书机器人">
-              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
+              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=340&fit=crop" alt="颜驰入驻">
+              <span class="news-card-badge badge badge-gold badge-kol">新KOL入驻</span>
             </div>
             <div class="news-card-content">
-              <h3 class="news-card-title">飞书机器人正式上线</h3>
-              <p class="news-card-excerpt">应会员需求，飞书机器人已部署完成。现支持DC/TG/飞书三端同步接收信号，会员可在个人中心绑定飞书账号。</p>
+              <h3 class="news-card-title">顶级交易员颜驰入驻平台</h3>
+              <p class="news-card-excerpt">天花版顶级交易员颜驰正式入驻星辰社区，为用户提供专业的交易策略。颜驰以其精准的市场判断和稳健的交易风格闻名...</p>
               <div class="news-card-footer">
                 <span class="news-card-date">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-15
+                  2024-01-08
                 </span>
                 <a href="#" class="news-card-link">
                   阅读更多
@@ -774,19 +772,19 @@
             </div>
           </article>
 
-          <!-- News Card 5: 平台更新 -->
-          <article class="news-card" data-category="update" data-page="1">
+          <!-- News Card 5: 行业资讯 -->
+          <article class="news-card" data-category="news" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=340&fit=crop" alt="支付升级">
-              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
+              <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=600&h=340&fit=crop" alt="2024加密货币市场展望">
+              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
-              <h3 class="news-card-title">新增USDT-TRC20支付通道</h3>
-              <p class="news-card-excerpt">为提升支付体验，新增USDT-TRC20支付选项，手续费更低、确认更快。原有BTC/USDT-ERC20支付方式仍然保留。</p>
+              <h3 class="news-card-title">2024年加密货币市场展望</h3>
+              <p class="news-card-excerpt">随着比特币ETF的批准，2024年加密货币市场将迎来新的发展机遇。机构投资者的大量涌入将推动市场走向更加成熟的阶段...</p>
               <div class="news-card-footer">
                 <span class="news-card-date">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-08
+                  2024-01-05
                 </span>
                 <a href="#" class="news-card-link">
                   阅读更多
@@ -796,19 +794,85 @@
             </div>
           </article>
 
-          <!-- News Card 6: 平台更新 -->
+          <!-- News Card 6: 行业资讯 -->
+          <article class="news-card" data-category="news" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=600&h=340&fit=crop" alt="DeFi发展趋势">
+              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">DeFi领域最新发展趋势</h3>
+              <p class="news-card-excerpt">去中心化金融继续蓬勃发展，新的协议和创新不断涌现。从流动性质押到跨链桥接，DeFi生态系统正在变得更加完善...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-03
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Card 7: 活动公告 -->
+          <article class="news-card" data-category="event" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&h=340&fit=crop" alt="春节特惠活动">
+              <span class="news-card-badge badge badge-pink badge-event">活动公告</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">春节特惠活动开始啦</h3>
+              <p class="news-card-excerpt">为庆祝春节，我们推出限时特惠活动，所有套餐享受8折优惠。这是加入星辰社区的最佳时机，不要错过这个难得的机会...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-20
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- News Card 8: 活动公告 -->
+          <article class="news-card" data-category="event" data-page="1">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=340&fit=crop" alt="推荐好友活动">
+              <span class="news-card-badge badge badge-pink badge-event">活动公告</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">推荐好友赢取奖励</h3>
+              <p class="news-card-excerpt">推荐好友加入星辰社区，即可获得丰厚奖励，多推多得。每成功推荐一位好友订阅，您将获得一个月的免费会员资格...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2024-01-18
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Additional cards for pagination demo -->
           <article class="news-card" data-category="update" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=340&fit=crop" alt="系统优化">
+              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=340&fit=crop" alt="系统性能优化">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
               <h3 class="news-card-title">系统性能优化升级完成</h3>
-              <p class="news-card-excerpt">我们的技术团队完成了系统性能的全面优化，信号转发延迟降低50%，系统稳定性提升至99.99%。</p>
+              <p class="news-card-excerpt">我们的技术团队完成了系统性能的全面优化，信号转发延迟降低50%，系统稳定性提升至99.99%...</p>
               <div class="news-card-footer">
                 <span class="news-card-date">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-01
+                  2024-01-01
                 </span>
                 <a href="#" class="news-card-link">
                   阅读更多
@@ -818,19 +882,81 @@
             </div>
           </article>
 
-          <!-- News Card 7: 平台更新 -->
+          <article class="news-card" data-category="kol" data-page="2">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=340&fit=crop" alt="新KOL加入">
+              <span class="news-card-badge badge badge-gold badge-kol">新KOL入驻</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">多位优秀分析师加入社区</h3>
+              <p class="news-card-excerpt">本周我们迎来了多位优秀分析师的加入，涵盖主流币、山寨币和DeFi等多个领域，为用户提供更全面的市场覆盖...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2023-12-28
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card" data-category="news" data-page="2">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?w=600&h=340&fit=crop" alt="NFT市场分析">
+              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">NFT市场复苏迹象明显</h3>
+              <p class="news-card-excerpt">近期NFT市场显示出明显的复苏迹象，交易量连续三周增长。蓝筹NFT项目表现尤为突出，市场信心正在逐步恢复...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2023-12-25
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card" data-category="event" data-page="2">
+            <div class="news-card-image">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=340&fit=crop" alt="线上研讨会">
+              <span class="news-card-badge badge badge-pink badge-event">活动公告</span>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">新年交易策略线上研讨会</h3>
+              <p class="news-card-excerpt">我们将在元旦举办线上研讨会，邀请多位顶级交易员分享2024年的交易策略和市场展望，欢迎所有会员参加...</p>
+              <div class="news-card-footer">
+                <span class="news-card-date">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                  2023-12-22
+                </span>
+                <a href="#" class="news-card-link">
+                  阅读更多
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
           <article class="news-card" data-category="update" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=340&fit=crop" alt="数据安全">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="移动端APP">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
-              <h3 class="news-card-title">数据安全体系全面升级</h3>
-              <p class="news-card-excerpt">引入端到端加密传输，会员数据采用AES-256加密存储。通过第三方安全审计，确保用户隐私和交易数据安全。</p>
+              <h3 class="news-card-title">移动端APP即将上线</h3>
+              <p class="news-card-excerpt">我们的移动端APP正在最后测试阶段，预计将在下个月正式发布。届时用户可以随时随地接收信号推送...</p>
               <div class="news-card-footer">
                 <span class="news-card-date">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-22
+                  2023-12-20
                 </span>
                 <a href="#" class="news-card-link">
                   阅读更多
@@ -840,776 +966,18 @@
             </div>
           </article>
 
-          <!-- News Card 8: 平台更新 -->
-          <article class="news-card" data-category="update" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop" alt="API开放">
-              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">开放API接口供高级会员使用</h3>
-              <p class="news-card-excerpt">年费会员可申请API密钥，自主开发信号接收程序。支持Webhook推送，满足程序化交易需求。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-15
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 9: 平台更新 -->
-          <article class="news-card" data-category="update" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=340&fit=crop" alt="信号筛选">
-              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">新增信号筛选器功能</h3>
-              <p class="news-card-excerpt">会员可按币种、方向、杠杆倍数、风险等级筛选感兴趣的信号，只接收符合自己交易风格的提醒。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-08
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 10: 平台更新 -->
-          <article class="news-card" data-category="update" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=340&fit=crop" alt="多语言">
-              <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">英文版网站正式上线</h3>
-              <p class="news-card-excerpt">为服务国际用户，英文版官网已上线。支持中英文切换，海外KOL信号自动翻译为中文推送。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-01-28
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-
-          <!-- ========== 社区引进 (10篇) ========== -->
-
-          <!-- News Card 11: 社区引进 -->
-          <article class="news-card" data-category="kol" data-page="1">
-            <div class="news-card-image">
-              <img src="../assets/avatars/颜驰.png" alt="颜驰" onerror="this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">颜驰入驻：华语天花板级交易员</h3>
-              <p class="news-card-excerpt">以精准判断和稳健风格著称的颜驰加入社区。历史战绩优异，多次精准捕捉BTC波段高点，会员反馈收益率显著提升。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-25
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 12: 社区引进 -->
-          <article class="news-card" data-category="kol" data-page="1">
-            <div class="news-card-image">
-              <img src="../assets/avatars/Ye.koi.webp" alt="Ye.koi" onerror="this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">华语顶流Ye.koi正式引进</h3>
-              <p class="news-card-excerpt">目前华语二级市场最具影响力的分析师Ye.koi入驻。以高胜率短线策略闻名，社区会员可第一时间获取其交易信号。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-18
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 13: 社区引进 -->
-          <article class="news-card" data-category="kol" data-page="1">
-            <div class="news-card-image">
-              <img src="../assets/avatars/币圈所长.png" alt="币圈所长" onerror="this.src='https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">币圈所长加入：神级短刀交易员</h3>
-              <p class="news-card-excerpt">以精准短线操作闻名的币圈所长正式引进。擅长捕捉日内波动机会，多次实现单笔交易翻倍收益，适合短线交易者关注。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-12
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 14: 社区引进 -->
-          <article class="news-card" data-category="kol" data-page="1">
-            <div class="news-card-image">
-              <img src="../assets/avatars/ChartChampions.png" alt="ChartChampions" onerror="this.src='https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">ChartChampions国际团队引进</h3>
-              <p class="news-card-excerpt">顶级技术分析社区ChartChampions正式加入。专注于图表形态、斐波那契和威科夫方法论，为会员提供专业级技术教学。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-05
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 15: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="2">
             <div class="news-card-image">
-              <img src="../assets/avatars/Vivian交易团队.png" alt="Vivian" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
+              <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&h=340&fit=crop" alt="Ye.koi入驻">
+              <span class="news-card-badge badge badge-gold badge-kol">新KOL入驻</span>
             </div>
             <div class="news-card-content">
-              <h3 class="news-card-title">Vivian交易团队引进：T1+T2频道</h3>
-              <p class="news-card-excerpt">国际知名交易团队Vivian加入，提供T1级别核心策略和T2级别补充信号。团队以严格的风控和高胜率著称，适合稳健型投资者。</p>
+              <h3 class="news-card-title">华语顶流Ye.koi正式入驻</h3>
+              <p class="news-card-excerpt">目前华语二级市场的顶流分析师Ye.koi正式加入星辰社区。他以其独特的分析视角和高胜率策略深受用户喜爱...</p>
               <div class="news-card-footer">
                 <span class="news-card-date">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-28
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 16: 社区引进 -->
-          <article class="news-card" data-category="kol" data-page="2">
-            <div class="news-card-image">
-              <img src="../assets/avatars/比特币峰哥.png" alt="比特币峰哥" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">比特币峰哥入驻：油管人气王</h3>
-              <p class="news-card-excerpt">可能是华语区人气最高的加密博主峰哥加入。其视频风格接地气，市场分析深入浅出，适合新手入门学习。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-22
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 17: 社区引进 -->
-          <article class="news-card" data-category="kol" data-page="2">
-            <div class="news-card-image">
-              <img src="../assets/avatars/Alert会所.webp" alt="Alert会所" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">Alert会所社区引进</h3>
-              <p class="news-card-excerpt">擅长山寨币+美股双市场交易的Alert会所加入。11月MMT交易爆赚16万刀的战绩验证其实力，是多市场布局者的优质参考。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-15
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 18: 社区引进 -->
-          <article class="news-card" data-category="kol" data-page="2">
-            <div class="news-card-image">
-              <img src="../assets/avatars/wallstreet.png" alt="华尔街女王" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">华尔街女王Wallstreet Queen入驻</h3>
-              <p class="news-card-excerpt">华尔街风格的交易专家加入社区。其专业级分析方法和机构视角为会员提供与众不同的市场解读。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-08
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 19: 社区引进 -->
-          <article class="news-card" data-category="kol" data-page="2">
-            <div class="news-card-image">
-              <img src="../assets/avatars/风寻.webp" alt="风寻" onerror="this.src='https://images.unsplash.com/photo-1605792657660-596af9009e82?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">风寻入驻：新币投研王者</h3>
-              <p class="news-card-excerpt">专注新币投研的风寻加入社区。擅长挖掘早期项目机会，对IDO/IEO有深入研究，是山寨币布局者的必跟资源。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-01
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 20: 社区引进 -->
-          <article class="news-card" data-category="kol" data-page="2">
-            <div class="news-card-image">
-              <img src="../assets/avatars/比特币飞扬.webp" alt="比特币飞扬" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=340&fit=crop'">
-              <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">比特币飞扬加入：主流币专家</h3>
-              <p class="news-card-excerpt">擅长主流币交易的飞扬入驻社区。连盈记录高，风控严格，是追求稳健收益会员的理想选择。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-01-25
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-
-          <!-- ========== 行业资讯 (10篇) ========== -->
-
-          <!-- News Card 21: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="1">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=600&h=340&fit=crop" alt="比特币市场">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">Q1市场回顾：BTC创2018年来最差季度</h3>
-              <p class="news-card-excerpt">比特币从$95,000跌至$66,700，跌幅达22%。机构数据分析显示市场正在"内部稀释"，大户持续出货，建议关注风险而非盲目抄底。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-04-01
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 22: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="1">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=340&fit=crop" alt="Drift被黑">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">Solana生态Drift遭黑客攻击损失2.85亿美元</h3>
-              <p class="news-card-excerpt">DEX Drift被疑似朝鲜黑客攻击，损失约2.85亿美元。团队已向攻击者钱包发送链上信息寻求谈判。提醒用户注意DeFi协议风险。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-28
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 23: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="1">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=600&h=340&fit=crop" alt="矿工抛售">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">矿工持续抛售：Riot Q1出售2.5亿美元BTC</h3>
-              <p class="news-card-excerpt">上市矿企Riot Platforms以平均$76,000价格出售3,778枚BTC。矿工减持趋势延续，市场抛压值得关注，建议谨慎操作。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-22
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 24: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="1">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=340&fit=crop" alt="量子计算">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">量子计算威胁加剧：BTC启动安全升级</h3>
-              <p class="news-card-excerpt">价值1.3万亿美元的比特币正面临量子计算威胁。开发者正在考虑多种抗量子方案，包括软分叉和地址迁移机制，以应对未来风险。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-15
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 25: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1642104704074-907c0698b98d?w=600&h=340&fit=crop" alt="Solana">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">Solana提前布局量子安全：速度与安全的抉择</h3>
-              <p class="news-card-excerpt">当BTC和ETH还在讨论抗量子方案时，Solana已开始行动。但引入量子安全算法可能影响其高TPS优势，这是技术路线的艰难取舍。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-10
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 26: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&h=340&fit=crop" alt="特朗普">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">特朗普政府拟建立比特币战略储备</h3>
-              <p class="news-card-excerpt">白宫新任司法部长推动加密政策改革，政府正考虑将比特币纳入国家储备资产。此举可能引发全球央行跟风。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-05
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 27: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1605218427306-6553e24c7b66?w=600&h=340&fit=crop" alt="市场洞察">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">市场洞察：BTC在危机中跑赢黄金和标普</h3>
-              <p class="news-card-excerpt">Mercado Bitcoin研究显示，在经济或地缘危机后的60天窗口期，BTC回报率均跑赢黄金和标普500。数字黄金叙事正在兑现。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-28
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 28: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=600&h=340&fit=crop" alt="机构买盘">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">数据揭示：BTC需求正在萎缩</h3>
-              <p class="news-card-excerpt">CryptoQuant数据显示，BTC整体需求以每月-6.3万枚速度收缩。尽管机构买入加速，但大户过去一年减持近18.8万枚，多空博弈激烈。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-22
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 29: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?w=600&h=340&fit=crop" alt="Aave">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">Aave V4正式上线以太坊主网</h3>
-              <p class="news-card-excerpt">DeFi龙头协议Aave推出V4版本，引入统一流动性层和智能账户功能，旨在提升资本效率和用户体验。DeFi生态持续创新。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-15
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 30: 行业资讯 -->
-          <article class="news-card" data-category="news" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?w=600&h=340&fit=crop" alt="24小时股市">
-              <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">24/7股市时代来临：交易员成最大赢家</h3>
-              <p class="news-card-excerpt">传统股票即将实现全天候交易，结束盘后价格"操纵"时代。对加密交易员是利好——传统金融和加密市场的时间界限正在模糊。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-08
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-
-          <!-- ========== 交易技巧 (12篇) ========== -->
-
-          <!-- News Card 31: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="1">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=340&fit=crop" alt="止损技巧">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">止损的艺术：如何设置科学止损位</h3>
-              <p class="news-card-excerpt">止损是交易的第一课。本文分享三种常用止损方法：固定比例法、技术位法、波动率ATR法，帮助你保护本金、控制风险。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-04-02
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 32: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="1">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop" alt="仓位管理">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">仓位管理金字塔：凯利公式的实战应用</h3>
-              <p class="news-card-excerpt">凯利公式f=(bp-q)/b告诉我们：即使胜率高达70%，单次也不宜投入超过40%仓位。合理的仓位管理是长期盈利的关键。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-28
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 33: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="1">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=340&fit=crop" alt="趋势判断">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">趋势判断三板斧：均线+MACD+量价配合</h3>
-              <p class="news-card-excerpt">趋势是交易员的朋友。EMA20/50/200多头排列确认上升趋势，MACD金叉配合放量突破，是经典的多头入场信号组合。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-22
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 34: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="1">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=340&fit=crop" alt="支撑阻力">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">支撑阻力进阶：如何识别关键价位</h3>
-              <p class="news-card-excerpt">前高前低、整数关口、斐波那契回调位、成交量密集区都是关键支撑阻力。价格在这些位置的反应，决定趋势延续还是反转。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-15
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 35: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&h=340&fit=crop" alt="情绪控制">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">交易心理：克服FOMO和恐惧的五个方法</h3>
-              <p class="news-card-excerpt">FOMO让你追高，恐惧让你割肉。建立交易计划、设置机械止损、降低仓位、远离盘面、记录交易日志，是控制情绪的有效手段。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-08
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 36: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=340&fit=crop" alt="复盘方法">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">交易复盘方法论：从错误中学习的四步法</h3>
-              <p class="news-card-excerpt">复盘是进步最快的方式。记录每一笔交易、分析对错原因、总结规律、优化策略。没有复盘的交易员，永远在原地踏步。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-03-01
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 37: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=340&fit=crop" alt="杠杆使用">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">杠杆使用指南：倍数选择与爆仓规避</h3>
-              <p class="news-card-excerpt">杠杆是双刃剑。建议新手不超过5倍，老司机不超过20倍。仓位*杠杆<10%本金是安全线，永远不要满仓梭哈。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-22
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 38: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="2">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=340&fit=crop" alt="周期理论">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">比特币减半周期与四年牛熊规律</h3>
-              <p class="news-card-excerpt">回顾2012-2024年三次减半，每次减半后12-18个月迎来牛市顶峰。2024年4月完成第四次减半，历史会不会重演？</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-15
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 39: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="3">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=340&fit=crop" alt="资金流向">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">链上数据解读：如何追踪聪明钱动向</h3>
-              <p class="news-card-excerpt">交易所流入/流出、鲸鱼钱包异动、长期持有者持仓变化，都是市场先行指标。学会解读链上数据，提前预判大势。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-08
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 40: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="3">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&h=340&fit=crop" alt="消息面交易">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">消息面交易策略：买预期卖事实</h3>
-              <p class="news-card-excerpt">重大事件前市场往往提前反应，消息落地后反而反向。学会"买预期、卖事实"，在消息面行情中占据主动。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-02-01
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 41: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="3">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=340&fit=crop" alt="资金管理">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">资金管理铁律：永远不要把鸡蛋放一个篮子</h3>
-              <p class="news-card-excerpt">单笔风险不超过本金2%，同时持有不超过5个币种。分散投资不是保守，而是让自己能在市场中活得更久。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-01-25
-                </span>
-                <a href="#" class="news-card-link">
-                  阅读更多
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- News Card 42: 交易技巧 -->
-          <article class="news-card" data-category="event" data-page="3">
-            <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="多空判断">
-              <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
-            </div>
-            <div class="news-card-content">
-              <h3 class="news-card-title">多空判断进阶：背离识别与转势信号</h3>
-              <p class="news-card-excerpt">顶背离+放量滞涨=卖出信号，底背离+缩量止跌=买入机会。背离不是万能，但配合量能和价格行为，胜率大幅提升。</p>
-              <div class="news-card-footer">
-                <span class="news-card-date">
-                  <i data-lucide="calendar" class="w-4 h-4"></i>
-                  2026-01-18
+                  2023-12-18
                 </span>
                 <a href="#" class="news-card-link">
                   阅读更多
@@ -1620,6 +988,302 @@
           </article>
         </div>
 
+        <!-- Pagination -->
+        <div class="pagination reveal" id="pagination">
+          <button class="pagination-btn" id="prev-page" disabled>
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          </button>
+          <button class="pagination-btn active" data-page="1">1</button>
+          <button class="pagination-btn" data-page="2">2</button>
+          <button class="pagination-btn" data-page="3">3</button>
+          <span class="px-2 text-muted">...</span>
+          <button class="pagination-btn" data-page="5">5</button>
+          <button class="pagination-btn" id="next-page">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+          <span class="pagination-info">第 <span id="current-page-num">1</span> / 5 页</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section-alt" style="background: rgba(13, 13, 18, 0.85); padding: 5rem 0;">
+      <div class="container">
+        <div class="newsletter-container reveal">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 flex items-center justify-center">
+            <i data-lucide="mail" class="w-8 h-8 text-white"></i>
+          </div>
+          <h2 class="newsletter-title">订阅我们的资讯</h2>
+          <p class="newsletter-description">获取最新的市场分析和平台更新，第一时间了解行业动态</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input 
+              type="email" 
+              class="input newsletter-input" 
+              placeholder="请输入您的邮箱地址"
+              required
+            >
+            <button type="submit" class="btn btn-primary">
+              <i data-lucide="bell" class="w-4 h-4"></i>
+              立即订阅
+            </button>
+          </form>
+          <p class="text-xsmall text-muted mt-4">
+            <i data-lucide="shield-check" class="w-4 h-4 inline-block mr-1"></i>
+            我们尊重您的隐私，不会发送垃圾邮件
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+      <!-- Footer -->
+  <footer style="background: rgba(10, 10, 15, 0.95); border-top: 1px solid rgba(212, 175, 55, 0.08); padding: 60px 0 40px;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+      <div class="footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px;">
+        <div>
+          <a href="../index.html" style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px; text-decoration: none;">
+            <img src="../assets/logo-xcsq.jpg" alt="星辰社区" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+            <span style="font-size: 1.25rem; font-weight: 700; color: #fff;">星辰社区</span>
+          </a>
+          <p style="color: rgba(255,255,255,0.5); font-size: 0.875rem; margin-bottom: 20px; line-height: 1.6;">
+            全球领先的加密货币信号聚合平台，汇聚270+顶级KOL智慧
+          </p>
+          <div style="display: flex; gap: 12px;">
+            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);transition:all 0.3s;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);transition:all 0.3s;"><i data-lucide="send" class="w-4 h-4"></i></a>
+            <a href="https://discord.gg/xcsqme" target="_blank" rel="noopener noreferrer" style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);transition:all 0.3s;"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 style="color: #D4AF37; font-size: 0.875rem; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.05em;">快速链接</h4>
+          <ul style="list-style:none;padding:0;margin:0;">
+            <li style="margin-bottom:10px;"><a href="../index.html" style="color:rgba(255,255,255,0.5);font-size:0.875rem;text-decoration:none;transition:color 0.3s;">首页</a></li>
+            <li style="margin-bottom:10px;"><a href="./about.html" style="color:rgba(255,255,255,0.5);font-size:0.875rem;text-decoration:none;transition:color 0.3s;">关于我们</a></li>
+            <li style="margin-bottom:10px;"><a href="./kols.html" style="color:rgba(255,255,255,0.5);font-size:0.875rem;text-decoration:none;transition:color 0.3s;">KOL列表</a></li>
+            <li style="margin-bottom:10px;"><a href="./pricing.html" style="color:rgba(255,255,255,0.5);font-size:0.875rem;text-decoration:none;transition:color 0.3s;">订阅计划</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: #D4AF37; font-size: 0.875rem; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.05em;">支持</h4>
+          <ul style="list-style:none;padding:0;margin:0;">
+            <li style="margin-bottom:10px;"><a href="./faq.html" style="color:rgba(255,255,255,0.5);font-size:0.875rem;text-decoration:none;transition:color 0.3s;">常见问题</a></li>
+            <li style="margin-bottom:10px;"><a href="./about.html#contact" style="color:rgba(255,255,255,0.5);font-size:0.875rem;text-decoration:none;transition:color 0.3s;">联系我们</a></li>
+            <li style="margin-bottom:10px;"><a href="./news.html" style="color:rgba(255,255,255,0.5);font-size:0.875rem;text-decoration:none;transition:color 0.3s;">最新动态</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <p style="color: rgba(255,255,255,0.4); font-size: 0.8125rem;">&copy; 2024 星辰社区 (Star Community). All rights reserved.</p>
+        <p style="color: rgba(255,255,255,0.4); font-size: 0.8125rem;">XCSQ - 让交易更简单</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-white shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform">
+    <i data-lucide="chevron-up" class="w-6 h-6"></i>
+  </button>
+
+  <!-- Shared Scripts -->
+  <script src="../shared/scripts.js"></script>
+  
+  <script>
+    // News Page Specific JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Lucide icons
+      lucide.createIcons();
+      
+      // Category filtering
+      const categoryTabs = document.querySelectorAll('.category-tab');
+      const newsCards = document.querySelectorAll('.news-card');
+      let currentCategory = 'all';
+      let currentPage = 1;
+      const itemsPerPage = 6;
+      
+      // Filter function
+      function filterNews(category) {
+        currentCategory = category;
+        currentPage = 1;
+        
+        // Update tab states
+        categoryTabs.forEach(tab => {
+          if (tab.dataset.category === category) {
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+        
+        // Filter cards
+        updateVisibleCards();
+        updatePagination();
+      }
+      
+      // Get filtered cards
+      function getFilteredCards() {
+        return Array.from(newsCards).filter(card => {
+          if (currentCategory === 'all') return true;
+          return card.dataset.category === currentCategory;
+        });
+      }
+      
+      // Update visible cards based on current page
+      function updateVisibleCards() {
+        const filteredCards = getFilteredCards();
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        
+        newsCards.forEach(card => {
+          card.classList.add('hidden');
+        });
+        
+        filteredCards.forEach((card, index) => {
+          if (index >= startIndex && index < endIndex) {
+            card.classList.remove('hidden');
+            // Add animation
+            card.style.animation = 'none';
+            setTimeout(() => {
+              card.style.animation = 'cardFadeIn 400ms var(--ease-out-expo) forwards';
+            }, index * 50);
+          }
+        });
+      }
+      
+      // Update pagination
+      function updatePagination() {
+        const filteredCards = getFilteredCards();
+        const totalPages = Math.ceil(filteredCards.length / itemsPerPage) || 1;
+        
+        // Update page info
+        document.getElementById('current-page-num').textContent = currentPage;
+        
+        // Update prev/next buttons
+        const prevBtn = document.getElementById('prev-page');
+        const nextBtn = document.getElementById('next-page');
+        
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage >= totalPages;
+        
+        // Update page number buttons
+        const pageButtons = document.querySelectorAll('.pagination-btn[data-page]');
+        pageButtons.forEach(btn => {
+          const pageNum = parseInt(btn.dataset.page);
+          btn.classList.toggle('active', pageNum === currentPage);
+          btn.style.display = pageNum <= totalPages ? 'flex' : 'none';
+        });
+      }
+      
+      // Category tab click handlers
+      categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterNews(tab.dataset.category);
+        });
+      });
+      
+      // Pagination button handlers
+      document.querySelectorAll('.pagination-btn[data-page]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentPage = parseInt(btn.dataset.page);
+          updateVisibleCards();
+          updatePagination();
+          // Scroll to news grid
+          document.getElementById('news-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+      
+      // Previous page button
+      document.getElementById('prev-page').addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updateVisibleCards();
+          updatePagination();
+          document.getElementById('news-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+      
+      // Next page button
+      document.getElementById('next-page').addEventListener('click', () => {
+        const filteredCards = getFilteredCards();
+        const totalPages = Math.ceil(filteredCards.length / itemsPerPage) || 1;
+        if (currentPage < totalPages) {
+          currentPage++;
+          updateVisibleCards();
+          updatePagination();
+          document.getElementById('news-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+      
+      // Newsletter form submission
+      document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        // Show success toast
+        if (typeof showToast !== 'undefined') {
+          showToast('订阅成功！感谢您的关注。', 'success');
+        } else {
+          alert('订阅成功！感谢您的关注。');
+        }
+        
+        // Reset form
+        this.reset();
+      });
+      
+      // Read more link handlers
+      document.querySelectorAll('.news-card-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const cardTitle = this.closest('.news-card').querySelector('.news-card-title').textContent;
+          if (typeof showToast !== 'undefined') {
+            showToast(`正在打开文章：${cardTitle}`, 'info');
+          }
+        });
+      });
+      
+      // Initialize pagination
+      updateVisibleCards();
+      updatePagination();
+      
+      // GSAP Animations
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animate news cards on scroll
+        gsap.from('.news-card:not(.hidden)', {
+          opacity: 0,
+          y: 30,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '#news-grid',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        });
+        
+        // Animate newsletter section
+        gsap.from('.newsletter-container', {
+          opacity: 0,
+          y: 40,
+          duration: 0.6,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: '.newsletter-section',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        });
+      }
+    });
+  </script>
+
+  <style>
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    }
+  </style>
+</body>
         <!-- Pagination -->
         <div class="pagination reveal" id="pagination">
           <button class="pagination-btn" id="prev-page" disabled>

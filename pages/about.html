@@ -52,7 +52,7 @@ body {
 }
 
 /* Hero 区域 - 大气简洁 */
-.about-hero {
+.page-hero {
   min-height: 40vh;
   display: flex;
   align-items: center;
@@ -63,7 +63,7 @@ body {
   background: linear-gradient(180deg, rgba(10, 10, 15, 0.7) 0%, rgba(17, 17, 17, 0.8) 100%);
 }
 
-.about-hero::before {
+.page-hero::before {
   content: '';
   position: absolute;
   top: 0;
@@ -727,8 +727,8 @@ body {
 
   <main>
     <!-- Hero Section -->
-    <section class="about-hero particle-container">
-      <div class="container text-center relative z-10">
+    <section class="page-hero">
+      <div class="container text-center relative z-10" style="max-width:1200px;margin:0 auto;padding:0 24px;">
         <!-- Breadcrumb -->
         <nav class="breadcrumb justify-center mb-6 reveal" data-reveal-delay="0">
           <a href="../index.html">首页</a>
@@ -746,9 +746,6 @@ body {
           了解星辰社区的使命、愿景和团队
         </p>
       </div>
-      
-      <!-- Decorative Elements -->
-      <div class="decoration-circle decoration-circle-1"></div>
     </section>
 
     <!-- Mission & Vision Section -->

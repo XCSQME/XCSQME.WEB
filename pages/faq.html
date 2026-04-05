@@ -443,13 +443,11 @@
   <!-- Navigation -->
   <header id="main-nav" class="nav-header">
     <div class="container">
-      <nav class="flex items-center justify-between h-20">
+      <nav class="flex items-center justify-between py-4">
         <!-- Logo -->
         <a href="../index.html" class="flex items-center gap-2">
-          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-gold to-accent-gold flex items-center justify-center">
-            <i data-lucide="star" class="w-6 h-6 text-white"></i>
-          </div>
-          <span class="text-xl font-bold font-display">星辰社区</span>
+          <img src="../assets/logo-xcsq.jpg" alt="星辰社区" class="w-10 h-10 rounded-full object-cover">
+          <span class="text-xl font-bold text-white">星辰社区</span>
         </a>
         
         <!-- Desktop Navigation -->
@@ -480,22 +478,23 @@
           </a>
         </div>
         
-        <!-- Social Links & Mobile Menu -->
-        <div class="flex items-center gap-4">
-          <div class="hidden sm:flex items-center gap-2">
-            <a href="https://x.com/XCSQbtc" target="_blank" rel="noopener noreferrer" class="social-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://t.me/xcsqme" target="_blank" rel="noopener noreferrer" class="social-icon">
-              <i data-lucide="send" class="w-5 h-5"></i>
-            </a>
-          </div>
-          
-          <!-- Mobile Menu Button -->
-          <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
-            <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
-          </button>
+        <!-- Social Links & CTA -->
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="https://x.com/XCSQbtc" target="_blank" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://t.me/xcsqme" target="_blank" class="social-icon">
+            <i data-lucide="send" class="w-5 h-5"></i>
+          </a>
+          <a href="./pricing.html" class="btn btn-primary text-sm py-2 px-4">
+            立即加入
+          </a>
         </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-white">
+          <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+        </button>
       </nav>
     </div>
   </header>
@@ -506,12 +505,12 @@
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="mobile-menu">
     <div class="flex justify-between items-center mb-8">
-      <span class="text-xl font-bold font-display">菜单</span>
-      <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-white/10 transition-colors">
+      <span class="text-xl font-bold">菜单</span>
+      <button id="mobile-menu-close" class="p-2">
         <i data-lucide="x" class="w-6 h-6"></i>
       </button>
     </div>
-    <nav class="flex flex-col gap-2">
+    <nav class="flex flex-col gap-4">
       <a href="../index.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="index">
         <i data-lucide="home" class="w-5 h-5"></i>
         <span>首页</span>
@@ -521,6 +520,22 @@
         <span>关于我们</span>
       </a>
       <a href="./kols.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="kols">
+        <i data-lucide="star" class="w-5 h-5"></i>
+        <span>KOL列表</span>
+      </a>
+      <a href="./pricing.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="pricing">
+        <i data-lucide="crown" class="w-5 h-5"></i>
+        <span>订阅计划</span>
+      </a>
+      <a href="./faq.html" class="flex items-center gap-3 p-3 rounded-lg bg-white/10" data-nav="faq">
+        <i data-lucide="help-circle" class="w-5 h-5"></i>
+        <span>常见问题</span>
+      </a>
+      <a href="./news.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors" data-nav="news">
+        <i data-lucide="newspaper" class="w-5 h-5"></i>
+        <span>最新动态</span>
+      </a>
+    </nav>
         <i data-lucide="star" class="w-5 h-5"></i>
         <span>KOL列表</span>
       </a>

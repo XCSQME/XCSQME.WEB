@@ -79,6 +79,31 @@
       z-index: -1;
     }
     
+    .pricing-card.featured .price {
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: #0a0a0f;
+      background-clip: unset;
+      color: #0a0a0f;
+    }
+    
+    .pricing-card.featured h3 {
+      color: #0a0a0f !important;
+    }
+    
+    .pricing-card.featured .text-gray-400 {
+      color: rgba(10, 10, 15, 0.6) !important;
+    }
+    
+    .pricing-card.featured .text-gray-300,
+    .pricing-card.featured .text-gray-500 {
+      color: rgba(10, 10, 15, 0.8) !important;
+    }
+    
+    .pricing-card.featured .feature-check {
+      color: #065f46 !important;
+    }
+    
     .pricing-card.best-value {
       border: 2px solid #f59e0b;
       box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
@@ -90,7 +115,7 @@
     
     .badge-popular {
       position: absolute;
-      top: -12px;
+      top: 12px;
       left: 50%;
       transform: translateX(-50%);
       background: linear-gradient(135deg, #D4AF37, #D4AF37);
@@ -100,11 +125,12 @@
       font-size: 0.75rem;
       font-weight: 600;
       animation: pulse 2s ease-in-out infinite;
+      z-index: 2;
     }
     
     .badge-best {
       position: absolute;
-      top: -12px;
+      top: 12px;
       left: 50%;
       transform: translateX(-50%);
       background: linear-gradient(135deg, #f59e0b, #fbbf24);
@@ -114,6 +140,7 @@
       font-size: 0.75rem;
       font-weight: 600;
       animation: pulse 2s ease-in-out infinite;
+      z-index: 2;
     }
     
     .feature-check {
@@ -562,7 +589,7 @@
     </section>
 
     <!-- Pricing Cards Section -->
-    <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);"
+    <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
         <div style="text-align:center; margin-bottom:60px;">
           <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">订阅计划</p>

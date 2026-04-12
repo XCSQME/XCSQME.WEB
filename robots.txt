@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xcsqme.vercel.app/sitemap.xml

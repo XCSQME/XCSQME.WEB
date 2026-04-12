@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KOL详情 - 星辰社区</title>
   <meta name="description" content="星辰社区 - 顶级加密货币KOL信号聚合平台">
+  <meta property="og:title" content="KOL详情 - 星辰社区">
+  <meta property="og:description" content="星辰社区(XCSQ) - 全球顶级加密货币KOL信号聚合社区">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="星辰社区 XCSQ">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@XCSQbtc">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +40,12 @@
       .kol-content-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
       .kol-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      section { padding-left: 16px !important; padding-right: 16px !important; }
+      h1 { font-size: 1.5rem !important; }
+      .detail-tab { font-size: 0.8125rem !important; padding: 8px 14px !important; }
+    }
+    @media (max-width: 480px) {
+      .kol-stats-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
     }
 
     /* Stat card */
@@ -478,6 +490,14 @@
     document.getElementById('kol-category-badge').textContent = kol.category;
     document.getElementById('kol-price').textContent = kol.price || '--';
     document.getElementById('modal-kol-name').textContent = kol.name;
+
+    // 动态SEO meta
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.content = kol.name + ' - ' + kol.desc.substring(0, 120);
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.content = kol.name + ' - 星辰社区KOL详情';
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.content = kol.desc.substring(0, 200);
 
     // 头像：尝试 jpg → png → webp → 生成首字母占位头像
     var avatar = document.getElementById('kol-avatar');

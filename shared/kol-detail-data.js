@@ -596,20 +596,6 @@ const KOL_DETAIL_DATA = {
     banner: "",
     channelDesc: "空投培训 | 撸毛教程"
   },
-  "刘教链": {
-    name: "刘教链",
-    category: "一级链上",
-    desc: "自介：比特币史话》作者，前北航软件学院特聘教授。活跃于微信公众号，国内加密货币宏观分析博主，每天的日更文章质量很高。",
-    twitter: "https://x.com/strikingly",
-    youtube: "",
-    telegram: "",
-    price: "100 USD/年",
-    winrate: "78%",
-    signals: "35",
-    followers: "20K",
-    banner: "",
-    channelDesc: "宏观分析 | 技术研究"
-  },
   "链智监控信号": {
     name: "链智监控信号",
     category: "一级链上",
@@ -637,20 +623,6 @@ const KOL_DETAIL_DATA = {
     followers: "12K",
     banner: "",
     channelDesc: "链上交易"
-  },
-  "Martin_sen": {
-    name: "Martin_sen",
-    category: "一级链上",
-    desc: "自介：GM23创始人。进入加密行业五年了。在这个市场中活到最后= 💰💰💰 主攻铭文/土狗/NFT。",
-    twitter: "https://x.com/strikingly",
-    youtube: "",
-    telegram: "",
-    price: "0.3ETH/季",
-    winrate: "75%",
-    signals: "35",
-    followers: "9K",
-    banner: "",
-    channelDesc: "铭文 | 土狗 | NFT"
   },
 
   // ===== 国外二级市场 =====
@@ -933,20 +905,6 @@ const KOL_DETAIL_DATA = {
     followers: "22K",
     banner: "",
     channelDesc: "俄罗斯风格 | 独特技术"
-  },
-  "LaserCat镭射猫": {
-    name: "LaserCat镭射猫",
-    category: "国外二级市场",
-    desc: "自介：我的想法从来都没有替我赚过大钱，总是我坚持不动替我赚大钱。对市场判断正确不足为奇，能够同时判断正确并坚持不动的人才罕见。专注于链上交易和NFT投资。",
-    twitter: "https://x.com/strikingly",
-    youtube: "",
-    telegram: "",
-    price: "NFT入群",
-    winrate: "75%",
-    signals: "44",
-    followers: "18K",
-    banner: "",
-    channelDesc: "坚持不动 | 链上NFT"
   },
 
   // ===== 资讯类 =====

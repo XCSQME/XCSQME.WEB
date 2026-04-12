@@ -1028,14 +1028,14 @@
           <p class="card-wall-desc">${kol.desc}</p>
           <div class="card-wall-footer">
             <span class="card-wall-price plan-${kol.plan}">${getPlanLabel(kol.plan)}</span>
-            <a href="./kol-detail.html?id=${kol.id}" class="card-wall-btn">查看详情</a>
+            <a href="./kol-detail.html?name=${encodeURIComponent(kol.name)}" class="card-wall-btn">查看详情</a>
           </div>
         </div>
       `;
 
       card.addEventListener('click', (e) => {
         if (!e.target.closest('.card-wall-btn')) {
-          window.location.href = `./kol-detail.html?id=${kol.id}`;
+          window.location.href = `./kol-detail.html?name=${encodeURIComponent(kol.name)}`;
         }
       });
 
@@ -1114,7 +1114,7 @@
         `<span class="badge ${categoryColors[kol.category]}">${categoryLabels[kol.category]}</span>`;
 
       // Detail link
-      document.getElementById('modal-detail-link').href = `./kol-detail.html?id=${kol.id}`;
+      document.getElementById('modal-detail-link').href = `./kol-detail.html?name=${encodeURIComponent(kol.name)}`;
 
       // Show modal
       modal.classList.add('open');
@@ -1187,7 +1187,7 @@
               <span>${getPlanLabel(kol.plan)}</span>
             </div>
           </div>
-          <a href="./kol-detail.html?id=${kol.id}" class="kol-card-btn">
+          <a href="./kol-detail.html?name=${encodeURIComponent(kol.name)}" class="kol-card-btn">
             查看
           </a>
         </div>

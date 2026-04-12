@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KOL详情 - 星辰社区</title>
+  <meta name="description" content="星辰社区 - 顶级加密货币KOL信号聚合平台">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="../shared/styles.css">
+  
+  <!-- KOL Data -->
+  <script src="../shared/kol-detail-data.js"></script>
+  
+  <script>
+    
+      
+      let avatarUrl = '../assets/avatars/default.png';
+      if (avatarMapping[kol.name]) {
+        avatarUrl = `../assets/avatars/${avatarMapping[kol.name]}`;
+      }
+      document.getElementById('kol-avatar').src = avatarUrl;
+      
+      // Update name
+      document.getElementById('kol-name').textContent = kol.name;
+      
+      // Update category
+      document.getElementById('kol-category').textContent = kol.category || '加密货币';
+      
+      // Update price
+      document.getElementById('kol-price').textContent = kol.price || '单独购买';
+      
+      // Update description
+      document.getElementById('kol-description').innerHTML = `<p>${kol.desc || '暂无介绍'}</p>`;
+      
+      // Update stats
+      const statsHtml = `
+        <div class="stat-item">
+          <div class="stat-value">${kol.winrate || '--'}</div>
+          <div class="stat-label">胜率</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">${kol.signals || '--'}</div>
+          <div class="stat-label">总信号</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">${kol.followers || '--'}</div>
+          <div class="stat-label">关注者</div>
+        </div>
+      `;
+      document.getElementById('kol-stats').innerHTML = statsHtml;
+      
+      // Update channel desc
+      document.getElementById('channel-desc').textContent = kol.channelDesc || kol.desc?.substring(0, 100) || '--';
+      
+      // Update social links
+      const socialHtml = [];
+      if (kol.twitter) {
+        socialHtml.push(`
+          <a href="${kol.twitter}" target="_blank" rel="noopener noreferrer" class="social-btn-real twitter" title="Twitter/X">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        `);
+      }
+      if (kol.youtube) {
+        socialHtml.push(`
+          <a href="${kol.youtube}" target="_blank" rel="noopener noreferrer" class="social-btn-real youtube" title="YouTube">
+            <i data-lucide="youtube" class="w-5 h-5"></i>
+          </a>
+        `);
+      }
+      if (kol.telegram) {
+        socialHtml.push(`
+          <a href="${kol.telegram}" target="_blank" rel="noopener noreferrer" class="social-btn-real telegram" title="Telegram">
+            <i data-lucide="send" class="w-5 h-5"></i>
+          </a>
+        `);
+      }
+      document.getElementById('kol-social').innerHTML = socialHtml.join('') || '<span class="text-gray-500 text-sm">暂无社交链接</span>';
+      
+      // Update related KOLs (random 3 from same category)
+      const relatedKOLs = Object.entries(KOL_DETAIL_DATA)
+        .filter(([name, data]) => data.category === kol.category && name !== kol.name)
+        .slice(0, 3);
+      
+      const relatedHtml = relatedKOLs.map(([name, data]) => {
+        const relatedAvatar = avatarMapping[name] ? `../assets/avatars/${avatarMapping[name]}` : '../assets/avatars/default.png';
+        return `
+          <a href="./kol-detail.html?id=${KOL_NAME_TO_ID[name] || name}" class="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+            <img src="${relatedAvatar}" alt="${name}" class="w-10 h-10 rounded-full object-cover" onerror="this.src='../assets/avatars/default.png'">
+            <div>
+              <div class="font-medium">${name}</div>
+              <div class="text-xs text-gray-500">${data.category}</div>
+            </div>
+          </a>
+        `;
+      }).join('');
+      
+      document.getElementById('related-kols').innerHTML = relatedHtml || '<p class="text-gray-500 text-sm">暂无相似KOL</p>';
+      
+      // Re-initialize icons
+      lucide.createIcons();
+    }
+    
+    // ========================================
+    // Modal Functions
+    // ========================================
+    function showSubscribeModal() {
+      document.getElementById('subscribe-modal').classList.remove('hidden');
+    }
+    
+    function closeSubscribeModal() {
+      document.getElementById('subscribe-modal').classList.add('hidden');
+    }
+  </script>
+
+  <style>
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    }
+  </style>
+</body>
+</html>

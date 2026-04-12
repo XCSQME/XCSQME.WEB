@@ -805,3 +805,111 @@ input, textarea, select {
     scroll-behavior: auto;
   }
 }
+
+/* ========================================
+   16. GLOBAL COLOR OVERRIDES (原 final-fix)
+   ======================================== */
+
+/* 文字颜色层级 */
+body, p, li, .text-secondary, .text-muted,
+.footer-link, .team-desc, .card-text {
+  color: #E5E7EB;
+}
+
+h1, h2, h3, h4, h5, h6,
+.card-title, .kol-name, .service-title, .team-name {
+  color: #D4AF37;
+}
+
+.page-title, .section-title {
+  background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-number, .badge, .badge-gold, .category-tag, .stat-label {
+  color: #D4AF37;
+}
+
+/* Lucide 图标金色 */
+[data-lucide], i svg, .lucide {
+  color: #D4AF37;
+  stroke: #D4AF37;
+}
+
+/* 星星评分 */
+.star, .rating-star {
+  fill: #D4AF37;
+  stroke: #D4AF37;
+}
+
+.service-icon i, .service-icon svg,
+.advantage-icon i, .advantage-icon svg {
+  color: #D4AF37;
+  fill: #D4AF37;
+}
+
+/* Footer 背景 */
+footer, .footer {
+  background: #0a0a0f;
+}
+
+/* ========================================
+   17. SECTION HEADER PATTERN (原 inline style)
+   ======================================== */
+
+/* 小标签: "核心服务"、"顶级 KOL" 等 */
+.section-label {
+  color: #D4AF37;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+}
+
+/* 区块大标题 */
+.section-heading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+/* 区块描述文字 */
+.section-desc {
+  color: #E5E7EB;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 服务卡片标题白色 */
+.service-card h3 {
+  color: #FFFFFF;
+}
+
+/* CTA 图标金色 */
+.icon-gold {
+  color: #D4AF37;
+}
+
+/* ========================================
+   18. PRICING PAGE OVERRIDES
+   ======================================== */
+.pricing-card.featured [data-lucide] {
+  color: #0a0a0f;
+  stroke: #0a0a0f;
+  stroke-width: 3;
+}
+
+.pricing-card.featured .feature-check,
+.pricing-card.featured .feature-check svg {
+  color: #065f46;
+  stroke: #065f46;
+  stroke-width: 3;
+}
+
+.pricing-card.featured h3 {
+  color: #0a0a0f;
+}

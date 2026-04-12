@@ -418,79 +418,6 @@
 
 </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style id="final-fix">
-  /* 基础配色 */
-  body, p, li, .text-secondary, .text-muted, .footer-link, .team-desc, .card-text {
-    color: #E5E7EB !important;
-  }
-  h1, h2, h3, h4, h5, h6, .card-title, .kol-name, .service-title, .team-name {
-    color: #D4AF37 !important;
-  }
-  .page-title, .section-title {
-    background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-  }
-  .stat-number, .badge, .badge-gold, .category-tag, .stat-label {
-    color: #D4AF37 !important;
-  }
-
-  /* 终极图标与评分修复 */
-  /* 强制所有Lucide图标为金色 */
-  [data-lucide], i svg, .lucide {
-    color: #D4AF37 !important;
-    stroke: #D4AF37 !important;
-  }
-  /* 星星评分组件 */
-  .star, .rating-star, svg path {
-    fill: #D4AF37 !important;
-    stroke: #D4AF37 !important;
-  }
-  /* 补充：数据监控等容器内的所有图标 */
-  .service-icon i, .service-icon svg, .advantage-icon i, .advantage-icon svg {
-    color: #D4AF37 !important;
-    fill: #D4AF37 !important;
-  }
-  
-  /* featured卡片（金色背景）内的图标覆盖 */
-  .pricing-card.featured [data-lucide] {
-    color: #0a0a0f !important;
-    stroke: #0a0a0f !important;
-    stroke-width: 3 !important;
-  }
-  .pricing-card.featured .feature-check,
-  .pricing-card.featured .feature-check svg {
-    color: #065f46 !important;
-    stroke: #065f46 !important;
-    stroke-width: 3 !important;
-  }
-  .pricing-card.featured h3 {
-    color: #0a0a0f !important;
-  }
-    color: #D4AF37 !important;
-    fill: #D4AF37 !important;
-  }
-  
-  /* Footer 背景修正 */
-  footer, .footer {
-    background: #0a0a0f !important;
-  }
-</style>
-
 </head>
 <body>
   <!-- Particle Canvas -->
@@ -501,7 +428,7 @@
   <main>
     <!-- Hero Section -->
     <section class="page-hero">
-      <div class="container text-center relative z-10" style="max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div class="container text-center relative z-10" >
         <nav class="breadcrumb">
           <a href="../index.html">首页</a>
           <i data-lucide="chevron-right" class="w-4 h-4 breadcrumb-separator"></i>
@@ -517,36 +444,36 @@
     <!-- Why Choose Us Section -->
     <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
-        <div style="text-align:center; margin-bottom:60px;">
-          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">核心优势</p>
-          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">为什么选择星辰社区？</h2>
-          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">专业、可靠、高性价比的加密货币信号服务</p>
+        <div class="text-center mb-16">
+          <p class="section-label">核心优势</p>
+          <h2 class="section-heading">为什么选择星辰社区？</h2>
+          <p class="section-desc">专业、可靠、高性价比的加密货币信号服务</p>
         </div>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="glass-card reveal" style="animation-delay: 100ms;">
-            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05)); border:1px solid rgba(212,175,55,0.2);">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" class="service-icon">
               <i data-lucide="trending-up" class="w-6 h-6 text-white"></i>
             </div>
             <p class="text-gray-300">汇集全球270+顶级交易频道，实时同步市场机会</p>
           </div>
           
           <div class="glass-card reveal" style="animation-delay: 200ms;">
-            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05)); border:1px solid rgba(212,175,55,0.2);">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" class="service-icon">
               <i data-lucide="star" class="w-6 h-6 text-white"></i>
             </div>
             <p class="text-gray-300">覆盖现货、合约、链上全链路策略矩阵</p>
           </div>
           
           <div class="glass-card reveal" style="animation-delay: 300ms;">
-            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05)); border:1px solid rgba(212,175,55,0.2);">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" class="service-icon">
               <i data-lucide="coins" class="w-6 h-6 text-white"></i>
             </div>
             <p class="text-gray-300">7×24小时智能监控，第一时间捕捉异动</p>
           </div>
           
           <div class="glass-card reveal" style="animation-delay: 400ms;">
-            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05)); border:1px solid rgba(212,175,55,0.2);">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4" class="service-icon">
               <i data-lucide="target" class="w-6 h-6 text-white"></i>
             </div>
             <p class="text-gray-300">严格风控筛选，只保留经过验证的优质信号</p>
@@ -558,10 +485,10 @@
     <!-- Pricing Cards Section -->
     <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
-        <div style="text-align:center; margin-bottom:60px;">
-          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">订阅计划</p>
-          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">选择最适合您的套餐</h2>
-          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">灵活的订阅方案，满足不同需求</p>
+        <div class="text-center mb-16">
+          <p class="section-label">订阅计划</p>
+          <h2 class="section-heading">选择最适合您的套餐</h2>
+          <p class="section-desc">灵活的订阅方案，满足不同需求</p>
         </div>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
@@ -736,10 +663,10 @@
     <!-- Comparison Table Section -->
     <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
-        <div style="text-align:center; margin-bottom:60px;">
-          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">功能对比</p>
-          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">详细对比各套餐功能</h2>
-          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">选择最适合您的方案</p>
+        <div class="text-center mb-16">
+          <p class="section-label">功能对比</p>
+          <h2 class="section-heading">详细对比各套餐功能</h2>
+          <p class="section-desc">选择最适合您的方案</p>
         </div>
         
         <div class="overflow-x-auto reveal">
@@ -812,10 +739,10 @@
     <!-- Purchase Process Section -->
     <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
-        <div style="text-align:center; margin-bottom:60px;">
-          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">购买流程</p>
-          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">简单三步，立即开始</h2>
-          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">快速开通，即刻享受服务</p>
+        <div class="text-center mb-16">
+          <p class="section-label">购买流程</p>
+          <h2 class="section-heading">简单三步，立即开始</h2>
+          <p class="section-desc">快速开通，即刻享受服务</p>
         </div>
         
         <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -855,10 +782,10 @@
     <section class="section-alt" style="background: rgba(13, 13, 18, 0.85);">
       <div class="container">
         <div class="max-w-2xl mx-auto">
-          <div style="text-align:center; margin-bottom:60px;">
-            <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">联系方式</p>
-            <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">有任何问题？随时联系我们</h2>
-            <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">专业客服团队为您服务</p>
+          <div class="text-center mb-16">
+            <p class="section-label">联系方式</p>
+            <h2 class="section-heading">有任何问题？随时联系我们</h2>
+            <p class="section-desc">专业客服团队为您服务</p>
           </div>
           
           <div class="contact-card reveal">
@@ -881,10 +808,10 @@
     <!-- FAQ Teaser Section -->
     <section class="section-alt" style="background: rgba(17, 17, 22, 0.9);">
       <div class="container">
-        <div style="text-align:center; margin-bottom:60px;">
-          <p style="color:#D4AF37; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:0.75rem;">常见问题</p>
-          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem); font-weight:700; color:#fff; margin-bottom:1rem;">快速解答您的疑问</h2>
-          <p style="color:rgba(255,255,255,0.5); max-width:600px; margin:0 auto;">找不到答案？请联系客服</p>
+        <div class="text-center mb-16">
+          <p class="section-label">常见问题</p>
+          <h2 class="section-heading">快速解答您的疑问</h2>
+          <p class="section-desc">找不到答案？请联系客服</p>
         </div>
         
         <div class="max-w-3xl mx-auto space-y-4">

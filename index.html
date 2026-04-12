@@ -452,62 +452,8 @@
 }
 </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style id="final-fix">
-  /* 基础配色 */
-  body, p, li, .text-secondary, .text-muted, .footer-link, .team-desc, .card-text {
-    color: #E5E7EB !important;
-  }
-  h1, h2, h3, h4, h5, h6, .card-title, .kol-name, .service-title, .team-name {
-    color: #D4AF37 !important;
-  }
-  .page-title, .section-title {
-    background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-  }
-  .stat-number, .badge, .badge-gold, .category-tag, .stat-label {
-    color: #D4AF37 !important;
-  }
-
-  /* 终极图标与评分修复 */
-  /* 强制所有Lucide图标为金色 */
-  [data-lucide], i svg, .lucide {
-    color: #D4AF37 !important;
-    stroke: #D4AF37 !important;
-  }
-  /* 星星评分组件 */
-  .star, .rating-star, svg path {
-    fill: #D4AF37 !important;
-    stroke: #D4AF37 !important;
-  }
-  /* 补充：数据监控等容器内的所有图标 */
-  .service-icon i, .service-icon svg, .advantage-icon i, .advantage-icon svg {
-    color: #D4AF37 !important;
-    fill: #D4AF37 !important;
-  }
-  
-  /* Footer 背景修正 */
-  footer, .footer {
-    background: #0a0a0f !important;
-  }
-</style>
-
 </head>
-<body style="background-color: #0a0a0f;" class="text-white overflow-x-hidden">
+<body class="text-white overflow-x-hidden">
   
   <!-- Page Loader -->
   <div class="page-loader" id="pageLoader">
@@ -622,9 +568,9 @@
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-on-scroll">
-        <p style="color:#D4AF37;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;">核心服务</p>
-        <h2 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:1rem;">专业级服务体系</h2>
-        <p style="color: #E5E7EB;max-width:600px;margin:0 auto;">
+        <p class="section-label">核心服务</p>
+        <h2 class="section-heading">专业级服务体系</h2>
+        <p class="section-desc">
           为加密货币交易者提供全方位信号服务，助您把握每一个盈利机会
         </p>
       </div>
@@ -636,7 +582,7 @@
           <div class="service-icon">
             <i data-lucide="target"></i>
           </div>
-          <h3 style="color: #FFFFFF !important;">数据监控</h3>
+          <h3>数据监控</h3>
           <p class="text-gray-200 mb-6">
             7×24小时市场扫描，实时监控270+ KOL信号，第一时间捕捉市场机会
           </p>
@@ -661,7 +607,7 @@
           <div class="service-icon">
             <i data-lucide="magnet"></i>
           </div>
-          <h3 style="color: #FFFFFF !important;">策略跟单</h3>
+          <h3>策略跟单</h3>
           <p class="text-gray-200 mb-6">
             跟随顶级交易员，一键复制成功策略，让专业的人做专业的事
           </p>
@@ -686,7 +632,7 @@
           <div class="service-icon">
             <i data-lucide="bar-chart-3"></i>
           </div>
-          <h3 style="color: #FFFFFF !important;">市场分析</h3>
+          <h3>市场分析</h3>
           <p class="text-gray-200 mb-6">
             专业行情解读，深度市场分析，助您做出明智的投资决策
           </p>
@@ -715,9 +661,9 @@
       <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 animate-on-scroll">
         <div>
-          <p style="color:#D4AF37;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;">顶级 KOL</p>
-          <h2 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:1rem;">精选 KOL 阵容</h2>
-          <p style="color: #E5E7EB;">来自全球的顶级加密货币分析师</p>
+          <p class="section-label">顶级 KOL</p>
+          <h2 class="section-heading">精选 KOL 阵容</h2>
+          <p class="section-desc">来自全球的顶级加密货币分析师</p>
         </div>
         <a href="./pages/kols.html" class="btn btn-secondary mt-4 md:mt-0">
           <span>查看全部</span>
@@ -879,9 +825,9 @@
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-on-scroll">
-        <p style="color:#D4AF37;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.75rem;">用户反馈</p>
-        <h2 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:1rem;">客户证言</h2>
-        <p style="color: #E5E7EB;max-width:600px;margin:0 auto;">
+        <p class="section-label">用户反馈</p>
+        <h2 class="section-heading">客户证言</h2>
+        <p class="section-desc">
           还有担忧吗？以下是社区客户的真实评价
         </p>
       </div>
@@ -987,15 +933,15 @@
         <!-- Trust Indicators -->
         <div class="flex flex-wrap items-center justify-center gap-6 mt-10">
           <div class="flex items-center gap-2 text-muted text-sm">
-            <i data-lucide="shield-check" class="w-4 h-4" style="color: #D4AF37;"></i>
+            <i data-lucide="shield-check" class="w-4 h-4" class="icon-gold"></i>
             <span>至今0差评</span>
           </div>
           <div class="flex items-center gap-2 text-muted text-sm">
-            <i data-lucide="lock" class="w-4 h-4" style="color: #D4AF37;"></i>
+            <i data-lucide="lock" class="w-4 h-4" class="icon-gold"></i>
             <span>安全支付</span>
           </div>
           <div class="flex items-center gap-2 text-muted text-sm">
-            <i data-lucide="headphones" class="w-4 h-4" style="color: #D4AF37;"></i>
+            <i data-lucide="headphones" class="w-4 h-4" class="icon-gold"></i>
             <span>24/7客服支持</span>
           </div>
         </div>

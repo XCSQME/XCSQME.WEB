@@ -5,22 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>订阅计划 - 星辰社区</title>
   <meta name="description" content="星辰社区订阅计划 - 选择适合您的会员套餐，获取顶级加密货币信号服务">
-  
-  <!-- Google Fonts -->
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="canonical" href="https://xcsqme.vercel.app/pages/pricing.html">
+
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; frame-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none';">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xcsqme.vercel.app/pages/pricing.html">
+  <meta property="og:title" content="订阅计划 - 星辰社区 XCSQ">
+  <meta property="og:description" content="选择适合您的会员套餐，获取顶级加密货币信号服务">
+  <meta property="og:image" content="https://xcsqme.vercel.app/assets/logo-xcsq.jpg">
+  <meta property="og:site_name" content="星辰社区 XCSQ">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@XCSQbtc">
+  <meta name="twitter:title" content="订阅计划 - 星辰社区 XCSQ">
+  <meta name="twitter:description" content="选择适合您的会员套餐">
+
+  <!-- Google Fonts (display=swap) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
+
   <!-- Tailwind CSS -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" crossorigin="anonymous"></script>
+
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@0.460.0"></script>
-  
+  <script src="https://unpkg.com/lucide@0.460.0" crossorigin="anonymous" defer></script>
+
   <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" crossorigin="anonymous" defer></script>
+
   <!-- Shared Styles -->
   <link rel="stylesheet" href="../shared/styles.css">
   
@@ -816,7 +837,7 @@
         
         <div class="max-w-3xl mx-auto space-y-4">
           <div class="faq-item reveal" style="animation-delay: 100ms;">
-            <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-question" data-action="toggle-faq-pricing" role="button" tabindex="0">
               <span>如何开始使用服务？</span>
               <i data-lucide="chevron-down" class="w-5 h-5 faq-icon"></i>
             </div>
@@ -826,7 +847,7 @@
           </div>
           
           <div class="faq-item reveal" style="animation-delay: 200ms;">
-            <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-question" data-action="toggle-faq-pricing" role="button" tabindex="0">
               <span>支持哪些支付方式？</span>
               <i data-lucide="chevron-down" class="w-5 h-5 faq-icon"></i>
             </div>
@@ -836,7 +857,7 @@
           </div>
           
           <div class="faq-item reveal" style="animation-delay: 300ms;">
-            <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-question" data-action="toggle-faq-pricing" role="button" tabindex="0">
               <span>可以随时升级套餐吗？</span>
               <i data-lucide="chevron-down" class="w-5 h-5 faq-icon"></i>
             </div>
@@ -874,21 +895,25 @@
     function toggleFaq(element) {
       const faqItem = element.parentElement;
       const isActive = faqItem.classList.contains('active');
-      
+
       // Close all FAQ items
       document.querySelectorAll('.faq-item').forEach(item => {
         item.classList.remove('active');
       });
-      
+
       // Open clicked item if it wasn't active
       if (!isActive) {
         faqItem.classList.add('active');
       }
-      
+
       // Re-initialize Lucide icons
       if (typeof lucide !== 'undefined') {
         lucide.createIcons();
       }
+    }
+    // CSP-friendly delegated action
+    if (window.XCSQ && typeof window.XCSQ.registerAction === 'function') {
+      window.XCSQ.registerAction('toggle-faq-pricing', function(el) { toggleFaq(el); });
     }
     
     // GSAP Animations

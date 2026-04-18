@@ -5,22 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>最新动态 - 星辰社区</title>
   <meta name="description" content="了解星辰社区的最新更新和行业资讯">
-  
-  <!-- Google Fonts -->
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="canonical" href="https://xcsqme.vercel.app/pages/news.html">
+
+  <!-- Content Security Policy (images allow unsplash + cdns) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; frame-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none';">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xcsqme.vercel.app/pages/news.html">
+  <meta property="og:title" content="最新动态 - 星辰社区 XCSQ">
+  <meta property="og:description" content="了解星辰社区的最新更新和行业资讯">
+  <meta property="og:image" content="https://xcsqme.vercel.app/assets/logo-xcsq.jpg">
+  <meta property="og:site_name" content="星辰社区 XCSQ">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@XCSQbtc">
+  <meta name="twitter:title" content="最新动态 - 星辰社区 XCSQ">
+  <meta name="twitter:description" content="了解星辰社区的最新更新和行业资讯">
+
+  <!-- Google Fonts (display=swap) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
+
   <!-- Tailwind CSS -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" crossorigin="anonymous"></script>
+
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@0.460.0"></script>
-  
+  <script src="https://unpkg.com/lucide@0.460.0" crossorigin="anonymous" defer></script>
+
   <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" crossorigin="anonymous" defer></script>
+
   <!-- Shared Styles -->
   <link rel="stylesheet" href="../shared/styles.css">
   
@@ -529,7 +551,7 @@
           <!-- News Card 1: 平台更新 -->
           <article class="news-card" data-category="update" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=340&fit=crop" alt="星辰社区4.0">
+              <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=340&fit=crop" alt="星辰社区4.0" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -551,7 +573,7 @@
           <!-- News Card 2: 平台更新 -->
           <article class="news-card" data-category="update" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=340&fit=crop" alt="AI风控系统">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=340&fit=crop" alt="AI风控系统" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -573,7 +595,7 @@
           <!-- News Card 3: 平台更新 -->
           <article class="news-card" data-category="update" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="KOL突破">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="KOL突破" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -595,7 +617,7 @@
           <!-- News Card 4: 平台更新 -->
           <article class="news-card" data-category="update" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=340&fit=crop" alt="飞书机器人">
+              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=340&fit=crop" alt="飞书机器人" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -617,7 +639,7 @@
           <!-- News Card 5: 平台更新 -->
           <article class="news-card" data-category="update" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=340&fit=crop" alt="支付升级">
+              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=340&fit=crop" alt="支付升级" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -639,7 +661,7 @@
           <!-- News Card 6: 平台更新 -->
           <article class="news-card" data-category="update" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=340&fit=crop" alt="系统优化">
+              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=340&fit=crop" alt="系统优化" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -661,7 +683,7 @@
           <!-- News Card 7: 平台更新 -->
           <article class="news-card" data-category="update" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=340&fit=crop" alt="数据安全">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=340&fit=crop" alt="数据安全" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -683,7 +705,7 @@
           <!-- News Card 8: 平台更新 -->
           <article class="news-card" data-category="update" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop" alt="API开放">
+              <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop" alt="API开放" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -705,7 +727,7 @@
           <!-- News Card 9: 平台更新 -->
           <article class="news-card" data-category="update" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=340&fit=crop" alt="信号筛选">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=340&fit=crop" alt="信号筛选" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -727,7 +749,7 @@
           <!-- News Card 10: 平台更新 -->
           <article class="news-card" data-category="update" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=340&fit=crop" alt="多语言">
+              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=340&fit=crop" alt="多语言" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-update">平台更新</span>
             </div>
             <div class="news-card-content">
@@ -752,7 +774,7 @@
           <!-- News Card 11: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="1">
             <div class="news-card-image">
-              <img src="../assets/avatars/颜驰.png" alt="颜驰" onerror="this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/颜驰.png" alt="颜驰" onerror="this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -774,7 +796,7 @@
           <!-- News Card 12: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="1">
             <div class="news-card-image">
-              <img src="../assets/avatars/Ye.koi.webp" alt="Ye.koi" onerror="this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/Ye.koi.webp" alt="Ye.koi" onerror="this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -796,7 +818,7 @@
           <!-- News Card 13: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="1">
             <div class="news-card-image">
-              <img src="../assets/avatars/币圈所长.png" alt="币圈所长" onerror="this.src='https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/币圈所长.png" alt="币圈所长" onerror="this.src='https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -818,7 +840,7 @@
           <!-- News Card 14: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="1">
             <div class="news-card-image">
-              <img src="../assets/avatars/ChartChampions.png" alt="ChartChampions" onerror="this.src='https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/ChartChampions.png" alt="ChartChampions" onerror="this.src='https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -840,7 +862,7 @@
           <!-- News Card 15: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="2">
             <div class="news-card-image">
-              <img src="../assets/avatars/Vivian交易团队.png" alt="Vivian" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/Vivian交易团队.png" alt="Vivian" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -862,7 +884,7 @@
           <!-- News Card 16: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="2">
             <div class="news-card-image">
-              <img src="../assets/avatars/比特币峰哥.png" alt="比特币峰哥" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/比特币峰哥.png" alt="比特币峰哥" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -884,7 +906,7 @@
           <!-- News Card 17: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="2">
             <div class="news-card-image">
-              <img src="../assets/avatars/Alert会所.webp" alt="Alert会所" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/Alert会所.webp" alt="Alert会所" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -906,7 +928,7 @@
           <!-- News Card 18: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="2">
             <div class="news-card-image">
-              <img src="../assets/avatars/wallstreet.png" alt="华尔街女王" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/wallstreet.png" alt="华尔街女王" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -928,7 +950,7 @@
           <!-- News Card 19: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="2">
             <div class="news-card-image">
-              <img src="../assets/avatars/风寻.webp" alt="风寻" onerror="this.src='https://images.unsplash.com/photo-1605792657660-596af9009e82?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/风寻.webp" alt="风寻" onerror="this.src='https://images.unsplash.com/photo-1605792657660-596af9009e82?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -950,7 +972,7 @@
           <!-- News Card 20: 社区引进 -->
           <article class="news-card" data-category="kol" data-page="2">
             <div class="news-card-image">
-              <img src="../assets/avatars/比特币飞扬.webp" alt="比特币飞扬" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=340&fit=crop'">
+              <img src="../assets/avatars/比特币飞扬.webp" alt="比特币飞扬" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=340&fit=crop'" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-kol">社区引进</span>
             </div>
             <div class="news-card-content">
@@ -975,7 +997,7 @@
           <!-- News Card 21: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=600&h=340&fit=crop" alt="比特币市场">
+              <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=600&h=340&fit=crop" alt="比特币市场" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -997,7 +1019,7 @@
           <!-- News Card 22: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=340&fit=crop" alt="Drift被黑">
+              <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&h=340&fit=crop" alt="Drift被黑" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -1019,7 +1041,7 @@
           <!-- News Card 23: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=600&h=340&fit=crop" alt="矿工抛售">
+              <img src="https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=600&h=340&fit=crop" alt="矿工抛售" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -1041,7 +1063,7 @@
           <!-- News Card 24: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=340&fit=crop" alt="量子计算">
+              <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600&h=340&fit=crop" alt="量子计算" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -1063,7 +1085,7 @@
           <!-- News Card 25: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1642104704074-907c0698b98d?w=600&h=340&fit=crop" alt="Solana">
+              <img src="https://images.unsplash.com/photo-1642104704074-907c0698b98d?w=600&h=340&fit=crop" alt="Solana" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -1085,7 +1107,7 @@
           <!-- News Card 26: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&h=340&fit=crop" alt="特朗普">
+              <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&h=340&fit=crop" alt="特朗普" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -1107,7 +1129,7 @@
           <!-- News Card 27: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1605218427306-6553e24c7b66?w=600&h=340&fit=crop" alt="市场洞察">
+              <img src="https://images.unsplash.com/photo-1605218427306-6553e24c7b66?w=600&h=340&fit=crop" alt="市场洞察" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -1129,7 +1151,7 @@
           <!-- News Card 28: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=600&h=340&fit=crop" alt="机构买盘">
+              <img src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=600&h=340&fit=crop" alt="机构买盘" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -1151,7 +1173,7 @@
           <!-- News Card 29: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?w=600&h=340&fit=crop" alt="Aave">
+              <img src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?w=600&h=340&fit=crop" alt="Aave" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -1173,7 +1195,7 @@
           <!-- News Card 30: 行业资讯 -->
           <article class="news-card" data-category="news" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?w=600&h=340&fit=crop" alt="24小时股市">
+              <img src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?w=600&h=340&fit=crop" alt="24小时股市" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-gold badge-news">行业资讯</span>
             </div>
             <div class="news-card-content">
@@ -1198,7 +1220,7 @@
           <!-- News Card 31: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=340&fit=crop" alt="止损技巧">
+              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=340&fit=crop" alt="止损技巧" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1220,7 +1242,7 @@
           <!-- News Card 32: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop" alt="仓位管理">
+              <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=340&fit=crop" alt="仓位管理" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1242,7 +1264,7 @@
           <!-- News Card 33: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=340&fit=crop" alt="趋势判断">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=340&fit=crop" alt="趋势判断" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1264,7 +1286,7 @@
           <!-- News Card 34: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="1">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=340&fit=crop" alt="支撑阻力">
+              <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=340&fit=crop" alt="支撑阻力" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1286,7 +1308,7 @@
           <!-- News Card 35: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&h=340&fit=crop" alt="情绪控制">
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&h=340&fit=crop" alt="情绪控制" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1308,7 +1330,7 @@
           <!-- News Card 36: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=340&fit=crop" alt="复盘方法">
+              <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=600&h=340&fit=crop" alt="复盘方法" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1330,7 +1352,7 @@
           <!-- News Card 37: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=340&fit=crop" alt="杠杆使用">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=340&fit=crop" alt="杠杆使用" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1352,7 +1374,7 @@
           <!-- News Card 38: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="2">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=340&fit=crop" alt="周期理论">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=340&fit=crop" alt="周期理论" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1374,7 +1396,7 @@
           <!-- News Card 39: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="3">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=340&fit=crop" alt="资金流向">
+              <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=340&fit=crop" alt="资金流向" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1396,7 +1418,7 @@
           <!-- News Card 40: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="3">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&h=340&fit=crop" alt="消息面交易">
+              <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&h=340&fit=crop" alt="消息面交易" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1418,7 +1440,7 @@
           <!-- News Card 41: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="3">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=340&fit=crop" alt="资金管理">
+              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=340&fit=crop" alt="资金管理" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">
@@ -1440,7 +1462,7 @@
           <!-- News Card 42: 交易技巧 -->
           <article class="news-card" data-category="event" data-page="3">
             <div class="news-card-image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="多空判断">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="多空判断" loading="lazy" decoding="async">
               <span class="news-card-badge badge badge-pink badge-event">交易技巧</span>
             </div>
             <div class="news-card-content">

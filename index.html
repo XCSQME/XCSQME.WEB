@@ -8,16 +8,27 @@
   <meta name="author" content="星辰社区 XCSQ">
   <meta name="theme-color" content="#0a0a0f">
 
+  <!-- Canonical -->
+  <link rel="canonical" href="https://xcsqme.vercel.app/">
+
+  <!-- Content Security Policy (conservative; allows self + trusted CDNs) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; frame-src 'self' https://t.me https://www.youtube.com; base-uri 'self'; form-action 'self'; object-src 'none';">
+
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xcsqme.vercel.app/">
   <meta property="og:title" content="星辰社区 XCSQ - 全球顶级加密货币信号聚合社区">
   <meta property="og:description" content="汇集270+顶尖KOL和分析师的实时交易信号，24/7智能监控，策略跟单">
+  <meta property="og:image" content="https://xcsqme.vercel.app/assets/logo-xcsq.jpg">
   <meta property="og:site_name" content="星辰社区 XCSQ">
+  <meta property="og:locale" content="zh_CN">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@XCSQbtc">
   <meta name="twitter:title" content="星辰社区 XCSQ - 全球顶级加密货币信号聚合社区">
   <meta name="twitter:description" content="汇集270+顶尖KOL和分析师的实时交易信号">
+  <meta name="twitter:image" content="https://xcsqme.vercel.app/assets/logo-xcsq.jpg">
 
   <!-- Preconnect for Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,24 +37,31 @@
   <link rel="preconnect" href="https://unpkg.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts (display=swap for better CLS) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" crossorigin="anonymous">
+
+  <!--
+    NOTE: SRI integrity hashes are intentionally omitted below.
+    When deploying, generate SHA-384 via https://www.srihash.org/
+    and add integrity="sha384-..." crossorigin="anonymous" to each CDN tag.
+    See README_PERF.md for the URL list.
+  -->
 
   <!-- Tailwind CSS v4 -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" crossorigin="anonymous"></script>
 
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@0.460.0"></script>
+  <script src="https://unpkg.com/lucide@0.460.0" crossorigin="anonymous" defer></script>
 
-  <!-- Three.js for 3D Effects -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Three.js for 3D Effects (home only) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous" defer></script>
 
   <!-- GSAP for Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" crossorigin="anonymous" defer></script>
 
   <!-- Chart.js for Data Visualization -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7" crossorigin="anonymous" defer></script>
 
   <!-- Shared Styles -->
   <link rel="stylesheet" href="./shared/styles.css">
@@ -52,6 +70,36 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23D4AF37'/%3E%3Cstop offset='100%25' style='stop-color:%23F4D03F'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 5 L63 35 L95 38 L71 59 L78 91 L50 75 L22 91 L29 59 L5 38 L37 35 Z' fill='url(%23g)'/%3E%3C/svg%3E">
 
   <title>星辰社区 XCSQ - 全球顶级加密货币信号聚合社区</title>
+
+  <!-- Structured Data: Organization + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://xcsqme.vercel.app/#organization",
+        "name": "星辰社区 XCSQ",
+        "alternateName": "Star Community",
+        "url": "https://xcsqme.vercel.app/",
+        "logo": "https://xcsqme.vercel.app/assets/logo-xcsq.jpg",
+        "description": "全球顶级加密货币信号聚合平台，汇集270+顶尖KOL和分析师的实时交易信号",
+        "sameAs": [
+          "https://x.com/XCSQbtc",
+          "https://t.me/xcsqme"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://xcsqme.vercel.app/#website",
+        "url": "https://xcsqme.vercel.app/",
+        "name": "星辰社区 XCSQ",
+        "inLanguage": "zh-CN",
+        "publisher": { "@id": "https://xcsqme.vercel.app/#organization" }
+      }
+    ]
+  }
+  </script>
 
   <style>
     /* Particle canvas - 必须固定定位作为背景 */
@@ -458,7 +506,7 @@
   <!-- Page Loader -->
   <div class="page-loader" id="pageLoader">
     <div class="loader-star">
-      <img src="assets/logo-xcsq.jpg" alt="星辰社区" class="w-20 h-20 rounded-full object-cover" style="animation: pulse 1.5s ease-in-out infinite;">
+      <img src="assets/logo-xcsq.jpg" alt="星辰社区" class="w-20 h-20 rounded-full object-cover" style="animation: pulse 1.5s ease-in-out infinite;" loading="lazy" decoding="async">
     </div>
     <div class="loader-text">星辰社区</div>
     <div class="loader-progress">
@@ -530,7 +578,7 @@
   </section>
 
   <!-- Scroll Indicator (desktop only) -->
-  <div class="scroll-indicator hidden md:flex" onclick="document.querySelector('.section').scrollIntoView({behavior: 'smooth'})">
+  <div class="scroll-indicator hidden md:flex" data-action="scroll-to-section" data-target=".section" role="button" tabindex="0" aria-label="向下滚动探索">
     <span>向下滚动探索</span>
     <i data-lucide="chevron-down" class="w-5 h-5"></i>
   </div>
@@ -674,9 +722,9 @@
       <!-- KOL Cards Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- KOL Card 1 - Alert会所 -->
-        <div class="kol-card animate-on-scroll stagger-1" onclick="window.location.href='pages/kol-detail.html?name='+encodeURIComponent(this.querySelector('h4').textContent)">
+        <div class="kol-card animate-on-scroll stagger-1" data-action="go-kol-detail" role="button" tabindex="0">
           <div class="flex items-start gap-4">
-            <img src="assets/avatars/Alert会所.webp" alt="Alert会所" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" onerror="this.style.display='none'">
+            <img src="assets/avatars/Alert会所.webp" alt="Alert会所" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">Alert会所</h4>
               <span class="badge badge-cyan mt-1">华语二级市场</span>
@@ -698,9 +746,9 @@
         </div>
 
         <!-- KOL Card 2 - Ye.koi -->
-        <div class="kol-card animate-on-scroll stagger-2" onclick="window.location.href='pages/kol-detail.html?name='+encodeURIComponent(this.querySelector('h4').textContent)">
+        <div class="kol-card animate-on-scroll stagger-2" data-action="go-kol-detail" role="button" tabindex="0">
           <div class="flex items-start gap-4">
-            <img src="assets/avatars/Ye.koi.webp" alt="Ye.koi" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" onerror="this.style.display='none'">
+            <img src="assets/avatars/Ye.koi.webp" alt="Ye.koi" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">Ye.koi</h4>
               <span class="badge badge-gold mt-1">华语二级市场</span>
@@ -722,9 +770,9 @@
         </div>
 
         <!-- KOL Card 3 - 风寻 -->
-        <div class="kol-card animate-on-scroll stagger-3" onclick="window.location.href='pages/kol-detail.html?name='+encodeURIComponent(this.querySelector('h4').textContent)">
+        <div class="kol-card animate-on-scroll stagger-3" data-action="go-kol-detail" role="button" tabindex="0">
           <div class="flex items-start gap-4">
-            <img src="assets/avatars/风寻.webp" alt="风寻" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" onerror="this.style.display='none'">
+            <img src="assets/avatars/风寻.webp" alt="风寻" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">风寻</h4>
               <span class="badge badge-gold mt-1">华语二级市场</span>
@@ -746,9 +794,9 @@
         </div>
 
         <!-- KOL Card 4 - 颜驰 -->
-        <div class="kol-card animate-on-scroll stagger-1" onclick="window.location.href='pages/kol-detail.html?name='+encodeURIComponent(this.querySelector('h4').textContent)">
+        <div class="kol-card animate-on-scroll stagger-1" data-action="go-kol-detail" role="button" tabindex="0">
           <div class="flex items-start gap-4">
-            <img src="assets/avatars/uyDXNr0V_400x400.webp" alt="颜驰" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" onerror="this.style.display='none'">
+            <img src="assets/avatars/uyDXNr0V_400x400.webp" alt="颜驰" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">颜驰</h4>
               <span class="badge badge-cyan mt-1">华语二级市场</span>
@@ -770,9 +818,9 @@
         </div>
 
         <!-- KOL Card 5 - 提阿非罗 -->
-        <div class="kol-card animate-on-scroll stagger-2" onclick="window.location.href='pages/kol-detail.html?name='+encodeURIComponent(this.querySelector('h4').textContent)">
+        <div class="kol-card animate-on-scroll stagger-2" data-action="go-kol-detail" role="button" tabindex="0">
           <div class="flex items-start gap-4">
-            <img src="assets/avatars/1YnfMkEr_400x400.webp" alt="提阿非罗" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" onerror="this.style.display='none'">
+            <img src="assets/avatars/1YnfMkEr_400x400.webp" alt="提阿非罗" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">提阿非罗</h4>
               <span class="badge badge-gold mt-1">华语二级市场</span>
@@ -794,9 +842,9 @@
         </div>
 
         <!-- KOL Card 6 - 比特币飞扬 -->
-        <div class="kol-card animate-on-scroll stagger-3" onclick="window.location.href='pages/kol-detail.html?name='+encodeURIComponent(this.querySelector('h4').textContent)">
+        <div class="kol-card animate-on-scroll stagger-3" data-action="go-kol-detail" role="button" tabindex="0">
           <div class="flex items-start gap-4">
-            <img src="assets/avatars/比特币飞扬.webp" alt="比特币飞扬" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" onerror="this.style.display='none'">
+            <img src="assets/avatars/比特币飞扬.webp" alt="比特币飞扬" class="w-16 h-16 rounded-full object-cover border-2 border-gold/50 flex-shrink-0" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <div class="flex-1 min-w-0">
               <h4 class="font-semibold text-white truncate">比特币飞扬</h4>
               <span class="badge badge-cyan mt-1">华语二级市场</span>
@@ -847,8 +895,9 @@
             "用了一年多，信号的及时性和准确度确实帮我在几次关键行情中抓住了机会。"
           </p>
           <div class="flex items-center gap-4">
-            <img src="https://thumbs.dreamstime.com/b/striking-abstract-silhouette-person-profile-featuring-blend-vibrant-neon-colors-smooth-gradients-composition-410608684.jpg" 
-                 alt="孤独恰瑞" 
+            <img src="https://thumbs.dreamstime.com/b/striking-abstract-silhouette-person-profile-featuring-blend-vibrant-neon-colors-smooth-gradients-composition-410608684.jpg"
+                 alt="孤独恰瑞"
+                 loading="lazy" decoding="async"
                  class="testimonial-avatar"
                  onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23D4AF37%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>孤</text></svg>'">
             <div>
@@ -871,8 +920,9 @@
             "给我几个姐妹团成员都推荐了，你可要给她们优惠点哦哈哈。真的好用，信号及时准确，省了我好多时间。"
           </p>
           <div class="flex items-center gap-4">
-            <img src="https://thumbs.dreamstime.com/b/digital-pop-art-illustration-face-focus-big-blue-eyes-long-lashes-vivid-colors-psychedelic-retro-style-groovy-design-409092957.jpg" 
-                 alt="甜沫儿" 
+            <img src="https://thumbs.dreamstime.com/b/digital-pop-art-illustration-face-focus-big-blue-eyes-long-lashes-vivid-colors-psychedelic-retro-style-groovy-design-409092957.jpg"
+                 alt="甜沫儿"
+                 loading="lazy" decoding="async"
                  class="testimonial-avatar"
                  style="border-color: rgba(212, 175, 55, 0.3);"
                  onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23ec4899%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>甜</text></svg>'">
@@ -896,8 +946,9 @@
             "从单一跟单到学会自己分析，这里更像是一个高质量的信息聚合平台。"
           </p>
           <div class="flex items-center gap-4">
-            <img src="https://cdnb.artstation.com/p/assets/images/images/058/544/747/large/adriano-dias-render0000-0117.jpg?1674421537" 
-                 alt="歌者" 
+            <img src="https://cdnb.artstation.com/p/assets/images/images/058/544/747/large/adriano-dias-render0000-0117.jpg?1674421537"
+                 alt="歌者"
+                 loading="lazy" decoding="async"
                  class="testimonial-avatar"
                  style="border-color: rgba(212, 175, 55, 0.3);"
                  onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23D4AF37%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2250%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2240%22>歌</text></svg>'">
@@ -1056,12 +1107,13 @@
         };
         toast.classList.add(colors[type] || colors.info);
         
-        toast.innerHTML = `
-          <div class="flex items-center gap-2">
-            <span>${message}</span>
-          </div>
-        `;
-        
+        const _wrap = document.createElement('div');
+        _wrap.className = 'flex items-center gap-2';
+        const _span = document.createElement('span');
+        _span.textContent = String(message == null ? '' : message);
+        _wrap.appendChild(_span);
+        toast.appendChild(_wrap);
+
         document.body.appendChild(toast);
 
         requestAnimationFrame(() => {

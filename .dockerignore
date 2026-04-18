@@ -1,0 +1,17 @@
+.git
+.gitignore
+.DS_Store
+*.md
+!README.md
+*.bak
+*.backup.*
+node_modules
+.vercel
+.idea
+.vscode
+scripts/
+review_report.md
+REDESIGN_SUMMARY.md
+Design.md
+优化方案.md
+README_PERF.md

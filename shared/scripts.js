@@ -589,7 +589,7 @@ function showToast(message, type = 'info', duration = 3000) {
   // Create toast element
   const toast = document.createElement('div');
   toast.className = `toast-notification fixed bottom-4 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-y-full opacity-0 transition-all duration-300`;
-  
+
   // Set color based on type
   const colors = {
     info: 'bg-blue-500',
@@ -598,14 +598,18 @@ function showToast(message, type = 'info', duration = 3000) {
     error: 'bg-red-500'
   };
   toast.classList.add(colors[type] || colors.info);
-  
-  toast.innerHTML = `
-    <div class="flex items-center gap-2">
-      <i data-lucide="${type === 'success' ? 'check-circle' : type === 'error' ? 'x-circle' : 'info'}"></i>
-      <span>${message}</span>
-    </div>
-  `;
-  
+
+  // Build DOM safely (no innerHTML with user input)
+  const wrap = document.createElement('div');
+  wrap.className = 'flex items-center gap-2';
+  const icon = document.createElement('i');
+  icon.setAttribute('data-lucide', type === 'success' ? 'check-circle' : type === 'error' ? 'x-circle' : 'info');
+  const span = document.createElement('span');
+  span.textContent = String(message == null ? '' : message);
+  wrap.appendChild(icon);
+  wrap.appendChild(span);
+  toast.appendChild(wrap);
+
   document.body.appendChild(toast);
   if (typeof lucide !== 'undefined') lucide.createIcons();
 
@@ -661,6 +665,72 @@ function initGSAPAnimations() {
     });
   });
 }
+
+// ========================================
+// 9.5 DATA-ACTION DELEGATED HANDLERS (CSP-friendly)
+// ----------------------------------------
+// Replaces inline `onclick=` handlers. Register handlers with
+// XCSQ.registerAction('name', fn) and use <button data-action="name">
+// in markup.
+// ========================================
+(function () {
+  const actionRegistry = Object.create(null);
+
+  function registerAction(name, fn) {
+    if (typeof name === 'string' && typeof fn === 'function') {
+      actionRegistry[name] = fn;
+    }
+  }
+
+  // Built-in actions used across pages
+  registerAction('scroll-to-section', function (el) {
+    const sel = el.dataset.target || '.section';
+    const target = document.querySelector(sel);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  registerAction('go-kol-detail', function (el) {
+    const nameEl = el.querySelector('h4');
+    const name = el.dataset.kolName || (nameEl ? nameEl.textContent : '');
+    if (name) {
+      const base = el.dataset.base || 'pages/kol-detail.html';
+      window.location.href = base + '?name=' + encodeURIComponent(name);
+    }
+  });
+
+  registerAction('copy-wechat', function () {
+    copyToClipboard('xcsqme').then(function (ok) {
+      if (ok) showToast('微信号已复制', 'success');
+      else showToast('复制失败，请手动复制：xcsqme', 'error');
+    });
+  });
+
+  registerAction('toggle-faq', function (el) {
+    // Toggle a neighboring .faq-answer / .faq-item
+    const item = el.closest('.faq-item') || el.parentElement;
+    if (item) item.classList.toggle('open');
+    const answer = (item || el).querySelector('.faq-answer');
+    if (answer) {
+      const open = (item || el).classList.contains('open') || answer.classList.toggle('open');
+      answer.style.maxHeight = open ? answer.scrollHeight + 'px' : '0px';
+    }
+  });
+
+  // Global click delegate
+  document.addEventListener('click', function (e) {
+    const el = e.target.closest('[data-action]');
+    if (!el) return;
+    const name = el.dataset.action;
+    const fn = actionRegistry[name];
+    if (fn) {
+      try { fn(el, e); } catch (err) { console.error('[data-action]', name, err); }
+    }
+  });
+
+  // Expose registry
+  window.XCSQ = window.XCSQ || {};
+  window.XCSQ.registerAction = registerAction;
+})();
 
 // ========================================
 // 10. EXPORTS FOR EXTERNAL USE

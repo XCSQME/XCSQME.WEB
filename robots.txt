@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
+Disallow: /assets/avatars/
+Disallow: /*.bak
+Crawl-delay: 1
+
+# Specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
 
 Sitemap: https://xcsqme.vercel.app/sitemap.xml
